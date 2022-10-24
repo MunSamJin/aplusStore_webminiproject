@@ -22,14 +22,14 @@ public interface ItemDAO {
      * (마치 카테고리처럼)
      * ItemReadServlet
      * */
-    List<ItemDTO> itemSelectBymodelName(String modelName)throws SQLException ;
+    ItemDTO itemSelectBymodelName(String modelName)throws SQLException ;
 
     /**
      * 카테고리 상품 조회
      * @param : 카테고리 이름을 전달 받음
      * @return : 해당하는 제품을 리스트로 리턴
      * */
-    List<ItemDTO> itemSelectByCategory(String category);
+    List<ItemDTO> itemSelectByCategory(String category, String miniCategory);
 
     /**
      * 상품 이름으로 검색 (같은 모델 색상,용량 모두 나열)

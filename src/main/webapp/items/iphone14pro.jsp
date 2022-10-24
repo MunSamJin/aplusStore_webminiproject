@@ -39,11 +39,72 @@
                 let color = $("input[type=radio][name=color]:checked").val();
                 let storage = $("input[type=radio][name=storage]:checked").val();
                 let modelName = model + "_" + color + "_" + storage;
-                location.href = "cart.jsp?modelName=" + modelName;
+                location.href = "cartServlet?methodName=addCart&modelNum=" + modelName;
 
             });
 
+            $("input[type=radio][name=storage]").click(function () {
+                let m = $("input[type=radio][name=model]:checked").val();
+                let s = $(this).val()
 
+                if (s == 128 && m == "14pro") {
+                    $("#span").html("<h1>₩ 1,550,000</h1>").show();
+                } else if (s == 256 && m == "14pro") {
+                    $("#span").html("<h1>₩ 1,700,000</h1>").show();
+                }else if (s == 512 && m == "14pro") {
+                    $("#span").html("<h1>₩ 2,000,000</h1>").show();
+                }else if (s == 1024 && m == "14pro") {
+                    $("#span").html("<h1>₩ 2,300,000</h1>").show();
+
+                }else if (s == 128 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 1,750,000</h1>").show();
+                }else if (s == 256 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 1,900,000</h1>").show();
+                }else if (s == 512 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 2,200,000</h1>").show();
+                }else if (s == 1024 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 2,500,000</h1>").show();
+                }
+            });
+
+            $("input[type=radio][name=model]").click(function () {
+                let m = $(this).val();
+                let s = $("input[type=radio][name=storage]:checked").val();
+
+                if (s == 128 && m == "14pro") {
+                    $("#span").html("<h1>₩ 1,550,000</h1>").show();
+                } else if (s == 256 && m == "14pro") {
+                    $("#span").html("<h1>₩ 1,700,000</h1>").show();
+                }else if (s == 512 && m == "14pro") {
+                    $("#span").html("<h1>₩ 2,000,000</h1>").show();
+                }else if (s == 1024 && m == "14pro") {
+                    $("#span").html("<h1>₩ 2,300,000</h1>").show();
+
+                }else if (s == 128 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 1,750,000</h1>").show();
+                }else if (s == 256 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 1,900,000</h1>").show();
+                }else if (s == 512 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 2,200,000</h1>").show();
+                }else if (s == 1024 && m == "14proMax") {
+                    $("#span").html("<h1>₩ 2,500,000</h1>").show();
+                }
+            });
+
+            $("input[type=radio][name=color]").click(function () {
+                let c = $(this).val();
+
+                if(c =="black"){
+                $("#mainImg").attr("src","../images/iphone-14-pro-main_black.jpeg");
+                }else if(c =="gold"){
+                    $("#mainImg").attr("src","../images/iphone-14-pro-main_gold.jpeg");
+                }else if(c =="purple"){
+                    $("#mainImg").attr("src","../images/iphone-14-pro-main_purple.jpeg");
+                }else if(c =="silver"){
+                    $("#mainImg").attr("src","../images/iphone-14-pro-main_silver.jpeg");
+                }
+
+            });
         });
 
     </script>
@@ -53,13 +114,21 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
     <script>
-        $( function() {
-            $( "input" ).checkboxradio();
-        } );
-        $( function() {
-            $( "#accordion" ).accordion();
-        } );
+        $(function () {
+            $("input").checkboxradio();
+        });
+        $(function () {
+            $("#accordion").accordion();
+        });
+
+
     </script>
+    <style type="text/css">
+        #jong {
+            padding: 20px 100px 20px 100px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <div class="wrapper">
@@ -88,7 +157,6 @@
                         <li><a class="page-scroll" href="#contact">장바구니</a></li>
                         <li><a class="page-scroll" href="#contact">배송조회</a></li>
 
-
                     </ul>
                 </div>
             </div>
@@ -104,6 +172,7 @@
                 <div class="col-md-12 col-sm-12 nopadding">
                     <div class="pricing-intro">
                         <h1 class="wow fadeInUp" data-wow-delay="0.2s">Iphone 14 Pro 구입하기</h1>
+                        ₩1,550,000부터
                     </div>
                 </div>
             </div>
@@ -112,12 +181,13 @@
 
         <div class="split-features">
             <div class="col-md-6 nopadding">
-                <div class="split-image"><img class="img-responsive wow fadeIn" src="../images/iphone14pro_main.jpeg"
-                                              alt="Image"/></div>
+                <div class="split-image">
+                    <img class="img-responsive wow fadeIn" src="../images/iphone14pro_main.jpeg" alt="Image" id="mainImg"/>
+                </div>
             </div>
             <div class="col-md-6 nopadding">
-                <div class="split-content">
-                    <h2 class="wow fadeInUp">모델 선택하기</h2>
+                <div class="split-content" id="jong">
+                    <h1 class="wow fadeInUp">모델 선택하기</h1>
                     <p class="wow fadeInUp">
 
                         <label for="14pro">iphone14 Pro</label>
@@ -128,8 +198,8 @@
 
                     </p>
 
-                    <p class="wow fadeInUp"> </p>
-                    <h2 class="wow fadeInUp">색상 선택하기</h2>
+                    <p class="wow fadeInUp"></p>
+                    <h1 class="wow fadeInUp">색상 선택하기</h1>
                     <p class="wow fadeInUp">
 
                         <label for="black">black</label>
@@ -142,8 +212,8 @@
                         <input type="radio" name="color" id="purple" value="purple">
 
                     </p>
-                    <p class="wow fadeInUp"> </p>
-                    <h2 class="wow fadeInUp">용량 선택하기</h2>
+                    <p class="wow fadeInUp"></p>
+                    <h1 class="wow fadeInUp">용량 선택하기</h1>
                     <p class="wow fadeInUp">
 
 
@@ -157,8 +227,10 @@
                         <input type="radio" name="storage" id="1024" value="1024">
 
                     </p>
+                    <span id="span" hidden></span>
+                    <div><h1> </h1></div>
                     <p class="wow fadeInUp">
-                        <input type="button" value="장바구니 넣기" id="cart"/>
+                        <input type="button" value="장바구니 넣기" id="cart" class="btn btn-primary btn-lg"/>
                     </p>
 
                 </div>

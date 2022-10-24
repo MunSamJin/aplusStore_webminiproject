@@ -15,20 +15,27 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public List<ItemDTO> itemSelectBymodelName(String modelName) throws SQLException {
-        List<ItemDTO> list = dao.itemSelectBymodelName(modelName);
+    public ItemDTO itemSelectBymodelName(String modelName) throws SQLException{
 
+        ItemDTO itemDTO = dao.itemSelectBymodelName(modelName);
+
+        return itemDTO;
+    }
+
+    @Override
+    public List<ItemDTO> itemSelectByCategory(String category, String miniCategory)  {
+
+        List<ItemDTO> list = dao.itemSelectByCategory(category, miniCategory);
+        System.out.println("서비스 길이"+list.size());
         return list;
     }
 
     @Override
-    public List<ItemDTO> itemSelectByCategory(String category)  {
-        return null;
-    }
-
-    @Override
     public List<ItemDTO> itemSeachBymodelName(String modelName)  {
-        return null;
+
+        List<ItemDTO> list = dao.itemSeachBymodelName(modelName);
+        System.out.println("서비스 길이"+list.size());
+        return list;
     }
 
     @Override

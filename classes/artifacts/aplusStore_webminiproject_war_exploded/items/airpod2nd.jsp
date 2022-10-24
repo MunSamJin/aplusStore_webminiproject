@@ -34,8 +34,6 @@
         $(function () {
 
             $("#cart").click(function () {
-
-
                 location.href = "cart.jsp?modelName=AirPods_2nd";
             });
 

@@ -9,4 +9,33 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <servlet>
+    <servlet-name>readDetailServlet</servlet-name>
+    <servlet-class>controller.ItemReadDetailServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>readDetailServlet</servlet-name>
+    <url-pattern>/ItemReadDetailServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ReadByCategoryServlet</servlet-name>
+    <servlet-class>controller.ItemReadByCategoryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReadByCategoryServlet</servlet-name>
+    <url-pattern>/ItemReadByCategoryServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>itemSearchServlet</servlet-name>
+    <servlet-class>controller.ItemSearchServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>itemSearchServlet</servlet-name>
+    <url-pattern>/ItemSearch</url-pattern>
+  </servlet-mapping>
 </web-app>

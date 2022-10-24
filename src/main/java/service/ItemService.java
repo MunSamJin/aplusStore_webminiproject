@@ -19,14 +19,14 @@ public interface ItemService {
      * @return : 해당하는 이름의 제품을 ItemsDTO 로 리턴
      * ItemReadServlet
      * */
-    public List<ItemDTO> itemSelectBymodelName(String modelName) throws SQLException;
+    public ItemDTO itemSelectBymodelName(String modelName) throws SQLException;
 
     /**
      * 카테고리 상품 조회
      * @param : 카테고리 이름을 전달 받음
      * @return : 해당하는 제품을 리스트로 리턴
      * */
-    public List<ItemDTO> itemSelectByCategory(String category) throws SQLException;
+    public List<ItemDTO> itemSelectByCategory(String category, String miniCategory) throws SQLException;
 
     /**
      * 상품 이름으로 검색 (같은 모델 색상,용량 모두 나열)

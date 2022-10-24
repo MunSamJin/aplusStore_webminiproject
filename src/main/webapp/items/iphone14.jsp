@@ -48,10 +48,7 @@
 
                 location.href = "cart.jsp?modelName="+modelName;
 
-
-
             });
-
 
         });
 
