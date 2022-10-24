@@ -64,15 +64,18 @@
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        <li><a class="page-scroll" href="../store/storeMain.html">Store</a></li>
-                        <li><a class="page-scroll" href="../items/iphoneIndex.html">iPhone</a></li>
-                        <li><a class="page-scroll" href="../items/watchIndex.html">Watch</a></li>
-                        <li><a class="page-scroll" href="../items/ariPodIndex.html">AirPods</a></li>
-                        <li><a class="page-scroll" href="../items/accIndex.html">액세서리</a></li>
+                        <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
+                        <li><a class="page-scroll" href="items/iphoneIndex.html">iPhone</a></li>
+                        <li><a class="page-scroll" href="items/watchIndex.html">Watch</a></li>
+                        <li><a class="page-scroll" href="items/ariPodIndex.html">AirPods</a></li>
+                        <li><a class="page-scroll" href="items/accIndex.html">액세서리</a></li>
                         <li><a class="page-scroll" href="#contact">고객지원</a></li>
                         <li><a class="page-scroll" href="#contact">로그인</a></li>
                         <li><a class="page-scroll" href="#contact">장바구니</a></li>
                         <li><a class="page-scroll" href="#contact">배송조회</a></li>
+                        <li><a class="page-scroll" href="../items/search.html">
+                            <img src="../images/search_icon.png" height="20px">
+                        </a></li>
 
 
                     </ul>

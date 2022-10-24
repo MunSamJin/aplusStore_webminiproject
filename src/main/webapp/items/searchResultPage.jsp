@@ -35,13 +35,13 @@
 
     $(function () {
 
-      $("#color").click(function () {
 
-        location.href = "/ItemReadDetailServlet?modelName=watch_band_pink"
+
+      $("#back").click(function (){
+
+        history.back();
       });
-
     });
-
   </script>
 
 
@@ -72,7 +72,9 @@
             <li><a class="page-scroll" href="#contact">로그인</a></li>
             <li><a class="page-scroll" href="#contact">장바구니</a></li>
             <li><a class="page-scroll" href="#contact">배송조회</a></li>
-
+            <li><a class="page-scroll" href="../items/search.html">
+              <img src="../images/search_icon.png" height="20px">
+            </a></li>
 
           </ul>
         </div>
@@ -102,22 +104,47 @@
 
 
         <!--반복문-->
-
-        <c:forEach items="${requestScope.list}" var="list" varStatus="state">
-          <div class="col-sm-4">
-            <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-              <div><a href="/ItemReadDetailServlet?modelName=${list.modelName}">
-                <img src="../images/${list.modelName}.jpeg" height="300px">
-              </a></div>
-              <div class="pricing-details">
+        <c:choose>
+        <c:when test="${empty requestScope.list}">
+          <h1>해당하는 제품이 없습니다.</h1>
+          <p/>
+          <input type="button" value="다시 검색하기" class="btn btn-primary btn-lg" id="back"/>
+        </c:when>
+          <c:otherwise>
+            <c:forEach items="${requestScope.list}" var="list" varStatus="state">
+              <div class="col-sm-4">
+                <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
+                  <div><a href="/ItemReadDetailServlet?modelName=${list.modelName}">
+                    <img src="../images/${list.modelName}.jpeg" height="300px">
+                  </a></div>
+                  <div class="pricing-details">
+                  </div>
+                  <span>${list.modelName}</span>
+                  <p/>
+                  <span>${list.modelPrice}</span>
+                  <p/>
+                </div>
               </div>
-              <span>${list.modelName}</span>
-              <p/>
-              <span>${list.modelPrice}</span>
-              <p/>
-            </div>
-          </div>
-        </c:forEach>
+            </c:forEach>
+
+          </c:otherwise>
+        </c:choose>
+
+<%--        <c:forEach items="${requestScope.list}" var="list" varStatus="state">--%>
+<%--          <div class="col-sm-4">--%>
+<%--            <div class="table-right wow fadeInUp" data-wow-delay="0.6s">--%>
+<%--              <div><a href="/ItemReadDetailServlet?modelName=${list.modelName}">--%>
+<%--                <img src="../images/${list.modelName}.jpeg" height="300px">--%>
+<%--              </a></div>--%>
+<%--              <div class="pricing-details">--%>
+<%--              </div>--%>
+<%--              <span>${list.modelName}</span>--%>
+<%--              <p/>--%>
+<%--              <span>${list.modelPrice}</span>--%>
+<%--              <p/>--%>
+<%--            </div>--%>
+<%--          </div>--%>
+<%--        </c:forEach>--%>
 
       </div>
     </div>
