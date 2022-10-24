@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8" %>
+         pageEncoding="UTF-8" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,24 +11,24 @@ pageEncoding="UTF-8" %>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
     <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
           type="text/css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="css/animate.css">
     <!-- Resource style -->
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/owl.theme.css">
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
     <!-- Resource style -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Jquery and Js Plugins -->
-    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../js/plugins.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript" src="../js/custom.js"></script>
-    <script src="../js/jquery.subscribe.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script src="js/jquery.subscribe.js"></script>
 
 
     <script type="text/javascript">
@@ -55,23 +55,23 @@ pageEncoding="UTF-8" %>
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll" href="../index.jsp"><img src="../images/logo1.png" width="80"
+                    <a class="navbar-brand page-scroll" href="../index.jsp"><img src="images/logo1.png" width="80"
                                                                                  alt="apluslogo"/></a></div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        <li><a class="page-scroll" href="../store/storeMain.html">Store</a></li>
-                        <li><a class="page-scroll" href="../items/iphoneIndex.html">iPhone</a></li>
-                        <li><a class="page-scroll" href="../items/watchIndex.html">Watch</a></li>
-                        <li><a class="page-scroll" href="../items/ariPodIndex.html">AirPods</a></li>
-                        <li><a class="page-scroll" href="../items/accIndex.html">액세서리</a></li>
+                        <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
+                        <li><a class="page-scroll" href="items/iphoneIndex.html">iPhone</a></li>
+                        <li><a class="page-scroll" href="items/watchIndex.html">Watch</a></li>
+                        <li><a class="page-scroll" href="items/ariPodIndex.html">AirPods</a></li>
+                        <li><a class="page-scroll" href="items/accIndex.html">액세서리</a></li>
                         <li><a class="page-scroll" href="#contact">고객지원</a></li>
                         <li><a class="page-scroll" href="#contact">로그인</a></li>
                         <li><a class="page-scroll" href="#contact">장바구니</a></li>
                         <li><a class="page-scroll" href="#contact">배송조회</a></li>
-                        <li><a class="page-scroll" href="../items/search.html">
-                            <img src="../images/search_icon.png" height="20px">
+                        <li><a class="page-scroll" href="items/search.html">
+                            <img src="images/search_icon.png" height="20px">
                         </a></li>
 
                     </ul>

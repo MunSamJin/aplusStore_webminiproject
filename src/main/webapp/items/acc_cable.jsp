@@ -11,26 +11,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
     <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
           type="text/css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="css/animate.css">
     <!-- Resource style -->
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/owl.theme.css">
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
     <!-- Resource style -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Jquery and Js Plugins -->
-    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../js/plugins.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript" src="../js/custom.js"></script>
-    <script src="../js/jquery.subscribe.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="js/custom.js"></script>
+    <script src="js/jquery.subscribe.js"></script>
 
 
+    <script type="text/javascript">
+
+
+        $(function () {
+
+            $("#color").click(function () {
+
+                location.href = "/ItemReadDetailServlet?modelName=watch_band_pink"
+            });
+
+        });
+
+    </script>
 
 
 </head>
@@ -45,23 +58,23 @@
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll" href="../index.jsp"><img src="../images/logo1.png" width="80"
-                                                                                 alt="apluslogo"/></a></div>
+                    <a class="navbar-brand page-scroll" href="index.jsp"><img src="images/logo1.png" width="80"
+                                                                              alt="apluslogo"/></a></div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-                        <li><a class="page-scroll" href="../store/storeMain.html">Store</a></li>
-                        <li><a class="page-scroll" href="../items/iphoneIndex.html">iPhone</a></li>
-                        <li><a class="page-scroll" href="../items/watchIndex.html">Watch</a></li>
-                        <li><a class="page-scroll" href="../items/ariPodIndex.html">AirPods</a></li>
-                        <li><a class="page-scroll" href="../items/accIndex.html">액세서리</a></li>
+                        <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
+                        <li><a class="page-scroll" href="items/iphoneIndex.html">iPhone</a></li>
+                        <li><a class="page-scroll" href="items/watchIndex.html">Watch</a></li>
+                        <li><a class="page-scroll" href="items/ariPodIndex.html">AirPods</a></li>
+                        <li><a class="page-scroll" href="items/accIndex.html">액세서리</a></li>
                         <li><a class="page-scroll" href="#contact">고객지원</a></li>
                         <li><a class="page-scroll" href="#contact">로그인</a></li>
                         <li><a class="page-scroll" href="#contact">장바구니</a></li>
                         <li><a class="page-scroll" href="#contact">배송조회</a></li>
-                        <li><a class="page-scroll" href="../items/search.html">
-                            <img src="../images/search_icon.png" height="20px">
+                        <li><a class="page-scroll" href="items/search.html">
+                            <img src="images/search_icon.png" height="20px">
                         </a></li>
 
                     </ul>
@@ -94,19 +107,20 @@
                 <!--반복문-->
 
                 <c:forEach items="${requestScope.list}" var="list" varStatus="state">
-                <div class="col-sm-4">
-                    <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-                        <div><a href="/ItemReadDetailServlet?modelName=${list.modelName}">
-                            <img src="../images/${list.modelName}.jpeg" width="300px">
-                        </a></div>
-                        <div class="pricing-details">
+                    <div class="col-sm-4">
+                        <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
+                            <div>
+                                <a href="${path}/front?key=item&methodName=ItemReadDetail&modelName=${list.modelName}">
+                                    <img src="${path}/images/${list.modelName}.jpeg" height="300px">
+                                </a></div>
+                            <div class="pricing-details">
+                            </div>
+                            <span>${list.modelName}</span>
+                            <p/>
+                            <span>${list.modelPrice}</span>
+                            <p/>
                         </div>
-                        <span>${list.modelName}</span>
-                        <p/>
-                        <span>${list.modelPrice}</span>
-                        <p/>
                     </div>
-                </div>
                 </c:forEach>
 
             </div>
@@ -117,7 +131,7 @@
 <!-- Footer Section -->
 <div class="footer">
     <div class="container">
-        <div class="col-md-7"><img src="../images/logo1.png" width="80" alt="Image"/>
+        <div class="col-md-7"><img src="images/logo1.png" width="80" alt="Image"/>
             <p> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis
                 tempore consequuntur officia ducimus unde doloribus quod unt repell </p>
             <div class="footer-text">
