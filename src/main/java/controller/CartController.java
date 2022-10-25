@@ -13,7 +13,7 @@ import net.sf.json.JSONArray;
 import service.CartService;
 import service.CartServiceImpl;
 
-public class CartController implements Controller{
+public class CartController implements AjaxController{
 	CartService service = new CartServiceImpl();
 	
 	/**
@@ -70,9 +70,11 @@ public class CartController implements Controller{
 
 
 	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		return null;
+		
 	}
+
+
 }

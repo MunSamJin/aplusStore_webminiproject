@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * ¸ğµç »ç¿ëÀÚ ¿äÃ»À» Ã³¸®ÇÒ ÁøÀÔÁ¡ ControllerÀÇ ¿ªÇÒ
+ *ì‚¬ìš©ìì˜ ëª¨ë“  ìš”ì²­ì„ ì²˜ë¦¬í•  ì§„ì…ì  Controllerì´ë‹¤(FrontControllerì˜ ì—­í• í•œë‹¤)
  */
 @WebServlet(urlPatterns = "/front", loadOnStartup = 1)
 public class FrontDispatcherServlet extends HttpServlet {
@@ -32,7 +32,13 @@ public class FrontDispatcherServlet extends HttpServlet {
 		String key = request.getParameter("key"); 
 		String methodName = request.getParameter("methodName");
 		
+		if(key==null || key.equals("")) {
+			key="elec";
+		}
 		
+		if(methodName==null || methodName.equals("")) {
+			methodName="select"; //
+		}
 		
 		System.out.println("key = " + key + ", methodName = " + methodName);
 		

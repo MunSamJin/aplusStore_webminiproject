@@ -12,23 +12,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *  »ç¿ëÀÚÀÇ ¸ğµç ¿äÃ»À» Ã³¸®ÇÒ ÁøÀÔÁ¡ ControllerÀÌ´Ù(FrontControllerÀÇ ¿ªÇÒÇÑ´Ù)
+ * ì‚¬ìš©ìì˜ ëª¨ë“  ìš”ì²­ì„ ì²˜ë¦¬í•  ì§„ì…ì  Controllerì´ë‹¤(FrontControllerì˜ ì—­í• í•œë‹¤)
  */
 @WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
 public class AjaxDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-     Map<String, Controller> map;
-     Map<String, Class<?>> clzMap;
+     Map<String, AjaxController> ajaxMap;
+     Map<String, Class<?>> ajaxClzMap;
  	@Override
 	public void init() throws ServletException {
 		//map = (Map<String, Controller>)super.getServletContext().getAttribute("map");
 		
 		ServletContext application = super.getServletContext();
 		Object obj = application.getAttribute("ajaxMap");
-		map = (Map<String, Controller>)obj;
+		ajaxMap = (Map<String, AjaxController>)obj;
 		
-		clzMap = (Map<String, Class<?>>)super.getServletContext().getAttribute("ajaxClzMap");
+		ajaxClzMap = (Map<String, Class<?>>)super.getServletContext().getAttribute("ajaxClzMap");
 		
 	}
    
@@ -38,16 +38,16 @@ public class AjaxDispatcherServlet extends HttpServlet {
 		
 		System.out.println("key = " + key+", methodName = " + methodName);
 		try {
-			Class<?> clz = clzMap.get(key);
+			Class<?> clz = ajaxClzMap.get(key);
 			Method method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
 			
-			Controller controller = map.get(key);
+			AjaxController controller = ajaxMap.get(key);
 			method.invoke(controller, request , response);
 			
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-	}//service ¸Ş¼Òµå ³¡ 
+	}//service ë©”ì†Œë“œ ë
 
 }
 
