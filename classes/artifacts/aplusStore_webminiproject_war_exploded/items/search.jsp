@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,36 +27,7 @@
   <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-<div class="wrapper">
-  <div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand page-scroll" href="../index.jsp"><img src="../images/logo1.png" width="80"  alt="iLand" /></a> </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-
-            <li><a class="page-scroll" href="../store/storeMain.html">Store</a></li>
-            <li><a class="page-scroll" href="../items/iphoneIndex.html">iPhone</a></li>
-            <li><a class="page-scroll" href="../items/watchIndex.html">Watch</a></li>
-            <li><a class="page-scroll" href="../items/ariPodIndex.html">AirPods</a></li>
-            <li><a class="page-scroll" href="../items/accIndex.html">액세서리</a></li>
-            <li><a class="page-scroll" href="#contact">고객지원</a></li>
-            <li><a class="page-scroll" href="#contact">로그인</a></li>
-            <li><a class="page-scroll" href="#contact">장바구니</a></li>
-            <li><a class="page-scroll" href="#contact">배송조회</a></li>
-            <li><a class="page-scroll" href="../items/search.html">
-              <img src="../images/search_icon.png" height="20px">
-            </a></li>
-
-
-          </ul>
-        </div>
-      </div>
-    </nav>
+<jsp:include page="../common/header.jsp"/>
     <!-- /.navbar-collapse -->
   </div>
   <!-- /.container-fluid -->
@@ -66,8 +41,8 @@
             <h1 class="wow fadeInUp" data-wow-delay="0.1s">어떤 제품을 찾으세요?</h1>
             <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-              <form class="subscribe-form wow zoomIn" action="../front?key=item&methodName=ItemSearch" method="post" name="searchform" id="searchform">
-                <input class="mail" type="text" name="search" placeholder="원하시는 제품을 입력하세요." id="search">
+              <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="searchform" id="searchform">
+                <input class="mail" type="text" name="search" placeholder="🔎" id="search">
                 <input class="submit-button" type="submit" value="검색하기" name="send" id="subsubmit">
               </form>
               <!-- subscribe message -->
@@ -102,22 +77,7 @@
     </div>
 
     <!-- Footer Section -->
-    <div class="footer">
-      <div class="container">
-        <div class="col-md-7"> <img src="../images/logo1.png" width="80"  alt="Image" />
-          <p> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis
-            tempore consequuntur officia ducimus unde doloribus quod unt repell  </p>
-          <div class="footer-text">
-            Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
-          </div>
-        </div>
-        <div class="col-md-5">
-          <h1>Contact Us</h1>
-          <p> Contact our 24/7 customer support if you have any <br class="hidden-xs">
-            questions. We'll help you out. </p>
-          <a href="mailto:support@gmail.com">contact@iland.com</a> </div>
-      </div>
-    </div>
+    <jsp:include page="../common/footer.jsp"/>
   </div>
 
   <!-- Scroll To Top -->
