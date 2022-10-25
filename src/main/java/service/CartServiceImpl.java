@@ -6,7 +6,6 @@ import java.util.List;
 import dao.CartDAO;
 import dao.CartDAOImpl;
 import dto.CartDTO;
-import dto.ItemDTO;
 
 public class CartServiceImpl implements CartService {
 	CartDAO dao = new CartDAOImpl();

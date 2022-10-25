@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.CartDTO;
-import dto.ItemDTO;
 import util.DbUtil;
 
 public class CartDAOImpl implements CartDAO {

@@ -15,7 +15,7 @@ import controller.Controller;
 
 /**
  * 
- * ¼­¹ö°¡ startµÉ¶§ °¢°¢ÀÇ ControllerÀÇ ±¸ÇöÃ¼¸¦ ¹Ì¸® »ı¼ºÇØ¼­ MapÀúÀå 
+ * ì„œë²„ê°€ startë ë•Œ ê°ê°ì˜ Controllerì˜ êµ¬í˜„ì²´ë¥¼ ë¯¸ë¦¬ ìƒì„±í•´ì„œ Mapì €ì¥ 
  */
 @WebListener
 public class HandlerMappingListener implements ServletContextListener {
@@ -25,7 +25,7 @@ public class HandlerMappingListener implements ServletContextListener {
         Map<String, Controller> map = new HashMap<String, Controller>();
         Map<String, Class<?> > clzMap = new HashMap<String, Class<?>>();
         
-        //~.propertiesÆÄÀÏ ·Îµù
+        //~.propertiesíŒŒì¼ ë¡œë”©
        ResourceBundle rb1 = ResourceBundle.getBundle("ajaxMapping"); //resources/ajaxMapping.properties
        ResourceBundle rb2 = ResourceBundle.getBundle("frontMapping"); //resources/frontMapping.properties
        
@@ -35,10 +35,10 @@ public class HandlerMappingListener implements ServletContextListener {
 	        	String value = rb1.getString(key);
 	        	//System.out.println(key +" = " + value );
 	        	
-	        	//StringÀÇ ¹®ÀÚ¿­À» ControllerÀÇ °´Ã¼·Î »ı¼ºÇØ¾ßÇÑ´Ù!!!
-	        	//Class<?>´Â ¾î¶² °´Ã¼°¡ °¡Áö°í ÀÖ´Â ÇÊµå, »ı¼ºÀÚ, ¸Ş¼ÒµåÀÇ Á¤º¸¸¦ µ¿ÀûÀ¸·Î °¡Á®¿Ã¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â °´Ã¼ÀÌ´Ù - reflection °³³ä
-	    		//reflection °³³äÀº µ¿ÀûÀ¸·Î Áï ½ÇÇàµµÁß¿¡ ÇÊ¿äÇÑ °´Ã¼¸¦ ÀûÀıÇÏ°Ô »ı¼ºÇÏ°í ±× °´Ã¼°¡ °¡Áö°í ÀÖ´Â »ı¼ºÀÚ³ª ¸Ş¼Òµå¸¦ 
-	    		//µ¿ÀûÀ¸·Î È£ÃâÇØÁÙ¼ö ÀÖµµ·Ï ÇÏ´Â °³³äÀ» reflectionÀÌ¶ó°í ÇÏ°í ÀÚ¹Ù¿¡¼­ ÀÌ °³³äÀ» Àû¿ëÇØ ³õÀº API°¡ Class<?> ÀÌ´Ù.
+	        	//Stringì˜ ë¬¸ìì—´ì„ Controllerì˜ ê°ì²´ë¡œ ìƒì„±í•´ì•¼í•œë‹¤!!!
+	        	//Class<?>ëŠ” ì–´ë–¤ ê°ì²´ê°€ ê°€ì§€ê³  ìˆëŠ” í•„ë“œ, ìƒì„±ì, ë©”ì†Œë“œì˜ ì •ë³´ë¥¼ ë™ì ìœ¼ë¡œ ê°€ì ¸ì˜¬ìˆ˜ ìˆë„ë¡ ë„ì™€ì£¼ëŠ” ê°ì²´ì´ë‹¤ - reflection ê°œë…
+	    		//reflection ê°œë…ì€ ë™ì ìœ¼ë¡œ ì¦‰ ì‹¤í–‰ë„ì¤‘ì— í•„ìš”í•œ ê°ì²´ë¥¼ ì ì ˆí•˜ê²Œ ìƒì„±í•˜ê³  ê·¸ ê°ì²´ê°€ ê°€ì§€ê³  ìˆëŠ” ìƒì„±ìë‚˜ ë©”ì†Œë“œë¥¼ 
+	    		//ë™ì ìœ¼ë¡œ í˜¸ì¶œí•´ì¤„ìˆ˜ ìˆë„ë¡ í•˜ëŠ” ê°œë…ì„ reflectionì´ë¼ê³  í•˜ê³  ìë°”ì—ì„œ ì´ ê°œë…ì„ ì ìš©í•´ ë†“ì€ APIê°€ Class<?> ì´ë‹¤.
 	
 	        	Class<?> className = Class.forName(value);
 	        	Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
@@ -53,10 +53,10 @@ public class HandlerMappingListener implements ServletContextListener {
 	        	String value = rb2.getString(key);
 	        	//System.out.println(key +" = " + value );
 	        	
-	        	//StringÀÇ ¹®ÀÚ¿­À» ControllerÀÇ °´Ã¼·Î »ı¼ºÇØ¾ßÇÑ´Ù!!!
-	        	//Class<?>´Â ¾î¶² °´Ã¼°¡ °¡Áö°í ÀÖ´Â ÇÊµå, »ı¼ºÀÚ, ¸Ş¼ÒµåÀÇ Á¤º¸¸¦ µ¿ÀûÀ¸·Î °¡Á®¿Ã¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â °´Ã¼ÀÌ´Ù - reflection °³³ä
-	    		//reflection °³³äÀº µ¿ÀûÀ¸·Î Áï ½ÇÇàµµÁß¿¡ ÇÊ¿äÇÑ °´Ã¼¸¦ ÀûÀıÇÏ°Ô »ı¼ºÇÏ°í ±× °´Ã¼°¡ °¡Áö°í ÀÖ´Â »ı¼ºÀÚ³ª ¸Ş¼Òµå¸¦ 
-	    		//µ¿ÀûÀ¸·Î È£ÃâÇØÁÙ¼ö ÀÖµµ·Ï ÇÏ´Â °³³äÀ» reflectionÀÌ¶ó°í ÇÏ°í ÀÚ¹Ù¿¡¼­ ÀÌ °³³äÀ» Àû¿ëÇØ ³õÀº API°¡ Class<?> ÀÌ´Ù.
+	        	//Stringì˜ ë¬¸ìì—´ì„ Controllerì˜ ê°ì²´ë¡œ ìƒì„±í•´ì•¼í•œë‹¤!!!
+	        	//Class<?>ëŠ” ì–´ë–¤ ê°ì²´ê°€ ê°€ì§€ê³  ìˆëŠ” í•„ë“œ, ìƒì„±ì, ë©”ì†Œë“œì˜ ì •ë³´ë¥¼ ë™ì ìœ¼ë¡œ ê°€ì ¸ì˜¬ìˆ˜ ìˆë„ë¡ ë„ì™€ì£¼ëŠ” ê°ì²´ì´ë‹¤ - reflection ê°œë…
+	    		//reflection ê°œë…ì€ ë™ì ìœ¼ë¡œ ì¦‰ ì‹¤í–‰ë„ì¤‘ì— í•„ìš”í•œ ê°ì²´ë¥¼ ì ì ˆí•˜ê²Œ ìƒì„±í•˜ê³  ê·¸ ê°ì²´ê°€ ê°€ì§€ê³  ìˆëŠ” ìƒì„±ìë‚˜ ë©”ì†Œë“œë¥¼ 
+	    		//ë™ì ìœ¼ë¡œ í˜¸ì¶œí•´ì¤„ìˆ˜ ìˆë„ë¡ í•˜ëŠ” ê°œë…ì„ reflectionì´ë¼ê³  í•˜ê³  ìë°”ì—ì„œ ì´ ê°œë…ì„ ì ìš©í•´ ë†“ì€ APIê°€ Class<?> ì´ë‹¤.
 	
 	        	Class<?> className = Class.forName(value);
 	        	Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
@@ -71,15 +71,16 @@ public class HandlerMappingListener implements ServletContextListener {
 			ex.printStackTrace();
 		}
         
-        //¸ğµç ¿µ¿ª¿¡¼­ mapÀ» »ç¿ëÇÒ¼ö ÀÖµµ·Ï ServletContext¿µ¿ª¿¡ ÀúÀåÇÑ´Ù.
+        //ëª¨ë“  ì˜ì—­ì—ì„œ mapì„ ì‚¬ìš©í• ìˆ˜ ìˆë„ë¡ ServletContextì˜ì—­ì— ì €ì¥í•œë‹¤.
         ServletContext application = e.getServletContext();
         application.setAttribute("ajaxMap", map);
         application.setAttribute("ajaxClzMap", clzMap);
         
     	application.setAttribute("map", map);
+    	application.setAttribute("clzMap", clzMap);
     	application.setAttribute("path", application.getContextPath() ); //${path}
        
-    }//¸Ş¼Òµå³¡
+    }//ë©”ì†Œë“œë
     
 	
 }//classEnd

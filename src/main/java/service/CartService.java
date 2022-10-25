@@ -1,11 +1,9 @@
 package service;
 
 import java.sql.SQLException;
-
 import java.util.List;
 
 import dto.CartDTO;
-import dto.ItemDTO;
 
 public interface CartService {
 	

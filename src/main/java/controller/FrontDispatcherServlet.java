@@ -32,13 +32,7 @@ public class FrontDispatcherServlet extends HttpServlet {
 		String key = request.getParameter("key"); 
 		String methodName = request.getParameter("methodName");
 		
-		if(key==null || key.equals("")) {
-			key="elec";
-		}
 		
-		if(methodName==null || methodName.equals("")) {
-			methodName="select"; //
-		}
 		
 		System.out.println("key = " + key + ", methodName = " + methodName);
 		
