@@ -97,11 +97,27 @@ public class HandlerMappingListener implements ServletContextListener {
         }catch (Exception ex) {
 			ex.printStackTrace();
 		}
+<<<<<<< HEAD
 
 
     }//ë©”ì†Œë“œ ë
 
 
+=======
+        
+        //¸ðµç ¿µ¿ª¿¡¼­ mapÀ» »ç¿ëÇÒ¼ö ÀÖµµ·Ï ServletContext¿µ¿ª¿¡ ÀúÀåÇÑ´Ù.
+        ServletContext application = e.getServletContext();
+        application.setAttribute("ajaxMap", map);
+        application.setAttribute("ajaxClzMap", clzMap);
+        
+    	application.setAttribute("map", map);
+    	application.setAttribute("clzMap", clzMap);
+    	application.setAttribute("path", application.getContextPath() ); //${path}
+       
+    }//¸Þ¼Òµå³¡
+    
+	
+>>>>>>> hyogyeong_main
 }//classEnd
 
 

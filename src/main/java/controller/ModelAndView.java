@@ -1,5 +1,12 @@
 package controller;
 
+<<<<<<< HEAD
+=======
+/**
+ * ∞¢ Controller¿« ±∏«ˆ√ºµÈ¿Ã Ω««‡µ» »ƒ ¿Ãµø«ÿæﬂ«œ¥¬ ∆‰¿Ã¡ˆ ¡§∫∏øÕ 
+ * ¿ÃµøπÊΩƒø° ¥Î«— º”º∫¿ª ∞¸∏Æ«œ¥¬ ∞¥√º
+ **/
+>>>>>>> hyogyeong_main
 
 public class ModelAndView {
 	private String viewName;//Î∑∞ Ïù¥Î¶Ñ
