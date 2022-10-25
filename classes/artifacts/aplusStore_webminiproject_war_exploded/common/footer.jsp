@@ -14,6 +14,6 @@
             <h1>Contact Us</h1>
             <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
                 © 2021 KOSTA All rights reserved. </p>
-            <a href="mailto:support@gmail.com">contact@iland.com</a> </div>
+        </div>
     </div>
 </div>

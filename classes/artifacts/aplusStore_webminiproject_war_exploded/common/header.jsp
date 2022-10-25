@@ -23,7 +23,7 @@
                         <li><a class="page-scroll" href="#contact">고객지원</a></li>
                         <li><a class="page-scroll" href="user/login.html">로그인</a></li>
                         <li><a class="page-scroll" href="#contact">장바구니</a></li>
-                        <li><a class="page-scroll" href="#contact">배송ㅇㅇㅇ조회</a></li>
+                        <li><a class="page-scroll" href="#contact">배송조회</a></li>
                         <li><a class="page-scroll" href="items/search.html">
                             <img src="images/search_icon.png" height="20px">
                         </a></li>
