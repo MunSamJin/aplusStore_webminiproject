@@ -1807,7 +1807,7 @@ padding: 120px 10px 50px 350px;
 .subscribe-form input {
   color: #222222;
   font-family: Open Sans;
-  padding: 0 60px;
+  padding: 0 60px 0 10px;
   font-size: 0.9em;
 }
 

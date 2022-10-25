@@ -77,6 +77,7 @@ public class HandlerMappingListener implements ServletContextListener {
         application.setAttribute("ajaxClzMap", clzMap);
         
     	application.setAttribute("map", map);
+    	application.setAttribute("clzMap", clzMap);
     	application.setAttribute("path", application.getContextPath() ); //${path}
        
     }//메소드끝
