@@ -1,18 +1,32 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 /build/
 
 =======
 >>>>>>> seryun
+=======
+=======
+/build/
+
+>>>>>>> jy_plus_main
+>>>>>>> jy_plus_main_new
 # Created by https://www.toptal.com/developers/gitignore/api/java,eclipse,gradle,maven,macos,windows,intellij+all
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,eclipse,gradle,maven,macos,windows,intellij+all
 
 
 *.properties
 <<<<<<< HEAD
+<<<<<<< HEAD
 DBUtil.java
 =======
 DbUtil.java
 >>>>>>> seryun
+=======
+DbUtil.java
+=======
+DBUtil.java
+>>>>>>> jy_plus_main
+>>>>>>> jy_plus_main_new
 
 ### Eclipse ###
 .metadata
@@ -307,4 +321,8 @@ gradle-app.setting
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,gradle,maven,macos,windows,intellij+all
 =======
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,gradle,maven,macos,windows,intellij+all
+<<<<<<< HEAD
 >>>>>>> seryun
+=======
+>>>>>>> jy_plus_main
+>>>>>>> jy_plus_main_new

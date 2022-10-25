@@ -1,12 +1,9 @@
 package controller;
 
-/**
- * °¢ ControllerÀÇ ±¸ÇöÃ¼µéÀÌ ½ÇÇàµÈ ÈÄ ÀÌµ¿ÇØ¾ßÇÏ´Â ÆäÀÌÁö Á¤º¸¿Í 
- * ÀÌµ¿¹æ½Ä¿¡ ´ëÇÑ ¼Ó¼ºÀ» °ü¸®ÇÏ´Â °´Ã¼
- */
+
 public class ModelAndView {
-	private String viewName; //ºäÀÌ¸§
-	private boolean isRedirect;//ÀÌµ¿¹æ½Ä(trueÀÌ¸é redirect¹æ½Ä, falseÀÌ¸é forward¹æ½Ä)
+	private String viewName;//ë·° ì´ë¦„
+	private boolean isRedirect;// ì´ë™ë°©ì‹(true ì´ë©´ redirect, false ì´ë©´ forward ë°©ì‹)
 	
 	public ModelAndView() {}
 	

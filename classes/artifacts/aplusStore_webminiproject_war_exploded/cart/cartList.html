@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>iLand Multipurpose Landing Page Template</title>
+<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="iLand Multipurpose Landing Page Template">
+<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="../css/animate.css">
+<!-- Resource style -->
+<link rel="stylesheet" href="../css/owl.carousel.css">
+<link rel="stylesheet" href="../css/owl.theme.css">
+<link rel="stylesheet" href="../css/ionicons.min.css">
+<!-- Resource style -->
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<!-- Jquery and Js Plugins --> 
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../js/plugins.js"></script> 
+<script type="text/javascript" src="../js/menu.js"></script> 
+<script type="text/javascript" src="../js/custom.js"></script>
+<script src="../js/jquery.subscribe.js"></script> 
+
+<style type="text/css">
+	
+</style>
+
+<script type="text/javascript">
+	$(function(){
+		//결제
+		$("#cartToOrder").click(function(){
+			
+			location.href = "ajax?key=order&methodName=order&modelNum="+modelNum+"&modelCount="+modelCount;
+		});
+		
+		//장바구니 전체검색
+		   function select(){
+			   $.ajax({
+				url :"../ajax" , //서버요청주소
+				type:"post", //요청방식(method방식 : get | post | put | delete )
+				dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				data: {key:"cart", methodName : "select", emailId: "zzangah99@naver.com"/* `${sessionScope.emailId}` */}, //서버에게 보낼 데이터정보(parameter정보)
+				success :function(result){
+					let str="";
+					let totalPrice = 0;
+					$.each(result, function(index, item){
+					    str+="<tr>";
+					    str+=`<td display='none'>${item.cartNum}</td>`;
+					    str+=`<td display='none'>${item.modelNum}</td>`;
+					    str+=`<td><img src="../images/"+${item.modelName}+".png" id></a></td>`;
+					    str+=`<td>${item.modelName}</td>`;
+					    str+=`<td>${item.modelCount}</td>`;
+					    str+=`<td>${item.price}</td>`;
+					    str+=`<td><input type='button' value='삭제' name='delete' id=${item.modelNum}></td>`;
+					    str+="</tr>";
+					    
+					    totalPrice += Integer.parseInt(item.price);
+				  });
+					
+					//$("#cartTable tr:eq(0)").remove();
+					$("#cartTable tr:gt(0)").remove();
+					$("#cartTable tr:eq(0)").after(str);
+					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + totalPrice);
+					
+				} , //성공했을때 실행할 함수 
+				error : function(err){  
+					alert(err+"에러 발생했어요.");
+				}  //실팽했을때 실행할 함수 
+			});//ajax끝
+		   }//selectAll 함수끝
+		   
+		   
+		   
+		   //장바구니 삭제
+		   $(document).on("click", "[name=delete]", function(){
+			   $.ajax({
+					url :"../ajax" , //서버요청주소
+					type:"post", //요청방식(method방식 : get | post | put | delete )
+					dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+					data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelNum: $(this).attr("id")}, //서버에게 보낼 데이터정보(parameter정보)
+					success :function(result){
+						select();//다시 전체검색
+						
+					} , //성공했을때 실행할 함수 
+					error : function(err){  
+						alert(err+"에러 발생했어요.");
+					}  
+		   		})
+		   })
+		   
+		   
+		   //장바구니 업데이트
+		   $(document).on("change","#selectModelCount",function(){
+			   $.ajax({
+					url :"../ajax" , //서버요청주소
+					type:"post", //요청방식(method방식 : get | post | put | delete )
+					dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+					data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().first().text(), modelCount: $(this).text()}, //서버에게 보낼 데이터정보(parameter정보)
+					success :function(result){
+						select();//다시 전체검색
+						
+					} , //성공했을때 실행할 함수 
+					error : function(err){  
+						alert(err+"에러 발생했어요.");
+					}  
+		   		})
+		   })
+		   
+		   
+		   //이미지 선택시 이동
+		   $(document).on("click","img",function(){
+			   location.href("");
+			   
+		   })
+		   
+		   
+		   select();
+	})
+</script>
+</head>
+
+<body>
+<div class="wrapper">
+  <div class="container">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+          <a class="navbar-brand page-scroll" href="#main"><img src="../images/logo1.png" width="80"  alt="iLand" /></a> </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+
+            <li><a class="page-scroll" href="../store/storeMain.html">Store</a></li>
+            <li><a class="page-scroll" href="#contact">iPhone</a></li>
+            <li><a class="page-scroll" href="#contact">Watch</a></li>
+            <li><a class="page-scroll" href="#contact">AirPods</a></li>
+            <li><a class="page-scroll" href="#contact">액세서리</a></li>
+            <li><a class="page-scroll" href="#contact">고객지원</a></li>
+            <li><a class="page-scroll" href="#contact">로그인</a></li>
+            <li><a class="page-scroll" href="#contact">장바구니</a></li>
+            <li><a class="page-scroll" href="#contact">배송조회</a></li>
+
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid -->
+  <!-- Main Section-->
+  <div class="main app form" id="main">
+  <div class="app-features text-center" id="features">
+      <div class="container">
+        <h1 class="wow fadeInDown" data-wow-delay="0.1s" id="cartEx">장바구니에 들어있는 제품입니다 </h1>
+        <p class="wow fadeInDown" data-wow-delay="0.2s"> 모든 주문에 무료 배송 서비스가 제공됩니다 <br class="hidden-xs">
+        
+        </p>
+        <p><input class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="button" value="결제" name="cartToOrder" id="cartToOrder"></p>
+      </div>
+  
+   <div class="split-features">
+    <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+      <tr>
+      	  <td display="none"></td>
+      	  <td display="none"></td>
+	      <td width="30%"><!-- <div class="col-md-6 nopadding"> -->
+	        <div class="split-image"> <img class="img-responsive wow fadeIn" src="../images/iPhone-app.png" alt="Image" width="140px"/> </div>
+	      </td>
+	      
+	      <td width="40%">
+	        <div ><!-- class="split-content" -->
+	          <h2 class="wow fadeInUp">장바구니 상품1</h2>
+	          <p class="wow fadeInUp">상품 설명</p>
+	        </div>
+	      </td>
+      	  <td width="15%"><h2 class="wow fadeInUp">수량</h2></td>
+      	  <td width="15%"><h2 class="wow fadeInUp">가격</h2></td>
+      	  <td><input type="button" value="삭제" name="delete" id=""></td>
+      </tr>
+    </table>
+    </div>
+  
+ 
+   
+    <!-- Footer Section -->
+    <div class="footer">
+      <div class="container">
+        <div class="col-md-7"> <img src="../images/logo1.png" width="80"  alt="Image" />
+          <p> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis
+tempore consequuntur officia ducimus unde doloribus quod unt repell  </p>
+          <div class="footer-text">
+           Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
+          </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Contact Us</h1>
+            <p> Contact our 24/7 customer support if you have any <br class="hidden-xs">
+              questions. We'll help you out. </p>
+            <a href="mailto:support@gmail.com">contact@iland.com</a> 
+        </div>
+      </div>
+    </div>
+  </div>
+    
+    <!-- Scroll To Top --> 
+    
+    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a> 
+    
+    <!-- Scroll To Top Ends--> 
+    
+  </div>
+  <!-- Main Section --> 
+</div>
+<!-- Wrapper--> 
+
+
+</body>
+</html>
