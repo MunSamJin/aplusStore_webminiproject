@@ -57,7 +57,8 @@
                             data-target="#bs-example-navbar-collapse-1" aria-expanded="false"><span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand page-scroll" href="../index.jsp"><img src="../images/logo1.png" width="80"
+                    <a class="navbar-brand page-scroll" href="../index.jsp"><img src="${path}/images/logo1.png"
+                                                                                 width="80"
                                                                                  alt="apluslogo"/></a></div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
@@ -103,7 +104,6 @@
             <div class="col-md-12 col-sm-12 nopadding">
 
 
-                <!--반복문-->
                 <c:choose>
                     <c:when test="${empty requestScope.list}">
                         <h1>해당하는 제품이 없습니다.</h1>
@@ -111,7 +111,9 @@
                         <input type="button" value="다시 검색하기" class="btn btn-primary btn-lg" id="back"/>
                     </c:when>
 
+
                     <c:otherwise>
+
                         <c:forEach items="${requestScope.list}" var="list" varStatus="state">
                             <div class="col-sm-4">
                                 <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
@@ -129,9 +131,10 @@
                             </div>
                         </c:forEach>
 
+
                     </c:otherwise>
                 </c:choose>
-
+                <%--첫번째 chose 끝--%>
             </div>
         </div>
     </div>
