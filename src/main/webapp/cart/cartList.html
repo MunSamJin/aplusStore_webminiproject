@@ -63,6 +63,7 @@
 					    totalPrice += Integer.parseInt(item.price);
 				  });
 					
+					//$("#cartTable tr:eq(0)").remove();
 					$("#cartTable tr:gt(0)").remove();
 					$("#cartTable tr:eq(0)").after(str);
 					$("#cartEx").text("장바구니에 들어있는 상품입니다 " + totalPrice);
