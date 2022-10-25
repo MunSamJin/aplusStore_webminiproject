@@ -544,6 +544,7 @@ font-family: Arial;
 /*---------------- Form Home Styling ------------------- */
 
 .form .hero-section {
+	background: #f3f3f3;
 	background-size: cover;
 	padding: 150px 0 0 0;
 }
@@ -751,6 +752,7 @@ textarea.form-control {
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
+    background: #F8F8F8;
     border: 1px solid #DDDDDD;
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
@@ -1807,7 +1809,7 @@ padding: 120px 10px 50px 350px;
 .subscribe-form input {
   color: #222222;
   font-family: Open Sans;
-  padding: 0 60px;
+  padding: 0;
   font-size: 0.9em;
 }
 
@@ -2049,7 +2051,7 @@ font-size: 12px;
 	}
 
 	.form .hero-section {
-		padding: 130px 0 30px 0;
+		padding: 130px 0 0;
 	}
 
 	.form .hero-content {
