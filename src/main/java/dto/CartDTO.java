@@ -1,9 +1,6 @@
 package dto;
 
-/**
- * 장바구니 DTO
- *
- */
+
 public class CartDTO {
 	private String cartNum;
 	private String modelNum;
