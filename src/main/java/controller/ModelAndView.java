@@ -1,16 +1,10 @@
 package controller;
 
-<<<<<<< HEAD
-=======
-/**
- * °¢ ControllerÀÇ ±¸ÇöÃ¼µéÀÌ ½ÇÇàµÈ ÈÄ ÀÌµ¿ÇØ¾ßÇÏ´Â ÆäÀÌÁö Á¤º¸¿Í 
- * ÀÌµ¿¹æ½Ä¿¡ ´ëÇÑ ¼Ó¼ºÀ» °ü¸®ÇÏ´Â °´Ã¼
- **/
->>>>>>> hyogyeong_main
+
 
 public class ModelAndView {
-	private String viewName;//ë·° ì´ë¦„
-	private boolean isRedirect;// ì´ë™ë°©ì‹(true ì´ë©´ redirect, false ì´ë©´ forward ë°©ì‹)
+	private String viewName;
+	private boolean isRedirect;
 	
 	public ModelAndView() {}
 	

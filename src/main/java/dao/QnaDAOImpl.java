@@ -10,9 +10,7 @@ import java.util.List;
 import java.util.Properties;
 
 import dto.QnaDTO;
-import kosta.mvc.dto.Electronics;
-import kosta.mvc.paging.PageCnt;
-import kosta.mvc.util.DbUtil;
+import util.DbUtil;
 
 public class QnaDAOImpl implements QnaDAO {
 	private Properties proFile = new Properties();
@@ -20,19 +18,18 @@ public class QnaDAOImpl implements QnaDAO {
 	public QnaDAOImpl() {
 		try {
 			//dbQuery를 준비한 ~.properties파일을 로딩해서 Properties 자료구조에 저장한다.
-			
-			//현재 프로젝트가 런타임(실행)될때, 즉 서버가 실행될때 classes폴더의 위치를
-			//동적으로 가져와서 경로를 설정해야한다.
+			//현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될때 classes폴더의 위치를, 동적으로 가져와서 경로를 설정해야한다.
 			InputStream is = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
 			proFile.load(is);
 			
-			System.out.println("query.select = " +proFile.getProperty("query.select"));
+			System.out.println("QNA.select = " +proFile.getProperty("QNA.select"));
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-
+	
+	//게시글 전체 검색
 	@Override
 	public List<QnaDTO> selectAll() throws SQLException {
 		Connection con=null;
@@ -40,7 +37,8 @@ public class QnaDAOImpl implements QnaDAO {
 		ResultSet rs=null;
 		List<QnaDTO> list = new ArrayList<QnaDTO>();
 		
-		String sql= proFile.getProperty("query.select");
+		//select * from QnaDTO(필드명) order by question(테이블명) desc -전체조회
+		String sql= proFile.getProperty("QNA.select");
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -48,7 +46,7 @@ public class QnaDAOImpl implements QnaDAO {
 			while(rs.next()) {
 				QnaDTO qnaDTO = 
 				new QnaDTO(rs.getString(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
 				
 			   list.add(qnaDTO);
 			}
@@ -57,76 +55,137 @@ public class QnaDAOImpl implements QnaDAO {
 		}
 		return list;
 	}
+	
 
+	//조회 수 증가 ???
 	@Override
-	public List<QnaDTO> getBoardList(int pageNo) throws SQLException {
+	public int increamentByReadnum(String qNum) throws SQLException {
+		Connection con=null;
+	      PreparedStatement ps=null;
+	      int result=0;
+	      
+	      //update QNA set readnum=readnum+1 where qNum=?
+	      String sql= proFile.getProperty("QNA.updateReadnum");
+	      try {
+	         con = DbUtil.getConnection();
+	         ps = con.prepareStatement("update question set readnum=readnum+1 where question=?"); //question:테이블명
+	         ps.setString(1, qNum);
+	         result = ps.executeUpdate();
+	      }finally {
+	         DbUtil.dbClose(con, ps);
+	      }
+	      return result;
+	}
+	
+
+	//게시글 입력
+	@Override
+	public int insert(QnaDTO qnaDTO) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result=0;
+		
+		//insert into QnaDTO values(?,?,?,?,?,sysdate,0,?,?);
+		String sql= proFile.getProperty("QNA.insert");
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, qnaDTO.getqNum());
+			ps.setString(2, qnaDTO.getCategory());
+			ps.setString(3, qnaDTO.getEmailId());
+			ps.setString(4, qnaDTO.getqSubject());
+			ps.setString(5, qnaDTO.getqContent());
+			ps.setString(6, qnaDTO.getqDate());
+			ps.setInt(7, qnaDTO.getqHits());
+			
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+	
+
+	//qNum, emailId에 해당하는 게시글 삭제
+	@Override
+	public int delete(String qNum, String category, String emailId) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		int result=0;
+		
+		//delete from question(테이블명) where qNum=? and emailId=?;
+		String sql= proFile.getProperty("QNA.delete");
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, qNum);
+			ps.setString(2, category);
+			ps.setString(3, emailId);
+			
+			result = ps.executeUpdate();
+		}finally {
+			DbUtil.dbClose(con, ps);
+		}
+		return result;
+	}
+	
+
+	//게시글 수정(질문번호, 질문제목, 질문내용 수정)
+	@Override
+	public int update(QnaDTO qnaDTO) throws SQLException{
+		  PreparedStatement ps = null;
+		  Connection con = null;
+		  int result=0;
+		  String sql= proFile.getProperty("QNA.update");
+		  try {
+		   con = DbUtil.getConnection();
+		   //QNA.update= update QnaDTO set qNum=?, qSubject=?, qContent=?;
+		   ps = con.prepareStatement("update QnaDTO set qNum=?, qSubject=?, qContent=?");
+		   
+		   ps = con.prepareStatement(sql);
+		   ps.setString(1, qnaDTO.getqNum());
+			ps.setString(2, qnaDTO.getCategory());
+			ps.setString(3, qnaDTO.getEmailId());
+			ps.setString(4, qnaDTO.getqSubject());
+			ps.setString(5, qnaDTO.getqContent());
+			ps.setString(6, qnaDTO.getqDate());
+			ps.setInt(7, qnaDTO.getqHits());
+		   
+			result = ps.executeUpdate();
+			}finally {
+				DbUtil.dbClose(con, ps);
+			}
+			return result;
+	}
+	
+
+	//글 제목에 해당하는 게시글 검색
+	@Override
+	public QnaDTO selectByqSubject(String qSubject) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		List<QnaDTO> list = new ArrayList<QnaDTO>();
+		QnaDTO qnaDTO = null;
 		
-		String sql= proFile.getProperty("query.pagingSelect");//select * from  (SELECT a.*, ROWNUM rnum FROM (SELECT * FROM Electronics ORDER BY writeday desc) a) where  rnum>=? and rnum <=? 
+		String sql= proFile.getProperty("QNA.selectByqSubject");
+		//select * from QnaDTO where qSubject=?
 		try {
-			
-			
 			con = DbUtil.getConnection();
-			con.setAutoCommit(false);
-			
-			//전체레코드수를 구한다.
-			int totalCount = this.getTotalCount(con);
-			int totalPage = totalCount%PageCnt.pagesize==0 ? totalCount/PageCnt.pagesize : (totalCount/PageCnt.pagesize)+1;
-			
-			PageCnt pageCnt = new PageCnt();
-			pageCnt.setPageCnt(totalPage);
-			pageCnt.setPageNo(pageNo);
-			
 			ps = con.prepareStatement(sql);
-			//? 2개에 set설정
-			ps.setInt(1, (pageNo-1) * pageCnt.pagesize +1); //시작
-			ps.setInt(2, pageNo * pageCnt.pagesize);//끝
+			ps.setString(4, qSubject);
 			
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				QnaDTO qnaDTO = 
-				new QnaDTO(rs.getString(1), rs.getString(2), rs.getString(3),
-						rs.getString(4), rs.getString(5), rs.getInt(6), rs.getString(7));
+			if(rs.next()) {
+				qnaDTO = new QnaDTO(rs.getString(1), rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7));
 				
-			   list.add(qnaDTO);
 			}
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		return list;
-	}
-
-	@Override
-	public QnaDTO selectByModelNum(String qNum) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int increamentByReadnum(String qHits) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int insert(QnaDTO qna) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int delete(String qNum, String password) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int update(QnaDTO qna) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return qnaDTO;
 	}
 
 

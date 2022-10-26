@@ -18,7 +18,7 @@ import controller.Controller;
 
 /**
  * 
- * 서버가 start될때 각각의 Controller의 구현체를 미리 생성해서 Map저장 
+ * �꽌踰꾧� start�맆�븣 媛곴컖�쓽 Controller�쓽 援ы쁽泥대�� 誘몃━ �깮�꽦�빐�꽌 Map���옣 
  */
 
 @WebListener
@@ -32,9 +32,9 @@ public class HandlerMappingListener implements ServletContextListener {
         Map<String, Class<?> > ajaxClzMap = new HashMap<String, Class<?>>();
 
 
-        //~.properties?파일 로딩
+        //~.properties?�뙆�씪 濡쒕뵫
 
-		System.out.println("핸들러 맵핑");
+		System.out.println("�빖�뱾�윭 留듯븨");
 
        ResourceBundle rb1 = ResourceBundle.getBundle("ajaxMapping"); //resources/ajaxMapping.properties
        ResourceBundle rb2 = ResourceBundle.getBundle("frontMapping"); //resources/frontMapping.properties
@@ -46,10 +46,10 @@ public class HandlerMappingListener implements ServletContextListener {
 
 	        	//System.out.println(key +" = " + value );
 	        	
-	        	//String의 문자열을 Controller의 객체로 생성해야한다!!!
-	        	//Class<?>는 어떤 객체가 가지고 있는 필드, 생성자, 메소드의 정보를 동적으로 가져올수 있도록 도와주는 객체이다 - reflection 개념
-	    		//reflection 개념은 동적으로 즉 실행도중에 필요한 객체를 적절하게 생성하고 그 객체가 가지고 있는 생성자나 메소드를 
-	    		//동적으로 호출해줄수 있도록 하는 개념을 reflection이라고 하고 자바에서 이 개념을 적용해 놓은 API가 Class<?> 이다.
+	        	//String�쓽 臾몄옄�뿴�쓣 Controller�쓽 媛앹껜濡� �깮�꽦�빐�빞�븳�떎!!!
+	        	//Class<?>�뒗 �뼱�뼡 媛앹껜媛� 媛�吏�怨� �엳�뒗 �븘�뱶, �깮�꽦�옄, 硫붿냼�뱶�쓽 �젙蹂대�� �룞�쟻�쑝濡� 媛��졇�삱�닔 �엳�룄濡� �룄��二쇰뒗 媛앹껜�씠�떎 - reflection 媛쒕뀗
+	    		//reflection 媛쒕뀗�� �룞�쟻�쑝濡� 利� �떎�뻾�룄以묒뿉 �븘�슂�븳 媛앹껜瑜� �쟻�젅�븯寃� �깮�꽦�븯怨� 洹� 媛앹껜媛� 媛�吏�怨� �엳�뒗 �깮�꽦�옄�굹 硫붿냼�뱶瑜� 
+	    		//�룞�쟻�쑝濡� �샇異쒗빐以꾩닔 �엳�룄濡� �븯�뒗 媛쒕뀗�쓣 reflection�씠�씪怨� �븯怨� �옄諛붿뿉�꽌 �씠 媛쒕뀗�쓣 �쟻�슜�빐 �넃�� API媛� Class<?> �씠�떎.
 	        	Class<?> className = Class.forName(value);
 	        	AjaxController controller = (AjaxController)className.getDeclaredConstructor().newInstance();
 
@@ -68,10 +68,10 @@ public class HandlerMappingListener implements ServletContextListener {
 
 	        	//System.out.println(key +" = " + value );
 
-	        	//String의 문자열을 Controller의 객체로 생성해야한다!!!
-	        	//Class<?>는 어떤 객체가 가지고 있는 필드, 생성자, 메소드의 정보를 동적으로 가져올수 있도록 도와주는 객체이다 - reflection 개념
-	    		//reflection 개념은 동적으로 즉 실행도중에 필요한 객체를 적절하게 생성하고 그 객체가 가지고 있는 생성자나 메소드를
-	    		//동적으로 호출해줄수 있도록 하는 개념을 reflection이라고 하고 자바에서 이 개념을 적용해 놓은 API가 Class<?> 이다.
+	        	//String�쓽 臾몄옄�뿴�쓣 Controller�쓽 媛앹껜濡� �깮�꽦�빐�빞�븳�떎!!!
+	        	//Class<?>�뒗 �뼱�뼡 媛앹껜媛� 媛�吏�怨� �엳�뒗 �븘�뱶, �깮�꽦�옄, 硫붿냼�뱶�쓽 �젙蹂대�� �룞�쟻�쑝濡� 媛��졇�삱�닔 �엳�룄濡� �룄��二쇰뒗 媛앹껜�씠�떎 - reflection 媛쒕뀗
+	    		//reflection 媛쒕뀗�� �룞�쟻�쑝濡� 利� �떎�뻾�룄以묒뿉 �븘�슂�븳 媛앹껜瑜� �쟻�젅�븯寃� �깮�꽦�븯怨� 洹� 媛앹껜媛� 媛�吏�怨� �엳�뒗 �깮�꽦�옄�굹 硫붿냼�뱶瑜�
+	    		//�룞�쟻�쑝濡� �샇異쒗빐以꾩닔 �엳�룄濡� �븯�뒗 媛쒕뀗�쓣 reflection�씠�씪怨� �븯怨� �옄諛붿뿉�꽌 �씠 媛쒕뀗�쓣 �쟻�슜�빐 �넃�� API媛� Class<?> �씠�떎.
 
 
 	        	Class<?> className = Class.forName(value);
@@ -83,7 +83,7 @@ public class HandlerMappingListener implements ServletContextListener {
 	        	clzMap.put(key, className);
 	        }
 	        
-	        // //모든 영역에서 map을 사용할수 있도록 ServletContext영역에 저장한다.
+	        // //紐⑤뱺 �쁺�뿭�뿉�꽌 map�쓣 �궗�슜�븷�닔 �엳�룄濡� ServletContext�쁺�뿭�뿉 ���옣�븳�떎.
 	        ServletContext application = e.getServletContext();
 	        application.setAttribute("ajaxMap", ajaxMap);
 	        application.setAttribute("ajaxClzMap", ajaxClzMap);
@@ -97,28 +97,9 @@ public class HandlerMappingListener implements ServletContextListener {
         }catch (Exception ex) {
 			ex.printStackTrace();
 		}
-<<<<<<< HEAD
 
-
-    }//메소드 끝
-
-
-=======
-        
-        //��� �������� map�� ����Ҽ� �ֵ��� ServletContext������ �����Ѵ�.
-        ServletContext application = e.getServletContext();
-        application.setAttribute("ajaxMap", map);
-        application.setAttribute("ajaxClzMap", clzMap);
-        
-    	application.setAttribute("map", map);
-    	application.setAttribute("clzMap", clzMap);
-    	application.setAttribute("path", application.getContextPath() ); //${path}
-       
-    }//�޼ҵ峡
-    
-	
->>>>>>> hyogyeong_main
-}//classEnd
+    }
+}
 
 
 

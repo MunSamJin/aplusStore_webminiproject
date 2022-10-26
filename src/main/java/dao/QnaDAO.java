@@ -7,44 +7,39 @@ import dto.QnaDTO;
 
 
 public interface QnaDAO {
-	/**
-	  * 레코드 전체 검색
+	
+	  /**
+	  * 게시글 전체 검색
 	  * */
 	  List<QnaDTO> selectAll() throws SQLException;
 	  
 	  /**
-		  * 레코드 전체 검색(페이지처리)
-	  * */
-	   List<QnaDTO> getBoardList(int pageNo) throws SQLException;
-	  
-	  /**
-	   * 모델번호에 해당하는 레코드 검색
+	   * qSubject(글제목)에 해당하는 게시글 검색
 	   * */
-	   QnaDTO selectByModelNum(String qNum) throws SQLException;
+	   QnaDTO selectByqSubject(String qSubject) throws SQLException;
 	  
 	  /**
-	   * 조회수를 증가하는 기능
+	   * 조회 수 증가
 	   * update QnaDTO set q_hits = q_hits + 1 where q_num=?
 	   * */
 	  int increamentByReadnum(String qHits) throws SQLException;
 	  
-	  
 	 /**
-	 * 레코드 삽입
+	 * 게시글 등록
 	 * @return : 1-삽입성공 , 0 - 삽입실패
 	  * */
-	  int insert(QnaDTO qna) throws SQLException;
+	  int insert(QnaDTO qnaDTO) throws SQLException;
 	  
 	  /**
-	   * 모델번호에 해당하는 레코드 삭제
+	   * qNum(글번호), category(질문종류), emailId(질문자)에 해당하는 게시글 삭제
 	   * @return : 1-삭제성공 , 0 - 삭제실패
 	   * */
-	  int delete(String qNum, String password) throws SQLException;
+	  int delete(String qNum, String category, String emailId) throws SQLException;
 	  
-	   /**
-	    * 모델번호에 해당하는 레코드 수정
-	    * @return : 1-수정성공 , 0 - 수정실패
-	    * */
-	  int update(QnaDTO qna) throws SQLException;
+	  /**
+	  * 게시글 수정
+	 * @throws SQLException 
+	  * */
+	  int update(QnaDTO qnaDTO) throws SQLException;
 
 }
