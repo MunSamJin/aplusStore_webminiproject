@@ -14,7 +14,25 @@ import dto.UserDTO;
 import util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
+	private Properties proFile = new Properties();
 	
+	
+	
+	public UserDAOImpl() {
+		try {
+		//dbQuery를 준비한 ~.properties파일을 로딩해서 Properties 자료구조에 저장한다.
+		
+		//현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될 때 classes폴더의 위치를 
+		//동적으로 가져와서 경로를 설정해야한다.
+		InputStream is = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+		
+		proFile.load(is);
+		System.out.println("query.userlogin = " + proFile.getProperty("query.userlogin"));
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		}
 
 	
 
@@ -29,7 +47,6 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 		
-				
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement("update member set email_id=?,pwd=?,name=?,addr=?,phone=?");
@@ -59,6 +76,7 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result = 0;
+		
 		
 		try {
 			con = DbUtil.getConnection();
@@ -92,9 +110,11 @@ public class UserDAOImpl implements UserDAO {
 		ResultSet rs = null;
 		
 		UserDTO dbuserDTO = null;
+		
+		String sql = proFile.getProperty("query.loginUser");//select * from member where email_id=? and pwd=?
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select * from member where email_id=? and pwd=?");//select * from member where email_id='sikkk@naver.com' and pwd='1234';
+			ps = con.prepareStatement(sql);
 			ps.setString(1, userDTO.getId());
 			ps.setString(2, userDTO.getPwd());
 			rs = ps.executeQuery();
