@@ -16,9 +16,7 @@ import service.CartServiceImpl;
 public class CartController implements AjaxController{
 	CartService service = new CartServiceImpl();
 	
-	/**
-	 * �옣諛붽뎄�땲 議고쉶
-	 */
+	
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String emailId = req.getParameter("emailId");
 		
@@ -29,10 +27,7 @@ public class CartController implements AjaxController{
 		out.print(arr);
 	}
 	
-	
-	/**
-	 * �옣諛붽뎄�땲 異붽�
-	 */
+
 	public void insert(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String emailId = req.getParameter("emailId");
 		String modelNum = req.getParameter("modelNum");
@@ -44,11 +39,7 @@ public class CartController implements AjaxController{
 		service.insert(modelNum, emailId);
 	}
 
-	
-	
-	/**
-	 * �옣諛붽뎄�땲 �궘�젣
-	 */
+
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String emailId = req.getParameter("emailId");
 		String modelNum = req.getParameter("modelNum");
@@ -56,11 +47,7 @@ public class CartController implements AjaxController{
 		service.delete(emailId, modelNum);
 	}
 
-	
-	
-	/**
-	 * �옣諛붽뎄�땲 �닔�젙
-	 */
+
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String cartNum = req.getParameter("cartNum");
 		String modelCount = req.getParameter("modelCount");

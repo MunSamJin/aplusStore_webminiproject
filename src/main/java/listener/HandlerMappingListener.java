@@ -44,7 +44,7 @@ public class HandlerMappingListener implements ServletContextListener {
 	        for(String key : rb1.keySet()) {
 	        	String value = rb1.getString(key);
 
-	        	//System.out.println(key +" = " + value );
+	        	System.out.println(key +" = " + value );
 	        	
 	        	//String의 문자열을 Controller의 객체로 생성해야한다!!!
 	        	//Class<?>는 어떤 객체가 가지고 있는 필드, 생성자, 메소드의 정보를 동적으로 가져올수 있도록 도와주는 객체이다 - reflection 개념
