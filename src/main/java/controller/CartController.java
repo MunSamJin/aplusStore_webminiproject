@@ -18,14 +18,12 @@ import service.CartServiceImpl;
 
 public class CartController implements AjaxController{
 	CartService service = new CartServiceImpl();
+
 	
-<<<<<<< HEAD
-	
-=======
+
 	/**
 	 * 검색
 	 */
->>>>>>> basic_setting
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String emailId = req.getParameter("emailId");
 		//HttpSession session = req.getSession();
@@ -38,39 +36,28 @@ public class CartController implements AjaxController{
 		
 		out.print(arr);
 	}
-	
-<<<<<<< HEAD
 
-	public void insert(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-=======
 	
 	/**
 	 * 입력
 	 */
 	/*public ModelAndView insert(HttpServletRequest req, HttpServletResponse resp) throws Exception{
->>>>>>> basic_setting
 		String emailId = req.getParameter("emailId");
 		String modelName = req.getParameter("modelName");
 		//String modelCount = req.getParameter("modelCount");
 		
-		/*
-		 * if(service.select(emailId)!=null){//select = update(req, resp); } 장바구니에 이미 있는 이메일&상품이면 수량 추가로 진행됨
-		 */
-		//service.insert(modelName, emailId);
-		//service.select(emailId);
+		//장바구니에 이미 있는 이메일&상품이면 수량 추가로 진행됨
+		 
+		service.insert(modelName, emailId);
+		service.select(emailId);
 		
-		//return null;
-	//}*/
+		return null;
+	}*/
 
-<<<<<<< HEAD
-
-=======
-	
 	
 	/**
 	 * 삭제
 	 */
->>>>>>> basic_setting
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		resp.setContentType("text/html;charset=UTF-8"); 
 		
@@ -83,15 +70,10 @@ public class CartController implements AjaxController{
 		out.println("삭제 되었습니다");
 	}
 
-<<<<<<< HEAD
-
-=======
-	
 	
 	/**
 	 * 수정
 	 */
->>>>>>> basic_setting
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String cartNum = req.getParameter("cartNum");
 		String modelCount = req.getParameter("modelCount");

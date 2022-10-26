@@ -1,13 +1,6 @@
 package dto;
 
-<<<<<<< HEAD
 
-=======
-/**
- * ��ٱ��� DTO
- *
- */
->>>>>>> basic_setting
 public class CartDTO {
 	private String cartNum;
 	private String modelNum;

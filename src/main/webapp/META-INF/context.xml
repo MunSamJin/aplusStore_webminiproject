@@ -31,43 +31,12 @@
 <!--    <Context path="/">-->
 
 
-<<<<<<< HEAD
-    <!-- DBCP기술 연결 -->
-	  <Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" 
-              driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/Edu/AplusWallet/Wallet_kosta"
-              username="admin" 
-              password="Apluskosta!!123" 
-              maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>
 
-   
-   <!-- DBCP 기술 적용하기 -->
-<!--     <Resource name="jdbc/myoracle"
-=======
      <!-- DBCP기술 연결 -->
    <Resource name="jdbc/myoracle" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/Edu/AplusWallet/Wallet_kosta"
               username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
-             
-   <!-- DBCP 기술 적용하기 -->
-    <!-- <Resource name="jdbc/myoracle"
->>>>>>> basic_setting
-    		  auth="Container"
-              type="javax.sql.DataSource"
-              driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-              username="c##mun"
-              password="mun"
-              maxTotal="20"
-              maxIdle="10"
-<<<<<<< HEAD
-              maxWaitMillis="-1"/>  -->
-
-=======
-              maxWaitMillis="-1"/> -->
->>>>>>> basic_setting
+  
 </Context>
