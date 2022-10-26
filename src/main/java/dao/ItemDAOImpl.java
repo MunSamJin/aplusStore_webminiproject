@@ -92,7 +92,7 @@ public class ItemDAOImpl implements ItemDAO{
         ResultSet rs = null;
         List<ItemDTO> list = new ArrayList<ItemDTO>();
 
-        String sql ="SELECT * from ITEMS where MODEL_NAME LIKE ? AND CATEGORY NOT in('iphone')";
+        String sql ="SELECT * from ITEMS where MODEL_NAME LIKE ? AND CATEGORY NOT in('iphone','watch','AirPods')";
 
         try{
             con = DbUtil.getConnection();

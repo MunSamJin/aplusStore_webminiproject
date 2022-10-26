@@ -79,20 +79,20 @@
         <tr>
 
           <td>
-            <a href="airpod2nd.jsp">
+            <a href="airpods_2.jsp">
             <img src="../images/airpod2nd_picto.png" height="150px" id="go2nd">
             </a>
           </td>
           <td>
-            <a href="airpod3rd.jsp">
+            <a href="airpods_3.jsp">
               <img src="../images/airpod3rd_picto.png" height="150px" id="go3rd"></a>
           </td>
           <td>
-            <a href="airpodPro2nd.jsp">
+            <a href="airpods_pro2.jsp">
               <img src="../images/airpodPro2nd_picto.png" height="150px" id="goPro"></a>
           </td>
           <td>
-            <a href="airpodProMax.jsp">
+            <a href="airpods_max.jsp">
             <img src="../images/airpodMax_picto.png" height="150px" id="goMax">
             </a></td>
         </tr>

@@ -52,7 +52,7 @@ public class ItemController implements Controller {
 
     public ModelAndView ItemReadDetail(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
         String url = "items/ItemDetailPage.jsp";
-        System.out.println("나야나~");
+
         //넘어오는 iphone14 받기 / iphone14pro /
         String modelName = req.getParameter("modelName");
         System.out.println("나야나"+modelName);
@@ -70,6 +70,7 @@ public class ItemController implements Controller {
         return new ModelAndView(url);
     }
     public ModelAndView ItemSearch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        resp.setContentType("text/html;charset=UTF-8");
         String url = "items/searchResultPage.jsp";
 
         //넘어오는 검색결과 받기
@@ -77,6 +78,20 @@ public class ItemController implements Controller {
 
         System.out.println("검색어 = "+searchResult);
         ItemService service = new ItemServiceImpl();
+
+        // 나중에 Map list 활용해서 검색 키워드를 추천해줄 수 있도록 해보자 - version 업으로
+        if(searchResult.equals("아이폰")){
+            searchResult = "iphone";
+        }else if(searchResult.equals("시계") || searchResult.equals("워치")){
+            searchResult = "watch";
+        }else if(searchResult.equals("에어팟")){
+            searchResult = "airpods";
+        }else if(searchResult.equals("프로")){
+            searchResult = "pro";
+        }else if(searchResult.equals("케이스")){
+            searchResult = "case";
+        }
+
 
 
         try {

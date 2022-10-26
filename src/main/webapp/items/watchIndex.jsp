@@ -37,16 +37,16 @@
         <tr>
 
           <td>
-            <a href="watchUltra.jsp">
+            <a href="watch_ultra.jsp">
             <img src="../images/watch_ultra_picto.png" height="150px" id="goUltra">
             </a>
           </td>
           <td>
-            <a href="watch8.jsp">
+            <a href="watch_8.jsp">
               <img src="../images/watch_8_picto.png" height="150px" id="go3rd"></a>
           </td>
           <td>
-            <a href="watchSe.jsp">
+            <a href="watch_se.jsp">
               <img src="../images/watch_se_picto.png" height="150px" id="goSe"></a>
           </td>
         </tr>

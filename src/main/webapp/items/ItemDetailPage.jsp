@@ -37,7 +37,7 @@
 
             $("#cart").click(function () {
 
-                location.href = "ajax?key=cart&methodName=insert&modelNum=${requestScope.itemDTO.modelName}";
+                location.href = "${path}front?key=cart&methodName=insert&modelNum=${requestScope.itemDTO.modelName}";
             });
 
         });
@@ -66,7 +66,8 @@
 
     <div class="split-features">
         <div class="col-md-6 nopadding">
-            <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/${requestScope.itemDTO.modelName}.jpeg" alt="Image" /> </div>
+            <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/${requestScope.itemDTO.modelName}.jpeg" alt="Image"
+            style="height: 450px; border-radius: 20px"/> </div>
         </div>
         <div class="col-md-6 nopadding">
             <div class="split-content">

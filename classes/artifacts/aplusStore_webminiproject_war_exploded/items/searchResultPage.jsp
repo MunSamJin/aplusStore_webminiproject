@@ -48,63 +48,72 @@
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
-        <!-- /.navbar-collapse -->
-    </div>
-    <div class="main app form" id="main"><!-- Main Section-->
-        <div class="hero-section">
-            <div class="container">
-                <div class="col-md-12 col-sm-12 nopadding">
-                    <div class="pricing-intro">
-                        <h1 class="wow fadeInUp" data-wow-delay="0.2s">검색결과</h1>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="clearfix"></div>
-        </div>
-
-    </div>
-
-    <div id="pricing" class="pricing-section text-center">
+<!-- /.navbar-collapse -->
+</div>
+<div class="main app form" id="main"><!-- Main Section-->
+    <div class="hero-section">
         <div class="container">
             <div class="col-md-12 col-sm-12 nopadding">
-
-
-                <c:choose>
-                    <c:when test="${empty requestScope.list}">
-                        <h1>해당하는 제품이 없습니다.</h1>
-                        <p/>
-                        <input type="button" value="다시 검색하기" class="btn btn-primary btn-lg" id="back"/>
-                    </c:when>
-
-
-                    <c:otherwise>
-
-                        <c:forEach items="${requestScope.list}" var="list" varStatus="state">
-                            <div class="col-sm-4">
-                                <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-                                    <div>
-                                        <a href="${path}/front?key=item&methodName=ItemReadDetail&modelName=${list.modelName}">
-                                            <img src="${path}/images/${list.modelName}.jpeg" height="300px">
-                                        </a></div>
-                                    <div class="pricing-details">
-                                    </div>
-                                    <span>${list.modelName}</span>
-                                    <p/>
-                                    <span>${list.modelPrice}</span>
-                                    <p/>
-                                </div>
-                            </div>
-                        </c:forEach>
-
-
-                    </c:otherwise>
-                </c:choose>
-                <%--첫번째 chose 끝--%>
+                <div class="pricing-intro">
+                    <h1 class="wow fadeInUp" data-wow-delay="0.2s">검색결과</h1>
+                </div>
             </div>
         </div>
+
+
+        <div class="clearfix"></div>
     </div>
+
+</div>
+
+<div id="pricing" class="pricing-section text-center">
+    <div class="container">
+        <div class="col-md-12 col-sm-12 nopadding">
+
+
+            <c:choose>
+                <c:when test="${empty requestScope.list}">
+                    <h1>해당하는 제품이 없습니다.</h1>
+                    <p/>
+                    <input type="button" value="다시 검색하기" class="btn btn-primary btn-lg" id="back"/>
+                </c:when>
+
+
+                <c:otherwise>
+
+                    <c:forEach items="${requestScope.list}" var="list" varStatus="state">
+                        <div class="col-sm-4">
+                            <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
+                                <div>
+                                    <c:choose>
+                                    <c:when test="${list.category =='king'}">
+
+                                    <a href="${path}/items/${list.modelName}.jsp">
+                                        </c:when>
+                                        <c:otherwise>
+                                        <a href="${path}/front?key=item&methodName=ItemReadDetail&modelName=${list.modelName}">
+                                            </c:otherwise>
+                                            </c:choose>
+
+                                            <img src="${path}/images/${list.modelName}.jpeg" height="300px">
+                                        </a></div>
+                                <div class="pricing-details">
+                                </div>
+                                <span>${list.modelName}</span>
+                                <p/>
+                                <span>${list.modelPrice}</span>
+                                <p/>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+
+                </c:otherwise>
+            </c:choose>
+            <%--첫번째 chose 끝--%>
+        </div>
+    </div>
+</div>
 </div>
 
 

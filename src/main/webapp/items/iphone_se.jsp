@@ -20,6 +20,7 @@
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <!-- Jquery and Js Plugins -->
     <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
     <script type="text/javascript" src="../js/plugins.js"></script>
@@ -33,83 +34,135 @@
 
         $(function () {
 
-                let color = document.getElementById('color');
-                let storage = document.getElementById('storage');
+
+            $("#cart").click(function () {
+                let model = "se";
+                let color = $("input[type=radio][name=color]:checked").val();
+                let storage = $("input[type=radio][name=storage]:checked").val();
+                let modelName = model + "_" + color + "_" + storage;
+                location.href = "cartServlet?methodName=addCart&modelNum=" + modelName;
+
+            });
+
+            $("input[type=radio][name=storage]").click(function () {
+                let s = $(this).val()
+
+                if (s == 64) {
+                    $("#span").html("<h1>₩ 650,000</h1>").show();
+                } else if (s == 128) {
+                    $("#span").html("<h1>₩ 730,000</h1>").show();
+                }else if (s == 256) {
+                    $("#span").html("<h1>₩ 880,000</h1>").show();
+                }
+
+            });
 
 
+            $("input[type=radio][name=color]").click(function () {
+                let c = $(this).val();
 
-                $("#cart").click(function () {
-                    let modelName = "_"+
-                        color.options[color.selectedIndex].value+"_"+
-                        storage.options[storage.selectedIndex].value;
+                if(c =="midnight"){
+                    $("#mainImg").attr("src","../images/iphone-se-main_midnight.jpeg");
 
-                    location.href ="cart.jsp?modelName=se"+modelName;
+                }else if(c =="starlight"){
+                    $("#mainImg").attr("src","../images/iphone-se-main_starlight.jpeg");
 
+                }else if(c =="red"){
+                    $("#mainImg").attr("src","../images/iphone-se-main_red.jpeg");
+                }
 
-                });
-
-
+            });
         });
 
     </script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 
+    <script type="text/javascript">
+        $(function () {
+            $("input").checkboxradio();
+        });
+    </script>
+    </script>
+    <style type="text/css">
+        #jong {
+            padding: 20px 100px 20px 100px;
+            text-align: left;
+        }
+    </style>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
-        <!-- /.navbar-collapse -->
-    </div>
-    <!-- /.container-fluid -->
+<!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
 
-    <div class="main app form" id="main"><!-- Main Section-->
-        <%--    메인 section  iphone--%>
-        <div class="hero-section">
-            <table>
-                <tr>
-                    <th colspan="2">
-                        <div class="container">
-                            <div class="col-md-12 col-sm-12 nopadding">
-                                <div class="pricing-intro">
-                                    <h1 class="wow fadeInUp" data-wow-delay="0.2s">Iphone SE 구입하기</h1>
-                                </div>
-                            </div>
-                        </div>
-
-                    </th>
-                </tr>
-                <tr>
-                    <td rowspan="2" style="width: 70%">
-                        <img src="../images/iphone-se_main.jpeg" width="100%" height="100%">
-                    </td>
-
-                </tr>
-                <tr>
-                    <td>
-
-                        <h2>색상 선택하기</h2>
-                        <select id="color">
-                            <option value="midnight">midnight</option>
-                            <option value="starlight">starlight</option>
-                            <option value="red">red</option>
-                        </select>
-
-                        <h2>용량 선택하기</h2>
-                        <select id="storage">
-                            <option value="64">64</option>
-                            <option value="128">128</option>
-                            <option value="256">256</option>
-
-                        </select>
-
-                        <input type="button" value="장바구니 넣기" id="cart"/>
-                    </td>
-                </tr>
-            </table>
-
-
+<div class="main app form" id="main"><!-- Main Section-->
+    <%--    메인 section  iphone--%>
+    <div class="hero-section">
+        <div class="container">
+            <div class="col-md-12 col-sm-12 nopadding">
+                <div class="pricing-intro">
+                    <h1 class="wow fadeInUp" data-wow-delay="0.2s">Iphone se 구입하기</h1>
+                    ₩1,250,000부터
+                </div>
+            </div>
         </div>
+    </div>
+
+
+    <div class="split-features">
+        <div class="col-md-6 nopadding">
+            <div class="split-image">
+                <img class="img-responsive wow fadeIn" src="../images/iphone-se_main.jpeg" alt="Image" id="mainImg"/>
+            </div>
+        </div>
+        <div class="col-md-6 nopadding">
+            <div class="split-content" id="jong">
+
+
+                <p class="wow fadeInUp"></p>
+                <h1 class="wow fadeInUp">색상 선택하기</h1>
+                <p class="wow fadeInUp">
+
+
+                    <label for="midnight">midnight</label>
+                    <input type="radio" name="color" id="midnight" value="midnight">
+                    <label for="starlight">starlight</label>
+                    <input type="radio" name="color" id="starlight" value="starlight">
+                    <label for="red">red</label>
+                    <input type="radio" name="color" id="red" value="red">
+
+                </p>
+                <p class="wow fadeInUp"></p>
+                <h1 class="wow fadeInUp">용량 선택하기</h1>
+                <p class="wow fadeInUp">
+
+
+                    <label for="64">64</label>
+                    <input type="radio" name="storage" id="64" value="64">
+                    <label for="128">128</label>
+                    <input type="radio" name="storage" id="128" value="128">
+                    <label for="256">256</label>
+                    <input type="radio" name="storage" id="256" value="256">
+
+                </p>
+                <span id="span" hidden></span>
+                <div><h1> </h1></div>
+                <p class="wow fadeInUp">
+                    <input type="button" value="장바구니 넣기" id="cart" class="btn btn-primary btn-lg"/>
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
 
     <!-- Footer Section -->
-        <jsp:include page="../common/footer.jsp"/>
+    <jsp:include page="../common/footer.jsp"/>
 </div>
 
 <!-- Scroll To Top -->
