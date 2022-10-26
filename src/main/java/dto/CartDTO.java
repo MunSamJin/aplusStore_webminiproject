@@ -1,20 +1,30 @@
 package dto;
 
+<<<<<<< HEAD
 
+=======
+/**
+ * ��ٱ��� DTO
+ *
+ */
+>>>>>>> basic_setting
 public class CartDTO {
 	private String cartNum;
 	private String modelNum;
 	private String modelName;
 	private String emailId;
+	private int modelPrice;
 	private int modelCount;
 	
 	public CartDTO() {}
 
-	public CartDTO(String cartNum, String modelNum, String modelName, String emailId, int modelCount) {
+	public CartDTO(String cartNum, String modelNum, String modelName, String emailId, int modelPrice, int modelCount) {
 		super();
 		this.cartNum = cartNum;
 		this.modelNum = modelNum;
+		this.modelName = modelName;
 		this.emailId = emailId;
+		this.modelPrice = modelPrice;
 		this.modelCount = modelCount;
 	}
 
@@ -56,6 +66,14 @@ public class CartDTO {
 
 	public void setModelName(String modelName) {
 		this.modelName = modelName;
+	}
+
+	public int getModelPrice() {
+		return modelPrice;
+	}
+
+	public void setModelPrice(int modelPrice) {
+		this.modelPrice = modelPrice;
 	}
 	
 }
