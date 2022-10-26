@@ -326,9 +326,9 @@
 </div>
 <!-- Main Section -->
 </div>
-<!-- Wrapper-->
+<!— Wrapper—>
 
-<!-- Jquery and Js Plugins -->
+<!— Jquery and Js Plugins —>
 <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 

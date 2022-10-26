@@ -96,6 +96,8 @@
 					$("#cartTable tr:eq(0)").after(str);
 					//$("#cartTable").html(str);
 					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + totalPrice);
+					$("#totalPrice1").text("￦"+totalPrice);
+					$("#totalPrice2").text("￦"+(totalPrice));
 					
 				} , 
 				error : function(err){  
@@ -171,7 +173,7 @@
         <p><button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button></p>
       </div>
   
-  <form action="${path}/index.jsp" method="post" id="cartForm">
+  <form action="${path}/orders/orderMain.jsp" method="post" id="cartForm">
    <div class="split-features">
     <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
       <tr>
@@ -192,7 +194,30 @@
       	  <td><input type="button" value="삭제" name="delete" class="wow fadeInUp"></td>
       </tr>
     </table>
+    <div class="split-features">
+    	<table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+    		<hr>
+    		<tr>
+    			<td>소계</td>
+    			<td id="totalPrice1" name="totalPrice1"></td>
+    		</tr>
+    		<tr>
+    			<td>배송</td>
+    			<td id="express">무료</td>
+    		</tr>
+    		<hr>
+    		<tr>
+    			<td>총계</td>
+    			<td id="totalPrice2" name="totalPrice2"></td>
+    		</tr>
+    		<tr>
+    			<td colspan="2"><p>
+    			<button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button>
+    			</p></td>
+    		</tr>
+    	</table>
     </div>
+   </div>
   </form>
  
    
