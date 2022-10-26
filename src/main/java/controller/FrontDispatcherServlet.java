@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -10,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dto.QnaDTO;
 
 /**
  *사용자의 모든 요청을 처리할 진입점 Controller이다(FrontController의 역할한다)
@@ -57,5 +61,15 @@ public class FrontDispatcherServlet extends HttpServlet {
 			request.setAttribute("errorMsg", e.getCause().getMessage() );
 			request.getRequestDispatcher("error/error.jsp").forward(request, response);
 		}
+		
 	}//serviceEnd
+	
+	public interface ElectronicsService{
+		/**
+		 * ElectronicsDAOImpl�� ��緹�ڵ� �˻��ϴ� �޼ҵ� ȣ��
+		 * */
+	    List<QnaDTO> selectAll() throws SQLException;
+	}
+	
+	
 }

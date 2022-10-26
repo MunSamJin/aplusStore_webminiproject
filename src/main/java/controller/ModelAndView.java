@@ -1,9 +1,10 @@
 package controller;
 
 
+
 public class ModelAndView {
-	private String viewName;//뷰 이름
-	private boolean isRedirect;// 이동방식(true 이면 redirect, false 이면 forward 방식)
+	private String viewName;
+	private boolean isRedirect;
 	
 	public ModelAndView() {}
 	
