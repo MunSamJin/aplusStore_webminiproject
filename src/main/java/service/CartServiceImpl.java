@@ -11,20 +11,27 @@ public class CartServiceImpl implements CartService {
 	CartDAO dao = new CartDAOImpl();
 	
 	@Override
-	public void insert(String modelNum, String emailId) throws SQLException {
-		int result = dao.selectToInsert(modelNum, emailId);
+	public void insert(String modelName, String emailId) throws SQLException {
+		CartDTO cart = dao.overlapCheck(emailId, modelName);
 		
-		if(result <= 0) {
-			throw new SQLException("Àå¹Ù±¸´Ï Ãß°¡¿¡ ½ÇÆĞÇß½À´Ï´Ù");
+		if(cart == null) {//ì¥ë°”êµ¬ë‹ˆì— ì—†ëŠ” ìƒí’ˆ
+			int result = dao.selectToInsert(modelName, emailId);
+		
+			if(result <= 0) {
+				throw new SQLException("ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤");
+			}
+		} else {//ì¥ë°”êµ¬ë‹ˆì— ìˆëŠ” ìƒí’ˆ -> update ìˆ˜ëŸ‰ ë³€ê²½ìœ¼ë¡œ ë°”ë€ë‹¤
+			System.out.println("insert -> update");
+			update(cart.getCartNum(), cart.getModelCount()+1);
 		}
 	}
 
 	@Override
-	public void delete(String emailId, String modelNum) throws SQLException {
-		int result = dao.delete(emailId, modelNum);
-
+	public void delete(String cartNum) throws SQLException {
+		int result = dao.delete(cartNum);
+		
 		if(result<=0) {
-			throw new SQLException("Àå¹Ù±¸´Ï »èÁ¦¿¡ ½ÇÆĞÇß½À´Ï´Ù");
+			throw new SQLException("ì¥ë°”êµ¬ë‹ˆ ì‚­ì œì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤");
 		}
 	}
 
@@ -33,7 +40,7 @@ public class CartServiceImpl implements CartService {
 		int result = dao.update(cartNum, modelCount);
 
 		if(result<=0) {
-			throw new SQLException("Àå¹Ù±¸´Ï ¼öÁ¤¿¡ ½ÇÆĞÇß½À´Ï´Ù");
+			throw new SQLException("ì¥ë°”êµ¬ë‹ˆ ìˆ˜ì •ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤");
 		}
 	}
 
@@ -42,7 +49,7 @@ public class CartServiceImpl implements CartService {
 		List<CartDTO> list = dao.select(emailId);
 		
 		if(list == null) {
-			throw new SQLException("Àå¹Ù±¸´Ï °Ë»ö¿¡ ½ÇÆĞÇß½À´Ï´Ù");
+			throw new SQLException("ì¥ë°”êµ¬ë‹ˆ ê²€ìƒ‰ì— ì‹¤íŒ¨í–ˆìŠµë‹ˆë‹¤");
 		}
 		
 		

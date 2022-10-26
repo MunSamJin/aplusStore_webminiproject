@@ -8,22 +8,22 @@ import dto.CartDTO;
 
 public interface CartDAO {
 	/**
-	 * È¸¿ø - Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡(db)
-	 * param : ¸ðµ¨¹øÈ£
+	 * È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½Ç° ï¿½ß°ï¿½(db)
+	 * param : ï¿½ðµ¨¹ï¿½È£
 	 * insert into basket values(cart_num_seq.nextval, ?, ?, 1)
 	 */
 	int selectToInsert(String modelName, String emailId) throws SQLException;
-	
+	CartDTO overlapCheck(String emailId, String modelName) throws SQLException;
 	
 	/**
-	 * ºñÈ¸¿ø - Àå¹Ù±¸´Ï¿¡ »óÇ° Ãß°¡(session)
+	 * ï¿½ï¿½È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½Ç° ï¿½ß°ï¿½(session)
 	 * 
 	 */
 	
 	
 	
 	/**
-	 * È¸¿ø - Àå¹Ù±¸´Ï »óÇ° Á¶È¸
+	 * È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½È¸
 	 * select * from basket where email_id=?
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
@@ -31,26 +31,26 @@ public interface CartDAO {
 	
 	
 	/**
-	 * ºñÈ¸¿ø - Àå¹Ù±¸´Ï »óÇ° Á¶È¸
+	 * ï¿½ï¿½È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½È¸
 	 */
 	
 	
 	
 	/**
-	 * È¸¿ø - Àå¹Ù±¸´Ï »óÇ° »èÁ¦
+	 * È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	 * delete basket where email_id=? and model_num=?
 	 */
-	int delete(String emailId, String modelNum) throws SQLException;
+	int delete(String cartNum) throws SQLException;
 	
 	
 	/**
-	 * ºñÈ¸¿ø - Àå¹Ù±¸´Ï »óÇ° »èÁ¦
+	 * ï¿½ï¿½È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½
 	 */
 	
 	
 	
 	/**
-	 * È¸¿ø - Àå¹Ù±¸´Ï »óÇ° ¼ö·® ¼öÁ¤
+	 * È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * update basket set model_count=? where cart_num=?
 	 */
 	int update(String cartNum, int modelCount) throws SQLException;
@@ -58,6 +58,6 @@ public interface CartDAO {
 	
 	
 	/**
-	 * ºñÈ¸¿ø - Àå¹Ù±¸´Ï »óÇ° ¼ö·® ¼öÁ¤
+	 * ï¿½ï¿½È¸ï¿½ï¿½ - ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½Ç° ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 }

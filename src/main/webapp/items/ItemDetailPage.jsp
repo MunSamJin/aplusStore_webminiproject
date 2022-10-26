@@ -37,7 +37,7 @@
 
             $("#cart").click(function () {
 
-                location.href = "cartServlet?methodName=addCart&modelNum=${requestScope.itemDTO.modelName}";
+                location.href = "${path}/front?key=cart&methodName=insert&emailId=sikkk@naver.com&modelName=${requestScope.itemDTO.modelName}";
             });
 
         });

@@ -19,17 +19,21 @@ public class CartDAOImpl implements CartDAO {
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
 		String modelNum = null;
+		int modelPrice = 0;
 		int result = 0;
 		
 		try {
 			con = DbUtil.getConnection();
-			ps.setString(1, modelName);
 			ps = con.prepareStatement(sql);
+			ps.setString(1, modelName);
+			
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				modelNum = rs.getString(2);
-				result = insert(con, modelNum, modelName, emailId);
+				modelNum = rs.getString(1);
+				modelPrice = rs.getInt(4);
+				
+				result = insert(con, modelNum, modelName, emailId, modelPrice);
 			}
 			
 		} finally {
@@ -40,17 +44,18 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	//insert
-	public int insert(Connection con, String modelNum, String modelName, String emailId) throws SQLException {
+	public int insert(Connection con, String modelNum, String modelName, String emailId, int modelPrice) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, 1)";
+		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, 1)";
 		int result = 0;
 		
 		try {
-			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
 			ps.setString(1, modelNum);
 			ps.setString(2, modelName);
 			ps.setString(3, emailId);
-			ps = con.prepareStatement(sql);
+			ps.setInt(4, modelPrice);
+			
 			result = ps.executeUpdate();
 			
 		} finally {
@@ -60,19 +65,47 @@ public class CartDAOImpl implements CartDAO {
 		return result;
 	}
 	
-
-	@Override
-	public int delete(String emailId, String modelNum) throws SQLException {
+	
+	//중복 체크
+	public CartDTO overlapCheck(String emailId, String modelName) throws SQLException{
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql = "delete basket where email_id=? and model_num=?";
+		ResultSet rs = null;
+		String sql = "select * from basket where email_id=? and model_name=?";
+		CartDTO cart = null;
+		System.out.println("dao overlap");
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, emailId);
+			ps.setString(2, modelName);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				System.out.println("dao overlap find");
+			}
+			
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return cart;
+	}
+	
+
+	@Override
+	public int delete(String cartNum) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "delete basket where cart_num=?";
 		int result = 0;
 		
 		try {
 			con = DbUtil.getConnection();
-			ps.setString(1, emailId);
-			ps.setString(2, modelNum);
 			ps = con.prepareStatement(sql);
+			ps.setString(1, cartNum);
+			
 			result = ps.executeUpdate();
 			
 		} finally {
@@ -82,6 +115,7 @@ public class CartDAOImpl implements CartDAO {
 		return result;
 	}
 
+	
 	@Override
 	public int update(String cartNum, int modelCount) throws SQLException {
 		Connection con = null;
@@ -91,18 +125,21 @@ public class CartDAOImpl implements CartDAO {
 		
 		try {
 			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
 			ps.setInt(1, modelCount);
 			ps.setString(2, cartNum);
-			ps = con.prepareStatement(sql);
+			
+			System.out.println("dao update " + modelCount + cartNum);
 			result = ps.executeUpdate();
 			
 		} finally {
 			DbUtil.dbClose(con, ps);
 		}
-		
+		System.out.println("update result " + result);
 		return result;
 	}
 
+	
 	@Override
 	public List<CartDTO> select(String emailId) throws SQLException {
 		Connection con = null;
@@ -118,15 +155,17 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5)));
-				System.out.println("connection > cart ã��");
+				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6)));
+				
 			}
 			
 		} finally {
-			DbUtil.dbClose(con, ps);
+			DbUtil.dbClose(con, ps, rs);
 		}
 		
 		return list;
 	}
+	
+	
 
 }

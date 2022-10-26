@@ -21,6 +21,8 @@ public class FrontDispatcherServlet extends HttpServlet {
 	private Map<String, Controller> map;
 	private Map<String, Class<?>> clzMap;
 	
+	
+	
 	@Override
 		public void init() throws ServletException {
 			ServletContext application = super.getServletContext();
@@ -54,7 +56,7 @@ public class FrontDispatcherServlet extends HttpServlet {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getCause().getMessage() );
+			request.setAttribute("errorMsg", e.getMessage() );
 			request.getRequestDispatcher("error/error.jsp").forward(request, response);
 		}
 	}//serviceEnd

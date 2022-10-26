@@ -42,8 +42,8 @@
                     let modelName = "_"+
                         color.options[color.selectedIndex].value+"_"+
                         storage.options[storage.selectedIndex].value;
-
-                    location.href ="cart.jsp?modelName=se"+modelName;
+					//test 경로
+                    location.href ="${path}/front?key=cart&methodName=insert&emailId=sikkk@naver.com&modelName=se"+modelName;
 
 
                 });

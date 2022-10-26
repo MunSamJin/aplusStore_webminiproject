@@ -9,27 +9,27 @@ public interface CartService {
 	
 	
 	/**
-	 * Àå¹Ù±¸´Ï Á¶È¸
+	 * ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½È¸
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
 	
 	
 	
 	/**
-	 * Àå¹Ù±¸´Ï Ãß°¡
+	 * ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ß°ï¿½
 	 */
-	void insert(String modelNum, String emailId) throws SQLException;
+	void insert(String modelName, String emailId) throws SQLException;
 	
 	
 	/**
-	 * Àå¹Ù±¸´Ï »èÁ¦
+	 * ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
-	void delete(String emailId, String modelNum) throws SQLException;
+	void delete(String cartNum) throws SQLException;
 	
 	
 	
 	/**
-	 * Àå¹Ù±¸´Ï ¼öÁ¤
+	 * ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	void update(String cartNum, int modelCount) throws SQLException;
 	

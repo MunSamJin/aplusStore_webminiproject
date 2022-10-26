@@ -4,7 +4,7 @@
 
 <div class="footer">
     <div class="container">
-        <div class="col-md-7"> <img src="images/logo1.png" width="80"  alt="Image" />
+        <div class="col-md-7"> <img src="${path}/images/logo1.png" width="80"  alt="Image" />
             <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
             <div class="footer-text">
                 Shared by <i class="fa fa-love"></i><a href="https://bootstrapthemes.co">BootstrapThemes</a>
