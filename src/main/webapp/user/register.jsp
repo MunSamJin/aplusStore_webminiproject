@@ -9,60 +9,7 @@
 <link rel="stylesheet" href="${path}/css/join.css">
 	<title>A+ ID 생성 - Aplus(Kosta)</title>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	$("#btn").click(function(){
-		let state = true;
-		
-		$("input[type=text]").each(function(index, item){
-			if($(this).val()==""){
-				alert("값을 입력해주세요.");
-				$(this).focus();//커서놓기
-				
-				state = false;
-				
-				return false;
-				
-			}
-			
-		});
-	
-		    $.ajax({
-	   			url :"../ajax" , //서버요청주소
-	   			type:"post", //요청방식(method방식 : get | post | put | delete )
-	   			dataType:"text"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-	   			data: $("#join_frm").serialize() , //.serialize()는 폼전송!
-	   			success :function(result){
-	   				if(result==0){
-	   					alert("실패하였습니다.");
-	   				}else{
-	   					//text내용지우고
-	   					$("input[type=text]").val("");
-	   					$("span").text("중복결과여부");
-	   					
-	   					//화면갱신
-	   					selectAll();
-	   					
-	   					$("[name=methodName]").val("insert");
-	   				}
-	   				
-	   			} , //성공했을때 실행할 함수 
-	   			error : function(err){  
-	   				alert(err+"에러 발생했어요.");
-	   			}  //실팽했을때 실행할 함수 
-	   		});//ajax끝
-		  
-	   		
-	  
-	
-	
-	
-	});
 
-});//끝
-
-
-</script>
 </head>
 <body>
 <div id="container" class="container">
