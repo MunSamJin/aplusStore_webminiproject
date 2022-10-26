@@ -6,43 +6,16 @@
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		
-		<style type="text/css">
-			#memberGuest{text-align: center; margin-top: 100px;}
-			#guest{background-Color: #1263CE; border-radius: 10px; border: 1px;
-					font-size: 15px; color: white; width: 70%; height: 50px; cursor: pointer;}
-			#memberId{width: 70%; height: 30px; border-radius: 5px; border: 1px solid gray;	font-size: 15px;}
-						
-			#choice{margin-left: auto; margin-top: 100px; margin-right: auto; width: 80%; text-align: center;}
-			#deliver{width: 250px; height: 65px;  font-size: 20px; cursor: pointer;
-					border-radius: 5px; border: 1px solid gray; background-color: white;}
-			#pickup{width: 250px; height: 65px; font-size: 20px; cursor: pointer;
-					border-radius: 5px; border: 1px solid gray; background-color: white;}
-					
-			#orderInfo{margin-left:auto; margin-top: 100px; margin-right: auto; width: 80%;}
-			#orderName{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#postcode{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#address{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#detailAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#extraAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#orderEmail{width: 50%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			select{width: 35%; height: 40px; border-radius: 10px; border: 1px solid gray; text-align: left;} 
-			#orderPhone{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
-			#pageMove{width: 90%; height: 40px; cursor: pointer; font-size: 15px; color: white;
-						background-Color: #1263CE; border-radius: 10px; border: 1px;}
-						
-			#cardInfo{margin-left: auto; margin-right: auto; width: 40%;
-						padding: 20px 20px 20px 20px;
-						border: 10px solid #F5F5F5; }
-			.cardNum{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
-			.cardPwd{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
-			.birth{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
-
-		</style>
 		
-		<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="${path}/css/samjin.css">
+		
+		
+		<script type="text/javascript" src="${path}/js/jquery-3.6.1.min.js"></script>
+		
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=77c46ba16ddea5666fc1ce880e652cf7"></script>
+		
 		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-	
+		
 		<script>
 		    function execDaumPostcode() {
 		       new daum.Postcode({
@@ -95,26 +68,38 @@
 	
 		<script type="text/javascript">
 			$(function(){
-				
-				//Apple ID로 결제하기 - 로그인 화면 가져오기
-				
-				//방문객 결제
-				$("#guest").click(function(){
+				let emailId="sikkk@naver.com";
+				//let sessonID = session.getAttribute("emailId");
+
+				//장바구니에서 결제버튼 누르면! 
+				if(emailId==null || emailId==""){ //세션ID(emailId)가 null이면 비회원
+					$("#guest").click(function(){
+						$("#choice").show();	
+						//Apple ID로 결제하기 - 로그인 화면 가져오기
+					});
+				}else { //세션ID가 null이 아니면 회원
+					$("#memberGuest").hide();
 					$("#choice").show();	
-				});
-					
+				}
 				
+					
 				//배송을 원합니다.
 				$("#deliver").click(function(){
 					$("#cardInfo").hide();
-					$("#orderInfo").show();				
+					$("#pickupDiv").hide();
+					$("#orderInfo").show();	
+					$("#orderInfoDetail").show();	
+					$("#pageMoveDiv").show();	
 				});
 				
 				
 				//직접 픽업하겠습니다.
 				$("#pickup").click(function(){
-					$("#orderInfo").load("pickup.jsp");
-					$("#orderInfo").show();
+					$("#pickupDiv").load("pickup.jsp");
+					$("#orderInfo").hide();
+					$("#orderInfoDetail").show();
+					$("#pickupDiv").show();
+					$("#pageMoveDiv").show();	
 				});
 				
 				
@@ -124,6 +109,9 @@
 					$("#memberGuest").hide();
 					$("#choice").hide();
 					$("#orderInfo").hide();
+					$("#pickupDiv").hide();
+					$("#orderInfoDetail").hide();
+					$("#pageMoveDiv").hide();	
 					$("#cardInfo").show();
 				});
 				
@@ -161,8 +149,12 @@
 	</head>
 	<body>
 		<form name="orderForm" method="post" id="orderForm">
+		
+		
+			
 		<input type="hidden" name="key" value="pay">
 		<input type="hidden" name="methodName" value="orderInsert">
+		
 <!-- 회원 or 비회원 결제 선택하기 -->	
 			<div id="memberGuest">
 				<h1>더욱 빠르게 결제하시려면 로그인하세요.</h1>
@@ -201,23 +193,38 @@
 	
 	
 	
-<!-- 결제 정보 입력받기 : 배송 -->
+<!-- 배송을 원합니다. -->
 			<div >
-				<table id="orderInfo" style="display: none;"> 
+				<table id="orderInfo" style="display: none; "> 
 					<tr>
 						<td colspan="2" style="text-align: left;">
 							<h1>주문하신 제품이 어디로 배송되길 원하십니까?</h1><br>						
 						</td>
 					</tr> 
 					<tr><td><h2>이름 및 주소 입력:</h2></td></tr>
-					<tr><td><input type="text" name="orderName" id="orderName" placeholder="이름"><br></td></tr>
-					
+					<tr><td><input type="text" name="deliverName" id="deliverName" placeholder="이름"><br></td></tr>
 					<tr><td><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"></td></tr>
-					<tr><td><input type="text" name="postcode" id="postcode"  placeholder="우편번호"></td></tr>
-					<tr><td><input type="text" name="address" id="address"  placeholder="주소"></td></tr>
-					<tr><td><input type="text" name="detailAddress" id="detailAddress"  placeholder="상세주소"></td></tr>
-					<tr><td><input type="text" name="extraAddress" id="extraAddress"  placeholder="참고항목"></td></tr>
-					<tr>
+					<tr><td><input type="text" name="postcode" id="postcode"  placeholder="우편번호"></td>
+						<td></td>
+					</tr>
+					<tr><td><input type="text" name="address" id="address"  placeholder="주소"></td>
+					</tr>
+					<tr><td><input type="text" name="detailAddress" id="detailAddress"  placeholder="상세주소"></td>
+					</tr>
+					<tr><td><input type="text" name="extraAddress" id="extraAddress"  placeholder="참고항목"></td>
+					</tr>
+				</table>
+			</div>
+
+
+<!-- 직접 픽업하겠습니다. -->
+			<div id=pickupDiv></div>			
+			
+			
+<!-- 연락처 정보를 알려주십시오. -->			
+			<div>
+				<table id="orderInfoDetail" style="display: none;">
+					<tr>		
 						<td colspan="2"><br><h2>연락처 정보를 알려주십시오.</h2></td>
 					</tr>
 					<tr>
@@ -238,14 +245,16 @@
 						<td style="font-size: 13px">입력하시는 전화번호는 주문 후 변경할 수 없으므로 맞는 번호인지 확인해 주십시오.</td>
 					</tr>
 					<tr><td colspan="2"><br><br><hr><br><br></td></tr>
-					<tr>
-						<td>						
-							<input type="button" value="결제 페이지로 이동" id="pageMove">
-						</td>
-					</tr>
+					
 				</table>
 			</div>
-		
+			
+			
+<!-- 결제 페이지로 이동 -->	
+				<table id="pageMoveDiv" style="display: none;">
+					<tr><td><input type="button" value="결제 페이지로 이동"  id="pageMove"></td></tr>
+				</table>				
+
 		
 <!-- 신용카드 정보 입력받기 -->
 			<div  id="cardInfo" style="display: none;"> 
@@ -274,42 +283,25 @@
 						<td>
 							<b>유효기간</b>
 						</td>
+						
 						<td>
-							<select class="cardMonth">
-								<option value="01">01</option>
-								<option value="02">02</option>
-								<option value="03">03</option>
-								<option value="04">04</option>
-								<option value="05">05</option>
-								<option value="06">06</option>
-								<option value="07">07</option>
-								<option value="08">08</option>
-								<option value="09">09</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
-							</select> 월
-							<select class="cardYear">
-								<option value="2022">2022</option>
-								<option value="2023">2023</option>
-								<option value="2024">2024</option>
-								<option value="2025">2025</option>
-								<option value="2026">2026</option>
-								<option value="2027">2027</option>
-								<option value="2028">2028</option>
-								<option value="2029">2029</option>
-								<option value="2030">2030</option>
-								<option value="2031">2031</option>
-								<option value="2032">2032</option>
-								<option value="2033">2033</option>
-								<option value="2034">2034</option>
-								<option value="2035">2035</option>
-								<option value="2036">2036</option>
-								<option value="2037">2037</option>
-								<option value="2038">2038</option>
-								<option value="2039">2039</option>
-								<option value="2040">2040</option>
-							</select> 년
+							<script type="text/javascript">
+								document.write("<select class='cardMonth'>")
+								for(let i=01; i<=12; i++)
+									{
+										document.write("<option value="+i+">"+i+"</option>");
+									}
+								document.write("</select>")
+							</script>월
+							
+							<script type="text/javascript">
+								document.write("<select class='cardYear'>")
+								for(let i=2022; i<=2040; i++)
+									{
+										document.write("<option value="+i+">"+i+"</option>");
+									}
+								document.write("</select>")
+							</script>년
 						</td>
 					</tr>
 					<tr>
@@ -334,20 +326,14 @@
 							<b>할부기간</b>
 						</td>
 						<td>
-							<select name=" installmentSelect" >
-								<option value="00">00</option>
-								<option value="02">02</option>
-								<option value="03">03</option>
-								<option value="04">04</option>
-								<option value="05">05</option>
-								<option value="06">06</option>
-								<option value="07">07</option>
-								<option value="08">08</option>
-								<option value="09">09</option>
-								<option value="10">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
-							</select> 개월
+							<script type="text/javascript">
+								document.write("<select class='installmentSelect'>")
+								for(let i=00; i<=12; i++)
+									{
+										document.write("<option value="+i+">"+i+"</option>");
+									}
+								document.write("</select>")
+							</script>개월
 						</td>
 					</tr>
 					<tr>
