@@ -77,10 +77,11 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 		
+		String sql = proFile.getProperty("query.regUser");//"insert into customer(id,pwd,name,addr,phone) values(?,?,?,?,?)"
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("insert into customer(id,pwd,name,addr,phone) values(?,?,?,?,?)");
+			ps = con.prepareStatement(sql);
 			ps.setString(1, userDTO.getId());
 			ps.setString(2, userDTO.getPwd());
 			ps.setString(3, userDTO.getName());

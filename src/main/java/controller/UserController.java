@@ -28,6 +28,8 @@ public class UserController implements Controller {
 		  
 	      	return null;
 	   }
+	  
+	
 	 
 	 /**
 	  *  회원정보 수정
@@ -53,9 +55,10 @@ public class UserController implements Controller {
 	 /**
 	  *  회원가입
 	  */
-	 public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
+	 public void insert(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-	 
+		
+		 
 		 String id = request.getParameter("id");
 		 String pwd = request.getParameter("pwd");
 		 String name = request.getParameter("name");
@@ -65,7 +68,8 @@ public class UserController implements Controller {
 		 UserDTO dto = new UserDTO(id, pwd, name, addr, phone);
 		 int result = userDAO.insert(dto);
 		 
-		 return new ModelAndView("/user/login.jsp");
+		 PrintWriter out = response.getWriter();
+		 out.println(result); //0 , 1
 		 
 		 
 	 }
