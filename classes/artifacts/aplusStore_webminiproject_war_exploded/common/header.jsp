@@ -17,12 +17,12 @@
                     <ul class="nav navbar-nav">
 
 
-                        <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
+                        <li><a class="page-scroll" href="${path}/store/storeMain.jsp">Store</a></li>
                         <li><a class="page-scroll" href="${path}/items/iphoneIndex.jsp">iPhone</a></li>
                         <li><a class="page-scroll" href="${path}/items/watchIndex.jsp">Watch</a></li>
                         <li><a class="page-scroll" href="${path}/items/ariPodIndex.jsp">AirPods</a></li>
                         <li><a class="page-scroll" href="${path}/items/accIndex.jsp">액세서리</a></li>
-                        <li><a class="page-scroll" href="${path}/qna/qnaMain.html">고객지원</a></li>
+                        <li><a class="page-scroll" href="${path}/qna/QnaMain.jsp">고객지원</a></li>
                         <li><a class="page-scroll" href="${path}/user/login.jsp">로그인</a></li>
                         <li><a class="page-scroll" href="${path}/cart/cart.jsp">장바구니</a></li>
 

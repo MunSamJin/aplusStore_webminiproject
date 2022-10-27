@@ -3,17 +3,13 @@ package service;
 import java.sql.SQLException;
 import java.util.List;
 
-<<<<<<< HEAD
-=======
-import dao.CartDAO;
-import dao.CartDAOImpl;
->>>>>>> merge221027-3
+
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
-import kosta.mvc.dto.AdminDetailDTO;
+
 import mail.Mail;
 
 

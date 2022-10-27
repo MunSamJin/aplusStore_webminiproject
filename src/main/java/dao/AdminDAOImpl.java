@@ -11,7 +11,7 @@ import dto.AdminDTO;
 import dto.AdminDetailDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
-import kosta.mvc.dto.Reply;
+
 import util.DbUtil;
 
 public class AdminDAOImpl implements AdminDAO {

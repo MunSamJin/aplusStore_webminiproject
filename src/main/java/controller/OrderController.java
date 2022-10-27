@@ -12,12 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import dto.ItemDTO;
 import dto.OrderDTO;
-<<<<<<< HEAD
+
 import dto.OrderDetailDTO;
 import net.sf.json.JSONArray;
-=======
 
->>>>>>> merge221027-3
 import service.OrderService;
 import service.OrderServiceImpl;
 

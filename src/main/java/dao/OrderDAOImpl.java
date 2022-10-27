@@ -141,8 +141,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return 0;
 	}
-<<<<<<< HEAD
-	
+
 	
 	/**
 	 * 주문 상세가져오기
@@ -180,9 +179,7 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 	}
 	
-=======
 
->>>>>>> merge221027-3
 
 }
 

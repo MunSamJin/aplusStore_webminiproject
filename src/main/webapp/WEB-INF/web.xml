@@ -8,10 +8,5 @@
     <welcome-file>default.jsp</welcome-file> 
   </welcome-file-list>
 
-<!--  <filter-mapping>-->
-<!--    <filter-name>session</filter-name>-->
-<!--    <url-pattern>/front</url-pattern>-->
-<!--  </filter-mapping>-->
-
 </web-app>
 
