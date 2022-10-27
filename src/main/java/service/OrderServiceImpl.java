@@ -1,11 +1,13 @@
 package service;
 
 import java.sql.SQLException;
-
+import java.util.List;
 
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
+import kosta.mvc.dto.AdminDetailDTO;
 import mail.Mail;
 
 
@@ -31,6 +33,14 @@ public class OrderServiceImpl implements OrderService {
 		return orderNum;
 	}
 
+	@Override
+	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		return list;
+	}
 
 
 }

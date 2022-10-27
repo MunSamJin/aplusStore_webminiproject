@@ -1,8 +1,10 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.List;
 
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
 
 public interface OrderService {
 	/**
@@ -10,4 +12,8 @@ public interface OrderService {
 	 */
 	int insert(OrderDTO dto) throws SQLException;
 
+	/**
+	 * 주문 상세조회
+	 * */
+	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
 }

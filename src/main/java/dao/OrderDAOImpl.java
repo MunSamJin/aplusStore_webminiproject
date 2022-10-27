@@ -2,9 +2,13 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
 import util.DbUtil;
 
 
@@ -114,6 +118,43 @@ public class OrderDAOImpl implements OrderDAO {
 	public int decreaseByModelStock(String modelStock) throws SQLException {
 		
 		return 0;
+	}
+	
+	
+	/**
+	 * 주문 상세가져오기
+	 * */
+	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+		
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
+				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=?";
+		try {
+			
+			ps = con.prepareStatement(sql);
+			ps.setString(1, orderNum);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {				
+				String a =rs.getString(1);
+				String b =rs.getString(2);
+				String c =rs.getString(3); 
+				int d =rs.getInt(4);
+				int e =rs.getInt(5);
+				int f =rs.getInt(6); 
+				
+				OrderDTO orderDTO = new OrderDTO(f);
+				OrderDetailDTO dto = new OrderDetailDTO(a,b,c,d,e, orderDTO);
+				list.add(dto);
+			}
+			
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		return list;
 	}
 	
 

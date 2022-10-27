@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.List;
+
 public class OrderDTO {
 	private String orderNum; //주문번호
 	private String memberGuest; //비회원
@@ -11,8 +13,15 @@ public class OrderDTO {
 	private String orderPhone; //주문자 휴대폰번호
 	private int totalPrice;//총금액
 	
-	public OrderDTO() {}
+	private List<OrderDetailDTO> detailList;
 	
+	public OrderDTO() {}		
+	
+	public OrderDTO(int totalPrice) {
+		super();
+		this.totalPrice = totalPrice;
+	}
+
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {
 		super();
 		this.orderName = orderName;
@@ -120,6 +129,15 @@ public class OrderDTO {
 		this.orderDate = orderDate;
 	}
 
+	public List<OrderDetailDTO> getDetailList() {
+		return detailList;
+	}
+
+	public void setDetailList(List<OrderDetailDTO> detailList) {
+		this.detailList = detailList;
+	}
+
+	
 	
 	
 }

@@ -2,8 +2,10 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.List;
 
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
 
 public interface OrderDAO {
 	/**
@@ -22,5 +24,9 @@ public interface OrderDAO {
 	 */
 	int decreaseByModelStock(String modelStock) throws SQLException;
 
-	
+	/**
+	 * 주문내역 검색
+	 * @throws SQLException 
+	 * */
+	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
 }
