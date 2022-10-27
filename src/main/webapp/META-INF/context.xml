@@ -9,34 +9,13 @@
     <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
-<<<<<<< HEAD
   <!-- DBCP기술 연결 -->
-   <Resource name="jdbc/myoracle" auth="Container"
-              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/edu/AplusWallet"
-              username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>
-          
- 
-  
-
-<!--  
-    <Resource name="jdbc/myoracle"
-=======
-    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
-    <!--
-    <Manager pathname="" />
-    -->
-<!--    <Context path="/">-->
-
-
-
-     <!-- DBCP기술 연결 -->
 <!--   <Resource name="jdbc/myoracle" auth="Container"-->
 <!--              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"-->
-<!--              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/Edu/AplusWallet/Wallet_kosta"-->
+<!--              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/edu/AplusWallet"-->
 <!--              username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"-->
 <!--              maxWaitMillis="-1"/>-->
+
 
 
 <!--종영-->
@@ -47,24 +26,5 @@
               maxWaitMillis="-1"/>
 
 
-
-    <!-- DBCP 기술 적용하기 -->
-<!--     <Resource name="jdbc/myoracle"
->>>>>>> error-fixing
-    		  auth="Container"
-              type="javax.sql.DataSource"
-              driverClassName="oracle.jdbc.OracleDriver"
-              url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
-              username="c##scott"
-              password="TIGER"
-              maxTotal="20"
-              maxIdle="10"
-<<<<<<< HEAD
-              maxWaitMillis="-1"/>
---> 
-
-=======
-              maxWaitMillis="-1"/>-->
->>>>>>> error-fixing
 
 </Context>
