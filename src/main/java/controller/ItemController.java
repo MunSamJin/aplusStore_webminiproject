@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 public class ItemController implements Controller {
+    private ItemService service = new ItemServiceImpl();
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return null;
@@ -19,6 +22,12 @@ public class ItemController implements Controller {
 
 
     public ModelAndView ItemReadByCategory(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String saveDir = req.getSession().getServletContext().getRealPath("/images");
+        String saveDir2 = req.getServletContext().getRealPath("/images");
+
+
+        System.out.println("경로"+saveDir);
+        System.out.println("경로2"+saveDir2);
 
         String url = "items/acc_band.jsp";
 
@@ -27,7 +36,7 @@ public class ItemController implements Controller {
         String miniCategory = req.getParameter("gps");
         System.out.println("나야나" + category + "," + miniCategory);
 
-        ItemService service = new ItemServiceImpl();
+
 
 
         try {
@@ -57,7 +66,7 @@ public class ItemController implements Controller {
         String modelName = req.getParameter("modelName");
         System.out.println("나야나"+modelName);
 
-        ItemService service = new ItemServiceImpl();
+
 
         try {
             ItemDTO itemDTO = service.itemSelectBymodelName(modelName);
@@ -77,7 +86,7 @@ public class ItemController implements Controller {
         String searchResult = req.getParameter("search");
 
         System.out.println("검색어 = "+searchResult);
-        ItemService service = new ItemServiceImpl();
+
 
         // 나중에 Map list 활용해서 검색 키워드를 추천해줄 수 있도록 해보자 - version 업으로
         if(searchResult.equals("아이폰")){
@@ -93,7 +102,6 @@ public class ItemController implements Controller {
         }
 
 
-
         try {
             List<ItemDTO> list = service.itemSeachBymodelName(searchResult);
             req.setAttribute("list",list);
@@ -102,6 +110,70 @@ public class ItemController implements Controller {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        return new ModelAndView(url);
+    }
+
+    public ModelAndView InsertItemByAcc(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String saveDir = req.getServletContext().getRealPath("/images");
+        int maxSize = 1024*1024*100; // 100mb
+        String encoding = "UTF-8";
+
+        MultipartRequest m =
+                new MultipartRequest(req, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
+
+
+        String url = "items/itemCRUD_Page.jsp";
+
+        //넘어오는 iphone14 받기 / iphone14pro /
+        String modelName = m.getParameter("modelName");
+        String modelPrice = m.getParameter("modelPrice");
+        String modelColor = m.getParameter("modelColor");
+        String mini = m.getParameter("mini");
+        String modelStock = m.getParameter("modelStock");
+
+
+        System.out.println(modelName+modelPrice+modelColor+mini+modelStock);
+
+        ItemDTO itemDTO
+                = new ItemDTO(modelName,Integer.parseInt(modelPrice),
+                modelColor,mini,
+                Integer.parseInt(modelStock));
+
+
+        service.insertItemByAcc(itemDTO);
+
+
+        return new ModelAndView(url);
+    }
+
+    public ModelAndView InsertItemByWatch(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String saveDir = req.getSession().getServletContext().getRealPath("/images");
+        int maxSize = 1024*1024*100; // 100mb
+        String encoding = "UTF-8";
+
+        MultipartRequest m =
+                new MultipartRequest(req, saveDir, maxSize, encoding, new DefaultFileRenamePolicy());
+
+
+        String url = "items/itemCRUD_Page.jsp";
+
+        //넘어오는 iphone14 받기 / iphone14pro /
+        String modelName = m.getParameter("modelName");
+        String modelPrice = m.getParameter("modelPrice");
+        String modelSize = m.getParameter("modelOption");
+        String modelColor = m.getParameter("modelColor");
+        String gps = m.getParameter("gps");
+        String modelStock = m.getParameter("modelStock");
+
+
+        ItemDTO itemDTO
+                = new ItemDTO(modelName,Integer.parseInt(modelPrice), modelSize,
+                modelColor,gps,Integer.parseInt(modelStock));
+
+
+        service.insertItemByWatch(itemDTO);
+
 
         return new ModelAndView(url);
     }

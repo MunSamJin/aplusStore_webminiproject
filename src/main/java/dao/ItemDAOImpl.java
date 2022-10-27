@@ -122,8 +122,31 @@ public class ItemDAOImpl implements ItemDAO{
     }
 
     @Override
-    public void insertItem(ItemDTO itemDTO){
+    public int insertItemByAcc(ItemDTO itemDTO){
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "INSERT INTO ITEMS VALUES (model_num_seq.nextval, 'accessory', ?,?,NULL,?,?,?,sysdate)";
 
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, itemDTO.getModelName());
+            ps.setInt(2, itemDTO.getModelPrice());
+            ps.setString(3, itemDTO.getModelColor());
+            ps.setString(4,itemDTO.getModelGPS());
+            ps.setInt(5,itemDTO.getModelStock());
+
+
+            result = ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            DbUtil.dbClose(con, ps);
+        }
+        return result;
     }
 
     @Override

@@ -29,6 +29,74 @@
     </style>
     <!-- Resource style -->
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <style>
+        fieldset {
+            border: 0;
+        }
+        label {
+            display: block;
+            margin: 30px 0 0 0;
+        }
+        .overflow {
+            height: 200px;
+        }
+    </style>
+    <!-- Jquery and Js Plugins -->
+    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="../js/plugins.js"></script>
+    <script type="text/javascript" src="../js/menu.js"></script>
+    <script type="text/javascript" src="../js/custom.js"></script>
+    <script src="../js/jquery.subscribe.js"></script>
+    <script type="text/javascript">
+        $(function () {
+
+
+            $("#cart").click(function () {
+                let model = "12";
+                let color = $("input[type=radio][name=color]:checked").val();
+                let storage = $("input[type=radio][name=storage]:checked").val();
+                let modelName = model + "_" + color + "_" + storage;
+                location.href = "cartServlet?methodName=addCart&modelNum=" + modelName;
+
+            });
+
+            $("#category").change(function () {
+
+                let s = $("#category option:selected").val();
+
+                if(s == "airpods"){
+                    $("#AirPods").show();
+                    $("#accessory").hide();
+                    $("#iphone").hide();
+                    $("#watch").hide();
+                }else if(s == "accessory"){
+                    $("#accessory").show();
+                    $("#AirPods").hide();
+                    $("#watch").hide();
+                    $("#iphone").hide();
+
+                }else if(s == "watch"){
+                    $("#watch").show();
+                    $("#AirPods").hide();
+                    $("#iphone").hide();
+                    $("#accessory").hide();
+                }else if(s == "iphone"){
+                    $("#iphone").show();
+                    $("#accessory").hide();
+                    $("#AirPods").hide();
+                    $("#watch").hide();
+
+                }
+
+
+            });
+
+
+        });
+
+    </script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -45,16 +113,80 @@
                     <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 등록하기</h1>
                     <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
-                        <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="searchform" id="searchform">
-                            Category : <input class="mail" type="text" name="category" placeholder="Join the wait list" autocomplete="off" id="category"><p/>
-                            Model Name : <input class="mail" type="text" name="modelName" placeholder="Join the wait list" autocomplete="off" id="modelName"><p/>
-                            Price <input class="mail" type="text" name="modelPrice" placeholder="Join the wait list" autocomplete="off" id="modelPrice"><p/>
-                            Option <input class="mail" type="text" name="modelOption" placeholder="Join the wait list" autocomplete="off" id="modelOption"><p/>
-                            Color <input class="mail" type="text" name="modelColor" placeholder="Join the wait list" autocomplete="off" id="modelColor"><p/>
-                            GPS : <input class="mail" type="text" name="modleGPS" placeholder="Join the wait list" autocomplete="off" id="modleGPS"><p/>
-                            Stock <input class="mail" type="text" name="modleStock" placeholder="Join the wait list" autocomplete="off" id="modleStock"><p/>
-                            <input class="submit-button" type="submit" value="등록하기" name="send" id="subsubmit">
+                        등록할 상품의 <br>
+                        카테고리를 선택해주세요. <p/>
+                        <form class="subscribe-form wow zoomIn">
+                            Category : <select name="category" class="mail" id="category">
+                            <option disabled selected>Category</option>
+                            <option>airpods</option>
+                            <option>accessory</option>
+                            <option>watch</option>
+                            <option>iphone</option>
+                        </select>
                         </form>
+                        <p/><p/>
+
+                        <div hidden id="watch">
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm">
+                                애플 워치 모델 등록하기<p/>
+                                Model Name : <input class="mail" type="text" name="modelName" placeholder="⌚️" autocomplete="off" ><p/><p/>
+                                Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
+                                Option : <input class="mail" type="text" name="modelOption" placeholder="사이즈 ex)45mm"  autocomplete="off" ><p/><p/>
+                                Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
+                                GPS : <select name="gps" class="mail" id="gps">
+                                <option disabled selected>⌚</option>
+                                <option>gps</option>
+                                <option>cellular</option>
+                            </select>
+                                <p/><p/>
+                                Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량(숫자)" autocomplete="off" ><p/><p/>
+                                <input class="submit-button" type="submit" value="등록하기" name="send">
+                            </form>
+                        </div>
+
+                        <div hidden id="accessory">
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=InsertItemByAcc" method="post" name="crudForm"
+                                  enctype="multipart/form-data">
+                                악세서리 모델 등록하기<p/>
+                                Model Name : <input class="mail" type="text" name="modelName" placeholder="모델이름" autocomplete="off" ><p/><p/>
+                                Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
+                                Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
+                                Mini  Category :<select name="mini" class="mail" id="mini">
+                                <option disabled selected>Mini Category</option>
+                                <option>cable</option>
+                                <option>case</option>
+                                <option>band</option>
+                            </select>
+                                <p/><p/>
+                                Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량(숫자)" autocomplete="off" ><p/><p/>
+                                <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
+                                <input class="submit-button" type="submit" value="등록하기" name="send">
+                            </form>
+                        </div>
+
+                        <div hidden id="airpods">
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm" >
+                                에어팟 모델 등록하기<p/>
+                                Model Name : <input class="mail" type="text" name="modelName" placeholder="모델이름" autocomplete="off" ><p/><p/>
+                                Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
+                                Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
+                                Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량" autocomplete="off" ><p/><p/>
+                                <input class="submit-button" type="submit" value="등록하기" name="send">
+                            </form>
+                        </div>
+
+                        <div hidden id="iphone">
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm" >
+                                아이폰 모델 등록하기<p/>
+                                Model Name : <input class="mail" type="text" name="modelName" placeholder="모델이름" autocomplete="off" ><p/><p/>
+                                Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
+                                Storage : <input class="mail" type="text" name="modelOption" placeholder="iphone 용량"  autocomplete="off" ><p/><p/>
+                                Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
+                                Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량" autocomplete="off" ><p/><p/>
+                                <input class="submit-button" type="submit" value="등록하기" name="send">
+                            </form>
+                        </div>
+
                         <!-- subscribe message -->
                         <div id="mesaj"></div>
                         <!-- subscribe message -->
@@ -101,13 +233,6 @@
 </div>
 <!-- Wrapper-->
 
-<!-- Jquery and Js Plugins -->
-<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../js/plugins.js"></script>
-<script type="text/javascript" src="../js/menu.js"></script>
-<script type="text/javascript" src="../js/custom.js"></script>
-<script src="../js/jquery.subscribe.js"></script>
 </body>
 </html>
