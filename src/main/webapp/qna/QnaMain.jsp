@@ -46,19 +46,19 @@
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
             <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
             <div class="pitch-content">
-              <h1><a href="${paht}/qna/QnaSub.jsp">iPhone</a></h1>
+              <h1><a href="${path}/qna/QnaSub_iphone.jsp">iPhone</a></h1>
             </div>
           </div>
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
             <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
             <div class="pitch-content">
-              <h1><a href="${paht}/qna/QnaSub.jsp">Watch</a></h1>
+              <h1><a href="${path}/qna/QnaSub_watch.jsp">Watch</a></h1>
               </div>
           </div>
           <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
             <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
             <div class="pitch-content">
-              <h1><a href="${paht}/qna/QnaSub.jsp">AirPods</a></h1>
+              <h1><a href="${path}/qna/QnaSub_airpods.jsp">AirPods</a></h1>
               </div>
           </div>
         </div>

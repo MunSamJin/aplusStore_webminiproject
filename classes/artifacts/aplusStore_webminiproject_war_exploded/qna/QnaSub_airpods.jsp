@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,30 +20,9 @@
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
-<div class="qna_sub">
-  <div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand page-scroll" href="#main"><img src="../images/logo1.png" width="80"  alt="iLand" /></a> </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
-            <li><a class="page-scroll" href="#contact">iPhone</a></li>
-            <li><a class="page-scroll" href="#contact">Watch</a></li>
-            <li><a class="page-scroll" href="#contact">AirPods</a></li>
-            <li><a class="page-scroll" href="#contact">액세서리</a></li>
-            <li><a href="../qna/qnaMain.html">고객지원</a></li>
-            <li><a class="page-scroll" href="#contact">로그인</a></li>
-            <li><a class="page-scroll" href="#contact">장바구니</a></li>
-            <li><a class="page-scroll" href="#contact">배송조회</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+
+
+<jsp:include page="../common/header.jsp"/>
     <!-- /.navbar-collapse -->
   </div>
   
@@ -89,7 +70,7 @@
     <div class= "container">
     	<div class="row">
     	    <table class= "table table-stripped" style= "text-align: center; boarder: 1px solid #dddddd">
-    	    	<thead>
+
     	    	<tr>
     	    		<th style= "background-color: #eeeeee; text-align: center;">제목</th>
     	    		<th style= "background-color: #eeeeee; text-align: center;">질문자</th>
@@ -97,74 +78,12 @@
     	    		<th style= "background-color: #eeeeee; text-align: center;">댓글</th>
     	    		
     	    	</tr>
-    	    	</thead>
-    	    	<tbody>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>안녕하세요</td>
-    	    			<td>안효경</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    	</tbody>
+
     	    </table>
     	</div>
     </div>
 
-
+	  <jsp:include page="../common/footer.jsp"/>
 </div>
 
 </body>
