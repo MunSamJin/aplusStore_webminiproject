@@ -58,13 +58,13 @@
             border-bottom: 1px solid #ddd;
         }
 
-        tr:hover {background-color: coral;}
+        tr:hover {background-color: lightcyan;}
     </style>
     <script type="text/javascript">
         $(function(){
 
             //전체검색
-            function getOrderList(){
+            function selectAll(){
                 $.ajax({
                     url :"../ajax" , //서버요청주소
                     type:"post", //요청방식(method방식 : get | post | put | delete )
@@ -89,9 +89,9 @@
                         alert(err+"에러 발생했어요.");
                     }  //실패했을때 실행할 함수
                 });//ajax끝
-            }//getOrderList 함수끝
+            }
 
-            getOrderList();
+            selectAll();
         });
 
     </script>
@@ -117,8 +117,10 @@
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
                         <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="query"
                               >
-                            <input id="query" type="text" name="query" placeholder="검색 또는 질문하기" autocomplete="off">
-                            <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
+                            <input id="query" type="text" name="query" placeholder="검색" autocomplete="off">
+                            <input class="submit-button" type="submit" value="검색" name="send" id="subsubmit">
+                                <p></p>
+                            <input class="submit-button" type="button" value="질문하기" name="send" >
                         </form>
                     </div>
                 </div>
