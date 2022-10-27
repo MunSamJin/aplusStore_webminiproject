@@ -30,9 +30,9 @@
 <script src="../js/jquery.subscribe.js"></script> 
 
 <style type="text/css">
-	.cartTable img{width:140px; height:160px;}
-	.cartTable td:first-child {display:none;}
-	.cartTable td:nth-child(2) {display:none;}
+	table img{width:140px; height:160px;}
+	#cartTable td:first-child {display:none;}
+	#cartTable td:nth-child(2) {display:none;}
 	
 </style>
 
@@ -70,10 +70,17 @@
 					let str="";
 					let totalPrice = 0;
 					$.each(result, function(index, item){
-						let name = item.modelName.split("_");
-						console.log(name);
-						let imgName = name[0]+"_"+name[1];
-						console.log(imgName);
+						//imgName 조작
+						let imgName = item.modelName;
+						let name = imgName.split("_");
+						if((item.category=="iphone") || (item.category=="watch")){
+							imgName = name[0]+"_"+name[1];
+						}
+						
+						
+						//품절 여부
+						if()
+						$("#soldOut").css("display:block");
 						
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
@@ -82,7 +89,8 @@
 					    str+=`<td>${"${item.modelName}"}</td>`;
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
-					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select></td>";
+					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
+					    		+ "<h2 id='soldOut' display='none'>품절</h2>" +"</td>";
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
 					    str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
 					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
@@ -170,13 +178,14 @@
         <p class="wow fadeInDown" data-wow-delay="0.2s"> 모든 주문에 무료 배송 서비스가 제공됩니다 <br class="hidden-xs">
         
         </p>
-        <p><button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button></p>
+        <p><input type="hidden" name="key" value="cart"><input type="hidden" name="methodName" value="checkStock">
+        <button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button></p>
       </div>
   
   <form action="${path}/orders/orderMain.jsp" method="post" id="cartForm">
    <div class="split-features">
     <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
-      <tr>
+      <tr style="display:none;">
       	  <td display="none"></td>
       	  <td display="none"></td>
 	      <td width="30%"><!-- <div class="col-md-6 nopadding"> -->
@@ -195,23 +204,15 @@
       </tr>
     </table>
     <div class="split-features">
-    	<table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+    	<table id="countTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
     		<hr>
-    		<tr>
-    			<td>소계</td>
-    			<td id="totalPrice1" name="totalPrice1"></td>
-    		</tr>
-    		<tr>
-    			<td>배송</td>
-    			<td id="express">무료</td>
-    		</tr>
-    		<hr>
-    		<tr>
-    			<td>총계</td>
-    			<td id="totalPrice2" name="totalPrice2"></td>
-    		</tr>
+    		<tr><td>소계</td><td id="totalPrice1" name="totalPrice1"><p></p></td></tr>
+    		<tr><td>배송</td><td id="express">무료</td><p></p></tr>
+    		<tr><td>총계</td><td id="totalPrice2" name="totalPrice2"><p></p></td></tr>
     		<tr>
     			<td colspan="2"><p>
+    			<input type="hidden" name="key" value="cart">
+			    <input type="hidden" name="methodName" value="checkStock">
     			<button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button>
     			</p></td>
     		</tr>

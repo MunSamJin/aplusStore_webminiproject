@@ -3,6 +3,7 @@ package dto;
 
 public class CartDTO {
 	private String cartNum;
+	private String category;
 	private String modelNum;
 	private String modelName;
 	private String emailId;
@@ -11,9 +12,10 @@ public class CartDTO {
 	
 	public CartDTO() {}
 
-	public CartDTO(String cartNum, String modelNum, String modelName, String emailId, int modelPrice, int modelCount) {
+	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount) {
 		super();
 		this.cartNum = cartNum;
+		this.category = category;
 		this.modelNum = modelNum;
 		this.modelName = modelName;
 		this.emailId = emailId;
@@ -67,6 +69,14 @@ public class CartDTO {
 
 	public void setModelPrice(int modelPrice) {
 		this.modelPrice = modelPrice;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 }
