@@ -1,5 +1,6 @@
 package service;
 
+import dto.AdminLoginDTO;
 import dto.ItemDTO;
 
 import java.sql.SQLException;
@@ -81,4 +82,9 @@ public interface ItemService {
      * */
      public int updateItem(ItemDTO itemDTO) throws SQLException;
 
+
+     /**
+      * 관리자 로그인
+      * */
+     AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException;
 }
