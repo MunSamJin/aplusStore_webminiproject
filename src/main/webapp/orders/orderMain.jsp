@@ -149,7 +149,11 @@
 	</head>
 	<body>
 		<form name="orderForm" method="post" id="orderForm">
+<<<<<<< HEAD
 		
+=======
+		<%-- ${cartForm} --%>
+>>>>>>> merge221027
 		
 			
 		<input type="hidden" name="key" value="pay">
@@ -202,6 +206,7 @@
 						</td>
 					</tr> 
 					<tr><td><h2>이름 및 주소 입력:</h2></td></tr>
+<<<<<<< HEAD
 					<tr><td><input type="text" name="deliverName" id="deliverName" placeholder="이름"><br></td></tr>
 					<tr><td><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기"></td></tr>
 					<tr><td><input type="text" name="postcode" id="postcode"  placeholder="우편번호"></td>
@@ -212,6 +217,18 @@
 					<tr><td><input type="text" name="detailAddress" id="detailAddress"  placeholder="상세주소"></td>
 					</tr>
 					<tr><td><input type="text" name="extraAddress" id="extraAddress"  placeholder="참고항목"></td>
+=======
+					<tr><td><input type="text" name="deliverName" id="deliverName" placeholder="이름" value=""><br></td></tr>
+					<tr><td><input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" ></td></tr>
+					<tr><td><input type="text" name="postcode" id="postcode"  placeholder="우편번호" vlaue=""></td>
+						<td></td>
+					</tr>
+					<tr><td><input type="text" name="address" id="address"  placeholder="주소" value=""></td>
+					</tr>
+					<tr><td><input type="text" name="detailAddress" id="detailAddress"  placeholder="상세주소" value=""></td>
+					</tr>
+					<tr><td><input type="text" name="extraAddress" id="extraAddress"  placeholder="참고항목" value=""></td>
+>>>>>>> merge221027
 					</tr>
 				</table>
 			</div>
@@ -229,7 +246,11 @@
 					</tr>
 					<tr>
 						<td>
+<<<<<<< HEAD
 							<input type="text" name="orderEmail" id="orderEmail" placeholder="이메일주소">@
+=======
+							<input type="text" name="orderEmail" id="orderEmail" placeholder="이메일주소" value="">@
+>>>>>>> merge221027
 							<select name="emailSelect">
 								<option value="0">선택</option>
 								<option value="@naver.com">naver.com</option>
@@ -240,7 +261,11 @@
 					</tr>
 					<tr>
 						<td>
+<<<<<<< HEAD
 							<input type="text" name="orderPhone" id="orderPhone" placeholder="휴대폰번호">
+=======
+							<input type="text" name="orderPhone" id="orderPhone" placeholder="휴대폰번호" value="">
+>>>>>>> merge221027
 						</td>
 						<td style="font-size: 13px">입력하시는 전화번호는 주문 후 변경할 수 없으므로 맞는 번호인지 확인해 주십시오.</td>
 					</tr>

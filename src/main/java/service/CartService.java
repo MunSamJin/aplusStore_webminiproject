@@ -12,7 +12,11 @@ public interface CartService {
 	 * ��ٱ��� ��ȸ
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
+<<<<<<< HEAD
 	
+=======
+	CartDTO selectForGuest(String modelName) throws SQLException;
+>>>>>>> merge221027
 	
 	
 	/**

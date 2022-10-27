@@ -1,5 +1,9 @@
 package service;
 
+<<<<<<< HEAD
+=======
+import dto.AdminLoginDTO;
+>>>>>>> merge221027
 import dto.ItemDTO;
 
 import java.sql.SQLException;
@@ -81,4 +85,12 @@ public interface ItemService {
      * */
      public int updateItem(ItemDTO itemDTO) throws SQLException;
 
+<<<<<<< HEAD
+=======
+
+     /**
+      * 관리자 로그인
+      * */
+     AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException;
+>>>>>>> merge221027
 }

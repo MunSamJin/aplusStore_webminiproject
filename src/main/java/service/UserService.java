@@ -17,6 +17,7 @@ public interface UserService {
     */
    public UserDTO lookforId(UserDTO userDTO)throws SQLException;
 
+<<<<<<< HEAD
    
    /**
     *  회원가입
@@ -25,3 +26,6 @@ public interface UserService {
 }
 
 
+=======
+}
+>>>>>>> merge221027

@@ -55,5 +55,20 @@ public class CartServiceImpl implements CartService {
 		
 		return list;
 	}
+<<<<<<< HEAD
 
+=======
+	
+	
+	//비회원
+	//modelName에 맞는 items select -> cartDTO에 추가
+	public CartDTO selectForGuest(String modelName) throws SQLException{
+		CartDTO cart = dao.selectForGuest(modelName);
+		
+		if(cart == null) {
+			throw new SQLException("비회원 장바구니 추가에 실패했습니다");
+		}
+		return cart;
+	}
+>>>>>>> merge221027
 }

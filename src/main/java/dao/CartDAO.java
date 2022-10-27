@@ -15,11 +15,14 @@ public interface CartDAO {
 	int selectToInsert(String modelName, String emailId) throws SQLException;
 	CartDTO overlapCheck(String emailId, String modelName) throws SQLException;
 	
+<<<<<<< HEAD
 	/**
 	 * ��ȸ�� - ��ٱ��Ͽ� ��ǰ �߰�(session)
 	 * 
 	 */
 	
+=======
+>>>>>>> merge221027
 	
 	
 	/**
@@ -27,6 +30,7 @@ public interface CartDAO {
 	 * select * from basket where email_id=?
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
+<<<<<<< HEAD
 	
 	
 	
@@ -34,6 +38,9 @@ public interface CartDAO {
 	 * ��ȸ�� - ��ٱ��� ��ǰ ��ȸ
 	 */
 	
+=======
+	CartDTO selectForGuest(String modelName) throws SQLException;
+>>>>>>> merge221027
 	
 	
 	/**
@@ -43,11 +50,14 @@ public interface CartDAO {
 	int delete(String cartNum) throws SQLException;
 	
 	
+<<<<<<< HEAD
 	/**
 	 * ��ȸ�� - ��ٱ��� ��ǰ ����
 	 */
 	
 	
+=======
+>>>>>>> merge221027
 	
 	/**
 	 * ȸ�� - ��ٱ��� ��ǰ ���� ����
@@ -56,8 +66,11 @@ public interface CartDAO {
 	int update(String cartNum, int modelCount) throws SQLException;
 	
 	
+<<<<<<< HEAD
 	
 	/**
 	 * ��ȸ�� - ��ٱ��� ��ǰ ���� ����
 	 */
+=======
+>>>>>>> merge221027
 }

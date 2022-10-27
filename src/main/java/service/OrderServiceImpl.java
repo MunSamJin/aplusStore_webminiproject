@@ -1,11 +1,22 @@
 package service;
 
 import java.sql.SQLException;
+<<<<<<< HEAD
+=======
+import java.util.List;
+>>>>>>> merge221027
 
 
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
+<<<<<<< HEAD
 import dto.OrderDTO;
+=======
+import dto.ItemDTO;
+import dto.OrderDTO;
+import dto.OrderDetailDTO;
+
+>>>>>>> merge221027
 import mail.Mail;
 
 
@@ -13,6 +24,12 @@ import mail.Mail;
 public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO = new OrderDAOImpl();
 
+<<<<<<< HEAD
+=======
+	/**
+	 *  주문테이블에 주문내역 등록하기
+	 */
+>>>>>>> merge221027
 	@Override
 	public int insert(OrderDTO dto) throws SQLException {
 		//orderDAO호출 - 주문 테이블에 등록하기
@@ -30,7 +47,31 @@ public class OrderServiceImpl implements OrderService {
 		
 		return orderNum;
 	}
+<<<<<<< HEAD
 
+=======
+	
+	/**
+	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
+	 */
+	@Override
+	public List<ItemDTO> cartMenuSelect(String emailId) throws SQLException {
+		List<ItemDTO> list = orderDAO.cartMenuSelect(emailId);
+		
+		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
+		
+		return list;
+	}
+
+	@Override
+	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		return list;
+	}
+>>>>>>> merge221027
 
 
 }

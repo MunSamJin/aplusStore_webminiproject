@@ -1,7 +1,14 @@
 package dto;
 
+<<<<<<< HEAD
 public class OrderDTO {
 	private String orderNum; //주문번호
+=======
+import java.util.List;
+
+public class OrderDTO {
+	private int orderNum; //주문번호
+>>>>>>> merge221027
 	private String memberGuest; //비회원
 	private String orderName; //주문자 이름
 	private String realAddr; //주문자 주소
@@ -11,8 +18,20 @@ public class OrderDTO {
 	private String orderPhone; //주문자 휴대폰번호
 	private int totalPrice;//총금액
 	
+<<<<<<< HEAD
 	public OrderDTO() {}
 	
+=======
+	private List<OrderDetailDTO> detailList;
+	
+	public OrderDTO() {}		
+	
+	public OrderDTO(int totalPrice) {
+		super();
+		this.totalPrice = totalPrice;
+	}
+
+>>>>>>> merge221027
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {
 		super();
 		this.orderName = orderName;
@@ -35,7 +54,11 @@ public class OrderDTO {
 	}
 
 
+<<<<<<< HEAD
 	public OrderDTO(String orderNum, String memberGuest, String orderName, String realAddr, String orderState,
+=======
+	public OrderDTO(int orderNum, String memberGuest, String orderName, String realAddr, String orderState,
+>>>>>>> merge221027
 			String realEmail, String orderPhone, int totalPrice) {
 		super();
 		this.orderNum = orderNum;
@@ -104,11 +127,19 @@ public class OrderDTO {
 		this.orderState = orderState;
 	}
 
+<<<<<<< HEAD
 	public String getOrderNum() {
 		return orderNum;
 	}
 
 	public void setOrderNum(String orderNum) {
+=======
+	public int getOrderNum() {
+		return orderNum;
+	}
+
+	public void setOrderNum(int orderNum) {
+>>>>>>> merge221027
 		this.orderNum = orderNum;
 	}
 
@@ -120,6 +151,18 @@ public class OrderDTO {
 		this.orderDate = orderDate;
 	}
 
+<<<<<<< HEAD
+=======
+	public List<OrderDetailDTO> getDetailList() {
+		return detailList;
+	}
+
+	public void setDetailList(List<OrderDetailDTO> detailList) {
+		this.detailList = detailList;
+	}
+
+	
+>>>>>>> merge221027
 	
 	
 }

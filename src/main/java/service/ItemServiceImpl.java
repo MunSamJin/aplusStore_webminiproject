@@ -2,6 +2,10 @@ package service;
 
 import dao.ItemDAO;
 import dao.ItemDAOImpl;
+<<<<<<< HEAD
+=======
+import dto.AdminLoginDTO;
+>>>>>>> merge221027
 import dto.ItemDTO;
 
 import java.sql.SQLException;
@@ -11,7 +15,13 @@ public class ItemServiceImpl implements ItemService{
     private ItemDAO dao = new ItemDAOImpl();
     @Override
     public List<ItemDTO> itemsSelectAll() {
+<<<<<<< HEAD
         return null;
+=======
+        List<ItemDTO> list = dao.itemsSelectAll();
+
+        return list;
+>>>>>>> merge221027
     }
 
     @Override
@@ -49,7 +59,12 @@ public class ItemServiceImpl implements ItemService{
     @Override
     public void insertItemByAirpods(ItemDTO itemDTO) throws SQLException {
         System.out.println("service watch insert 시작");
+<<<<<<< HEAD
         
+=======
+        int re = dao.insertItemByWatch(itemDTO);
+        System.out.println("watch insert service"+re);
+>>>>>>> merge221027
     }
 
     @Override
@@ -72,4 +87,16 @@ public class ItemServiceImpl implements ItemService{
     public int updateItem(ItemDTO itemDTO) {
         return 0;
     }
+<<<<<<< HEAD
+=======
+
+
+    @Override
+    public AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException {
+        System.out.println("로그인 서비스 호출"+adminLoginDTO);
+        AdminLoginDTO db =  dao.adminLogin(adminLoginDTO);
+
+        return db;
+    }
+>>>>>>> merge221027
 }

@@ -8,6 +8,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+<<<<<<< HEAD
+=======
+import javax.servlet.http.HttpSession;
+
+>>>>>>> merge221027
 import dto.CartDTO;
 import net.sf.json.JSONArray;
 import service.CartService;
@@ -15,16 +20,35 @@ import service.CartServiceImpl;
 
 public class CartController implements AjaxController{
 	CartService service = new CartServiceImpl();
+<<<<<<< HEAD
 
+=======
+	HttpSession session;
+>>>>>>> merge221027
 	
 
 	/**
 	 * 검색
 	 */
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+<<<<<<< HEAD
 		String emailId = req.getParameter("emailId");
 		//HttpSession session = req.getSession();
 		//String sessionId = (String)session.getAttribute("emailId");
+=======
+		session = req.getSession();
+		//String emailId = (String)session.getAttribute("emailId");
+		String emailId = req.getParameter("emailId");
+		
+		//session
+		/*if(emailId == null) {
+			List<CartDTO> guestCartList = (List<CartDTO>)session.getAttribute("guestCartList");
+			guestCartList 
+			
+		} else {
+			
+		}*/
+>>>>>>> merge221027
 		
 		List<CartDTO> list = service.select(emailId);
 		JSONArray arr = JSONArray.fromObject(list);
@@ -32,12 +56,18 @@ public class CartController implements AjaxController{
 		PrintWriter out = resp.getWriter();
 		
 		out.print(arr);
+<<<<<<< HEAD
+=======
+		
+		
+>>>>>>> merge221027
 	}
 	
 	
 	/**
 	 * 재고 확인(품절 여부)
 	 */
+<<<<<<< HEAD
 	public void checkStock(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		String emailId = req.getParameter("emailId");
 		//HttpSession session = req.getSession();
@@ -50,6 +80,17 @@ public class CartController implements AjaxController{
 		
 		out.print(arr);
 	}
+=======
+	/*public void checkStock(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String emailId = req.getParameter("modelName");
+		
+		List<CartDTO> list = service.select(emailId);
+		System.out.println("controller stock = " + );
+		PrintWriter out = resp.getWriter();
+		
+		out.print(arr);
+	}*/
+>>>>>>> merge221027
 
 	
 	/**

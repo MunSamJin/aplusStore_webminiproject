@@ -7,8 +7,14 @@
 
     <welcome-file>default.jsp</welcome-file> 
   </welcome-file-list>
+<<<<<<< HEAD
   
 
 
  
 </web-app>
+=======
+
+</web-app>
+
+>>>>>>> merge221027

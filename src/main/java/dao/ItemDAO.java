@@ -1,5 +1,9 @@
 package dao;
 
+<<<<<<< HEAD
+=======
+import dto.AdminLoginDTO;
+>>>>>>> merge221027
 import dto.ItemDTO;
 
 import java.sql.SQLException;
@@ -49,6 +53,19 @@ public interface ItemDAO {
     int insertItemByAcc(ItemDTO itemDTO);
 
     /**
+<<<<<<< HEAD
+=======
+     * 상품 등록 - 워치
+     * @param : itemDTO로 받아서 제품을 등록한다
+     * */
+    int insertItemByWatch(ItemDTO itemDTO);
+
+
+
+
+
+    /**
+>>>>>>> merge221027
      * 상품 삭제
      * @param : modelName을 받아서 해당 제품을 삭제한다.
      * */
@@ -60,5 +77,12 @@ public interface ItemDAO {
      * */
     int updateItem(ItemDTO itemDTO) ;
 
+<<<<<<< HEAD
+=======
+    /**
+     * 관리자 로그인
+     * */
+    AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException;
+>>>>>>> merge221027
 
 }

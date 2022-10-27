@@ -39,17 +39,44 @@
 <script type="text/javascript">
 	$(function(){
 		//결제
+<<<<<<< HEAD
 		$("#cartToOrder").click(function(){
+=======
+		$("[name=cartToOrder]").click(function(){
+>>>>>>> merge221027
 			//수량 비교?		
 			$.ajax({
 				url:"${path}/ajax",
 				type:"post",
+<<<<<<< HEAD
 				dataType:"text",
 				data:$("#cartForm").serialize(),
 				success: function(result){
 					if(confirm("결제하시겠습니까?")){
 						$("#cartForm").submit();
 					}
+=======
+				dataType:"json",
+				data:{key:"cart", methodName : "select", emailId: "sikkk@naver.com"/* `${sessionScope.emailId}` */},
+				success: function(result){
+					$.each(result, function(index, item){
+						if(item.modelStock <= 0){ //품절
+							if(confirm(" 품절 상품은 결제에 포함되지 않습니다. 그대로 주문을 진행하려면 확인을 누르세요.")){
+								location.href = "${path}/orders/orderMain.jsp";
+							}
+							
+						} else if(item.modelStock < item.modelCount){ //재고량 < 주문수량
+							if(confirm(item.modelName + " 상품 재고량이 부족합니다. 수량이 맞지 않는 제품은 결제에 포함되지 않습니다. 수량 변경없이 그대로 주문을 진행하려면 확인을 누르세요.")){
+								location.href = "${path}/orders/orderMain.jsp";
+							}
+							
+						}  else{
+							if(confirm("결제하시겠습니까?")){ //정상
+								location.href = "${path}/orders/orderMain.jsp";
+							} 
+						}
+					})
+>>>>>>> merge221027
 					
 				},
 				error : function(err){  
@@ -59,8 +86,15 @@
 			
 		});
 		
+<<<<<<< HEAD
 		//장바구니 전체검색
 		   function select(){
+=======
+		
+		
+		//장바구니 전체검색
+		   function select(){						
+>>>>>>> merge221027
 			   $.ajax({
 				url :"${path}/ajax" , 
 				type:"post", 
@@ -78,10 +112,19 @@
 						}
 						
 						
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> merge221027
 						//품절 여부
 						//if()
 						//$("#soldOut").css("display:block");
 						
+<<<<<<< HEAD
+=======
+>>>>>>> merge221027-2
+>>>>>>> merge221027
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
 					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
@@ -89,8 +132,18 @@
 					    str+=`<td>${"${item.modelName}"}</td>`;
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
+<<<<<<< HEAD
 					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
 					    		+ "<h2 id='soldOut' display='none'>품절</h2>" +"</td>";
+=======
+					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
+					    		
+					    		if(item.modelStock <= 0){
+					    			 str+="<b style='color:red'>  품절</b>"
+					    		}
+					    		
+					    		+"</td>";
+>>>>>>> merge221027
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
 					    str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
 					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
@@ -99,6 +152,11 @@
 					    totalPrice += (item.modelPrice * item.modelCount);
 				    });
 					
+<<<<<<< HEAD
+=======
+					
+					
+>>>>>>> merge221027
 					//$("#cartTable tr:eq(0)").remove();
 					$("#cartTable tr:gt(0)").remove();
 					$("#cartTable tr:eq(0)").after(str);
@@ -178,6 +236,7 @@
         <p class="wow fadeInDown" data-wow-delay="0.2s"> 모든 주문에 무료 배송 서비스가 제공됩니다 <br class="hidden-xs">
         
         </p>
+<<<<<<< HEAD
         <p><input type="hidden" name="key" value="cart"><input type="hidden" name="methodName" value="checkStock">
         <button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button></p>
       </div>
@@ -188,6 +247,17 @@
       <tr style="display:none;">
       	  <td display="none"></td>
       	  <td display="none"></td>
+=======
+        <p><button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="button"  name="cartToOrder" id="cartToOrder">결제</button></p>
+      </div>
+  
+
+   <div class="split-features">
+    <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+      <tr style="display:none;">
+      	  <td ></td>
+      	  <td ></td>
+>>>>>>> merge221027
 	      <td width="30%"><!-- <div class="col-md-6 nopadding"> -->
 	        <div class="split-image"> <img class="img-responsive wow fadeIn" src="../images/iPhone-app.png" alt="Image" width="140px"/> </div>
 	      </td>
@@ -204,6 +274,7 @@
       </tr>
     </table>
     <div class="split-features">
+<<<<<<< HEAD
     	<table id="countTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
     		<hr>
     		<tr><td>소계</td><td id="totalPrice1" name="totalPrice1"><p></p></td></tr>
@@ -214,12 +285,27 @@
     			<input type="hidden" name="key" value="cart">
 			    <input type="hidden" name="methodName" value="checkStock">
     			<button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button>
+=======
+    	<hr>
+    	<table id="countTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+    		
+    		<tr><td>소계</td><td id="totalPrice1" ></td></tr>
+    		<tr><td>배송</td><td id="express">무료</td></tr>
+    		<tr><td>총계</td><td id="totalPrice2" ><p></td></tr>
+    		<tr>
+    			<td colspan="2"><p>
+    			<button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="button"  name="cartToOrder" id="cartToOrder">결제</button>
+>>>>>>> merge221027
     			</p></td>
     		</tr>
     	</table>
     </div>
    </div>
+<<<<<<< HEAD
   </form>
+=======
+  
+>>>>>>> merge221027
  
    
     <!-- Footer Section -->
