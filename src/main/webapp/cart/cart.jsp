@@ -76,7 +76,7 @@
 		
 		
 		//장바구니 전체검색
-		   function select(){			
+		   function select(){						
 			   $.ajax({
 				url :"${path}/ajax" , 
 				type:"post", 
@@ -101,7 +101,7 @@
 					    str+=`<td>${"${item.modelName}"}</td>`;
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
-					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
+					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
 					    		
 					    		if(item.modelStock <= 0){
 					    			 str+="<b style='color:red'>  품절</b>"

@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dto.CartDTO;
 import net.sf.json.JSONArray;
@@ -15,16 +16,25 @@ import service.CartServiceImpl;
 
 public class CartController implements AjaxController{
 	CartService service = new CartServiceImpl();
-
+	HttpSession session;
 	
 
 	/**
 	 * 검색
 	 */
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		session = req.getSession();
+		//String emailId = (String)session.getAttribute("emailId");
 		String emailId = req.getParameter("emailId");
-		//HttpSession session = req.getSession();
-		//String sessionId = (String)session.getAttribute("emailId");
+		
+		//session
+		/*if(emailId == null) {
+			List<CartDTO> guestCartList = (List<CartDTO>)session.getAttribute("guestCartList");
+			guestCartList 
+			
+		} else {
+			
+		}*/
 		
 		List<CartDTO> list = service.select(emailId);
 		JSONArray arr = JSONArray.fromObject(list);
@@ -32,6 +42,8 @@ public class CartController implements AjaxController{
 		PrintWriter out = resp.getWriter();
 		
 		out.print(arr);
+		
+		
 	}
 	
 	

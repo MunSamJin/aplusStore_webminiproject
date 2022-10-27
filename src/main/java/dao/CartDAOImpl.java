@@ -165,7 +165,7 @@ public class CartDAOImpl implements CartDAO {
 			
 			while(rs.next()) {
 				//재고수량 업데이트
-				int modelStock = cartStockUpdate(con, rs.getString(4));
+				int modelStock = cartStockSelect(con, rs.getString(4));
 				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), modelStock));
 				
 			}
@@ -178,8 +178,8 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	
-	//select시 재고수량 업데이트
-	public int cartStockUpdate(Connection con, String modelName) throws SQLException{
+	//select시 재고수량 조회
+	public int cartStockSelect(Connection con, String modelName) throws SQLException{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
@@ -192,7 +192,11 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
+				
 				modelStock = rs.getInt(8);
+				if(cartStockUpdate(con, modelStock, modelName) > 0) {
+					System.out.println("modelStock update complete");
+				}
 			}
 			
 		} finally {
@@ -200,5 +204,54 @@ public class CartDAOImpl implements CartDAO {
 		}
 		
 		return modelStock;
+	}
+	
+	//재고수량 업데이트
+	public int cartStockUpdate(Connection con, int modelStock, String modelName) throws SQLException{
+		PreparedStatement ps = null;
+		String sql = "update basket set model_stock=? where model_name=?";
+		int result = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, modelStock);
+			ps.setString(2, modelName);
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(null, ps);
+		}
+		
+		return result;
+	}
+
+	
+	
+	//비회원
+	//items에서 원하는 모델명 정보 찾아서 cart로 담기
+	@Override
+	public CartDTO selectForGuest(String modelName) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from items where model_name=?";
+		CartDTO cart = null;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, modelName);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				//cartNum, category, modelNum, modelName, email, modelPrice, modelCount, modelStock
+				cart = new CartDTO(null, rs.getString(2), rs.getString(1), rs.getString(3), null, rs.getInt(4), 1, rs.getInt(8));
+			}
+			
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		
+		return cart;
 	}
 }

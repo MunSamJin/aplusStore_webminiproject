@@ -12,7 +12,7 @@ public interface CartService {
 	 * ��ٱ��� ��ȸ
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
-	
+	CartDTO selectForGuest(String modelName) throws SQLException;
 	
 	
 	/**
