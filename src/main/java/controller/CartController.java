@@ -7,9 +7,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.tools.DocumentationTool.Location;
-import javax.websocket.Session;
 
 import dto.CartDTO;
 import net.sf.json.JSONArray;
@@ -41,18 +38,15 @@ public class CartController implements AjaxController{
 	/**
 	 * 재고 확인(품절 여부)
 	 */
-	public void checkStock(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String emailId = req.getParameter("emailId");
-		//HttpSession session = req.getSession();
-		//String sessionId = (String)session.getAttribute("emailId");
+	/*public void checkStock(HttpServletRequest req, HttpServletResponse resp) throws Exception{
+		String emailId = req.getParameter("modelName");
 		
 		List<CartDTO> list = service.select(emailId);
-		JSONArray arr = JSONArray.fromObject(list);
-		System.out.println("controller json = " + arr);
+		System.out.println("controller stock = " + );
 		PrintWriter out = resp.getWriter();
 		
 		out.print(arr);
-	}
+	}*/
 
 	
 	/**

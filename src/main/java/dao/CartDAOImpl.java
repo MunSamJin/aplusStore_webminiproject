@@ -22,6 +22,7 @@ public class CartDAOImpl implements CartDAO {
 		String category = null;
 		String modelNum = null;
 		int modelPrice = 0;
+		int modelStock = 0;
 		int result = 0;
 		
 		try {
@@ -35,8 +36,9 @@ public class CartDAOImpl implements CartDAO {
 				modelNum = rs.getString(1);
 				category = rs.getString(2);
 				modelPrice = rs.getInt(4);
-				
-				result = insert(con, category, modelNum, modelName, emailId, modelPrice);
+				modelStock = rs.getInt(8);
+				System.out.println(modelNum+category+modelPrice+modelStock);
+				result = insert(con, category, modelNum, modelName, emailId, modelPrice, modelStock);
 			}
 			
 		} finally {
@@ -47,10 +49,11 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	//insert
-	public int insert(Connection con, String category, String modelNum, String modelName, String emailId, int modelPrice) throws SQLException {
+	public int insert(Connection con, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelStock) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, ?, 1)";
+		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, ?, 1, ?)";
 		int result = 0;
+		System.out.println("insert with stock");
 		
 		try {
 			ps = con.prepareStatement(sql);
@@ -59,6 +62,7 @@ public class CartDAOImpl implements CartDAO {
 			ps.setString(3, modelName);
 			ps.setString(4, emailId);
 			ps.setInt(5, modelPrice);
+			ps.setInt(6, modelStock);
 			
 			result = ps.executeUpdate();
 			
@@ -86,7 +90,7 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
+				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8));
 				System.out.println("dao overlap find");
 			}
 			
@@ -142,7 +146,8 @@ public class CartDAOImpl implements CartDAO {
 		System.out.println("update result " + result);
 		return result;
 	}
-
+	
+	
 	
 	@Override
 	public List<CartDTO> select(String emailId) throws SQLException {
@@ -159,7 +164,9 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
+				//재고수량 업데이트
+				int modelStock = cartStockUpdate(con, rs.getString(4));
+				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), modelStock));
 				
 			}
 			
@@ -171,5 +178,27 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	
-
+	//select시 재고수량 업데이트
+	public int cartStockUpdate(Connection con, String modelName) throws SQLException{
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select * from items where model_name=?";
+		
+		int modelStock = 0;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setString(1, modelName);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				modelStock = rs.getInt(8);
+			}
+			
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		
+		return modelStock;
+	}
 }

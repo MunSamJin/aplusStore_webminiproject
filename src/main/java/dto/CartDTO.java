@@ -9,10 +9,11 @@ public class CartDTO {
 	private String emailId;
 	private int modelPrice;
 	private int modelCount;
+	private int modelStock;
 	
 	public CartDTO() {}
 
-	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount) {
+	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount, int modelStock) {
 		super();
 		this.cartNum = cartNum;
 		this.category = category;
@@ -21,6 +22,7 @@ public class CartDTO {
 		this.emailId = emailId;
 		this.modelPrice = modelPrice;
 		this.modelCount = modelCount;
+		this.modelStock = modelStock;
 	}
 
 	public String getCartNum() {
@@ -77,6 +79,14 @@ public class CartDTO {
 
 	public void setCategory(String category) {
 		this.category = category;
+	}
+
+	public int getModelStock() {
+		return modelStock;
+	}
+
+	public void setModelStock(int modelStock) {
+		this.modelStock = modelStock;
 	}
 	
 }
