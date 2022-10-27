@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+
+import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
@@ -23,6 +25,11 @@ public interface OrderDAO {
 	 *  결제 시 상품 테이블에서 상품재고 감소
 	 */
 	int decreaseByModelStock(String modelStock) throws SQLException;
+	
+	/**
+	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
+	 */
+	List<ItemDTO> cartMenuSelect(String emailId) throws SQLException;
 
 	/**
 	 * 주문내역 검색

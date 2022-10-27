@@ -7,15 +7,37 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.CartDTO;
+import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 import util.DbUtil;
 
 
 public class OrderDAOImpl implements OrderDAO {
-	//BasketDAO basketDao = new BasketDAOImpl();
-	//List<BasketDTO> bascketlist = new ArrayList<BasketDTO>(); 
 
+	/**
+	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
+	 */
+	@Override
+	public List<ItemDTO> cartMenuSelect(String emailId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		CartDTO cartDTO = null;
+		ItemDTO itemDTO = null;
+		List<ItemDTO> list = new ArrayList<ItemDTO>();
+		String sql = "";
+		
+		
+		
+		
+		
+		return null;
+	}
+	
+	
 	
 	/**
 	 * 주문테이블 등록하기
@@ -81,7 +103,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		PreparedStatement ps = null;
 		int result [] = null;
-		String sql = "insert into order_detail values (detail_model_num_seq.nextval,order_num_seq.currval,?,?)";
+		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?)";
 		
 		try{
 			ps = con.prepareStatement(sql);
@@ -119,6 +141,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return 0;
 	}
+<<<<<<< HEAD
 	
 	
 	/**
@@ -157,6 +180,9 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 	}
 	
+=======
+
+>>>>>>> merge221027-3
 
 }
 
