@@ -65,13 +65,7 @@ public class FrontDispatcherServlet extends HttpServlet {
 		}
 		
 	}//serviceEnd
-	
-	public interface ElectronicsService{
-		/**
-		 * ElectronicsDAOImpl의 모든레코드 검색하는 메소드 호출
-		 * */
-	    List<QnaDTO> selectAll() throws SQLException;
-	}
+
 	
 	
 }

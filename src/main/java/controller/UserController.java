@@ -2,15 +2,19 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.Authenticator;
+import java.util.Random;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+//import javax.websocket.Session;
 
 import dao.UserDAO;
 import dao.UserDAOImpl;
 import dto.UserDTO;
+//import email.MailTest;
 import service.UserService;
 import service.UserServiceImpl;
 
@@ -24,6 +28,8 @@ public class UserController implements Controller {
 		  
 	      	return null;
 	   }
+	  
+	
 	 
 	 /**
 	  *  회원정보 수정
@@ -51,7 +57,8 @@ public class UserController implements Controller {
 	  */
 	 public void insert(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-	 
+		
+		 
 		 String id = request.getParameter("id");
 		 String pwd = request.getParameter("pwd");
 		 String name = request.getParameter("name");
@@ -63,6 +70,8 @@ public class UserController implements Controller {
 		 
 		 PrintWriter out = response.getWriter();
 		 out.println(result); //0 , 1
+		 
+		 
 	 }
 	 
 	 /**
@@ -81,10 +90,10 @@ public class UserController implements Controller {
 		 
 		 //로그인 성공하면 세션에 정보를 저장.
 		 HttpSession session = request.getSession();
-		 session.setAttribute("loginUser", dto);
-		 session.setAttribute("loginName", dto.getName());
+		 session.setAttribute("emailId", dto);
+		 session.setAttribute("emailName", dto.getName());
 		 
-		return new ModelAndView("index.html", true);
+		return new ModelAndView("index.jsp", true);
 		 
 	 }
 	 
@@ -100,7 +109,7 @@ public class UserController implements Controller {
 		 
 		 
 		//redirect방식에서 어떻게 바꿔주지?
-		 request.getRequestDispatcher("index.html").forward(request, response);
+		 request.getRequestDispatcher("index.jsp").forward(request, response);
 	 }
 	
 	 /**
@@ -151,9 +160,6 @@ public class UserController implements Controller {
 		 else out.print("사용가능합니다.");
 		 
 	 }
-
-
-
 
 
 

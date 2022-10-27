@@ -34,5 +34,8 @@
     <orderEntry type="library" exported="" name="jstl1" level="project" />
     <orderEntry type="library" exported="" name="standard1" level="project" />
     <orderEntry type="library" exported="" name="json-lib-2.4-jdk15" level="project" />
+    <orderEntry type="library" exported="" name="cos" level="project" />
+    <orderEntry type="library" exported="" name="activation-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="javax.mail-1.6.2" level="project" />
   </component>
 </module>

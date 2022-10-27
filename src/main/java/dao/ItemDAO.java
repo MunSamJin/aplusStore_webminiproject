@@ -43,10 +43,10 @@ public interface ItemDAO {
      * */
 
     /**
-     * 상품 등록
+     * 상품 등록 - 악세서리
      * @param : itemDTO로 받아서 제품을 등록한다
      * */
-    void insertItem(ItemDTO itemDTO);
+    int insertItemByAcc(ItemDTO itemDTO);
 
     /**
      * 상품 삭제

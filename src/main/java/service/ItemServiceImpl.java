@@ -38,10 +38,30 @@ public class ItemServiceImpl implements ItemService{
         return list;
     }
 
+
     @Override
-    public void insertItem(ItemDTO itemDTO) {
+    public void insertItemByAcc(ItemDTO itemDTO) throws SQLException {
+        System.out.println("Service Acc insert 시작");
+        int re = dao.insertItemByAcc(itemDTO);
+        System.out.println("acc insert service"+re);
+    }
+
+    @Override
+    public void insertItemByAirpods(ItemDTO itemDTO) throws SQLException {
+        System.out.println("service watch insert 시작");
+        
+    }
+
+    @Override
+    public void insertItemByIphone(ItemDTO itemDTO) throws SQLException {
 
     }
+
+    @Override
+    public void insertItemByWatch(ItemDTO itemDTO) throws SQLException {
+
+    }
+
 
     @Override
     public int deleteItem(ItemDTO modelName)  {

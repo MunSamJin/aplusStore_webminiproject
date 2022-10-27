@@ -3,17 +3,19 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dto.OrderDTO;
+import dto.OrderDetailDTO;
+import net.sf.json.JSONArray;
 import service.OrderService;
 import service.OrderServiceImpl;
 
 public class OrderController implements AjaxController {
-
 	OrderService orderService = new OrderServiceImpl();
 	
 	@Override
@@ -113,12 +115,35 @@ public class OrderController implements AjaxController {
 					new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, 0);
 				
 			
-			//OrderService 호출
+			//OrderService 호출 - 주문테이블에 등록하기
 			int result = orderService.insert(dto);
 			
 			PrintWriter out = response.getWriter();
 			out.print(result);
-
+			
+			//OrderService 호출 - 주문내역 메일 보내기
+			//orderService.sendEmail(dto);
 	}
 
+	
+	/**
+	 * 주문상세내역조회
+	 * @throws SQLException 
+	 * */
+	public void getOrders(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		response.setContentType("text/html;charset=UTF-8");   
+		
+		String orderNum = request.getParameter("orderNum");
+		System.out.println("확인= "+orderNum);
+		
+		
+		List<OrderDetailDTO> list = orderService.getOrders(orderNum);
+		JSONArray arr = JSONArray.fromObject(list);
+		
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+
+	}
+	
 }

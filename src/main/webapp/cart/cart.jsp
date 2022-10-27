@@ -94,6 +94,13 @@
 						}
 						
 						
+<<<<<<< HEAD
+=======
+						//품절 여부
+						//if()
+						//$("#soldOut").css("display:block");
+						
+>>>>>>> merge221027-2
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
 					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
