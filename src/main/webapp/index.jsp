@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="css/ionicons.min.css">
     <!-- Resource style -->
     <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    
+   
 </head>
 <body>
 <jsp:include page="common/header.jsp"/>

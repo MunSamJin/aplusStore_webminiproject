@@ -1,7 +1,7 @@
 package dto;
 
 public class OrderDTO {
-	private String orderNum; //주문번호
+	private int orderNum; //주문번호
 	private String memberGuest; //비회원
 	private String orderName; //주문자 이름
 	private String realAddr; //주문자 주소
@@ -35,7 +35,7 @@ public class OrderDTO {
 	}
 
 
-	public OrderDTO(String orderNum, String memberGuest, String orderName, String realAddr, String orderState,
+	public OrderDTO(int orderNum, String memberGuest, String orderName, String realAddr, String orderState,
 			String realEmail, String orderPhone, int totalPrice) {
 		super();
 		this.orderNum = orderNum;
@@ -104,11 +104,11 @@ public class OrderDTO {
 		this.orderState = orderState;
 	}
 
-	public String getOrderNum() {
+	public int getOrderNum() {
 		return orderNum;
 	}
 
-	public void setOrderNum(String orderNum) {
+	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
 	}
 

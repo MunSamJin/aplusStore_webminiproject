@@ -1,10 +1,13 @@
 package service;
 
 import java.sql.SQLException;
+import java.util.List;
 
-
+import dao.CartDAO;
+import dao.CartDAOImpl;
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
+import dto.ItemDTO;
 import dto.OrderDTO;
 import mail.Mail;
 
@@ -13,6 +16,9 @@ import mail.Mail;
 public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO = new OrderDAOImpl();
 
+	/**
+	 *  주문테이블에 주문내역 등록하기
+	 */
 	@Override
 	public int insert(OrderDTO dto) throws SQLException {
 		//orderDAO호출 - 주문 테이블에 등록하기
@@ -29,6 +35,18 @@ public class OrderServiceImpl implements OrderService {
 		//mail.mailSend(mailId,dto);
 		
 		return orderNum;
+	}
+	
+	/**
+	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
+	 */
+	@Override
+	public List<ItemDTO> cartMenuSelect(String emailId) throws SQLException {
+		List<ItemDTO> list = orderDAO.cartMenuSelect(emailId);
+		
+		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
+		
+		return list;
 	}
 
 
