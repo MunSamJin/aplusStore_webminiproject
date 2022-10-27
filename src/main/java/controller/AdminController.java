@@ -17,15 +17,14 @@ import service.AdminService;
 import service.AdminServiceImpl;
 import net.sf.json.JSONArray;
 
-public class AdminController implements Controller {
+public class AdminController implements AjaxController {
 	private AdminService service= new AdminServiceImpl();
-	
+
 	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {		
-		return null;
+	public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 	}
-	
+
 	/**
 	 * 판매통계를 조회하는 기능 (Chart.js, jqGrid) 
 	 * @return : 주문테이블 전체컬럼 가져와서 조회하기
