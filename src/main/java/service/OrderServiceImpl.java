@@ -25,8 +25,8 @@ public class OrderServiceImpl implements OrderService {
 		String mailId = dto.getRealEmail();
 		System.out.println("mailId"+mailId);
 		
-		Mail mail = new Mail();
-		mail.mailSend(mailId,dto);
+		//Mail mail = new Mail();
+		//mail.mailSend(mailId,dto);
 		
 		return orderNum;
 	}

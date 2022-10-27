@@ -79,8 +79,8 @@
 						
 						
 						//품절 여부
-						if()
-						$("#soldOut").css("display:block");
+						//if()
+						//$("#soldOut").css("display:block");
 						
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
