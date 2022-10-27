@@ -22,7 +22,6 @@
 <body>
 <jsp:include page="common/header.jsp"/>
     <!-- /.container-fluid -->
-
     <div class="main app form" id="main"><!-- Main Section-->
         <div class="hero-section">
             <div class="container nopadding">

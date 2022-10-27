@@ -31,7 +31,6 @@
 <!--    <Context path="/">-->
 
 
-<<<<<<< HEAD
 
      <!-- DBCP기술 연결 -->
    <Resource name="jdbc/myoracle" auth="Container"
@@ -40,14 +39,8 @@
               username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
               maxWaitMillis="-1"/>
   
-=======
-    <!-- DBCP기술 연결 -->
-    <Resource name="jdbc/myoracle" auth="Container"
-             type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-            url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/Edu/AplusWallet/Wallet_kosta"
-              username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>             
-   
+
+
    <!-- DBCP 기술 적용하기 -->
 <!--     <Resource name="jdbc/myoracle"
     		  auth="Container"
@@ -59,5 +52,5 @@
               maxTotal="20"
               maxIdle="10"
               maxWaitMillis="-1"/>-->
->>>>>>> new_ran
+
 </Context>
