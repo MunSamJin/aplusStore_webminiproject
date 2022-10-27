@@ -16,11 +16,7 @@
                 <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
 
-<<<<<<< HEAD
 
-
-=======
->>>>>>> error-fixing
                         <li><a class="page-scroll" href="store/storeMain.html">Store</a></li>
                         <li><a class="page-scroll" href="${path}/items/iphoneIndex.jsp">iPhone</a></li>
                         <li><a class="page-scroll" href="${path}/items/watchIndex.jsp">Watch</a></li>
@@ -40,11 +36,5 @@
                 </div>
             </div>
         </nav>
-<<<<<<< HEAD
-        <!-- /.navbar-collapse -->
- 
-=======
-        <!— /.navbar-collapse —>
     </div>
 </div>
->>>>>>> error-fixing

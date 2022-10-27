@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.UserDAO;
 import dao.UserDAOImpl;
 import dto.UserDTO;
-import email.MailTest;
+//import email.MailTest;
 import service.UserService;
 import service.UserServiceImpl;
 
