@@ -57,8 +57,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public List<AdminDTO> searchByOrderNum(String orderNum, String realEmail) throws SQLException {
-		List<AdminDTO> list = adminDAO.searchByOrderNum(orderNum, realEmail);
+	public List<AdminDetailDTO> searchByOrderNum(String orderNum, String realEmail) throws SQLException {
+		List<AdminDetailDTO> list = adminDAO.searchByOrderNum(orderNum, realEmail);
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}

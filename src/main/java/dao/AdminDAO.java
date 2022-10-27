@@ -40,7 +40,7 @@ public interface AdminDAO {
 	/**
 	 * 해당하는 레코드 검색
 	 * */
-	List<AdminDTO> searchByOrderNum(String orderNum, String realEmail);
+	List<AdminDetailDTO> searchByOrderNum(String orderNum, String realEmail);
 	
 	/**
 	 * 주문상세페이지 조회

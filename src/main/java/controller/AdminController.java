@@ -125,9 +125,9 @@ public class AdminController implements Controller {
 		String orderNum = request.getParameter("orderNum");
 		String realEmail = request.getParameter("realEmail");
 		
-		System.out.println("확인= "+orderNum+","+realEmail);
+		System.out.println("controller_searchByOrderNum확인= "+orderNum+","+realEmail);
 		
-		List<AdminDTO> list = service.searchByOrderNum(orderNum, realEmail);
+		List<AdminDetailDTO> list = service.searchByOrderNum(orderNum, realEmail);
 		
 		JSONArray arr = JSONArray.fromObject(list);
 		

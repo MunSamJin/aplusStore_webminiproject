@@ -94,27 +94,36 @@ public class AdminDAOImpl implements AdminDAO {
 	 * */
 	
 	@Override
-	public List<AdminDTO> searchByOrderNum(String orderNum, String realEmail) {
+	public List<AdminDetailDTO> searchByOrderNum(String orderNum, String realEmail) {
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
-		List<AdminDTO> list = new ArrayList<AdminDTO>();
+		List<AdminDetailDTO> list = new ArrayList<AdminDetailDTO>();
 		
-		String sql = "select  d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
 				+ "from a_orders o join order_detail d on (o.order_num = d.order_num) "
-				+ "where o.order_num =? and o.order_mail=?";
+				+ "where o.order_num ='3' and o.order_mail='orchid59@naver.com'";
+				//+"where o.order_num=? and o.order_mail=?";
+				//+ "where o.order_num =? "; 
+				// + "where o.order_mail=?";
 		
+		System.out.println("orderNum=|" + orderNum +"," + realEmail+"|");
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
-			
-			ps.setString(1, orderNum);
-			ps.setString(2, realEmail);	
+			System.out.println("sql = " + sql);
+			//ps.setString(1, orderNum);
+			//ps.setString(2, realEmail.trim());	
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				list.add(new AdminDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), 
-						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9)));		
+				System.out.println("----------");
+				AdminDTO adminDTO = new AdminDTO(rs.getInt(6));
+				AdminDetailDTO detailDTO = new AdminDetailDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), adminDTO);	
+				
+				//detailDTO.setAdminDTO(adminDTO);
+				
+				list.add(detailDTO);
 			}
 			
 			System.out.println("daoImpl_orderNum/realEmail = "+orderNum+","+realEmail);
@@ -181,7 +190,8 @@ public class AdminDAOImpl implements AdminDAO {
 		
 		List<AdminDetailDTO> list = new ArrayList<AdminDetailDTO>();
 		
-		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price from a_orders o join order_detail d on (o.order_num = d.order_num) where o.order_num=?"; 
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
+				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=?"; 
 		
 		try {
 			con = DbUtil.getConnection();
@@ -190,7 +200,11 @@ public class AdminDAOImpl implements AdminDAO {
 			ps.setString(1, orderNum);
 			rs = ps.executeQuery();
 			
-			while(rs.next()) {
+			System.out.println("DAO_detailList sql = "+sql);
+			
+			if(rs.next()) {
+
+				System.out.println("--------------");
 				AdminDTO adminDTO = new AdminDTO(rs.getInt(6));
 				AdminDetailDTO detailDTO = new AdminDetailDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5), adminDTO);	
 				

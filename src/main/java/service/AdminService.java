@@ -43,7 +43,7 @@ public interface AdminService {
 	/**
 	 * 해당하는 레코드 검색
 	 * */
-	public List<AdminDTO> searchByOrderNum(String orderNum, String realEmail) throws SQLException;
+	public List<AdminDetailDTO> searchByOrderNum(String orderNum, String realEmail) throws SQLException;
 	
 	
 	/**
