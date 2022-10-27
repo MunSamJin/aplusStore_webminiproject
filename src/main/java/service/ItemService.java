@@ -40,10 +40,34 @@ public interface ItemService {
      * */
 
     /**
-     * 상품 등록
+     * 상품 등록 - 악세서리
      * @param : itemDTO로 받아서 제품을 등록한다
      * */
-     public void insertItem(ItemDTO itemDTO)throws SQLException;
+     public void insertItemByAcc(ItemDTO itemDTO)throws SQLException;
+
+
+
+    /**
+     * 상품 등록 - 에어팟
+     * @param : itemDTO로 받아서 제품을 등록한다
+     * */
+    public void insertItemByAirpods(ItemDTO itemDTO)throws SQLException;
+
+
+    /**
+     * 상품 등록 - iphone
+     * @param : itemDTO로 받아서 제품을 등록한다
+     * */
+    public void insertItemByIphone(ItemDTO itemDTO)throws SQLException;
+
+
+    /**
+     * 상품 등록 - watch
+     * @param : itemDTO로 받아서 제품을 등록한다
+     * */
+    public void insertItemByWatch(ItemDTO itemDTO)throws SQLException;
+
+
 
     /**
      * 상품 삭제

@@ -14,6 +14,25 @@ public class ItemDTO {
     public ItemDTO() {
     }
 
+    //악세서리 등록을 위해서 사용
+
+    public ItemDTO(String modelName, int modelPrice, String modelOption, String modelColor, String modelGPS, int modelStock) {
+        this.modelName = modelName;
+        this.modelPrice = modelPrice;
+        this.modelOption = modelOption;
+        this.modelColor = modelColor;
+        this.modelGPS = modelGPS;
+        this.modelStock = modelStock;
+    }
+
+    public ItemDTO(String modelName, int modelPrice, String modelColor, String modelGPS, int modelStock) {
+        this.modelName = modelName;
+        this.modelPrice = modelPrice;
+        this.modelColor = modelColor;
+        this.modelGPS = modelGPS;
+        this.modelStock = modelStock;
+    }
+
     public ItemDTO(int modelNum, String category, String modelName, int modelPrice, String modelOption, String modelColor, String modelGPS, int modelStock, String modelRegDate) {
         this.modelNum = modelNum;
         this.category = category;

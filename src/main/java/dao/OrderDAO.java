@@ -21,5 +21,6 @@ public interface OrderDAO {
 	 *  결제 시 상품 테이블에서 상품재고 감소
 	 */
 	int decreaseByModelStock(String modelStock) throws SQLException;
+
 	
 }

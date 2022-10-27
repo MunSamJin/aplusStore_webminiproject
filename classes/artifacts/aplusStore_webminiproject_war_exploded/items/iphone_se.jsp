@@ -61,11 +61,23 @@
             $("input[type=radio][name=color]").click(function () {
                 let c = $(this).val();
 
+<<<<<<< HEAD
                 if(c =="midnight"){
                     $("#mainImg").attr("src","../images/iphone-se-main_midnight.jpeg");
 
                 }else if(c =="starlight"){
                     $("#mainImg").attr("src","../images/iphone-se-main_starlight.jpeg");
+=======
+                $("#cart").click(function () {
+                    let modelName = "_"+
+                        color.options[color.selectedIndex].value+"_"+
+                        storage.options[storage.selectedIndex].value;
+					//test 경로
+                    location.href ="${path}/front?key=cart&methodName=insert&emailId=sikkk@naver.com&modelName=se"+modelName;
+
+
+                });
+>>>>>>> basic_setting
 
                 }else if(c =="red"){
                     $("#mainImg").attr("src","../images/iphone-se-main_red.jpeg");

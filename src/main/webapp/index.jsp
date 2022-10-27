@@ -20,6 +20,7 @@
 <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 </head>
 <body>
+<<<<<<< HEAD
 <jsp:include page="/common/header.jsp"/>
     <!-- /.navbar-collapse --> 
   </div>
@@ -42,6 +43,29 @@
               <!-- subscribe message -->
         <div id="mesaj"></div>
         <!-- subscribe message --> 
+=======
+<jsp:include page="common/header.jsp"/>
+    <!-- /.container-fluid -->
+    <div class="main app form" id="main"><!-- Main Section-->
+        <div class="hero-section">
+            <div class="container nopadding">
+                <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="images/app-signup.png" alt="App" /> </div>
+                <div class="col-md-7">
+                    <div class="hero-content">
+                        <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to Aplus Store!</h1>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
+                        <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
+                            <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
+                                <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
+                                <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
+                            </form>
+                            <!-- subscribe message -->
+                            <div id="mesaj"></div>
+                            <!-- subscribe message -->
+                        </div>
+                    </div>
+                </div>
+>>>>>>> error-fixing
             </div>
           </div>
         </div>
@@ -327,10 +351,19 @@
   </div>
   <!-- Main Section --> 
 </div>
+<<<<<<< HEAD
 <!-- Wrapper--> 
 
 <!-- Jquery and Js Plugins --> 
 <script type="text/javascript" src="js/jquery-2.1.1.js"></script> 
+=======
+<!-- Main Section -->
+</div>
+<!— Wrapper—>
+
+<!— Jquery and Js Plugins —>
+<script type="text/javascript" src="js/jquery-2.1.1.js"></script>
+>>>>>>> error-fixing
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="js/plugins.js"></script> 

@@ -18,6 +18,8 @@ public class CartDAOImpl implements CartDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
+		
+		String category = null;
 		String modelNum = null;
 		int modelPrice = 0;
 		int result = 0;
@@ -31,9 +33,10 @@ public class CartDAOImpl implements CartDAO {
 			
 			if(rs.next()) {
 				modelNum = rs.getString(1);
+				category = rs.getString(2);
 				modelPrice = rs.getInt(4);
 				
-				result = insert(con, modelNum, modelName, emailId, modelPrice);
+				result = insert(con, category, modelNum, modelName, emailId, modelPrice);
 			}
 			
 		} finally {
@@ -44,17 +47,18 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 	//insert
-	public int insert(Connection con, String modelNum, String modelName, String emailId, int modelPrice) throws SQLException {
+	public int insert(Connection con, String category, String modelNum, String modelName, String emailId, int modelPrice) throws SQLException {
 		PreparedStatement ps = null;
-		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, 1)";
+		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, ?, 1)";
 		int result = 0;
 		
 		try {
 			ps = con.prepareStatement(sql);
-			ps.setString(1, modelNum);
-			ps.setString(2, modelName);
-			ps.setString(3, emailId);
-			ps.setInt(4, modelPrice);
+			ps.setString(1, category);
+			ps.setString(2, modelNum);
+			ps.setString(3, modelName);
+			ps.setString(4, emailId);
+			ps.setInt(5, modelPrice);
 			
 			result = ps.executeUpdate();
 			
@@ -82,7 +86,7 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6));
+				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
 				System.out.println("dao overlap find");
 			}
 			
@@ -155,7 +159,7 @@ public class CartDAOImpl implements CartDAO {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5), rs.getInt(6)));
+				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
 				
 			}
 			

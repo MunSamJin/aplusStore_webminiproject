@@ -46,7 +46,7 @@ public class OrderDAOImpl implements OrderDAO {
 			if(result == 0) {
 				con.rollback();
 				throw new SQLException("등록할 수 없습니다.");
-			}//else {
+			}else {
 			 //	int re [] = orderDetailInsert(con, dto);
 			 //	for(int i : re) {
 			 //		if(i != 1) {
@@ -57,14 +57,14 @@ public class OrderDAOImpl implements OrderDAO {
 			//장바구니 비우기
 			//상품재고 감소
 				
-			 //	con.commit();
-			//}
-			
+			 //con.commit();
+				
+			}
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
 		
-		//System.out.println("DAO result" + result);
+		System.out.println("DAO result" + result);
 		return result;	
 	}
 	
@@ -115,5 +115,8 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		return 0;
 	}
+	
 
 }
+
+

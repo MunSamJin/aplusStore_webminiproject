@@ -13,17 +13,17 @@ import util.DbUtil;
 
 public class AnserDAOImpl implements AnserDAO {
 
-	//´äº¯ µî·Ï
+	//ï¿½äº¯ ï¿½ï¿½ï¿½
 	@Override
 	public int insert(AnserDTO anserDTO) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql= proFile.getProperty("Anser.insert");
+//		String sql= proFile.getProperty("Anser.insert");
 		//insert into answer values(?,?,?,sysdate);
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
+//			ps = con.prepareStatement(sql);
 			ps.setString(1, anserDTO.getaNum());
 			ps.setString(2, anserDTO.getqNum());
 			ps.setString(3, anserDTO.getaContent());
@@ -35,18 +35,18 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-	//´äº¯¹øÈ£¿¡ ÇØ´çÇÏ´Â ´äº¯ »èÁ¦
+	//ï¿½äº¯ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public int delete(String aNum) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
 		
-		//delete from answer(Å×ÀÌºí¸í) where qNum=?;
-		String sql= proFile.getProperty("Anser.delete");
+		//delete from answer(ï¿½ï¿½ï¿½Ìºï¿½ï¿½) where qNum=?;
+//		String sql= proFile.getProperty("Anser.delete");
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
+//			ps = con.prepareStatement(sql);
 
 			ps.setString(1, aNum);
 			
@@ -57,7 +57,7 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-	//´äº¯¹øÈ£¿¡ ÇØ´çÇÏ´Â ´äº¯ ¼öÁ¤
+	//ï¿½äº¯ï¿½ï¿½È£ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ ï¿½äº¯ ï¿½ï¿½ï¿½ï¿½
 	@Override
 	public int update(AnserDTO anserDTO) throws SQLException {
 		PreparedStatement ps = null;
@@ -68,7 +68,7 @@ public class AnserDAOImpl implements AnserDAO {
 		   //QNA.update= update QnaDTO set qNum=?, qSubject=?, qContent=?;
 		   ps = con.prepareStatement("update QnaDTO set qNum=?, qSubject=?, qContent=?");
 		   
-		   ps = con.prepareStatement(sql);
+//		   ps = con.prepareStatement(sql);
 		   ps.setString(1, anserDTO.getaNum());
 		   ps.setString(2, anserDTO.getqNum());
 			ps.setString(3, anserDTO.getaContent());
@@ -90,11 +90,11 @@ public class AnserDAOImpl implements AnserDAO {
 		ResultSet rs=null;
 		AnserDTO anserDTO = null;
 		
-		String sql= proFile.getProperty("Anser.selectBymodelNum");
+//		String sql= proFile.getProperty("Anser.selectBymodelNum");
 		//select * from Electronics where model_num=?
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
+//			ps = con.prepareStatement(sql);
 			ps.setString(1, qNum);
 			
 			rs = ps.executeQuery();
