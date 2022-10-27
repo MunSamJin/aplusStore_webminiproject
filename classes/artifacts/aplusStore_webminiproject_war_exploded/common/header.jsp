@@ -20,9 +20,9 @@
                         <li><a class="page-scroll" href="${path}/items/watchIndex.jsp">Watch</a></li>
                         <li><a class="page-scroll" href="${path}/items/ariPodIndex.jsp">AirPods</a></li>
                         <li><a class="page-scroll" href="${path}/items/accIndex.jsp">액세서리</a></li>
-                        <li><a class="page-scroll" href="#contact">고객지원</a></li>
-                        <li><a class="page-scroll" href="${path}/user/login.html">로그인</a></li>
-                        <li><a class="page-scroll" href="#contact">장바구니</a></li>
+                        <li><a class="page-scroll" href="${path}/qna/qnaMain.html">고객지원</a></li>
+                        <li><a class="page-scroll" href="${path}/user/login.jsp">로그인</a></li>
+                        <li><a class="page-scroll" href="${path}/cart/cart.jsp">장바구니</a></li>
                         <li><a class="page-scroll" href="#contact">배송조회</a></li>
                         <li><a class="page-scroll" href="${path}/items/search.jsp">
                             <img src="${path}/images/search_icon.png" height="20px">
@@ -32,6 +32,6 @@
                 </div>
             </div>
         </nav>
-        <!-- /.navbar-collapse -->
+        <!— /.navbar-collapse —>
     </div>
 </div>

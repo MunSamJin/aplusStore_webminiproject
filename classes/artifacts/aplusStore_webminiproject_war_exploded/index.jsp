@@ -22,7 +22,6 @@
 <body>
 <jsp:include page="common/header.jsp"/>
     <!-- /.container-fluid -->
-
     <div class="main app form" id="main"><!-- Main Section-->
         <div class="hero-section">
             <div class="container nopadding">
@@ -326,9 +325,9 @@
 </div>
 <!-- Main Section -->
 </div>
-<!-- Wrapper-->
+<!— Wrapper—>
 
-<!-- Jquery and Js Plugins -->
+<!— Jquery and Js Plugins —>
 <script type="text/javascript" src="js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 

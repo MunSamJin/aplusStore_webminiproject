@@ -1,0 +1,55 @@
+@charset "UTF-8";
+/* orderMainCss */
+			#memberGuest{text-align: center; margin-top: 100px;}
+			#guest{background-Color: #1263CE; border-radius: 10px; border: 1px;
+					font-size: 15px; color: white; width: 70%; height: 50px; cursor: pointer;}
+			#memberId{width: 70%; height: 30px; border-radius: 5px; border: 1px solid gray;	font-size: 15px;}
+						
+			#choice{margin-left: auto; margin-top: 100px; margin-right: auto; width: 80%; text-align: center;}
+			#deliver{width: 250px; height: 65px;  font-size: 20px; cursor: pointer;
+					border-radius: 5px; border: 1px solid gray; background-color: white;}
+			#pickup{width: 250px; height: 65px; font-size: 20px; cursor: pointer;
+					border-radius: 5px; border: 1px solid gray; background-color: white;}
+					
+			#orderInfo{margin-left:auto; margin-top: 100px; margin-right: auto; width: 80%;}
+			#orderInfo > tbody > tr > td:nth-child(1){width: 40%}
+			#orderInfoDetail{margin-left:auto;margin-right: auto; width: 80%}
+			#pageMoveDiv{margin-left: auto; margin-right: auto; }
+			
+			#deliverName{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#postcode{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#address{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#detailAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#extraAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#orderEmail{width: 50%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			select{width: 35%; height: 40px; border-radius: 10px; border: 1px solid gray; text-align: left;} 
+			#orderPhone{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			
+			#pageMove{width: 200px; height: 40px; cursor: pointer; font-size: 15px; color: white;
+						background-Color: #1263CE; border-radius: 10px; border: 1px; text-align: center;}
+			
+						
+			#cardInfo{margin-left: auto; margin-right: auto; width: 40%;
+						padding: 20px 20px 20px 20px;
+						border: 10px solid #F5F5F5; }
+			.cardNum{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
+			.cardPwd{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
+			.birth{width: 71px; height: 40px; text-align: center; border-radius: 10px; border: 1px solid gray;}
+
+			
+/* pickupCss */
+			#pickupInfo{margin-left:auto; margin-top: 50px; margin-right: auto; width: 80%;}
+			#pickupName{width: 30%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#postcode{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#address{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#detailAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			#extraAddress{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+			/* #pickupEmail{width: 50%; height: 40px; border-radius: 10px; border: 1px solid gray;} */
+			select{width: 35%; height: 40px; border-radius: 10px; border: 1px solid gray; text-align: left;} 
+			/*#pickupPhone{width: 90%; height: 40px; border-radius: 10px; border: 1px solid gray;}
+ 			 #pageMove{width: 90%; height: 40px; cursor: pointer; font-size: 15px; color: white;
+			 			background-Color: #1263CE; border-radius: 10px; border: 1px;} */
+			.center{font-weight: bold; color: gray; background-color: white; 
+					border: 1px solid gray; border-radius: 15px; font-size: 10px;}			
+			
+			

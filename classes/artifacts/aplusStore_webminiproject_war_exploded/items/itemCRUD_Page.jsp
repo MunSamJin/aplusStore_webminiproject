@@ -127,7 +127,8 @@
                         <p/><p/>
 
                         <div hidden id="watch">
-                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm">
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=InsertItemByAcc" method="post" name="crudForm"
+                                  enctype="multipart/form-data">
                                 애플 워치 모델 등록하기<p/>
                                 Model Name : <input class="mail" type="text" name="modelName" placeholder="⌚️" autocomplete="off" ><p/><p/>
                                 Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
@@ -140,6 +141,7 @@
                             </select>
                                 <p/><p/>
                                 Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량(숫자)" autocomplete="off" ><p/><p/>
+                                Photo : <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
                                 <input class="submit-button" type="submit" value="등록하기" name="send">
                             </form>
                         </div>
@@ -159,30 +161,34 @@
                             </select>
                                 <p/><p/>
                                 Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량(숫자)" autocomplete="off" ><p/><p/>
-                                <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
+                                Photo : <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
                                 <input class="submit-button" type="submit" value="등록하기" name="send">
                             </form>
                         </div>
 
                         <div hidden id="airpods">
-                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm" >
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=InsertItemByAcc" method="post" name="crudForm"
+                                  enctype="multipart/form-data">
                                 에어팟 모델 등록하기<p/>
                                 Model Name : <input class="mail" type="text" name="modelName" placeholder="모델이름" autocomplete="off" ><p/><p/>
                                 Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
                                 Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
                                 Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량" autocomplete="off" ><p/><p/>
+                                Photo : <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
                                 <input class="submit-button" type="submit" value="등록하기" name="send">
                             </form>
                         </div>
 
                         <div hidden id="iphone">
-                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="crudForm" >
+                            <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=InsertItemByAcc" method="post" name="crudForm"
+                                  enctype="multipart/form-data">
                                 아이폰 모델 등록하기<p/>
                                 Model Name : <input class="mail" type="text" name="modelName" placeholder="모델이름" autocomplete="off" ><p/><p/>
                                 Price : <input class="mail" type="text" name="modelPrice" placeholder="가격" autocomplete="off" ><p/><p/>
                                 Storage : <input class="mail" type="text" name="modelOption" placeholder="iphone 용량"  autocomplete="off" ><p/><p/>
                                 Color : <input class="mail" type="text" name="modelColor" placeholder="🎨" autocomplete="off" ><p/><p/>
                                 Stock : <input class="mail" type="text" name="modelStock" placeholder="재고량" autocomplete="off" ><p/><p/>
+                                Photo : <input class="mail" type="file" name="file" maxlength="60" size="40"> 모델이름.jpeg 파일로 올려주세요
                                 <input class="submit-button" type="submit" value="등록하기" name="send">
                             </form>
                         </div>

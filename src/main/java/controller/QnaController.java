@@ -26,24 +26,24 @@ public class QnaController implements Controller{
 	}
 	
 	/**
-	 *  ÀüÃ¼°Ë»ö
+	 *  ï¿½ï¿½Ã¼ï¿½Ë»ï¿½
 	 * */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
 		List<QnaDTO> list = qnaService.selectAll();  
-		request.setAttribute("list", list);//ºä¿¡¼­ ${list}
+		request.setAttribute("list", list);//ï¿½ä¿¡ï¿½ï¿½ ${list}
 		
-		return new ModelAndView("elec/list.jsp"); //forward¹æ½ÄÀ¸·Î ÀÌµ¿
+		return new ModelAndView("elec/list.jsp"); //forwardï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	}
 	
 	/**
-	 * µî·ÏÇÏ±â
+	 * ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
 	 * */
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		//Àü¼ÛµÈ µ¥ÀÌÅÍ ¹Þ±â 
+		//ï¿½ï¿½ï¿½Ûµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ±ï¿½ 
 		String qNum = request.getParameter("q_num");
 		String category = request.getParameter("category");
 		String emailId = request.getParameter("email_id");
@@ -56,11 +56,11 @@ public class QnaController implements Controller{
 			new QnaDTO(qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits));
 		
 		qnaService.insert(qna);
-		return new ModelAndView("front", true);//key=elec&methodName=select ±âº»À¸·Î ¼³Á¤µÈ´Ù.	
+		return new ModelAndView("front", true);//key=elec&methodName=select ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½.	
 	}
 	
 	/**
-	 * »ó¼¼º¸±â 
+	 * ï¿½ó¼¼ºï¿½ï¿½ï¿½ 
 	 * */
 	public ModelAndView selectByModelNum(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
@@ -70,37 +70,37 @@ public class QnaController implements Controller{
 		 
 
 		 
-		 //µÎ¹øÂ° ÀÎ¼ö boolean Á¶È¸¼ö Áõ°¡¿©ºÎ¸¦ ÆÇ´ÜÇÒ ÀÎ¼ö(trueÀÌ¸é, falseÀÌ¸é Áõ°¡¾ÈÇÔ)
-		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, state);
-		request.setAttribute("qna", qnaDTO);
+		 //ï¿½Î¹ï¿½Â° ï¿½Î¼ï¿½ boolean ï¿½ï¿½È¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¸ï¿½ ï¿½Ç´ï¿½ï¿½ï¿½ ï¿½Î¼ï¿½(trueï¿½Ì¸ï¿½, falseï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+//		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, state);
+//		request.setAttribute("qna", qnaDTO);
 		
 		
-		return new ModelAndView("qna/read.jsp"); //forward¹æ½Ä 
+		return new ModelAndView("qna/read.jsp"); //forwardï¿½ï¿½ï¿½ 
 		
 	}
 	
 	
 	/**
-	 *  ¼öÁ¤Æû
+	 *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * */
 	public ModelAndView updateForm(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
 		String qNum = request.getParameter("qNum");
-		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, false);
+//		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, false);
 		
-		request.setAttribute("qna", qnaDTO);
+//		request.setAttribute("qna", qnaDTO);
 		//request.setAttribute("pageNo", pageNo);
 		
-		return new ModelAndView("elec/update.jsp");//forward¹æ½Ä
+		return new ModelAndView("elec/update.jsp");//forwardï¿½ï¿½ï¿½
 	}
 	
 	/**
-	 * ¼öÁ¤¿Ï·á
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ï·ï¿½
 	 * */
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-	   //¼öÁ¤ÇÒ Á¤º¸ 5°³ ¹Þ±â
+	   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 5ï¿½ï¿½ ï¿½Þ±ï¿½
 		String qNum = request.getParameter("qNum");
 		String category = request.getParameter("category");
 		String emailId = request.getParameter("emailId");
@@ -113,23 +113,23 @@ public class QnaController implements Controller{
 		
 		qnaService.update( new QnaDTO( qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits)));
 		
-		//¼öÁ¤ÀÌ ¿Ï·á°¡ µÈÈÄ..
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï·á°¡ ï¿½ï¿½ï¿½ï¿½..
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("front?key=elec&methodName=selectByQNum&qNum="+qNum+"&qNum="+qNum);
 	    mv.setRedirect(true);
 		return mv;
 	}
 	/**
-	 * »èÁ¦
+	 * ï¿½ï¿½ï¿½ï¿½
 	 * */
 	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		//Àü¼ÛµÇ´Â 2°³¹Þ±â
+		//ï¿½ï¿½ï¿½ÛµÇ´ï¿½ 2ï¿½ï¿½ï¿½Þ±ï¿½
 		String qNum = request.getParameter("qNum");
 		String emailId = request.getParameter("emailId");
 		
 		
-		qnaService.delete(qNum, emailId);
+//		qnaService.delete(qNum, emailId);
 		
 		return new ModelAndView("front", true);
 	}
