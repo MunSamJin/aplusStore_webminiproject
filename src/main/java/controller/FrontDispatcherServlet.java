@@ -2,6 +2,8 @@ package controller;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -11,14 +13,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dto.QnaDTO;
+
 /**
- * ¸ğµç »ç¿ëÀÚ ¿äÃ»À» Ã³¸®ÇÒ ÁøÀÔÁ¡ ControllerÀÇ ¿ªÇÒ
+ *ì‚¬ìš©ìì˜ ëª¨ë“  ìš”ì²­ì„ ì²˜ë¦¬í•  ì§„ì…ì  Controllerì´ë‹¤(FrontControllerì˜ ì—­í• í•œë‹¤)
  */
+
 @WebServlet(urlPatterns = "/front", loadOnStartup = 1)
 public class FrontDispatcherServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private Map<String, Controller> map;
 	private Map<String, Class<?>> clzMap;
+	
+	
 	
 	@Override
 		public void init() throws ServletException {
@@ -26,24 +33,20 @@ public class FrontDispatcherServlet extends HttpServlet {
 			
 			map = (Map<String, Controller>)application.getAttribute("map");
 			clzMap = (Map<String, Class<?>>)application.getAttribute("clzMap");
+
 		}
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String key = request.getParameter("key"); 
 		String methodName = request.getParameter("methodName");
-		
-		if(key==null || key.equals("")) {
-			key="elec";
-		}
-		
-		if(methodName==null || methodName.equals("")) {
-			methodName="select"; //
-		}
+		System.out.println("í”„ë¡ íŠ¸ ë””ìŠ¤íŒ¨ì³");
+
 		
 		System.out.println("key = " + key + ", methodName = " + methodName);
 		
 		try {
 			Controller con = map.get(key);
+			System.out.println(con);
 			Class<?> clz = clzMap.get(key);
 			Method method = clz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
 			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
@@ -57,8 +60,12 @@ public class FrontDispatcherServlet extends HttpServlet {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getCause().getMessage() );
+			request.setAttribute("errorMsg", e.getMessage() );
 			request.getRequestDispatcher("error/error.jsp").forward(request, response);
 		}
+		
 	}//serviceEnd
+
+	
+	
 }

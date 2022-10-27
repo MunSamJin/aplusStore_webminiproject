@@ -1,12 +1,10 @@
 package controller;
 
-/**
- * 각 Controller의 구현체들이 실행된 후 이동해야하는 페이지 정보와 
- * 이동방식에 대한 속성을 관리하는 객체
- */
+
+
 public class ModelAndView {
-	private String viewName; //뷰이름
-	private boolean isRedirect;//이동방식(true이면 redirect방식, false이면 forward방식)
+	private String viewName;
+	private boolean isRedirect;
 	
 	public ModelAndView() {}
 	

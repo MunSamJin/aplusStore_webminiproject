@@ -1,5 +1,6 @@
 package listener;
 
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -9,23 +10,28 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import controller.AjaxController;
 import controller.Controller;
 
 
 
-/**
- * 
- * ¼­¹ö°¡ startµÉ¶§ °¢°¢ÀÇ ControllerÀÇ ±¸ÇöÃ¼¸¦ ¹Ì¸® »ı¼ºÇØ¼­ MapÀúÀå 
- */
+
+
 @WebListener
 public class HandlerMappingListener implements ServletContextListener {
 
    
     public void contextInitialized(ServletContextEvent e)  { 
-        Map<String, Controller> map = new HashMap<String, Controller>();
-        Map<String, Class<?> > clzMap = new HashMap<String, Class<?>>();
-        
-        //~.propertiesÆÄÀÏ ·Îµù
+
+
+        Map<String, AjaxController> ajaxMap = new HashMap<String, AjaxController>();
+        Map<String, Class<?> > ajaxClzMap = new HashMap<String, Class<?>>();
+
+
+
+
+		System.out.println("HandlerMappingListener ì‹œì‘");
+
        ResourceBundle rb1 = ResourceBundle.getBundle("ajaxMapping"); //resources/ajaxMapping.properties
        ResourceBundle rb2 = ResourceBundle.getBundle("frontMapping"); //resources/frontMapping.properties
        
@@ -33,56 +39,56 @@ public class HandlerMappingListener implements ServletContextListener {
         	
 	        for(String key : rb1.keySet()) {
 	        	String value = rb1.getString(key);
-	        	//System.out.println(key +" = " + value );
+
+	        	System.out.println(key +" = " + value );
 	        	
-	        	//StringÀÇ ¹®ÀÚ¿­À» ControllerÀÇ °´Ã¼·Î »ı¼ºÇØ¾ßÇÑ´Ù!!!
-	        	//Class<?>´Â ¾î¶² °´Ã¼°¡ °¡Áö°í ÀÖ´Â ÇÊµå, »ı¼ºÀÚ, ¸Ş¼ÒµåÀÇ Á¤º¸¸¦ µ¿ÀûÀ¸·Î °¡Á®¿Ã¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â °´Ã¼ÀÌ´Ù - reflection °³³ä
-	    		//reflection °³³äÀº µ¿ÀûÀ¸·Î Áï ½ÇÇàµµÁß¿¡ ÇÊ¿äÇÑ °´Ã¼¸¦ ÀûÀıÇÏ°Ô »ı¼ºÇÏ°í ±× °´Ã¼°¡ °¡Áö°í ÀÖ´Â »ı¼ºÀÚ³ª ¸Ş¼Òµå¸¦ 
-	    		//µ¿ÀûÀ¸·Î È£ÃâÇØÁÙ¼ö ÀÖµµ·Ï ÇÏ´Â °³³äÀ» reflectionÀÌ¶ó°í ÇÏ°í ÀÚ¹Ù¿¡¼­ ÀÌ °³³äÀ» Àû¿ëÇØ ³õÀº API°¡ Class<?> ÀÌ´Ù.
-	
+
 	        	Class<?> className = Class.forName(value);
-	        	Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
-	        	
+	        	AjaxController controller = (AjaxController)className.getDeclaredConstructor().newInstance();
+
 	        	System.out.println("controller = " + controller);
-	        	
-	        	map.put(key, controller); 
-	        	clzMap.put(key, className);
+
+	        	ajaxMap.put(key, controller);
+	        	ajaxClzMap.put(key, className);
+
 	        }
+
+	        Map<String, Controller> map = new HashMap<String, Controller>();
+	        Map<String, Class<?> > clzMap = new HashMap<String, Class<?>>();
 	        
 	        for(String key : rb2.keySet()) {
 	        	String value = rb2.getString(key);
-	        	//System.out.println(key +" = " + value );
-	        	
-	        	//StringÀÇ ¹®ÀÚ¿­À» ControllerÀÇ °´Ã¼·Î »ı¼ºÇØ¾ßÇÑ´Ù!!!
-	        	//Class<?>´Â ¾î¶² °´Ã¼°¡ °¡Áö°í ÀÖ´Â ÇÊµå, »ı¼ºÀÚ, ¸Ş¼ÒµåÀÇ Á¤º¸¸¦ µ¿ÀûÀ¸·Î °¡Á®¿Ã¼ö ÀÖµµ·Ï µµ¿ÍÁÖ´Â °´Ã¼ÀÌ´Ù - reflection °³³ä
-	    		//reflection °³³äÀº µ¿ÀûÀ¸·Î Áï ½ÇÇàµµÁß¿¡ ÇÊ¿äÇÑ °´Ã¼¸¦ ÀûÀıÇÏ°Ô »ı¼ºÇÏ°í ±× °´Ã¼°¡ °¡Áö°í ÀÖ´Â »ı¼ºÀÚ³ª ¸Ş¼Òµå¸¦ 
-	    		//µ¿ÀûÀ¸·Î È£ÃâÇØÁÙ¼ö ÀÖµµ·Ï ÇÏ´Â °³³äÀ» reflectionÀÌ¶ó°í ÇÏ°í ÀÚ¹Ù¿¡¼­ ÀÌ °³³äÀ» Àû¿ëÇØ ³õÀº API°¡ Class<?> ÀÌ´Ù.
-	
+
+	        	System.out.println(key +" = " + value );
+
+
+
 	        	Class<?> className = Class.forName(value);
 	        	Controller controller = (Controller)className.getDeclaredConstructor().newInstance();
 	        	
-	        	System.out.println("controller = " + controller);
+	        	System.out.println("f controller = " + controller);
 	        	
-	        	map.put(key, controller); 
+	        	map.put(key, controller);
 	        	clzMap.put(key, className);
 	        }
+	        
+
+	        ServletContext application = e.getServletContext();
+	        application.setAttribute("ajaxMap", ajaxMap);
+	        application.setAttribute("ajaxClzMap", ajaxClzMap);
+
+	        application.setAttribute("map", map);
+	        application.setAttribute("clzMap", clzMap);
+
+
+	    	application.setAttribute("path", application.getContextPath() ); //${path}
 	        
         }catch (Exception ex) {
 			ex.printStackTrace();
 		}
-        
-        //¸ğµç ¿µ¿ª¿¡¼­ mapÀ» »ç¿ëÇÒ¼ö ÀÖµµ·Ï ServletContext¿µ¿ª¿¡ ÀúÀåÇÑ´Ù.
-        ServletContext application = e.getServletContext();
-        application.setAttribute("ajaxMap", map);
-        application.setAttribute("ajaxClzMap", clzMap);
-        
-    	application.setAttribute("map", map);
-    	application.setAttribute("path", application.getContextPath() ); //${path}
-       
-    }//¸Ş¼Òµå³¡
-    
-	
-}//classEnd
+
+    }
+}
 
 
 
