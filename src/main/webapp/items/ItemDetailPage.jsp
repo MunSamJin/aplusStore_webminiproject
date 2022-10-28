@@ -37,10 +37,7 @@
 
             $("#cart").click(function () {
 
-
-                //location.href = "${path}front?key=cart&methodName=insert&modelNum=${requestScope.itemDTO.modelName}";
-
-                location.href = "${path}/front?key=cart&methodName=insert&emailId=sikkk@naver.com&modelName=${requestScope.itemDTO.modelName}";
+                location.href = "${path}/front?key=cart&methodName=insert&modelName=${requestScope.itemDTO.modelName}";
 
             });
 

@@ -65,7 +65,7 @@
 <div class="split-features">
     <div class="col-md-6 nopadding">
         <div class="split-image">
-            <img class="img-responsive wow fadeIn" src="../images/airpod2nd_main.jpeg" alt="airpod 2세대 사진"
+            <img class="img-responsive wow fadeIn" src="${path}/images/airpod2nd_main.jpeg" alt="airpod 2세대 사진"
                                        style="height: 450px; border-radius: 20px"/> </div>
     </div>
     <div class="col-md-6 nopadding">

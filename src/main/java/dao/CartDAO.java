@@ -29,15 +29,15 @@ public interface CartDAO {
 	 * ȸ�� - ��ٱ��� ��ǰ ����
 	 * delete basket where email_id=? and model_num=?
 	 */
-	int delete(String cartNum) throws SQLException;
-
-
-
+	//int delete(String cartNum) throws SQLException;
+	int delete(String emailId, String modelName) throws SQLException;
+	
+	
 	/**
 	 * ȸ�� - ��ٱ��� ��ǰ ���� ����
 	 * update basket set model_count=? where cart_num=?
 	 */
-	int update(String cartNum, int modelCount) throws SQLException;
-
-
+	//int update(String cartNum, int modelCount) throws SQLException;
+	int update(String modelName, int modelCount) throws SQLException;
+	
 }
