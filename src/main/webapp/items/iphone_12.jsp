@@ -39,7 +39,7 @@
                 let color = $("input[type=radio][name=color]:checked").val();
                 let storage = $("input[type=radio][name=storage]:checked").val();
                 let modelName = model + "_" + color + "_" + storage;
-                location.href = "${path}/front?key=cart&methodName=insert&modelNum=" + modelName;
+                location.href = "${path}/front?key=cart&methodName=insert&modelName=" + modelName;
 
             });
 

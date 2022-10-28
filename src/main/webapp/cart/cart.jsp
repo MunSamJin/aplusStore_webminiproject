@@ -198,9 +198,10 @@
 			})
 
 
+			
 			//이미지 선택시 이동
 			$(document).on("click","img",function(){
-				//location.href("");
+				alert();
 
 			})
 			
