@@ -31,6 +31,21 @@
 
  .form .hero-section {background: #fff;}
  .nopadding {background: whitesmoke;}
+ .subscribe-form .mail {background-color: #fff;}
+ .app img {
+ 	width: 300px;
+ 	margin: 65px 140px;
+ };
+ .form .subscribe-form .submit-button {width: 320px;}
+ .form .hero-content p {margin: 0 0 15px 0;}
+ .form .hero-content {
+    padding: 100px 0 100px 20px;
+    overflow: hidden;
+}
+.form .subscribe-form .submit-button {
+    padding: 0 130px 0 130px;
+}
+
  
 </style>
 
@@ -134,7 +149,8 @@ $(function(){
                <input class="mail" type="hidden" name="methodName" value="searchByOrderNum"><br>  
               <input class="mail" type="text" name="orderNum" placeholder="주문번호" autocomplete="off" id="orderNum"><br>
               <p></p>          
-              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail">
+              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail"><br>
+              <p></p>     
               <input class="submit-button" type="button" value="조회하기" name="search" id="search">
              </form>
                  <!-- Scroll To Top --> 
@@ -148,6 +164,23 @@ $(function(){
 </div>
 <!-- Wrapper--> 
 
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-7">
+        	<img src="../images/logo1.png" width="80px"  alt="Image" />
+            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
+            <div class="footer-text">
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Contact Us</h1>
+            <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
+                © 2021 KOSTA All rights reserved. </p>
+        </div>
+    </div>
+</div>
 
 <!-- Jquery and Js Plugins --> 
 <script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
@@ -156,6 +189,8 @@ $(function(){
 <script type="text/javascript" src="../js/plugins.js"></script> 
 <script type="text/javascript" src="../js/menu.js"></script> 
 <script type="text/javascript" src="../js/custom.js"></script>
-<script src="../js/jquery.subscribe.js"></script> 
+<script src="../js/jquery.subscribe.js"></script>
+
+
 </body>
 </html>
