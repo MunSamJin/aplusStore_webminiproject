@@ -2,18 +2,20 @@ package mail;
 
 import java.util.Date;
 import java.util.Properties;
-
-
-import dto.OrderDTO;
-
-import javax.mail.*;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import dto.OrderDTO;
+ 
 public class Mail{
  
-   public static void mailSend(String mailId, OrderDTO dto) {
+    public static void mailSend(String mailId, OrderDTO dto) {
          
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
@@ -65,7 +67,6 @@ public class Mail{
     }
 }
  
-	
 class MyAuthentication extends Authenticator {
       
     PasswordAuthentication pa;
@@ -83,3 +84,4 @@ class MyAuthentication extends Authenticator {
         return pa;
     }
 }
+

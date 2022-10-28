@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import dto.CartDTO;
 import dto.OrderDTO;
-import dto.OrderDetailDTO;
 import net.sf.json.JSONArray;
 import service.OrderService;
 import service.OrderServiceImpl;
@@ -171,31 +170,5 @@ public class OrderController implements AjaxController {
 		//orderService.sendEmail(dto);
 
 	}
-	
-	/**
-	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
-	 * @throws SQLException 
-	 * */
-	public void getOrders(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException, SQLException {
-		response.setContentType("text/html;charset=UTF-8");   
-		
-		String orderNum = request.getParameter("orderNum");
-		String realEmail = request.getParameter("realEmail");
-		
-		System.out.println("controller_searchByOrderNum확인= "+orderNum+","+realEmail);
-		
-		List<OrderDetailDTO> list = orderService.getOrders(orderNum, realEmail);
-		
-		JSONArray arr = JSONArray.fromObject(list);
-		
-		System.out.println("컨트롤러쪽 arr 확인 : "+arr);
-		
-		PrintWriter out = response.getWriter();
-		out.print(arr);
-		
-		
-	}
-
 
 }

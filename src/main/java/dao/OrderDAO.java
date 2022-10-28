@@ -35,11 +35,11 @@ public interface OrderDAO {
 	
 
 	/**
-	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
+	 * 주문내역 검색
 	 * @throws SQLException 
 	 * */
-
-	List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
+	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
+	
 
 	/**
 	 * 주문테이블 등록하기
@@ -56,6 +56,5 @@ public interface OrderDAO {
 	 * 장바구니 비우기
 	 */
 	int basketDelete(Connection con, String emailId) throws SQLException;
-
 
 }
