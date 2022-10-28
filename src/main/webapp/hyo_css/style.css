@@ -747,7 +747,6 @@ font-family: Arial;
 input[type="text"],
 textarea,
 textarea.form-control {
-	height: 45px;
     margin: 0;
     padding: 0 20px;
     vertical-align: middle;
@@ -906,7 +905,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 }
 
 .app img {
-	margin: 0 auto;
+	margin: 20px auto;
 }
 
 
@@ -1100,7 +1099,7 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 
 .pitch {
-	padding: 40px 0 70px 0;
+	padding: 20px 0 70px 0;
 }
 
 .pitch-intro {
@@ -1149,7 +1148,6 @@ input[type="text"]::-webkit-input-placeholder, textarea::-webkit-input-placehold
 
 .pitch-content h1 {
 	font-size: 21px;
-	font-weight: 600;
 	line-height: 1.2;
 	letter-spacing: 0;
 	color: #454545;
@@ -1752,8 +1750,7 @@ padding: 120px 10px 50px 350px;
 
 
 .cta-sub {
-	padding-top: 50px;
-	padding-bottom: 200px;
+	padding: 80px 0 250px 0;
 	background: url(../images/appleOne.jpg) no-repeat center;
 	background-size: cover;
 }
@@ -1807,7 +1804,7 @@ padding: 120px 10px 50px 350px;
 .subscribe-form input {
   color: #222222;
   font-family: Open Sans;
-  padding: 0 60px 0 10px;
+  padding: 0 100px 0 10px;
   font-size: 0.9em;
 }
 
@@ -2049,11 +2046,11 @@ font-size: 12px;
 	}
 
 	.form .hero-section {
-		padding: 130px 0 30px 0;
+		padding: 120px 0 60px 0;
 	}
 
 	.form .hero-content {
-		padding: 100px 0 100px 0;
+		padding: 100px 0 90px 0;
 		overflow: hidden;
 	}
 
