@@ -1,7 +1,9 @@
 package dao;
 
+import dto.AnswerDTO;
 import dto.QuestionDTO;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -11,6 +13,10 @@ public interface QuestionDAO {
      * */
     List<QuestionDTO> selectAllByiphone() throws SQLException;
 
+    /**
+     * 질문 내용을 가져오는 메소드
+     * */
+    QuestionDTO readQuestion(int qNum) throws SQLException;
 
     /**
      * 질문 등록 하는 메소드
@@ -28,4 +34,9 @@ public interface QuestionDAO {
      * */
     int increamentByReadnum(String modelNum) throws SQLException;
 
+
+    /**
+     * 댓글 정보 조회 하기
+     * */
+    List<AnswerDTO> getAnswer(Connection con, int qNum) throws SQLException;
 }

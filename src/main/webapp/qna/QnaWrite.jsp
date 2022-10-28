@@ -135,7 +135,42 @@
         }
 
        </style>
+    <script type="text/javascript">
+            $(function(){
 
+            //전체검색
+            function readQuestion(){
+                $.ajax({
+                    url :"../ajax" , //서버요청주소
+                    type:"post", //요청방식(method방식 : get | post | put | delete )
+                    dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+                    data: {key:"q" , methodName : "readQuestion"}, //서버에게 보낼 데이터정보(parameter정보)
+                    success :function(arr){
+                        let str="";
+                        $.each(arr, function(index, item){
+                            str+=`<tr>`;
+                            str+=`<td><a href='#'>${"${item.qSubject}"}</a></td>`;
+                            str+=`<td>${"${item.eMail}"}</td>`;
+                            str+=`<td>${"${item.qDate}"}</td>`;
+                            str+=`<td>${"${item.qHits}"}</td>`;
+                            str+=`</tr>`;
+                        });
+
+                        $("#listTable tr:gt(0)").remove();
+                        $("#listTable tr:eq(0)").after(str);
+
+                    } , //성공했을때 실행할 함수
+                    error : function(err){
+                        alert(err+"에러 발생했어요.");
+                    }  //실패했을때 실행할 함수
+                });//ajax끝
+            }
+
+                readQuestion();
+        });
+
+    </script>
+    </script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -212,18 +247,7 @@
 
 
 <!-- Client Section -->
-<div class="client-section">
-    <div class="container text-center">
-        <div class="clients owl-carousel owl-theme">
-            <div class="single"><img src="../images/client_hg.png" alt="효경" height="50px"/></div>
-            <div class="single"><img src="../images/client_jy.png" alt="종영" height="50px"/></div>
-            <div class="single"><img src="../images/client_r.png" alt="란" height="50px"/></div>
-            <div class="single"><img src="../images/client_ys.png" alt="용식" height="50px"/></div>
-            <div class="single"><img src="../images/client_sj.png" alt="삼진" height="50px"/></div>
-            <div class="single"><img src="../images/client_sr.png" alt="세륜" height="50px"/></div>
-        </div>
-    </div>
-</div>
+
 
 <div class="feature-sub">
     <div class="container">

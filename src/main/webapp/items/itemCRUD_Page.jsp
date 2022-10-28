@@ -7,7 +7,7 @@
 <head>
     <meta charset="utf-8">
     <title>iLand Multipurpose Landing Page Template</title>
-<<<<<<< HEAD
+
     <link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
@@ -20,61 +20,33 @@
     <link rel="stylesheet" href="../css/owl.theme.css">
     <link rel="stylesheet" href="../css/ionicons.min.css">
     <style type="text/css">
-        #jong{
-            margin: 150px auto;
-        }
-        #add{
-=======
-    <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="iLand Multipurpose Landing Page Template">
-    <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-    <link href="${path}/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
-    <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
-          type="text/css">
-    <link rel="stylesheet" href="${path}/css/animate.css">
-    <!-- Resource style -->
-    <link rel="stylesheet" href="${path}/css/owl.carousel.css">
-    <link rel="stylesheet" href="${path}/css/owl.theme.css">
-    <link rel="stylesheet" href="${path}/css/ionicons.min.css">
-    <style type="text/css">
+
         #jong {
             margin: 150px auto;
         }
 
         #add {
->>>>>>> merge221027
+
             padding: 50px 0 100px 0;
             overflow: hidden;
         }
     </style>
     <!-- Resource style -->
-<<<<<<< HEAD
+
     <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
-=======
-    <link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
->>>>>>> merge221027
+
     <style>
         fieldset {
             border: 0;
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> merge221027
         label {
             display: block;
             margin: 30px 0 0 0;
         }
-<<<<<<< HEAD
-=======
 
->>>>>>> merge221027
-        .overflow {
-            height: 200px;
-        }
     </style>
-<<<<<<< HEAD
+
     <!-- Jquery and Js Plugins -->
     <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
     <script type="text/javascript" src="../js/bootstrap.min.js"></script>

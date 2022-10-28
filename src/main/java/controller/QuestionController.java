@@ -1,7 +1,6 @@
 package controller;
 
 import dto.QuestionDTO;
-import net.sf.json.JSONArray;
 import service.QuestionService;
 import service.QuestionServiceImpl;
 
@@ -9,29 +8,28 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.List;
 
-public class QuestionController implements AjaxController{
+public class QuestionController implements Controller{
     private QuestionService service = new QuestionServiceImpl();
-
     @Override
-    public void handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        return null;
     }
 
-    public void selectAllByiphone(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
-        response.setContentType("text/html;charset=UTF-8");
-        List<QuestionDTO> list = service.selectAllByiphone();
-
-        JSONArray arr = JSONArray.fromObject(list);
-
-        System.out.println(list);
-        System.out.println(arr);
-        PrintWriter out = response.getWriter();
-        out.print(arr);
+    public ModelAndView readQuestion(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String qNum = request.getParameter("qNum");
 
 
+        System.out.println("나야con = "+qNum);
+
+
+
+        QuestionDTO questionDTO = service.readQuestion(Integer.parseInt(qNum));
+
+        request.setAttribute("questionDTO",questionDTO);
+
+
+        return new ModelAndView("/qna/QnaRead.jsp");
     }
 }

@@ -14,6 +14,11 @@ public interface QuestionService {
 
 
     /**
+     * 질문 내용을 가져오는 메소드
+     * */
+    QuestionDTO readQuestion(int qNum) throws SQLException;
+
+    /**
      * 질문 등록 하는 메소드
      * */
     void insert(QuestionDTO questionDTO) throws SQLException;

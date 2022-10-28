@@ -19,6 +19,16 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
+    public QuestionDTO readQuestion(int qNum) throws SQLException {
+        System.out.println("read service 시작"+qNum);
+
+        QuestionDTO questionDTO = dao.readQuestion(qNum);
+        System.out.println("read service:"+questionDTO);
+
+        return questionDTO;
+    }
+
+    @Override
     public void insert(QuestionDTO questionDTO) throws SQLException {
 
     }

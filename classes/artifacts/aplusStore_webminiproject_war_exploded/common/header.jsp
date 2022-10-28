@@ -26,7 +26,7 @@
                         <li><a class="page-scroll" href="${path}/items/ariPodIndex.jsp">AirPods</a></li>
                         <li><a class="page-scroll" href="${path}/items/accIndex.jsp">액세서리</a></li>
 
-                        <li><a class="page-scroll" href="${path}/qna/qnaMain.html">고객지원</a></li>
+                        <li><a class="page-scroll" href="${path}/qna/QnaMain.jsp">고객지원</a></li>
                         
                         <c:choose>
                         <c:when test="${empty emailId}">

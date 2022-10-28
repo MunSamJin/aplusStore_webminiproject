@@ -109,8 +109,6 @@
             -moz-appearance: none;
             appearance: none;
 
-            background: var(--button-bg-color);
-            color: var(--button-color);
 
             margin: 0;
             padding: 0.5rem 1rem;
@@ -134,42 +132,9 @@
             transition: 0.5s;
         }
 
-       </style>
+    </style>
     <script type="text/javascript">
-            $(function(){
 
-            //전체검색
-            function readQuestion(){
-                $.ajax({
-                    url :"../ajax" , //서버요청주소
-                    type:"post", //요청방식(method방식 : get | post | put | delete )
-                    dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-                    data: {key:"q" , methodName : "readQuestion"}, //서버에게 보낼 데이터정보(parameter정보)
-                    success :function(arr){
-                        let str="";
-                        $.each(arr, function(index, item){
-                            str+=`<tr>`;
-                            str+=`<td><a href='#'>${"${item.qSubject}"}</a></td>`;
-                            str+=`<td>${"${item.eMail}"}</td>`;
-                            str+=`<td>${"${item.qDate}"}</td>`;
-                            str+=`<td>${"${item.qHits}"}</td>`;
-                            str+=`</tr>`;
-                        });
-
-                        $("#listTable tr:gt(0)").remove();
-                        $("#listTable tr:eq(0)").after(str);
-
-                    } , //성공했을때 실행할 함수
-                    error : function(err){
-                        alert(err+"에러 발생했어요.");
-                    }  //실패했을때 실행할 함수
-                });//ajax끝
-            }
-
-                readQuestion();
-        });
-
-    </script>
     </script>
 </head>
 <body>
@@ -185,8 +150,7 @@
                                        src="${path}/images/logo1.png" alt="App" id="admin"/></div>
             <div class="col-md-7">
                 <div class="hero-content">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.1s">궁금한 내용을 물어보세요.</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"> 궁금한 내용을 물어보세요. </p>
+                    <h1 class="wow fadeInUp" data-wow-delay="0.1s">작성 게시물 확인</h1>
                     <div  data-wow-delay="0.3s" id="add">
 
 
@@ -200,12 +164,8 @@
                                         <p align="right"><b><span style=" font-size:9pt;">Category</span></b></p>
                                     </td>
 
-                                    <td><select name="category" class="mail" id="category">
-                                        <option disabled selected>Category</option>
-                                        <option>iPhone</option>
-                                        <option>Watch</option>
-                                        <option>AirPods</option>
-                                    </select>
+                                    <td><input type="text" name="category" class="mail" id="category"
+                                               value="${requestScope.questionDTO.qCate}">
                                     </td>
                                 </tr>
 
@@ -214,14 +174,16 @@
                                         <p align="right"><b><span style="font-size:9pt;">제목</span></b></p>
                                     </td>
                                     <td width="450" height="20" ><b><span style="font-size:9pt;">
-		<input type=text name="subject" size="50"></span></b></td>
+		<input type=text name="subject" size="50" value="${requestScope.questionDTO.qSubject}"></span></b></td>
                                 </tr>
                                 <tr>
                                     <td width="150" height="20">
                                         <p align="right"><b><span style="font-size:9pt;">질문 내용</span></b></p>
                                     </td>
                                     <td width="450" height="20"><b><span style="font-size:9pt;">
-		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"></textarea></span></b></td>
+		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"
+                  value="${requestScope.questionDTO.qContent}"
+        ></textarea></span></b></td>
                                 </tr>
 
                                 <tr align="center">

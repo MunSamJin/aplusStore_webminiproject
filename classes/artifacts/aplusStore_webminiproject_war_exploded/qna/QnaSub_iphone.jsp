@@ -74,7 +74,7 @@
                         let str="";
                         $.each(arr, function(index, item){
                             str+=`<tr>`;
-                            str+=`<td><a href='#'>${"${item.qSubject}"}</a></td>`;
+                            str+=`<td><a href='../front?key=q&methodName=readQuestion&qNum=${"${item.qNum}"}'>${"${item.qSubject}"}</a></td>`;
                             str+=`<td>${"${item.eMail}"}</td>`;
                             str+=`<td>${"${item.qDate}"}</td>`;
                             str+=`<td>${"${item.qHits}"}</td>`;

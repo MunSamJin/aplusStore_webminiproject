@@ -1,5 +1,6 @@
 package dao;
 
+import dto.AnswerDTO;
 import dto.QuestionDTO;
 import util.DbUtil;
 
@@ -40,6 +41,74 @@ public class QuestionDAOImpl implements QuestionDAO{
             DbUtil.dbClose(con, ps, rs);
         }
         System.out.println("dao list"+list);
+        return list;
+    }
+
+    @Override
+    public QuestionDTO readQuestion(int qNum) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        QuestionDTO questionDTO = null;
+        String sql = "SELECT * FROM question WHERE q_num=?";
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+
+            ps.setInt(1, qNum);
+
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                questionDTO  = new QuestionDTO(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getInt(6),
+                        rs.getString(7));
+                questionDTO.setList(this.getAnswer(con,qNum));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        System.out.println("dao questionDTO"+questionDTO);
+        return questionDTO;
+    }
+
+    @Override
+    public List<AnswerDTO> getAnswer(Connection con, int qNum) throws SQLException {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        List<AnswerDTO> list = new ArrayList<AnswerDTO>();
+        String sql = "SELECT * FROM answer WHERE q_num=?";
+
+        try{
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, qNum);
+
+            rs = ps.executeQuery();
+
+            while (rs.next()){
+                AnswerDTO answerDTO = new AnswerDTO(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getInt(3),
+                        rs.getString(4)
+                );
+                list.add(answerDTO);
+            }
+
+        }finally {
+            DbUtil.dbClose(null, ps, rs);
+        }
+
         return list;
     }
 
