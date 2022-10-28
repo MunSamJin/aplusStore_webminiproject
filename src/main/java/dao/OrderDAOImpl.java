@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import dto.CartDTO;
 import dto.ItemDTO;
@@ -26,21 +28,17 @@ public class OrderDAOImpl implements OrderDAO {
 		ResultSet rs = null;
 
 		CartDTO cartDTO = null;
-		ItemDTO itemDTO = null;
-
+		
 		List<CartDTO> list = new ArrayList<CartDTO>();
-		String sql = "select b.model_num, i.model_name, b.model_count, i.model_price, i.model_stock "
-				+ "from basket b, items i "
-				+ "where b.model_num = i.model_num "
-				+ "and b.email_id=?";
+		String sql = "select model_num, model_name, model_count, model_price, model_stock from basket where email_id=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, emailId);
 			rs = ps.executeQuery();
 			while(rs.next() ) {
-				cartDTO = new CartDTO(rs.getString(1), rs.getInt(3));
-				itemDTO = new ItemDTO(rs.getString(2), rs.getInt(4),rs.getInt(5));
+				cartDTO = new CartDTO(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5));
+				
 				list.add(cartDTO);
 			}
 			
@@ -48,7 +46,7 @@ public class OrderDAOImpl implements OrderDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		
-		System.out.println("DAO list = " + list);
+		//System.out.println("DAO list = " + list);
 		return list;
 
 	}
@@ -59,12 +57,13 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 주문테이블 등록하기
 	 *
 	 * 동시에 주문상세테이블 등록, 장바구니 비우기, 상품재고 감소 시킨다.
+	 * @param emailId 
 	 * @return 0이면 주문 실패, 1이면 주문 성공
 	 */
 	@Override
 
-	public int orderInsert(OrderDTO dto, List<CartDTO> cartList) throws SQLException {
-		
+	public int orderInsert(OrderDTO dto, List<CartDTO> cartList, String emailId) throws SQLException {
+		System.out.println("orderInsert...외니...?");
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -74,6 +73,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 		try {
 			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
 			ps = con.prepareStatement(sql);
 
 			//?가 있다면 개수만큼 setXxx()필요
@@ -94,15 +94,17 @@ public class OrderDAOImpl implements OrderDAO {
 
 			 	int re [] = orderDetailInsert(con, cartList);
 			 	for(int i : re) {
-			 	if(i != 1) {
-			 			con.rollback();
-			 			throw new SQLException("주문할 수 없습니다...");
-				}
+				 	if(i != 1) {
+				 			con.rollback();
+				 			throw new SQLException("주문할 수 없습니다...");
+					}
 			 	}
-			//장바구니 비우기
-			//상품재고 감소
+			 	System.out.println("장바구니 비우러가자...");
+			 //장바구니 비우기
+			 	basketDelete(con, emailId);
+			 //상품재고 감소
 				
-			 //con.commit();
+			 con.commit();
 				
 
 			}
@@ -110,7 +112,7 @@ public class OrderDAOImpl implements OrderDAO {
 			DbUtil.dbClose(con, ps);
 		}
 
-		System.out.println("DAO result" + result);
+		//System.out.println("DAO result" + result);
 		return result;
 	}
 
@@ -150,12 +152,7 @@ public class OrderDAOImpl implements OrderDAO {
 		return result;
 	}
 
-
-	/**
-	 * 장바구니 비우기
-	 */
-
-
+	
 	/**
 	 * 상품재고 감소
 	 */
@@ -208,7 +205,28 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 	}
 
-
+	
+	/**
+	 * 결제 완료되면 장바구니 비우기
+	 */
+	@Override
+	public int basketDelete(Connection con, String emailId) throws SQLException{
+		PreparedStatement ps = null;
+		String sql_delete = "delete from basket where email_id =?";
+		
+		System.out.println("cartDel = " + emailId);
+		int result = 0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql_delete);
+			ps.setString(1,emailId);
+			result = ps.executeUpdate();
+		} finally {
+			DbUtil.dbClose(null, ps);
+		}
+		System.out.println("cartresult = " + result);
+		return result;
+	}
 
 
 }

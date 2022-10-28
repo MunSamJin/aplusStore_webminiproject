@@ -3,7 +3,9 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +44,12 @@ public class OrderController implements AjaxController {
 
 		//String emailId = session.getAttribute("emailId");
 		String emailId = "sikkk@naver.com";
+		
 		List<CartDTO> list=null;
+		
+		//총구매금액
+		int totalPrice=0;
+		
 		if(emailId==null || emailId.equals("")) { //로그인이 안되었다면
 			memberGuest = "0"; //비회원
 
@@ -56,19 +63,20 @@ public class OrderController implements AjaxController {
 			 * OrderService 호출 - 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 			 */
 			list = orderService.cartMenuSelect(emailId);
+
 			System.out.println("list = " + list);
 
+			for(CartDTO cart : list) {
+				totalPrice +=(cart.getModelCount()*cart.getModelPrice());
+				
+				System.out.println("곱하기" + cart.getModelCount()*cart.getModelPrice());
+				System.out.println("totalPrice" + totalPrice);
+				System.out.println("cart.getModelCount()" + cart.getModelCount());
+				System.out.println("cart.getModelPrice()" + cart.getModelPrice());
+			}
+			
 
 		}
-
-		//총구매금액
-		int totalAmount=0;
-		for(CartDTO cart : list) {
-			totalAmount +=(cart.getModelCount()*cart.getModelPrice());
-		}
-		System.out.println("totalAmount" + totalAmount);
-		System.out.println("totalAmount" + totalAmount);
-		System.out.println("totalAmount" + totalAmount);
 
 		//OrderMain에서 넘어오는 값 받기
 
@@ -83,9 +91,9 @@ public class OrderController implements AjaxController {
 			orderName = deliverName;
 		}
 
-		System.out.println("orderName = " + orderName);
-		System.out.println("deliverName = " + deliverName);
-		System.out.println("pickupName = " + pickupName);
+		//System.out.println("orderName = " + orderName);
+		//System.out.println("deliverName = " + deliverName);
+		//System.out.println("pickupName = " + pickupName);
 
 		String postcode = request.getParameter("postcode");//우편번호
 		String address = request.getParameter("address");//주소
@@ -95,7 +103,7 @@ public class OrderController implements AjaxController {
 		//우편번호 하나로 모으기
 		String realAddr = postcode + address + detailAddress + extraAddress;
 
-		System.out.println("realAddr = " + realAddr);
+		//System.out.println("realAddr = " + realAddr);
 
 		//주문상태
 		String orderState = request.getParameter("orderState");
@@ -120,7 +128,7 @@ public class OrderController implements AjaxController {
 		//이메일 하나로 모으기
 		String realEmail = orderEmail+emailSelect;
 
-		System.out.println("realEmail = " + realEmail);
+		//System.out.println("realEmail = " + realEmail);
 		//System.out.println("deliverEmail = " + deliverEmail);
 		//System.out.println("emailSelect = " + emailSelect);
 		//System.out.println("pickupEmail = " + pickupEmail);
@@ -137,21 +145,24 @@ public class OrderController implements AjaxController {
 		//   orderPhone = deliverPhone;
 		//}
 
-		System.out.println("orderPhone = " + orderPhone);
+		//System.out.println("orderPhone = " + orderPhone);
 		//System.out.println("deliverPhone = " + deliverPhone);
 		//System.out.println("pickupPhone = " + pickupPhone);
 
 
+		
+		
 		orderState="상품준비중";
 
 		//DTO객체 생성
 		OrderDTO dto =
-				new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, totalAmount);
+				new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, totalPrice);
 
 		/**
 		 * OrderService 호출 - 주문테이블에 등록하기
 		 */
-		int result = orderService.insert(dto, list);//ㅣlist는 cartList정보
+		System.out.println("OrderController의 주문.....................");
+		int result = orderService.insert(dto, list, emailId);//ㅣlist는 cartList정보
 
 		PrintWriter out = response.getWriter();
 		out.print(result);

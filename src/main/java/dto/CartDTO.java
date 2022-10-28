@@ -7,16 +7,20 @@ public class CartDTO {
 	private String modelNum;
 	private String modelName;
 	private String emailId;
+	
 	private int modelPrice;
 	private int modelCount;
 	private int modelStock;
 
 	public CartDTO() {}
 	
-	public CartDTO(String modelNum, int modelCount) {
+	public CartDTO(String modelNum, String modelName, int modelCount, int modelPrice, int modelStock) {
 		super();
 		this.modelNum = modelNum;
+		this.modelName = modelName;
 		this.modelCount = modelCount;
+		this.modelPrice = modelPrice;
+		this.modelStock = modelStock;
 	}
 
 	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount, int modelStock) {
