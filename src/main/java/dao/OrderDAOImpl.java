@@ -59,7 +59,7 @@ public class OrderDAOImpl implements OrderDAO {
 	 * @return 0이면 주문 실패, 1이면 주문 성공 
 	 */
 	@Override
-	public int orderInsert(OrderDTO dto) throws SQLException {
+	public int orderInsert(OrderDTO dto, List<CartDTO> cartList) throws SQLException {
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -86,13 +86,13 @@ public class OrderDAOImpl implements OrderDAO {
 				con.rollback();
 				throw new SQLException("등록할 수 없습니다.");
 			}else {
-			 //	int re [] = orderDetailInsert(con, dto);
-			 //	for(int i : re) {
-			 //		if(i != 1) {
-			 //			con.rollback();
-			 //			throw new SQLException("주문할 수 없습니다...");
-			 //		}
-			 //	}
+			 	int re [] = orderDetailInsert(con, cartList);
+			 	for(int i : re) {
+			 	if(i != 1) {
+			 			con.rollback();
+			 			throw new SQLException("주문할 수 없습니다...");
+				}
+			 	}
 			//장바구니 비우기
 			//상품재고 감소
 				
@@ -112,24 +112,23 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 주문상세 테이블 등록하기
 	 */
 	@Override
-	public int[] orderDetailInsert(Connection con, OrderDTO dto) throws SQLException {
+	public int[] orderDetailInsert(Connection con, List<CartDTO> cartList) throws SQLException {
 		
 		PreparedStatement ps = null;
 		int result [] = null;
-		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?)";
+		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?,?)";
 		
 		try{
 			ps = con.prepareStatement(sql);
 			
 			//장바구니 결제 목록 가져오기
-			//bascketlist = basketDao.????;
-			
-			//for(BasketDTO bascket : bascketlist) {
-			//	ps.setString(1, bascket.getModelNum()); //주문수량
-			//	ps.setInt(2, bascket.getMoelCount()); //할인가격
-			//	ps.addBatch();
-			//	ps.clearParameters();
-			//}
+			for(CartDTO cart : cartList) {
+				ps.setString(1, cart.getModelName());//상품이름
+				ps.setInt(2, cart.getModelCount()); //주문수량
+				ps.setInt(3, cart.getModelPrice()); //할인가격
+				ps.addBatch();
+				ps.clearParameters();
+			}
 			
 			result = ps.executeBatch();//일괄처리
 			

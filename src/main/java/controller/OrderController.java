@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dto.CartDTO;
 import dto.OrderDTO;
-
+import net.sf.json.JSONArray;
 import service.OrderService;
 import service.OrderServiceImpl;
 
@@ -28,7 +28,7 @@ public class OrderController implements AjaxController {
 		
 
 	}
-	
+	//주문하기 
 	public void orderInsert(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		
@@ -41,8 +41,8 @@ public class OrderController implements AjaxController {
 			
 		//String emailId = session.getAttribute("emailId");
 		String emailId = "sikkk@naver.com";
-			
-		if(emailId==null || emailId=="") { //로그인이 안되었다면
+		List<CartDTO> list=null;	
+		if(emailId==null || emailId.equals("")) { //로그인이 안되었다면
 			memberGuest = "0"; //비회원
 				
 			//장바구니에 담긴 상품을 session.getAttribute("cart정보")로 가져온다.
@@ -54,105 +54,109 @@ public class OrderController implements AjaxController {
 			/**
 			 * OrderService 호출 - 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 			 */
-			List<CartDTO> list = orderService.cartMenuSelect(emailId);
+			 list = orderService.cartMenuSelect(emailId);
+		    System.out.println("list = " + list);
 			
-			PrintWriter out = response.getWriter();
-			out.print(list);
 
-			}
+	   }
 			
+		//총구매금액
+		int totalAmount=0;
+		for(CartDTO cart : list) {
+			totalAmount +=(cart.getModelCount()*cart.getModelPrice());
+		}
+		System.out.println("totalAmount" + totalAmount);
+		
+		
+		//OrderMain에서 넘어오는 값 받기
+		
+		//이름
+		String orderName = null;
+		String deliverName = request.getParameter("deliverName"); 
+		String pickupName =  request.getParameter("pickupName");
+		
+		if( deliverName == null || deliverName.equals("")) {
+			orderName = pickupName; 
+		}else if(pickupName==null || pickupName.equals("")){
+			orderName = deliverName;
+		}
+		 
+		System.out.println("orderName = " + orderName);
+		System.out.println("deliverName = " + deliverName);
+		System.out.println("pickupName = " + pickupName);
 			
-			//총가격
-			String totalPrice = request.getParameter("totalPrice");
+		String postcode = request.getParameter("postcode");//우편번호
+		String address = request.getParameter("address");//주소
+		String detailAddress = request.getParameter("detailAddress");//상세주소
+		String extraAddress = request.getParameter("extraAddress");//참고항목
+		
+		//우편번호 하나로 모으기
+		String realAddr = postcode + address + detailAddress + extraAddress;
+		
+		System.out.println("realAddr = " + realAddr);
 			
-			//OrderMain에서 넘어오는 값 받기
-			
-			//이름
-			String orderName = null;
-			String deliverName = request.getParameter("deliverName"); 
-			String pickupName =  request.getParameter("pickupName");
-			
-			if( deliverName == null || deliverName == "") {
-				orderName = pickupName; 
-			}else if(pickupName==null || pickupName==""){
-				orderName = deliverName;
-			}
-			 
-			System.out.println("orderName = " + orderName);
-			System.out.println("deliverName = " + deliverName);
-			System.out.println("pickupName = " + pickupName);
+		//주문상태
+		String orderState = request.getParameter("orderState"); 
+		
+		//이메일 ID
+		String orderEmail = request.getParameter("orderEmail");
+		String emailSelect = request.getParameter("emailSelect");
+		//String deliverEmail = request.getParameter("deliverEmail");
+		//String deliverEmailSelect = request.getParameter("deliverEmailSelect");
+		//String pickupEmail = request.getParameter("pickupEmail");
+		//String pickupEmailSelect = request.getParameter("pickupEmailSelect");
+		
+		//if(deliverEmail == null || deliverEmail =="") {//&& deliverEmailSelect==null
+		//	orderEmail=pickupEmail;
+		//	//emailSelect=pickupEmailSelect;
+		//}else if(pickupEmail == null || pickupEmail ==""){// && pickupEmailSelect == null
+		//	orderEmail=deliverEmail;
+		//	//emailSelect=deliverEmailSelect;
+		//}
+		
+		
+		//이메일 하나로 모으기
+		String realEmail = orderEmail+emailSelect;
+		
+		System.out.println("realEmail = " + realEmail);
+		//System.out.println("deliverEmail = " + deliverEmail);
+		//System.out.println("emailSelect = " + emailSelect);
+		//System.out.println("pickupEmail = " + pickupEmail);
+		//System.out.println("emailSelect = " + emailSelect);
 				
-			String postcode = request.getParameter("postcode");//우편번호
-			String address = request.getParameter("address");//주소
-			String detailAddress = request.getParameter("detailAddress");//상세주소
-			String extraAddress = request.getParameter("extraAddress");//참고항목
-			
-			//우편번호 하나로 모으기
-			String realAddr = postcode + address + detailAddress + extraAddress;
-			
-			System.out.println("realAddr = " + realAddr);
-				
-			//주문상태
-			String orderState = request.getParameter("orderState"); 
-			
-			//이메일 ID
-			String orderEmail = request.getParameter("orderEmail");
-			String emailSelect = request.getParameter("emailSelect");
-			//String deliverEmail = request.getParameter("deliverEmail");
-			//String deliverEmailSelect = request.getParameter("deliverEmailSelect");
-			//String pickupEmail = request.getParameter("pickupEmail");
-			//String pickupEmailSelect = request.getParameter("pickupEmailSelect");
-			
-			//if(deliverEmail == null || deliverEmail =="") {//&& deliverEmailSelect==null
-			//	orderEmail=pickupEmail;
-			//	//emailSelect=pickupEmailSelect;
-			//}else if(pickupEmail == null || pickupEmail ==""){// && pickupEmailSelect == null
-			//	orderEmail=deliverEmail;
-			//	//emailSelect=deliverEmailSelect;
-			//}
-			
-			
-			//이메일 하나로 모으기
-			String realEmail = orderEmail+emailSelect;
-			
-			System.out.println("realEmail = " + realEmail);
-			//System.out.println("deliverEmail = " + deliverEmail);
-			//System.out.println("emailSelect = " + emailSelect);
-			//System.out.println("pickupEmail = " + pickupEmail);
-			//System.out.println("emailSelect = " + emailSelect);
-					
-			//휴대폰번호	
-			String orderPhone = request.getParameter("orderPhone");
-			//String deliverPhone = request.getParameter("deliverPhone");
-			//String pickupPhone = request.getParameter("pickupPhone");
-			
-			//if(deliverPhone == null || deliverPhone=="") {
-			//	orderPhone = pickupPhone;
-			//}else if(pickupPhone == null || pickupPhone=="") {
-			//	orderPhone = deliverPhone;
-			//}
-			
-			System.out.println("orderPhone = " + orderPhone);
-			//System.out.println("deliverPhone = " + deliverPhone);
-			//System.out.println("pickupPhone = " + pickupPhone);
+		//휴대폰번호	
+		String orderPhone = request.getParameter("orderPhone");
+		//String deliverPhone = request.getParameter("deliverPhone");
+		//String pickupPhone = request.getParameter("pickupPhone");
+		
+		//if(deliverPhone == null || deliverPhone=="") {
+		//	orderPhone = pickupPhone;
+		//}else if(pickupPhone == null || pickupPhone=="") {
+		//	orderPhone = deliverPhone;
+		//}
+		
+		System.out.println("orderPhone = " + orderPhone);
+		//System.out.println("deliverPhone = " + deliverPhone);
+		//System.out.println("pickupPhone = " + pickupPhone);
 
+		
+		orderState="상품준비중";
 			
-			orderState="상품준비중";
-				
-			//DTO객체 생성
-			OrderDTO dto = 
-					new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, 0);
+		//DTO객체 생성
+		OrderDTO dto = 
+				new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, totalAmount);
 
-			/**
-			 * OrderService 호출 - 주문테이블에 등록하기
-			 */
-			int result = orderService.insert(dto);
+		/**
+		 * OrderService 호출 - 주문테이블에 등록하기
+		 */
+		int result = orderService.insert(dto, list);//ㅣlist는 cartList정보
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		
+		//OrderService 호출 - 주문내역 메일 보내기
+		//orderService.sendEmail(dto);
 			
-			PrintWriter out = response.getWriter();
-			out.print(result);
-			
-			//OrderService 호출 - 주문내역 메일 보내기
-			//orderService.sendEmail(dto);
 	}
 
 }

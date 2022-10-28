@@ -3,8 +3,6 @@ package service;
 import java.sql.SQLException;
 import java.util.List;
 
-import dao.CartDAO;
-import dao.CartDAOImpl;
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.CartDTO;
@@ -20,9 +18,9 @@ public class OrderServiceImpl implements OrderService {
 	 *  주문테이블에 주문내역 등록하기
 	 */
 	@Override
-	public int insert(OrderDTO dto) throws SQLException {
+	public int insert(OrderDTO dto , List<CartDTO> cartList) throws SQLException {
 		//orderDAO호출 - 주문 테이블에 등록하기
-		int orderNum = orderDAO.orderInsert(dto);
+		int orderNum = orderDAO.orderInsert(dto, cartList);
 		
 		System.out.println("orderNum 서비스"+orderNum);
 	

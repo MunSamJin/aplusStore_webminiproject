@@ -11,12 +11,12 @@ public interface OrderDAO {
 	/**
 	 * 결제 시 주문 테이블에 레코드 삽입
 	 */
-	int orderInsert(OrderDTO dto) throws SQLException;
+	int orderInsert(OrderDTO dto, List<CartDTO> cartList) throws SQLException;
 	
 	/**
 	 * 결제 시 주문상세 테이블에 레코드 삽입
 	 */
-	public int[] orderDetailInsert(Connection con, OrderDTO dto) throws SQLException;
+	public int[] orderDetailInsert(Connection con, List<CartDTO> cartList) throws SQLException;
 	
 
 	/**
