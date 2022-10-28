@@ -32,4 +32,18 @@ public class QuestionController implements Controller{
 
         return new ModelAndView("/qna/QnaRead.jsp");
     }
+
+    public ModelAndView questionInsert(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, SQLException {
+        String category = request.getParameter("category");
+        String subject = request.getParameter("subject");
+        String content = request.getParameter("content");
+        String emailId = (String) request.getSession().getAttribute("emailId");
+
+        QuestionDTO questionDTO = new QuestionDTO(emailId,subject,content,category);
+
+        int re = service.insert(questionDTO);
+        System.out.println("controoler insert "+re);
+
+        return new ModelAndView("index.jsp");
+    }
 }

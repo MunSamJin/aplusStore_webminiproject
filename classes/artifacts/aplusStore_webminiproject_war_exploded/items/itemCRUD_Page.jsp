@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="${path}/css/owl.theme.css">
     <link rel="stylesheet" href="${path}/css/ionicons.min.css">
     <style type="text/css">
-        #jong {
+        jong {
             margin: 150px auto;
         }
 
@@ -181,7 +181,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="${path}/common/header.jsp"/>
+<jsp:include page="../common/header.jsp"/>
 <!-- /.navbar-collapse -->
 </div>
 <!-- /.container-fluid -->
@@ -192,7 +192,7 @@
     <div class="hero-section">
         <div class="container nopadding">
             <div class="col-md-5"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s"
-                                       src="${path}/images/search_main.png" alt="App" id="jong"/></div>
+                                       src="${path}/images/search_main.png" alt="App" name="jong"/></div>
             <div class="col-md-7">
                 <div class="hero-content">
                     <h1 class="wow fadeInUp" data-wow-delay="0.1s">관리자 로그인 후 진행해주세요</h1>
@@ -217,7 +217,7 @@
         <div class="hero-section">
             <div class="container nopadding">
                 <div class="col-md-5"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s"
-                                           src="${path}/images/search_main.png" alt="App" id="jong"/></div>
+                                           src="${path}/images/search_main.png" alt="App" name="jong"/></div>
                 <div class="col-md-7">
                     <div class="hero-content">
                         <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
@@ -465,7 +465,7 @@
         </div>
 
         <!-- Footer Section -->
-        <jsp:include page="${path}/common/footer.jsp"/>
+        <jsp:include page="../common/footer.jsp"/>
     </div>
 
     <!-- Scroll To Top -->

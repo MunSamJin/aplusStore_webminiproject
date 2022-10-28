@@ -29,8 +29,10 @@ public class QuestionServiceImpl implements QuestionService{
     }
 
     @Override
-    public void insert(QuestionDTO questionDTO) throws SQLException {
-
+    public int insert(QuestionDTO questionDTO) throws SQLException {
+        int re = dao.insert(questionDTO);
+        System.out.println("service insert : "+re);
+        return re;
     }
 
     @Override

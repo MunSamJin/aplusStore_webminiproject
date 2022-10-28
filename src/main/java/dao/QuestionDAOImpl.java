@@ -113,8 +113,29 @@ public class QuestionDAOImpl implements QuestionDAO{
     }
 
     @Override
-    public void insert(QuestionDTO questionDTO) throws SQLException {
+    public int insert(QuestionDTO questionDTO) throws SQLException {
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "INSERT INTO question VALUES (question_num_seq.nextval,?,?,?,sysdate,0,?)";
 
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1,questionDTO.geteMail());
+            ps.setString(2,questionDTO.getqSubject());
+            ps.setString(3,questionDTO.getqContent());
+            ps.setString(4,questionDTO.getqCate());
+
+
+            result = ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            DbUtil.dbClose(con, ps);
+        }
+        return result;
     }
 
     @Override

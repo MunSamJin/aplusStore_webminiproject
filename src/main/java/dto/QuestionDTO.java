@@ -12,6 +12,13 @@ public class QuestionDTO {
     private String qCate;
     private List<AnswerDTO> list;
 
+    public QuestionDTO(String eMail, String qSubject, String qContent, String qCate) {
+        this.eMail = eMail;
+        this.qSubject = qSubject;
+        this.qContent = qContent;
+        this.qCate = qCate;
+    }
+
     public QuestionDTO(int qNum, String eMail, String qSubject, String qContent, String qDate, int qHits, String qCate, List<AnswerDTO> list) {
         this.qNum = qNum;
         this.eMail = eMail;

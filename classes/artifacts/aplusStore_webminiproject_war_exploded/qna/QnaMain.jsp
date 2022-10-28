@@ -18,6 +18,15 @@
 <link rel="stylesheet" href="../hyo_css/ionicons.min.css">
 <!-- Resource style -->
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<style type="text/css">
+	a{color: #000}
+	a:hover{color: #000}
+	.pitch {
+    	padding: 20px 0 30px 0;
+	}
+</style>
+
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>

@@ -18,6 +18,32 @@
 <link rel="stylesheet" href="../hyo_css/ionicons.min.css">
 <!-- Resource style -->
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
+<style type="text/css">
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td {
+        padding: 8px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    tr:hover {background-color: lightcyan;}
+    
+    fieldset {border: 0;}
+    .overflow {height: 200px;}
+    .form .hero-section {background: #fff;}
+    
+    label {
+        display: block;
+        margin: 30px 0 0 0;
+    }
+    
+    input[type="text"], textarea, textarea.form-control {background: #fff;}
+    input[type="text"], textarea, textarea.form-control {padding: 0 70px 0 20px; height: 42px;}
+</style>
 </head>
 <body>
 
@@ -32,14 +58,16 @@
   <div class="main app form" id="main"><!-- Main Section-->
     <div class="hero-section">
       <div class="container nopadding">
-        <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/iPhone_qna.png" alt="App" /> </div>
+        <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/airpods.png" alt="App" /> </div>
         <div class="col-md-7">
           <div class="hero-content">
-            <h1 class="wow fadeInUp" data-wow-delay="0.1s">iPhone</h1>
+            <h1 class="wow fadeInUp" data-wow-delay="0.1s">AirPods</h1>
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
               <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="query" id="query">
               <input id="query" type="text" name="query" placeholder="검색 또는 질문하기" autocomplete="off" id="query" >
               <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
+              
+              <a href="../qna/QnaWrite.jsp"><input class="submit-button" type="button" value="question" name="send" ></a>
             </form>
           </div>
         </div>
@@ -72,10 +100,10 @@
     	    <table class= "table table-stripped" style= "text-align: center; boarder: 1px solid #dddddd">
 
     	    	<tr>
-    	    		<th style= "background-color: #eeeeee; text-align: center;">제목</th>
-    	    		<th style= "background-color: #eeeeee; text-align: center;">질문자</th>
-    	    		<th style= "background-color: #eeeeee; text-align: center;">작성일</th>
-    	    		<th style= "background-color: #eeeeee; text-align: center;">댓글</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 50%; color: #fff;">제목</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 20%; color: #fff;">질문자</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 20%; color: #fff;">작성일</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 10%; color: #fff;">조회수</th>
     	    		
     	    	</tr>
 

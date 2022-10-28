@@ -7,21 +7,21 @@
 <head>
     <meta charset="utf-8">
     <title>iLand Multipurpose Landing Page Template</title>
-    <link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
     <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${path}/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
           type="text/css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="${path}/css/animate.css">
     <!-- Resource style -->
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/owl.theme.css">
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="${path}/css/owl.carousel.css">
+    <link rel="stylesheet" href="${path}/css/owl.theme.css">
+    <link rel="stylesheet" href="${path}/css/ionicons.min.css">
 
     <!-- Resource style -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <style>
         fieldset {
             border: 0;
@@ -31,10 +31,6 @@
             display: block;
             margin: 30px 0 0 0;
         }
-
-        .overflow {
-            height: 200px;
-        }
         
         .form .hero-section {
 			background: #fff;
@@ -42,14 +38,14 @@
     </style>
 
     <!-- Jquery and Js Plugins -->
-    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../js/plugins.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript" src="../js/custom.js"></script>
-    <script src="../js/jquery.subscribe.js"></script>
-    <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="${path}/js/plugins.js"></script>
+    <script type="text/javascript" src="${path}/js/menu.js"></script>
+    <script type="text/javascript" src="${path}/js/custom.js"></script>
+    <script src="${path}/js/jquery.subscribe.js"></script>
+    <script type="text/javascript" src="${path}/js/jquery-3.6.1.min.js"></script>
     <style type="text/css">
         #admin{
             height: 300px;
@@ -157,42 +153,7 @@
         }
 
        </style>
-    <script type="text/javascript">
-            $(function(){
 
-            //전체검색
-            function readQuestion(){
-                $.ajax({
-                    url :"../ajax" , //서버요청주소
-                    type:"post", //요청방식(method방식 : get | post | put | delete )
-                    dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-                    data: {key:"q" , methodName : "readQuestion"}, //서버에게 보낼 데이터정보(parameter정보)
-                    success :function(arr){
-                        let str="";
-                        $.each(arr, function(index, item){
-                            str+=`<tr>`;
-                            str+=`<td><a href='#'>${"${item.qSubject}"}</a></td>`;
-                            str+=`<td>${"${item.eMail}"}</td>`;
-                            str+=`<td>${"${item.qDate}"}</td>`;
-                            str+=`<td>${"${item.qHits}"}</td>`;
-                            str+=`</tr>`;
-                        });
-
-                        $("#listTable tr:gt(0)").remove();
-                        $("#listTable tr:eq(0)").after(str);
-
-                    } , //성공했을때 실행할 함수
-                    error : function(err){
-                        alert(err+"에러 발생했어요.");
-                    }  //실패했을때 실행할 함수
-                });//ajax끝
-            }
-
-                readQuestion();
-        });
-
-    </script>
-    </script>
 </head>
 <body>
 <jsp:include page="../common/header.jsp"/>
@@ -207,53 +168,67 @@
                                        src="${path}/images/logo1.png" alt="App" id="admin"/></div>
             <div class="col-md-7">
                 <div class="hero-content">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.1s">궁금한 내용을 물어보세요.</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"> 궁금한 내용을 물어보세요. </p>
-                    <div  data-wow-delay="0.3s" id="add">
+
+                    <c:choose>
+                        <c:when test="${empty emailId}">
+                            <h1 class="wow fadeInUp" data-wow-delay="0.1s">회원만 질문 가능합니다.</h1>
+                        </c:when>
+                        <c:otherwise>
+                        <h1 class="wow fadeInUp" data-wow-delay="0.1s">궁금한 내용을 물어보세요.</h1>
+
+                        <div  data-wow-delay="0.3s" id="add">
 
 
-                        <form name="writeForm" method="post" action="${path}/front?key=elec&methodName=insert"
-                              onSubmit='return checkValid()' enctype="multipart/form-data" class="subscribe-form wow zoomIn">
+                            <form name="writeForm" method="post" action="${path}/front?key=q&methodName=questionInsert"
+                                  onSubmit='return checkValid()' class="subscribe-form wow zoomIn">
 
-                            <table align="center"  width="600px" border="1" class="member">
+                                <table align="center"  width="600px" border="1" class="member">
 
-                                <tr>
-                                    <td width="150" height="20" >
-                                        <p align="right"><b><span style=" font-size:10pt;">Category</span></b></p>
-                                    </td>
+                                    <tr>
+                                        <td width="150" height="20" >
+                                            <p align="right"><b><span style=" font-size:10pt;">Category</span></b></p>
+                                        </td>
 
-                                    <td><select name="category" class="mail" id="category">
-                                        <option disabled selected>선택</option>
-                                        <option>iPhone</option>
-                                        <option>Watch</option>
-                                        <option>AirPods</option>
-                                    </select>
-                                    </td>
-                                </tr>
+                                        <td><select name="category" class="mail" id="category" required>
+                                            <option disabled selected>선택</option>
+                                            <option>iphone</option>
+                                            <option>watch</option>
+                                            <option>airpods</option>
+                                        </select>
+                                        </td>
+                                    </tr>
 
-                                <tr>
-                                    <td width="150" height="20">
-                                        <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
-                                    </td>
-                                    <td width="450" height="20" ><b><span style="font-size:9pt;">
+                                    <tr>
+                                        <td width="150" height="20">
+                                            <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
+                                        </td>
+                                        <td width="450" height="20" ><b><span style="font-size:9pt;">
 		<input type=text name="subject" size="50"></span></b></td>
-                                </tr>
-                                <tr>
-                                    <td width="150" height="20">
-                                        <p align="right"><b><span style="font-size:10pt;">질문 내용</span></b></p>
-                                    </td>
-                                    <td width="450" height="20"><b><span style="font-size:9pt;">
+                                    </tr>
+                                    <tr>
+                                        <td width="150" height="20">
+                                            <p align="right"><b><span style="font-size:10pt;">질문 내용</span></b></p>
+                                        </td>
+                                        <td width="450" height="20"><b><span style="font-size:9pt;">
 		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"></textarea></span></b></td>
-                                </tr>
+                                    </tr>
 
-                                <tr align="center">
-                                    <td width="450" height="20" colspan="2" align="center"><b><span style="font-size:9pt;">
+                                    <tr align="center">
+                                        <td width="450" height="20" colspan="2" align="center"><b><span style="font-size:9pt;">
             <input type="submit" value="글쓰기" id="submit">
         <input type="reset" value="다시쓰기" id="reset"></span></b></td>
-                                </tr>
-                            </table>
+                                    </tr>
+                                </table>
 
-                        </form>
+                            </form>
+
+                        </c:otherwise>
+                    </c:choose>
+
+
+
+
+
 
 
                     </div>
@@ -267,22 +242,10 @@
 </div>
 
 
-<<<<<<< HEAD
+
 
 <!-- Client Section -->
 
-
-<div class="feature-sub">
-    <div class="container">
-        <div class="sub-inner">
-            <h1 class="wow fadeInUp">Creative Landing App For Your Easy Life! Simple Reliable & Understandable for
-                your customers </h1>
-            <a href="#" class="btn btn-action wow fadeInUp">Buy now</a></div>
-    </div>
-</div>
-
-=======
->>>>>>> jongyoung
 <!-- Footer Section -->
 <jsp:include page="../common/footer.jsp"/>
 </div>

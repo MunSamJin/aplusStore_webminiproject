@@ -12,21 +12,17 @@ import util.DbUtil;
 public class AnserDAOImpl implements AnserDAO {
 	private Properties proFile = new Properties();
 
-<<<<<<< HEAD
-	//�亯 ���
-=======
+
 	//답변 등록
->>>>>>> hyogyeong
+
 	@Override
 	public int insert(AnserDTO anserDTO) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-<<<<<<< HEAD
+
 //		String sql= proFile.getProperty("Anser.insert");
-=======
-		
->>>>>>> hyogyeong
+
 		//insert into answer values(?,?,?,sysdate);
 		String sql= "insert into answer values(?,?,?,sysdate)";
 		try {
@@ -43,24 +39,20 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-<<<<<<< HEAD
-	//�亯��ȣ�� �ش��ϴ� �亯 ����
-=======
-	//답변번호에 해당하는 답변 삭제
->>>>>>> hyogyeong
+
 	@Override
 	public int delete(String aNum) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
 		
-<<<<<<< HEAD
+
 		//delete from answer(���̺��) where qNum=?;
 //		String sql= proFile.getProperty("Anser.delete");
-=======
+
 		//delete from answer(테이블명) where qNum=?;
 		String sql= "delete from answer where qNum=?";
->>>>>>> hyogyeong
+
 		try {
 			con = DbUtil.getConnection();
 //			ps = con.prepareStatement(sql);
@@ -74,11 +66,7 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-<<<<<<< HEAD
-	//�亯��ȣ�� �ش��ϴ� �亯 ����
-=======
-	//답변번호에 해당하는 답변 수정
->>>>>>> hyogyeong
+
 	@Override
 	public int update(AnserDTO anserDTO) throws SQLException {
 		PreparedStatement ps = null;
@@ -113,11 +101,7 @@ public class AnserDAOImpl implements AnserDAO {
 		ResultSet rs=null;
 		AnserDTO anserDTO = null;
 		
-<<<<<<< HEAD
-//		String sql= proFile.getProperty("Anser.selectBymodelNum");
-=======
-		String sql= proFile.getProperty("select * from Electronics where model_num=?");
->>>>>>> hyogyeong
+
 		//select * from Electronics where model_num=?
 		try {
 			con = DbUtil.getConnection();
