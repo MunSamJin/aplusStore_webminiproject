@@ -2253,6 +2253,13 @@ padding: 120px 10px 50px 350px;
 	 }
 
  }
+ 
+ .cta-copySub {
+	padding-top: 50px;
+	padding-bottom: 200px;
+	background: url(../images/apple_mypage.jpg) no-repeat center;
+	background-size: cover;
+}
 
 
 /*---------------------------------------------------

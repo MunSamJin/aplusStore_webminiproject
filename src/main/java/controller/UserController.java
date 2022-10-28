@@ -2,7 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -38,36 +38,27 @@ public class UserController implements Controller {
 	 
 	 public void update(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
-		 
 
 		 String emailId = request.getParameter("emailId");
-
-
 		 String pwd = request.getParameter("pwd");
 		 String addr = request.getParameter("addr");
 		 String phone = request.getParameter("phone");
-	   
-	    
 
-		 UserDTO dto = new UserDTO(emailId, pwd, addr, phone);
+		 UserDTO dto = new UserDTO(emailId, phone, pwd, addr);
 
-
-		 int result = userDAO.update(dto);
-	
-		 PrintWriter out = response.getWriter();
-		 out.println(result);
+		 //userService.update(dto);
+		 
+		 //int result = userDAO.update(dto);
 		 
 	 }
 	 
 	 /**
 	  *  회원가입
 	  */
-	 public void insert(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException {
+	 public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, SQLException {
 
 		 String emailId = request.getParameter("emailId");
-
-
 		 String pwd = request.getParameter("pwd");
 		 String name = request.getParameter("name");
 		 String addr = request.getParameter("addr");
@@ -78,11 +69,9 @@ public class UserController implements Controller {
 		 //int result = userService.insert(dto);
 	
 
-		 int result = userDAO.insert(dto);
+		 userService.insert(dto);
 		 
-		 PrintWriter out = response.getWriter();
-		 out.println(result); //0 , 1
-		 
+		 return new ModelAndView("user/login.jsp", true);
 
 		 
 	 }
@@ -107,7 +96,10 @@ public class UserController implements Controller {
 		 //로그인 성공하면 세션에 정보를 저장.
 		 HttpSession session = request.getSession();
 		 session.setAttribute("emailId", dto.getEmailId());
+		 session.setAttribute("emailPh", dto.getPhone());
+		 session.setAttribute("emailPwd", dto.getPwd());
 		 session.setAttribute("emailName", dto.getName());
+		 session.setAttribute("emailAd", dto.getAddr() );
 		 System.out.println("session = " + session );
 
 		 
