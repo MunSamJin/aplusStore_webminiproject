@@ -7,7 +7,7 @@ import dto.OrderDTO;
  
 public class Mail{
  
-   /* public static void mailSend(String mailId, OrderDTO dto) {
+   public static void mailSend(String mailId, OrderDTO dto) {
          
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
@@ -57,10 +57,10 @@ public class Mail{
             msg_e.printStackTrace();
         }
     }
-}*/
+}
  
 	
-/*class MyAuthentication extends Authenticator {
+class MyAuthentication extends Authenticator {
       
     PasswordAuthentication pa;
     public MyAuthentication(){
@@ -76,6 +76,4 @@ public class Mail{
     public PasswordAuthentication getPasswordAuthentication() {
         return pa;
     }
-}*/
-
 }
