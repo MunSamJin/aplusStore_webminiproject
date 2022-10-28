@@ -55,10 +55,7 @@ public class CartServiceImpl implements CartService {
 		
 		return list;
 	}
-<<<<<<< HEAD
 
-=======
-	
 	
 	//비회원
 	//modelName에 맞는 items select -> cartDTO에 추가
@@ -70,5 +67,5 @@ public class CartServiceImpl implements CartService {
 		}
 		return cart;
 	}
->>>>>>> merge221027
+
 }

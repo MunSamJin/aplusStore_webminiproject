@@ -9,18 +9,11 @@ public class CartDTO {
 	private String emailId;
 	private int modelPrice;
 	private int modelCount;
-<<<<<<< HEAD
-	
-	public CartDTO() {}
-
-	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount) {
-=======
 	private int modelStock;
-	
+
 	public CartDTO() {}
 
 	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount, int modelStock) {
->>>>>>> merge221027
 		super();
 		this.cartNum = cartNum;
 		this.category = category;
@@ -29,10 +22,7 @@ public class CartDTO {
 		this.emailId = emailId;
 		this.modelPrice = modelPrice;
 		this.modelCount = modelCount;
-<<<<<<< HEAD
-=======
 		this.modelStock = modelStock;
->>>>>>> merge221027
 	}
 
 	public String getCartNum() {
@@ -90,8 +80,6 @@ public class CartDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-<<<<<<< HEAD
-=======
 
 	public int getModelStock() {
 		return modelStock;
@@ -100,6 +88,5 @@ public class CartDTO {
 	public void setModelStock(int modelStock) {
 		this.modelStock = modelStock;
 	}
->>>>>>> merge221027
-	
+
 }

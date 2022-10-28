@@ -173,7 +173,7 @@
                                         <input type="button" value="주문상태변경"  id="btn">
                                     </td>
                                 </tr>
-                            </table>
+                            </table>r
                         </form>
                         <br>
                         <hr color="red">

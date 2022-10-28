@@ -1,22 +1,19 @@
 package controller;
 
 import java.io.IOException;
-<<<<<<< HEAD
-=======
+
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> merge221027
+
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-<<<<<<< HEAD
 
-=======
 import javax.servlet.http.HttpSession;
 
 import dto.CartDTO;
->>>>>>> merge221027
+
 import service.CartService;
 import service.CartServiceImpl;
 

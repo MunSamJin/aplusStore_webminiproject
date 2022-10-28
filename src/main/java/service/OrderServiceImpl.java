@@ -1,22 +1,21 @@
 package service;
 
 import java.sql.SQLException;
-<<<<<<< HEAD
-=======
+
 import java.util.List;
->>>>>>> merge221027
+
 
 
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
-<<<<<<< HEAD
+
 import dto.OrderDTO;
-=======
+
 import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
->>>>>>> merge221027
+
 import mail.Mail;
 
 
@@ -24,12 +23,11 @@ import mail.Mail;
 public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO = new OrderDAOImpl();
 
-<<<<<<< HEAD
-=======
+
 	/**
 	 *  주문테이블에 주문내역 등록하기
 	 */
->>>>>>> merge221027
+
 	@Override
 	public int insert(OrderDTO dto) throws SQLException {
 		//orderDAO호출 - 주문 테이블에 등록하기
@@ -39,18 +37,15 @@ public class OrderServiceImpl implements OrderService {
 	
 		if(orderNum==0)throw new SQLException("등록되지 않았습니다.");
 		
-		String mailId = dto.getRealEmail();
-		System.out.println("mailId"+mailId);
+//		String mailId = dto.getRealEmail();
+//		System.out.println("mailId"+mailId);
 		
 		//Mail mail = new Mail();
 		//mail.mailSend(mailId,dto);
 		
 		return orderNum;
 	}
-<<<<<<< HEAD
 
-=======
-	
 	/**
 	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 	 */
@@ -71,7 +66,7 @@ public class OrderServiceImpl implements OrderService {
 		}
 		return list;
 	}
->>>>>>> merge221027
+
 
 
 }
