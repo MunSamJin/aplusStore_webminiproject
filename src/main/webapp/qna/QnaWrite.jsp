@@ -35,6 +35,10 @@
         .overflow {
             height: 200px;
         }
+        
+        .form .hero-section {
+			background: #fff;
+		}
     </style>
 
     <!-- Jquery and Js Plugins -->
@@ -78,7 +82,7 @@
         .member tr:last-child {
             border: none;
         }
-        .member tr:nth-child(odd) {
+        .member tr {
             background-color: #ddd;
         }
         .member th,
@@ -101,15 +105,33 @@
             font-weight: 500;
         }
 
-
-
+		.subscribe-form .mail,
+		input[type="text"], textarea, textarea.form-control{
+	    	background-color: #fff;
+	    	color: #A1A1A1;
+	    }
+	    
+	    .subscribe-form input {
+		    color: #878686;
+		    font-family: Open Sans;
+		    padding: 10px;
+		    font-size: 1.1em;
+		    background-color: #fff;
+		}
+		
+		.subscribe-form .mail {
+		    padding: 0 293px 0 20px;
+		}
+		
+		b, td {
+		    vertical-align: baseline;
+		}
 
         input, select , textarea {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
 
-            background: var(--button-bg-color);
             color: var(--button-color);
 
             margin: 0;
@@ -162,11 +184,11 @@
 
                                 <tr>
                                     <td width="150" height="20" >
-                                        <p align="right"><b><span style=" font-size:9pt;">Category</span></b></p>
+                                        <p align="right"><b><span style=" font-size:10pt;">Category</span></b></p>
                                     </td>
 
                                     <td><select name="category" class="mail" id="category">
-                                        <option disabled selected>Category</option>
+                                        <option disabled selected>선택</option>
                                         <option>iPhone</option>
                                         <option>Watch</option>
                                         <option>AirPods</option>
@@ -176,14 +198,14 @@
 
                                 <tr>
                                     <td width="150" height="20">
-                                        <p align="right"><b><span style="font-size:9pt;">제목</span></b></p>
+                                        <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
                                     </td>
                                     <td width="450" height="20" ><b><span style="font-size:9pt;">
 		<input type=text name="subject" size="50"></span></b></td>
                                 </tr>
                                 <tr>
                                     <td width="150" height="20">
-                                        <p align="right"><b><span style="font-size:9pt;">질문 내용</span></b></p>
+                                        <p align="right"><b><span style="font-size:10pt;">질문 내용</span></b></p>
                                     </td>
                                     <td width="450" height="20"><b><span style="font-size:9pt;">
 		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"></textarea></span></b></td>
@@ -209,30 +231,6 @@
     </div>
 </div>
 
-
-
-<!-- Client Section -->
-<div class="client-section">
-    <div class="container text-center">
-        <div class="clients owl-carousel owl-theme">
-            <div class="single"><img src="../images/client_hg.png" alt="효경" height="50px"/></div>
-            <div class="single"><img src="../images/client_jy.png" alt="종영" height="50px"/></div>
-            <div class="single"><img src="../images/client_r.png" alt="란" height="50px"/></div>
-            <div class="single"><img src="../images/client_ys.png" alt="용식" height="50px"/></div>
-            <div class="single"><img src="../images/client_sj.png" alt="삼진" height="50px"/></div>
-            <div class="single"><img src="../images/client_sr.png" alt="세륜" height="50px"/></div>
-        </div>
-    </div>
-</div>
-
-<div class="feature-sub">
-    <div class="container">
-        <div class="sub-inner">
-            <h1 class="wow fadeInUp">Creative Landing App For Your Easy Life! Simple Reliable & Understandable for
-                your customers </h1>
-            <a href="#" class="btn btn-action wow fadeInUp">Buy now</a></div>
-    </div>
-</div>
 
 <!-- Footer Section -->
 <jsp:include page="../common/footer.jsp"/>

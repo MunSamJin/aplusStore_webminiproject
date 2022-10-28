@@ -21,20 +21,7 @@
 
     <!-- Resource style -->
     <link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
-    <style>
-        fieldset {
-            border: 0;
-        }
 
-        label {
-            display: block;
-            margin: 30px 0 0 0;
-        }
-
-        .overflow {
-            height: 200px;
-        }
-    </style>
 
     <!-- Jquery and Js Plugins -->
     <script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
@@ -59,6 +46,18 @@
         }
 
         tr:hover {background-color: lightcyan;}
+        
+        fieldset {border: 0;}
+        .overflow {height: 200px;}
+        .form .hero-section {background: #fff;}
+        
+        label {
+            display: block;
+            margin: 30px 0 0 0;
+        }
+        
+        input[type="text"], textarea, textarea.form-control {background: #fff;}
+        input[type="text"], textarea, textarea.form-control {padding: 0 70px 0 20px; height: 42px;}
     </style>
     <script type="text/javascript">
         $(function(){
@@ -118,9 +117,9 @@
                         <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="query"
                               >
                             <input id="query" type="text" name="query" placeholder="검색" autocomplete="off">
-                            <input class="submit-button" type="submit" value="검색" name="send" id="subsubmit">
-                                <p></p>
-                            <input class="submit-button" type="button" value="질문하기" name="send" >
+                            <input class="submit-button" type="submit" value="search" name="send" id="subsubmit">
+                            
+                            <a href="../qna/QnaWrite.jsp"><input class="submit-button" type="button" value="question" name="send" ></a>
                         </form>
                     </div>
                 </div>
@@ -143,10 +142,10 @@
         <div class="row">
             <table class="table table-stripped" id="listTable">
                 <tr>
-                    <th style="background-color: #eeeeee; text-align: center; width: 50%;">제목</th>
-                    <th style="background-color: #eeeeee; text-align: center; width: 20%;">질문자</th>
-                    <th style="background-color: #eeeeee; text-align: center; width: 20%;">작성일</th>
-                    <th style="background-color: #eeeeee; text-align: center; width: 10%">조회수</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 50%; color: #fff;">제목</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 20%; color: #fff;">질문자</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 20%; color: #fff;">작성일</th>
+                    <th style="background-color: #1eb858; text-align: center; width: 10%; color: #fff;">조회수</th>
                 </tr>
 
 
