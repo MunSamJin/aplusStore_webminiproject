@@ -6,35 +6,31 @@ import java.util.List;
 import dto.CartDTO;
 
 public interface CartService {
-	
-	
+
+
 	/**
 	 * ��ٱ��� ��ȸ
 	 */
 	List<CartDTO> select(String emailId) throws SQLException;
-<<<<<<< HEAD
-	
-=======
 	CartDTO selectForGuest(String modelName) throws SQLException;
->>>>>>> merge221027
-	
-	
+
+
 	/**
 	 * ��ٱ��� �߰�
 	 */
 	void insert(String modelName, String emailId) throws SQLException;
-	
-	
+
+
 	/**
 	 * ��ٱ��� ����
 	 */
 	void delete(String cartNum) throws SQLException;
-	
-	
-	
+
+
+
 	/**
 	 * ��ٱ��� ����
 	 */
 	void update(String cartNum, int modelCount) throws SQLException;
-	
+
 }
