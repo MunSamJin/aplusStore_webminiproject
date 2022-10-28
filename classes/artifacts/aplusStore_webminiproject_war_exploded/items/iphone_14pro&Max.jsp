@@ -40,7 +40,7 @@
                 let storage = $("input[type=radio][name=storage]:checked").val();
                 let modelName = model + "_" + color + "_" + storage;
 
-                location.href = "${path}/front?key=cart&methodName=insert&emailId=sikkk@naver.com&modelName=" + modelName;
+                location.href = "${path}/front?key=cart&methodName=insert&modelName=" + modelName;
 
 
             });

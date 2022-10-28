@@ -77,6 +77,7 @@
                             str+=`<td>${"${item.eMail}"}</td>`;
                             str+=`<td>${"${item.qDate}"}</td>`;
                             str+=`<td>${"${item.qHits}"}</td>`;
+                            str+=`<td>${"${item.qHits}"}</td>`;
                             str+=`</tr>`;
                         });
 

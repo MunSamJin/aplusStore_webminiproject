@@ -4,21 +4,23 @@
 <html lang="en">
 <head>
 
-  <meta charset="utf-8">
-  <title>iLand Multipurpose Landing Page Template</title>
-  <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="iLand Multipurpose Landing Page Template">
-  <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="css/animate.css">
-  <!-- Resource style -->
-  <link rel="stylesheet" href="css/owl.carousel.css">
-  <link rel="stylesheet" href="css/owl.theme.css">
-  <link rel="stylesheet" href="css/ionicons.min.css">
-  <!-- Resource style -->
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <meta charset="utf-8">
+    <title>iLand Multipurpose Landing Page Template</title>
+    <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="iLand Multipurpose Landing Page Template">
+    <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/animate.css">
+    <!-- Resource style -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <!-- Resource style -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    
+   
 
 </head>
 <body>
@@ -33,13 +35,6 @@
           <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to Aplus Store!</h1>
           <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
           <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-            <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
-              <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
-              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
-            </form>
-            <!-- subscribe message -->
-            <div id="mesaj"></div>
-            <!-- subscribe message -->
           </div>
         </div>
       </div>

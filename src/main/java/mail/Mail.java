@@ -1,10 +1,16 @@
 package mail;
 
 import java.util.Date;
+import java.util.Properties;
 
 
 import dto.OrderDTO;
- 
+
+import javax.mail.*;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 public class Mail{
  
    public static void mailSend(String mailId, OrderDTO dto) {

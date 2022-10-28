@@ -9,19 +9,42 @@
 <link rel="stylesheet" href="${path}/css/join.css">
 	<title>A+ ID 생성 - Aplus(Kosta)</title>
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	   $("#btn").click(function(){
+		   let state=true; //가입 또는 수정을 할때 유효성체크를 하고 ajax를 실행해도 되는지 여부를 판단는 변수(true면 ajax한다, false이면 ajax안한다.) 
+		   //유효성체크필요!(값 존재유무)
+		   $("input[type=text]").each(function(index, item){ //item은 input element이다.
+			   if($(this).val()==""){
+				   alert("값을 입력해주세요.");
+				   $(this).focus();//커서놓기
+				   
+				   state=false;
+				   return false;//return false의 의미는 each함수를 빠져나가라.
+			   }
+		   });	
+	
+	
+	   });
+	
+	
+});//끝
+
+
+</script>
 
 </head>
 <body>
 <div id="container" class="container">
 	<div class="content">
 		<div class="join_wrap">
-			<form id="join_frm" method="post" action="../front">
+			<form id="join_frm" method="post" action="${path}/front">
 			<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
 			<input type="hidden" name="methodName" value = "insert" />  <!-- 메소드이름 -->
 
 				<div class="join_title">Aplus ID 생성</div>
 				<div class="join_box">
-					<input type="text"  name="id" id="id" style="margin: 0;" placeholder="아이디(you@example.com)" required>
+					<input type="text"  name="emailId" id="emailId" style="margin: 0;" placeholder="아이디(you@example.com)" required>
 					<span id="id_ck" class="dpn">이미 사용중인 아이디입니다.</span>
 					
 
