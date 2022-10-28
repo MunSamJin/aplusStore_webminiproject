@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
 		
 		return null; //dto
 	}
-<<<<<<< HEAD
+
 	
 	
 	/**
@@ -50,6 +50,5 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
-=======
->>>>>>> merge221027
+
 }

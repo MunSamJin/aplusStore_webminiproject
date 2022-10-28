@@ -14,32 +14,15 @@ import dto.UserDTO;
 import util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
-<<<<<<< HEAD
-	
 
-=======
-	private Properties proFile = new Properties();
-	
-	
-	
-	public UserDAOImpl() {
-		try {
-		//dbQuery를 준비한 ~.properties파일을 로딩해서 Properties 자료구조에 저장한다.
-		
-		//현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될 때 classes폴더의 위치를 
-		//동적으로 가져와서 경로를 설정해야한다.
-		InputStream is = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
-		
-		proFile.load(is);
-		System.out.println("query.userlogin = " + proFile.getProperty("query.userlogin"));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		}
 
 	
->>>>>>> merge221027
+	
+	
+
+
+	
+
 
 
 	/*
@@ -54,21 +37,14 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 			con = DbUtil.getConnection();
-<<<<<<< HEAD
+
 			ps = con.prepareStatement("update member set email_id=?,phone=?,pwd=?,name=?,addr=?");
 			
 			ps.setString(1, userDTO.getEmailId());
 			ps.setString(2, userDTO.getPhone());
 			ps.setString(3, userDTO.getPwd());
 			ps.setString(4, userDTO.getAddr());
-=======
-			ps = con.prepareStatement("update member set email_id=?,pwd=?,name=?,addr=?,phone=?");
-			
-			ps.setString(1, userDTO.getId());
-			ps.setString(2, userDTO.getPwd());
-			ps.setString(3, userDTO.getAddr());
-			ps.setString(4, userDTO.getPhone());
->>>>>>> merge221027
+
 			
 			result = ps.executeUpdate();
 			
@@ -91,7 +67,7 @@ public class UserDAOImpl implements UserDAO {
 		PreparedStatement ps = null;
 		int result = 0;
 		
-<<<<<<< HEAD
+
 		
 		String sql = "insert into member values(?,?,?,?,?)";//"insert into member(emailId,phone,pwd,name,addr)values(?, ?, ? ,?, ?)"
 		System.out.println("query.regUser" + sql);
@@ -106,20 +82,7 @@ public class UserDAOImpl implements UserDAO {
 			
 			result = ps.executeUpdate();
 			
-=======
-		String sql = proFile.getProperty("query.regUser");//"insert into customer(id,pwd,name,addr,phone) values(?,?,?,?,?)"
-		
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setString(1, userDTO.getId());
-			ps.setString(2, userDTO.getPwd());
-			ps.setString(3, userDTO.getName());
-			ps.setString(4, userDTO.getAddr());
-			ps.setString(5, userDTO.getPhone());
-			
-			result = ps.executeUpdate();
->>>>>>> merge221027
+
 		
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -143,19 +106,13 @@ public class UserDAOImpl implements UserDAO {
 		
 		UserDTO dbuserDTO = null;
 		
-<<<<<<< HEAD
+
 		String sql = "select * from member where email_id=? and pwd=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, userDTO.getEmailId());
-=======
-		String sql = proFile.getProperty("query.loginUser");//select * from member where email_id=? and pwd=?
-		try {
-			con = DbUtil.getConnection();
-			ps = con.prepareStatement(sql);
-			ps.setString(1, userDTO.getId());
->>>>>>> merge221027
+
 			ps.setString(2, userDTO.getPwd());
 			rs = ps.executeQuery();
 			if(rs.next()) {
@@ -191,11 +148,9 @@ public class UserDAOImpl implements UserDAO {
 		
 			while(rs.next()) {
 				dto=new UserDTO();
-<<<<<<< HEAD
+
 				dto.setEmailId(rs.getString("emailId"));
-=======
-				dto.setId(rs.getString("id"));
->>>>>>> merge221027
+
 				dto.setPwd(rs.getString("pwd"));
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
@@ -234,11 +189,9 @@ public class UserDAOImpl implements UserDAO {
 		
 			while(rs.next()) {
 				dto = new UserDTO();
-<<<<<<< HEAD
+
 				dto.setEmailId(rs.getString("emailId"));
-=======
-				dto.setId(rs.getString("id"));
->>>>>>> merge221027
+
 				dto.setPwd(rs.getString("pwd"));
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));

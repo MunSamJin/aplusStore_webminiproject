@@ -27,8 +27,8 @@ public class CartInsertController implements Controller {
 
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
-		String emailId = (String)session.getAttribute("emailId");
-		//String emailId = request.getParameter("emailId");
+//		String emailId = (String)session.getAttribute("emailId");
+		String emailId = request.getParameter("emailId");
 		String modelName = request.getParameter("modelName");
 
 		System.out.println("CartInsert........");

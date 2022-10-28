@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<<<<<<< HEAD
-
-=======
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
->>>>>>> merge221027
+
 
 <div class="footer">
     <div class="container">
@@ -18,8 +15,7 @@
             <h1>Contact Us</h1>
             <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩) <br class="hidden-xs">
                 © 2021 KOSTA All rights reserved. </p>
-<<<<<<< HEAD
-=======
+
             <c:choose>
             <c:when test="${empty adminLogin}">
                 <a href="${path}/admin/AdminLogin.jsp">관리자 로그인</a>
@@ -28,7 +24,7 @@
                 <a href="${path}/front?key=item&methodName=AdminLogOut">관리자 로그아웃</a>
             </c:otherwise>
             </c:choose>
->>>>>>> merge221027
+
         </div>
     </div>
 </div>
