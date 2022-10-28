@@ -66,7 +66,8 @@ public class OrderController implements AjaxController {
 			totalAmount +=(cart.getModelCount()*cart.getModelPrice());
 		}
 		System.out.println("totalAmount" + totalAmount);
-		
+		System.out.println("totalAmount" + totalAmount);
+		System.out.println("totalAmount" + totalAmount);
 		
 		//OrderMain에서 넘어오는 값 받기
 		
