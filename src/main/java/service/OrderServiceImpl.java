@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import java.util.List;
 
-<<<<<<< HEAD
+
 
 
 import dao.OrderDAO;
@@ -18,13 +18,13 @@ import dto.OrderDetailDTO;
 
 
 import mail.Mail;
-=======
+
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.CartDTO;
 import dto.OrderDTO;
 
->>>>>>> samjin
+
 
 
 

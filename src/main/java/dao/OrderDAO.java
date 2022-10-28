@@ -8,16 +8,11 @@ import dto.OrderDTO;
 
 import java.util.List;
 
-<<<<<<< HEAD
 
-import dto.ItemDTO;
-
-import dto.OrderDetailDTO;
-
-=======
 import dto.CartDTO;
 import dto.OrderDTO;
->>>>>>> samjin
+import dto.OrderDetailDTO;
+
 
 public interface OrderDAO {
 	/**

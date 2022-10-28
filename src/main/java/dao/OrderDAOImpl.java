@@ -27,16 +27,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 		CartDTO cartDTO = null;
 		ItemDTO itemDTO = null;
-<<<<<<< HEAD
-		List<ItemDTO> list = new ArrayList<ItemDTO>();
-		String sql = "";
 
-
-
-
-
-		return null;
-=======
 		List<CartDTO> list = new ArrayList<CartDTO>();
 		String sql = "select b.model_num, i.model_name, b.model_count, i.model_price, i.model_stock "
 				+ "from basket b, items i "
@@ -59,7 +50,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		System.out.println("DAO list = " + list);
 		return list;
->>>>>>> samjin
+
 	}
 
 
@@ -71,13 +62,10 @@ public class OrderDAOImpl implements OrderDAO {
 	 * @return 0이면 주문 실패, 1이면 주문 성공
 	 */
 	@Override
-<<<<<<< HEAD
-	public int orderInsert(OrderDTO dto) throws SQLException {
 
-=======
 	public int orderInsert(OrderDTO dto, List<CartDTO> cartList) throws SQLException {
 		
->>>>>>> samjin
+
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result =0;
@@ -103,20 +91,7 @@ public class OrderDAOImpl implements OrderDAO {
 				con.rollback();
 				throw new SQLException("등록할 수 없습니다.");
 			}else {
-<<<<<<< HEAD
-				//	int re [] = orderDetailInsert(con, dto);
-				//	for(int i : re) {
-				//		if(i != 1) {
-				//			con.rollback();
-				//			throw new SQLException("주문할 수 없습니다...");
-				//		}
-				//	}
-				//장바구니 비우기
-				//상품재고 감소
 
-				//con.commit();
-
-=======
 			 	int re [] = orderDetailInsert(con, cartList);
 			 	for(int i : re) {
 			 	if(i != 1) {
@@ -129,7 +104,7 @@ public class OrderDAOImpl implements OrderDAO {
 				
 			 //con.commit();
 				
->>>>>>> samjin
+
 			}
 		}finally {
 			DbUtil.dbClose(con, ps);
@@ -144,36 +119,19 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 주문상세 테이블 등록하기
 	 */
 	@Override
-<<<<<<< HEAD
-	public int[] orderDetailInsert(Connection con, OrderDTO dto) throws SQLException {
 
-		PreparedStatement ps = null;
-		int result [] = null;
-		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?)";
-
-=======
 	public int[] orderDetailInsert(Connection con, List<CartDTO> cartList) throws SQLException {
 		
 		PreparedStatement ps = null;
 		int result [] = null;
 		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?,?)";
 		
->>>>>>> samjin
+
 		try{
 			ps = con.prepareStatement(sql);
 
 			//장바구니 결제 목록 가져오기
-<<<<<<< HEAD
-			//bascketlist = basketDao.????;
 
-			//for(BasketDTO bascket : bascketlist) {
-			//	ps.setString(1, bascket.getModelNum()); //주문수량
-			//	ps.setInt(2, bascket.getMoelCount()); //할인가격
-			//	ps.addBatch();
-			//	ps.clearParameters();
-			//}
-
-=======
 			for(CartDTO cart : cartList) {
 				ps.setString(1, cart.getModelName());//상품이름
 				ps.setInt(2, cart.getModelCount()); //주문수량
@@ -182,7 +140,7 @@ public class OrderDAOImpl implements OrderDAO {
 				ps.clearParameters();
 			}
 			
->>>>>>> samjin
+
 			result = ps.executeBatch();//일괄처리
 
 		}finally {
