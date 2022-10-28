@@ -8,9 +8,6 @@
 \${path} : ${path}
 
 
-
-
-
 <link rel="stylesheet" href="${path}/css/style.css">
 <style>
 @import url("https://fonts.googleapis.com/css?family=Roboto:400,300");
@@ -102,7 +99,7 @@ img{width:200px; height:350px}
 
 
 <table align="center" border="0" cellpadding="5" cellspacing="2" width="100%" bordercolordark="white" bordercolorlight="black">
-<caption><h2 align="center">상품(Electronic) LIST</h2></caption>
+<caption><h2 align="center">LIST</h2></caption>
 	<colgroup>
 		<col width="15%"/>
 		<col width="30%"/>
@@ -115,26 +112,16 @@ img{width:200px; height:350px}
 	<tr>
         <td bgcolor="#00cc00">
             <p align="center">
-            <font color="white"><b><span style="font-size:9pt;">모델번호</span></b></font></p>
+            <font color="white"><b><span style="font-size:9pt;">번호</span></b></font></p>
         </td>
         <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">모델이름</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">가격</span></b></font></p>
+            <p align="center"><font color="white"><b><span style="font-size:9pt;">emailId</span></b></font></p>
         </td>
         <td bgcolor="#00cc00">
             <p align="center"><font color="white"><b><span style="font-size:9pt;">날짜</span></b></font></p>
         </td>
-        
         <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">첨부파일</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">파일용량</span></b></font></p>
-        </td>
-        <td bgcolor="#00cc00">
-            <p align="center"><font color="white"><b><span style="font-size:9pt;">조 회 수</span></b></font></p>
+            <p align="center"><font color="white"><b><span style="font-size:9pt;">조회수</span></b></font></p>
         </td>
     </tr>
     
@@ -142,46 +129,46 @@ img{width:200px; height:350px}
     <c:when test="${empty requestScope.list}">
 	   <tr>
         <td colspan="5">
-            <p align="center"><b><span style="font-size:9pt;">등록된 상품이 없습니다.</span></b></p>
+            <p align="center"><b><span style="font-size:9pt;">등록된 게시글이 없습니다.</span></b></p>
         </td>
     </tr>
     </c:when>
     <c:otherwise>
-	<c:forEach items="${requestScope.list}" var="elecDto">
+	<c:forEach items="${requestScope.list}" var="QnaDto">
 		    <tr onmouseover="this.style.background='#eaeaea'"
 		        onmouseout="this.style.background='white'">
 		        <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.modelNum}</span></p>
+		            ${QnaDto.qNum}</span></p>
 		        </td>
 		        <td bgcolor="">
 					<p><span style="font-size:9pt;">
-					<a href="${path}/front?key=elec&methodName=selectByModelNum&modelNum=${elecDto.modelNum}&pageNo=${pageNo}">
-					  ${elecDto.modelName}
+					<a href="${path}/front?key=elec&methodName=selectByqNum&qNum=${QnaDto.qNum}&pageNo=${pageNo}">
+					  ${QnaDto.emailId}
 					</a>
 					</span></p>
 		        </td>
 		        
 		        <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            <fmt:formatNumber value="${elecDto.price}"/></span></p>
+		            <fmt:formatNumber value="${QnaDto.price}"/></span></p>
 		        </td>
 		        <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.writeday}</span></p>
+		            ${QnaDto.writeday}</span></p>
 		        </td>
 		         
 		         <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.fname}</span></p>
+		            ${QnaDto.fname}</span></p>
 		        </td>
 		         <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            <fmt:formatNumber value="${elecDto.fsize}"/> byte</span></p>
+		            <fmt:formatNumber value="${QnaDto.fsize}"/> byte</span></p>
 		        </td>
 		        <td bgcolor="">
 		            <p align="center"><span style="font-size:9pt;">
-		            ${elecDto.readnum}</span></p>
+		            ${QnaDto.readnum}</span></p>
 		        </td>
 		    </tr>
     </c:forEach>
@@ -231,33 +218,5 @@ img{width:200px; height:350px}
 
  
 <jsp:include page="../common/footer.jsp"/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 

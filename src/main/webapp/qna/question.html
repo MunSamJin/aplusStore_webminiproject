@@ -17,13 +17,6 @@
 <!-- Resource style -->
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<style type="text/css">
-	a{color: #000}
-    a:hover{
-    	color: #000;
-    	text-decoration: underline;
-    }
-</style>
 
 </head>
 <body>
@@ -60,115 +53,66 @@
   <div class="main app form" id="main"><!-- Main Section-->
     <div class="hero-section">
       <div class="container nopadding">
-        <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/iPhone_qna.png" alt="App" /> </div>
-        <div class="col-md-7">
-          <div class="hero-content">
-            <h1 class="wow fadeInUp" data-wow-delay="0.1s">iPhone</h1>
-            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-              <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="query" id="query">
-              <input id="query" type="text" name="query" placeholder="search" autocomplete="off" id="query" >
-              <input class="submit-button" type="submit" value="question" name="send" id="question">
-              
-              <!--게시물 등록-->
-              <a href="../qna/subscribe.html">
-              <input class="submit-button" type="button" value="Subscribe" name="send" id="subsubmit"></a>
-            </form>
-          </div>
-        </div>
+		<div class="col-md-5">
+			<img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/apple_watch.png" alt="App" />
+		</div>
       </div>
     </div>
    </div>
 
-
+      <form name="writeForm" method="post" action="${path}/front?key=elec&methodName=insert" 
+  onSubmit='return checkValid()' enctype="multipart/form-data">
  	<!--- 게시판 --->
     <div class= "container">
     	<div class="row">
     	    <table class= "table table-stripped" style= "text-align: center;">
-    	    	<thead>
-    	    	<tr>
-    	    		<th style= "background-color: #1eb858; text-align: center; color: #fff">번호</th>
-    	    		<th style= "background-color: #1eb858; text-align: center; color: #fff">제목</th>
-    	    		<th style= "background-color: #1eb858; text-align: center; color: #fff">질문자</th>
-    	    		<th style= "background-color: #1eb858; text-align: center; color: #fff">작성일</th>
-    	    		<th style= "background-color: #1eb858; text-align: center; color: #fff">조회수</th>
-    	    	</tr>
-    	    	</thead>
     	    	<tbody>
     	    		<tr>
-    	    			<td>1</td>
-    	    			<td><a href="../qna/question.html">아이폰 질문1</a></td>
-    	    			<td>ID1</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문2</td>
-    	    			<td>ID2</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문3</td>
-    	    			<td>ID3</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문4</td>
-    	    			<td>ID4</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문5</td>
-    	    			<td>ID5</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문6</td>
-    	    			<td>ID6</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문7</td>
-    	    			<td>ID7</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문8</td>
-    	    			<td>ID8</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문9</td>
-    	    			<td>ID9</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
-    	    		<tr>
-    	    			<td>1</td>
-    	    			<td>아이폰 질문10</td>
-    	    			<td>ID10</td>
-    	    			<td>2022-10-24</td>
-    	    			<td>1</td>
-    	    		</tr>
+        <td width="1220" height="45" colspan="2" bgcolor="#00cc00">
+            <p align="center"><font color="white" size="3"><b>질문</b></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="200" height="35" >
+            <p align="right"><b><span style="font-size:10pt;">제품 종류</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_num" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="200" height="35" >
+            <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_num" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="150" height="35">
+            <p align="right"><b><span style="font-size:10pt;">emailId</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_name" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="150" height="250">
+            <p align="right"><b><span style="font-size:10pt;">질문 내용</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<textarea name="description" cols="50" rows="10"></textarea></span></b></td>
+    </tr>
+    <tr>
+        <td width="450" height="20" colspan="2" align="center"><b><span style="font-size:9pt;"><input type=submit value=등록하기> 
+        <input type=reset value=다시쓰기></span></b></td>
+    </tr>
     	    	</tbody>
     	    </table>
     	</div>
     </div>
-    
+
+</form>
+</div>
+<hr>
+
 <!-- footer -->
 <div class="footer">
     <div class="container">
@@ -186,7 +130,7 @@
     </div>
 </div>
 
-</div>
+
 
 </body>
 </html>

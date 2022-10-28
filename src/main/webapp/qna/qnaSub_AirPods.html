@@ -16,6 +16,15 @@
 <link rel="stylesheet" href="../hyo_css/ionicons.min.css">
 <!-- Resource style -->
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<style type="text/css">
+	a{color: #000}
+    a:hover{
+    	color: #000;
+    	text-decoration: underline;
+    }
+</style>
+
 </head>
 <body>
 <div class="qna_sub">
@@ -58,7 +67,7 @@
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
               <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="query" id="query">
               <input id="query" type="text" name="query" placeholder="검색 또는 질문하기" autocomplete="off" id="query" >
-              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
+              <input class="submit-button" type="submit" value="question" name="send" id="question">
               
               <!--게시물 등록-->
               <a href="../qna/subscribe.html">
@@ -86,7 +95,7 @@
     	    	<tbody>
     	    		<tr>
     	    			<td>1</td>
-    	    			<td>에어팟 질문1</td>
+    	    			<td><a href="../qna/question.html">에어팟 질문1</a></td>
     	    			<td>ID1</td>
     	    			<td>2022-10-24</td>
     	    			<td>1</td>
@@ -159,8 +168,26 @@
     	</div>
     </div>
 
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-7"> <img src="../images/logo1.png" width="80"  alt="Image" />
+            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
+            <div class="footer-text">
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Contact Us</h1>
+            <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
+                © 2021 KOSTA All rights reserved. </p>
+        </div>
+    </div>
+</div>
 
 </div>
+
+
 
 </body>
 </html>

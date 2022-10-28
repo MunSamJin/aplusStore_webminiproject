@@ -79,14 +79,14 @@ function checkValid() {
             <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
         </td>
         <td width="450" height="20"><b><span style="font-size:9pt;">
-		<input type=text name="model_num" size="52"></span></b></td>
+		<input type=text name="q_num" size="52"></span></b></td>
     </tr>
     <tr>
         <td width="150" height="35">
             <p align="right"><b><span style="font-size:10pt;">emailId</span></b></p>
         </td>
         <td width="450" height="20"><b><span style="font-size:9pt;">
-		<input type=text name="model_name" size="52"></span></b></td>
+		<input type=text name="email_id" size="52"></span></b></td>
     </tr>
     <tr>
         <td width="150" height="250">
