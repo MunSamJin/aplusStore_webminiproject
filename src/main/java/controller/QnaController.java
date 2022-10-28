@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale.Category;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,17 +22,22 @@ public class QnaController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
 	/**
+<<<<<<< HEAD
 	 *  ��ü�˻�
+=======
+	 *  전체검색
+>>>>>>> hyogyeong
 	 * */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
 		List<QnaDTO> list = qnaService.selectAll();  
+<<<<<<< HEAD
 		request.setAttribute("list", list);//�信�� ${list}
 		
 		return new ModelAndView("elec/list.jsp"); //forward������� �̵�
@@ -39,23 +45,38 @@ public class QnaController implements Controller{
 	
 	/**
 	 * ����ϱ�
+=======
+		request.setAttribute("list", list); //뷰에서 ${list}
+		
+		return new ModelAndView("elec/list.jsp"); //forward방식으로 이동
+	}
+	
+	/**
+	 * 등록하기
+>>>>>>> hyogyeong
 	 * */
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
+<<<<<<< HEAD
 		//���۵� ������ �ޱ� 
 		String qNum = request.getParameter("q_num");
+=======
+		//전송된 데이터 받기 
+		String qNum = request.getParameter("qNum");
+>>>>>>> hyogyeong
 		String category = request.getParameter("category");
-		String emailId = request.getParameter("email_id");
-		String qSubject = request.getParameter("q_subject");
-		String qContent = request.getParameter("q_content");
-		String qDate = request.getParameter("q_date");
-		String qHits = request.getParameter("q_hits");
+		String emailId = request.getParameter("emailId");
+		String qSubject = request.getParameter("qSubject");
+		String qContent = request.getParameter("qContent");
+		String qDate = request.getParameter("qDate");
+		String qHits = request.getParameter("qHits");
 				
 		QnaDTO qna = 
 			new QnaDTO(qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits));
 		
 		qnaService.insert(qna);
+<<<<<<< HEAD
 		return new ModelAndView("front", true);//key=elec&methodName=select �⺻���� �����ȴ�.	
 	}
 	
@@ -82,10 +103,20 @@ public class QnaController implements Controller{
 	
 	/**
 	 *  ������
+=======
+		return new ModelAndView("front", true);//key=elec&methodName=select 기본으로 설정된다.
+	}
+	
+	/**
+	 *  수정폼
+>>>>>>> hyogyeong
 	 * */
 	public ModelAndView updateForm(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		String qNum = request.getParameter("qnaService");
+		QnaDTO qnaDTO = qnaService.selectByqSubject(qnaService, false);
 		
+<<<<<<< HEAD
 		String qNum = request.getParameter("qNum");
 //		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, false);
 		
@@ -101,6 +132,19 @@ public class QnaController implements Controller{
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 	   //������ ���� 5�� �ޱ�
+=======
+		request.setAttribute("QnaDTO", qnaDTO);
+		
+		return new ModelAndView("elec/update.jsp");//forward방식
+	}
+	
+	/**
+	 * 수정완료
+	 * */
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+	   //수정할 정보 5개 받기
+>>>>>>> hyogyeong
 		String qNum = request.getParameter("qNum");
 		String category = request.getParameter("category");
 		String emailId = request.getParameter("emailId");
@@ -109,27 +153,41 @@ public class QnaController implements Controller{
 		String qDate = request.getParameter("qDate");
 		String qHits = request.getParameter("qHits");
 		
-	
-		
 		qnaService.update( new QnaDTO( qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits)));
 		
+<<<<<<< HEAD
 		//������ �Ϸᰡ ����..
+=======
+		//수정이 완료가 된후..
+>>>>>>> hyogyeong
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("front?key=elec&methodName=selectByQNum&qNum="+qNum+"&qNum="+qNum);
 	    mv.setRedirect(true);
 		return mv;
 	}
 	/**
+<<<<<<< HEAD
 	 * ����
+=======
+	 * 삭제
+>>>>>>> hyogyeong
 	 * */
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView delete(HttpServletRequest request, String category, HttpServletResponse response)
 			throws Exception {
+<<<<<<< HEAD
 		//���۵Ǵ� 2���ޱ�
 		String qNum = request.getParameter("qNum");
 		String emailId = request.getParameter("emailId");
 		
 		
 //		qnaService.delete(qNum, emailId);
+=======
+		//전송되는 2개받기
+		String qNum = request.getParameter("qNum");
+		String emailId = request.getParameter("emailId");
+		
+		qnaService.delete(qNum, category, emailId);
+>>>>>>> hyogyeong
 		
 		return new ModelAndView("front", true);
 	}

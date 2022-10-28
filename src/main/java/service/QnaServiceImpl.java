@@ -6,9 +6,11 @@ import dao.QnaDAO;
 import dao.QnaDAOImpl;
 import dto.QnaDTO;
 
+
 public class QnaServiceImpl implements QnaService {
 	private QnaDAO qnaDAO = new QnaDAOImpl();
 
+	
 	//검색
 	@Override
 	public List<QnaDTO> selectAll() throws SQLException {
@@ -23,6 +25,7 @@ public class QnaServiceImpl implements QnaService {
 		if(result==0)throw new SQLException("등록되지 않았습니다.");
 
 	}
+	
 
 	//삭제(질문번호, 질문종류, 이메일Id)
 	@Override
@@ -53,7 +56,7 @@ public class QnaServiceImpl implements QnaService {
 		QnaDTO dbQna = qnaDAO.selectByqSubject(qnaDTO.getqNum());
 		
 		if(dbQna == null) {
-			throw new SQLException("모델번호 오류로 수정할수 없습니다.");
+			throw new SQLException("질문번호 오류로 수정할수 없습니다.");
 			
 		/*}else if(!dbElec.getPassword().equals(qnaDTO.getPassword())) {
 			throw new SQLException("비밀번호를 다시 확인해주세요.-수정실패");*/
@@ -64,5 +67,12 @@ public class QnaServiceImpl implements QnaService {
 		}
 
 	}
+
+	@Override
+	public QnaDTO selectByqSubject(QnaService qnaService, boolean b) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
