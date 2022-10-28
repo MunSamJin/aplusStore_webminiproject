@@ -9,21 +9,21 @@
     <WatchedResource>WEB-INF/tomcat-web.xml</WatchedResource>
     <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
 
-  <!-- DBCP기술 연결 -->
-<!--   <Resource name="jdbc/myoracle" auth="Container"-->
-<!--              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"-->
-<!--              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/edu/AplusWallet"-->
-<!--              username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"-->
-<!--              maxWaitMillis="-1"/>-->
+ <!-- DBCP기술 연결 -->
+   <Resource name="jdbc/myoracle" auth="Container"
+              type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+              url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/Edu/AplusWallet/Wallet_kosta"
+              username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
+              maxWaitMillis="-1"/>
 
 
 
 <!--종영-->
-    <Resource name="jdbc/myoracle" auth="Container"
+    <!-- <Resource name="jdbc/myoracle" auth="Container"
               type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
               url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=/Users/jy/Desktop/edu/Wallet_kosta"
               username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
-              maxWaitMillis="-1"/>
+              maxWaitMillis="-1"/> -->
 
 
 

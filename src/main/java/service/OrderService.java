@@ -26,8 +26,8 @@ public interface OrderService {
 	List<CartDTO> cartMenuSelect(String emailId) throws SQLException;
 
 	/**
-	 * 주문 상세조회
+	 * 주문조회
 	 * */
-	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
+	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
 
 }

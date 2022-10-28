@@ -21,51 +21,51 @@ import dto.QnaDTO;
 
 @WebServlet(urlPatterns = "/front", loadOnStartup = 1)
 public class FrontDispatcherServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	private Map<String, Controller> map;
-	private Map<String, Class<?>> clzMap;
-	
-	
-	
-	@Override
-		public void init() throws ServletException {
-			ServletContext application = super.getServletContext();
-			
-			map = (Map<String, Controller>)application.getAttribute("map");
-			clzMap = (Map<String, Class<?>>)application.getAttribute("clzMap");
+   private static final long serialVersionUID = 1L;
+   private Map<String, Controller> map;
+   private Map<String, Class<?>> clzMap;
+   
+   
+   
+   @Override
+      public void init() throws ServletException {
+         ServletContext application = super.getServletContext();
+         
+         map = (Map<String, Controller>)application.getAttribute("map");
+         clzMap = (Map<String, Class<?>>)application.getAttribute("clzMap");
 
-		}
-	
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String key = request.getParameter("key"); 
-		String methodName = request.getParameter("methodName");
-		System.out.println("프론트 디스패쳐");
+      }
+   
+   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String key = request.getParameter("key"); 
+      String methodName = request.getParameter("methodName");
+      System.out.println("프론트 디스패쳐");
 
-		
-		System.out.println("key = " + key + ", methodName = " + methodName);
-		
-		try {
-			Controller con = map.get(key);
-			System.out.println(con);
-			Class<?> clz = clzMap.get(key);
-			Method method = clz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
-			ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
-			
-			
-			if(mv.isRedirect()) {
-				response.sendRedirect(mv.getViewName());
-			}else {
-				request.getRequestDispatcher(mv.getViewName()).forward(request, response);
-			}
-			
-		}catch(Exception e) {
-			e.printStackTrace();
-			request.setAttribute("errorMsg", e.getMessage() );
-			request.getRequestDispatcher("error/error.jsp").forward(request, response);
-		}
-		
-	}//serviceEnd
+      
+      System.out.println("key = " + key + ", methodName = " + methodName);
+      
+      try {
+         Controller con = map.get(key);
+         System.out.println(con);
+         Class<?> clz = clzMap.get(key);
+         Method method = clz.getMethod(methodName, HttpServletRequest.class, HttpServletResponse.class);
+         ModelAndView mv = (ModelAndView)method.invoke(con, request, response);
+         
+         
+         if(mv.isRedirect()) {
+            response.sendRedirect(mv.getViewName());
+         }else {
+            request.getRequestDispatcher(mv.getViewName()).forward(request, response);
+         }
+         
+      }catch(Exception e) {
+         e.printStackTrace();
+         request.setAttribute("errorMsg", e.getMessage() );
+         request.getRequestDispatcher("error/error.jsp").forward(request, response);
+      }
+      
+   }//serviceEnd
 
-	
-	
+   
+   
 }
