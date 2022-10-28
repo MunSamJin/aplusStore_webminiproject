@@ -25,21 +25,19 @@
 					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
                
                 <div class="form-floating mb-3">
-<<<<<<< HEAD
+
                   <input type="email" class="form-control" id="emailId" name="emailId" placeholder="name@example.com">
-=======
-                  <input type="email" class="form-control" id="userId" name="userId" placeholder="name@example.com">
->>>>>>> merge221027
-                  <label for="floatingInput">Email address</label>
+
+                  <label for="emailId">Email address</label>
                 </div>
                 <div class="form-floating mb-3">
                   <input type="password" class="form-control" id="pwd" name="pwd" placeholder="Password">
-                  <label for="floatingPassword">Password</label>
+                  <label for="pwd">Password</label>
                 </div>
 
                 <div class="form-check mb-3">
                   <input class="form-check-input" type="checkbox" value="" id="rememberIdCheck" name="rememberIdCheck">
-                  <label class="form-check-label" for="rememberPasswordCheck">
+                  <label class="form-check-label" for="rememberIdCheck">
                     아이디 저장
                   </label>
                 </div>
