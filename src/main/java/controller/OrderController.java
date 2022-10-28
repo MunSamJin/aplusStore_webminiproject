@@ -157,6 +157,8 @@ public class OrderController implements AjaxController {
 		OrderDTO dto =
 				new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, totalPrice);
 
+		System.out.println("Controller에서 dto" + dto);
+		
 		/**
 		 * OrderService 호출 - 주문테이블에 등록하기
 		 */

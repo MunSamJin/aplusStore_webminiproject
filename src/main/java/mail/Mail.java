@@ -1,6 +1,7 @@
 package mail;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -12,11 +13,12 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import dto.OrderDTO;
+
  
 public class Mail{
  
-    public static void mailSend(String mailId, OrderDTO dto) {
-         
+    public static void mailSend(OrderDTO dto, OrderDTO orderNum) {
+           	
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
         p.put("mail.smtp.host", "smtp.naver.com");      // smtp 서버 주소
@@ -38,7 +40,7 @@ public class Mail{
             // 이메일 발신자
             msg.setFrom(from);
             // 이메일 수신자
-            InternetAddress to = new InternetAddress(mailId); //받을사람 아이디
+            InternetAddress to = new InternetAddress(dto.getRealEmail()); //받을사람 아이디
             msg.setRecipient(Message.RecipientType.TO, to);
            
             // 이메일 제목
@@ -48,9 +50,9 @@ public class Mail{
             // 이메일 내용
            
             msg.setText(
-            		dto.getOrderName()+"님의 주문번호는 "+dto.getOrderNum()+
-            		"입니다. ", 
-            		"UTF-8");
+            		dto.getOrderName()+"님의 주문번호는 "+orderNum.getOrderNum()+"입니다.\n"
+            		, "UTF-8");
+            
            
             // 이메일 헤더
             msg.setHeader("content-Type", "text/html");
@@ -72,7 +74,7 @@ class MyAuthentication extends Authenticator {
     PasswordAuthentication pa;
     public MyAuthentication(){
          
-        String id = "orchid59@naver.com";  //네이버 이메일 아이디
+    	String id = "orchid59@naver.com";  //네이버 이메일 아이디
         String pw = "1051102qqq";        //네이버 비밀번호
  
         // ID와 비밀번호를 입력한다.

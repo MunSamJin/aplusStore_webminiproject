@@ -67,8 +67,8 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Apple의 진짜 매력을 경험할 수 있는 Apple의 매장.</h1>
-	            <p class="wow fadeInUp" data-wow-delay="0.2s"> Apple 제품을 쇼핑하고, 전문가의 조언도 직접 받을 수 있습니다. </p>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus의 진짜 매력을 경험할 수 있는 Aplus 매장</h1>
+	            <p class="wow fadeInUp" data-wow-delay="0.2s"> Aplus 제품을 쇼핑하고, 전문가의 조언도 직접 받을 수 있습니다. </p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
 	        	<div id="mesaj"></div>
@@ -97,7 +97,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 명동</td></tr>
+	              	<tr><td>Aplus Store 명동</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 중구 남문대로 2가 9-1</td></tr>
 	              	<tr><td>하이드파크</td></tr>
@@ -117,7 +117,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 가로수길</td></tr>
+	              	<tr><td>Aplus Store 가로수길</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 강남구</td></tr>
 	              	<tr><td>가로수길 43</td></tr>
@@ -137,7 +137,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 여의도</td></tr>
+	              	<tr><td>Aplus Store 여의도</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 영등포구 국제금융로 10</td></tr>
 	              	<tr><td>IFC MALL, L1</td></tr>
@@ -157,7 +157,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 잠실</td></tr>
+	              	<tr><td>Aplus Store 잠실</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 송파구 올림픽로 300</td></tr>
 	              	<tr><td>롯데월드몰 1F</td></tr>

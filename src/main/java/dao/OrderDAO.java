@@ -2,15 +2,9 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-
-
-import dto.OrderDTO;
-
 import java.util.List;
-import java.util.Map;
 
 import dto.CartDTO;
-import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
@@ -28,7 +22,7 @@ public interface OrderDAO {
 
 
 	/**
-	 * 주문내역 검색
+	 * 주문내역 검색 - 주문내역 조회 시
 	 * @throws SQLException 
 	 * */
 	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
@@ -55,5 +49,10 @@ public interface OrderDAO {
 	 * 상품재고 감소
 	 */
 	int[] decreaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException;
+	
+	/**
+	 * 주문내역 이메일 발송을 위한 select
+	 */
+	OrderDTO selectOrderNum(Connection con, String emailId) throws SQLException;
 
 }

@@ -21,6 +21,11 @@ public class OrderDTO {
 		super();
 		this.totalPrice = totalPrice;
 	}
+	
+	public OrderDTO(int orderNum, String orderName) {
+		this.orderNum = orderNum;
+		this.orderName = orderName;
+	}
 
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {
 		super();

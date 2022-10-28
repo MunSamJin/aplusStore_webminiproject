@@ -5,14 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import dto.CartDTO;
-import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
+import mail.Mail;
 import util.DbUtil;
 
 
@@ -99,8 +97,17 @@ public class OrderDAOImpl implements OrderDAO {
 				 			throw new SQLException("주문할 수 없습니다...");
 					}
 			 	}
-			 	System.out.println("장바구니 비우러가자...");
+			 	
+			 //주문내역 이메일 보내기
+			 	OrderDTO orderNum = selectOrderNum(con, emailId);
+			 	Mail mail = new Mail();
+			 	mail.mailSend(dto,orderNum);
+			 	System.out.println("emailId" + emailId);
+			 	System.out.println("orderDTO.getOrderName()" + dto.getOrderName());
+			 	System.out.println("orderDTO.getOrderNum()"+orderNum.getOrderNum());
+			 	
 			 //장바구니 비우기
+			 	System.out.println("장바구니 비우러가자...");
 			 	basketDelete(con, emailId);
 			 //상품재고 감소
 			 	decreaseByModelStock(con, cartList);
@@ -234,7 +241,6 @@ public class OrderDAOImpl implements OrderDAO {
 		System.out.println("cartDel = " + emailId);
 		int result = 0;
 		try {
-			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql_delete);
 			ps.setString(1,emailId);
 			result = ps.executeUpdate();
@@ -243,6 +249,34 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 		System.out.println("cartresult = " + result);
 		return result;
+	}
+	
+	
+	/**
+	 * 주문내역 이메일 발송을 위한 select
+	 */
+	@Override
+	public OrderDTO selectOrderNum(Connection con, String emailId) throws SQLException {
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "select order_num_seq.currval, order_name from a_orders";
+		
+		System.out.println("selectOrderNum emailId = " + emailId);
+		
+		OrderDTO orderDTO = null;
+		
+		try {
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				orderDTO = new OrderDTO(rs.getInt(1), rs.getString(2));
+			}
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		System.out.println("orderDTO = " + orderDTO);
+		return orderDTO;
 	}
 
 }

@@ -60,7 +60,7 @@
 		      		
 	   		    // 커스텀 오버레이에 표시할 내용입니다     
 	   		    // HTML 문자열 또는 Dom Element 입니다 
-	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Apple 명동"+"<br>전자제품 판매점</button><span class='right'></span></div>";
+	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Aplus Store 명동"+"<br>전자제품 판매점</button><span class='right'></span></div>";
 	
 	   		    // 커스텀 오버레이가 표시될 위치입니다 
 	   		    let position = new kakao.maps.LatLng(37.5646423, 126.9827078);  
@@ -89,7 +89,7 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Apple 명동</h1>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus Store 명동</h1>
 	            <p class="wow fadeInUp" data-wow-delay="0.2s"> 폐점 시간 10:00 오후</p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
@@ -125,7 +125,7 @@
 	              	<tr><td><br></td></tr>
 	              	<tr><td>찾아오는 길</td></tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 명동은 명동 쇼핑 중심지 내 남대문로에 위치해있으며, 롯데백화점을 바로 맞은 편에 두고 있습니다. 주차 공간이 여의치 않으므로 대중교통을 이용하시길 바랍니다. 대중교통편: 지하철 2호선 을지로역 6번 출구에서 하차하시면 됩니다.</td></tr>
+	              	<tr><td>Aplus Store 명동은 명동 쇼핑 중심지 내 남대문로에 위치해있으며, 롯데백화점을 바로 맞은 편에 두고 있습니다. 주차 공간이 여의치 않으므로 대중교통을 이용하시길 바랍니다. 대중교통편: 지하철 2호선 을지로역 6번 출구에서 하차하시면 됩니다.</td></tr>
 	              </table>
 	            </div>
 	          </div>

@@ -14,9 +14,6 @@ import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
-
-import mail.Mail;
-
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.CartDTO;
@@ -39,15 +36,17 @@ public class OrderServiceImpl implements OrderService {
 		//orderDAO호출 - 주문 테이블에 등록하기
 		int orderNum = orderDAO.orderInsert(dto, cartList, emailId);
 
-		//System.out.println("orderNum 서비스"+orderNum);
+		System.out.println("orderNum 서비스"+orderNum);
 
 		if(orderNum==0)throw new SQLException("등록되지 않았습니다.");
 
-				String mailId = dto.getRealEmail();
-				System.out.println("mailId"+mailId);
-
-		Mail mail = new Mail();
-		mail.mailSend(mailId,dto);
+		String mailId = dto.getRealEmail();
+		System.out.println("mailId"+mailId);
+				
+		
+		
+		//Mail mail = new Mail();
+		//mail.mailSend(mailId,dto);
 
 		return orderNum;
 	}
