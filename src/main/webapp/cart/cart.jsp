@@ -20,20 +20,20 @@
 <!-- Resource style -->
 <link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
 
-<!-- Jquery and Js Plugins --> 
-<script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
+<!-- Jquery and Js Plugins -->
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../js/plugins.js"></script> 
-<script type="text/javascript" src="../js/menu.js"></script> 
+<script type="text/javascript" src="../js/plugins.js"></script>
+<script type="text/javascript" src="../js/menu.js"></script>
 <script type="text/javascript" src="../js/custom.js"></script>
-<script src="../js/jquery.subscribe.js"></script> 
+<script src="../js/jquery.subscribe.js"></script>
 
 <style type="text/css">
 	table img{width:140px; height:160px;}
 	#cartTable td:first-child {display:none;}
 	#cartTable td:nth-child(2) {display:none;}
-	
+
 </style>
 
 <script type="text/javascript">
@@ -44,7 +44,7 @@
 =======
 		$("[name=cartToOrder]").click(function(){
 >>>>>>> merge221027
-			//수량 비교?		
+			//수량 비교?
 			$.ajax({
 				url:"${path}/ajax",
 				type:"post",
@@ -64,42 +64,42 @@
 							if(confirm(" 품절 상품은 결제에 포함되지 않습니다. 그대로 주문을 진행하려면 확인을 누르세요.")){
 								location.href = "${path}/orders/orderMain.jsp";
 							}
-							
+
 						} else if(item.modelStock < item.modelCount){ //재고량 < 주문수량
 							if(confirm(item.modelName + " 상품 재고량이 부족합니다. 수량이 맞지 않는 제품은 결제에 포함되지 않습니다. 수량 변경없이 그대로 주문을 진행하려면 확인을 누르세요.")){
 								location.href = "${path}/orders/orderMain.jsp";
 							}
-							
+
 						}  else{
 							if(confirm("결제하시겠습니까?")){ //정상
 								location.href = "${path}/orders/orderMain.jsp";
-							} 
+							}
 						}
 					})
 >>>>>>> merge221027
-					
+
 				},
-				error : function(err){  
+				error : function(err){
 					alert(err+"에러 발생했어요.");
-				}  
+				}
 			})
-			
+
 		});
-		
+
 <<<<<<< HEAD
 		//장바구니 전체검색
 		   function select(){
 =======
-		
-		
+
+
 		//장바구니 전체검색
-		   function select(){						
+		   function select(){
 >>>>>>> merge221027
 			   $.ajax({
-				url :"${path}/ajax" , 
-				type:"post", 
-				dataType:"json"  , 
-				data: {key:"cart", methodName : "select", emailId: "sikkk@naver.com"/* `${sessionScope.emailId}` */}, 
+				url :"${path}/ajax" ,
+				type:"post",
+				dataType:"json"  ,
+				data: {key:"cart", methodName : "select", emailId: "sikkk@naver.com"/* `${sessionScope.emailId}` */},
 				success :function(result){
 					let str="";
 					let totalPrice = 0;
@@ -110,8 +110,8 @@
 						if((item.category=="iphone") || (item.category=="watch")){
 							imgName = name[0]+"_"+name[1];
 						}
-						
-						
+
+
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -120,7 +120,7 @@
 						//품절 여부
 						//if()
 						//$("#soldOut").css("display:block");
-						
+
 <<<<<<< HEAD
 =======
 >>>>>>> merge221027-2
@@ -137,25 +137,25 @@
 					    		+ "<h2 id='soldOut' display='none'>품절</h2>" +"</td>";
 =======
 					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
-					    		
+
 					    		if(item.modelStock <= 0){
 					    			 str+="<b style='color:red'>  품절</b>"
 					    		}
-					    		
+
 					    		+"</td>";
 >>>>>>> merge221027
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
 					    str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
 					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
 					    str+="</tr>";
-					    
+
 					    totalPrice += (item.modelPrice * item.modelCount);
 				    });
-					
+
 <<<<<<< HEAD
 =======
-					
-					
+
+
 >>>>>>> merge221027
 					//$("#cartTable tr:eq(0)").remove();
 					$("#cartTable tr:gt(0)").remove();
@@ -164,62 +164,62 @@
 					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + totalPrice);
 					$("#totalPrice1").text("￦"+totalPrice);
 					$("#totalPrice2").text("￦"+(totalPrice));
-					
-				} , 
-				error : function(err){  
+
+				} ,
+				error : function(err){
 					alert(err+"에러 발생했어요.");
-				}  
+				}
 			});
 		   }
-		   
-		   
-		   
+
+
+
 		   //장바구니 삭제
 		   $(document).on("click", "[name=delete]", function(){
 			   alert($(this).attr("id"));
 			   $.ajax({
-					url :"${path}/ajax" , 
-					type:"post", 
-					dataType:"text"  , 
+					url :"${path}/ajax" ,
+					type:"post",
+					dataType:"text"  ,
 					//data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelNum: $(this).attr("id")},
 					data: {key:"cart", methodName : "delete", cartNum: $(this).attr("id")},
 					success :function(result){
 						alert(result);
 						select();//다시 전체검색
-					} , 
-					error : function(err){  
+					} ,
+					error : function(err){
 						alert(err+"에러 발생했어요.");
-					}  
+					}
 		   		})
 		   })
-		   
-		   
+
+
 		   //장바구니 업데이트
 		   $(document).on("change","#selectModelCount",function(){
 			   //alert("수정 " + $(this).val());
 			   $.ajax({
-					url :"${path}/ajax" , 
-					type:"post", 
-					dataType:"text"  , 
+					url :"${path}/ajax" ,
+					type:"post",
+					dataType:"text"  ,
 					data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().children('td:eq(0)').text(), modelCount: $(this).val()},
 					success :function(result){
 						select();//다시 전체검색
-						
-					} , 
-					error : function(err){  
+
+					} ,
+					error : function(err){
 						alert(err+"에러 발생했어요.");
-					}  
+					}
 		   		})
 		   })
-		   
-		   
+
+
 		   //이미지 선택시 이동
 		   $(document).on("click","img",function(){
 			   //location.href("");
-			   
+
 		   })
-		   
-		   
+
+
 		   select();
 	})
 </script>
@@ -234,13 +234,13 @@
       <div class="container">
         <h1 class="wow fadeInDown" data-wow-delay="0.1s" id="cartEx">장바구니에 들어있는 제품입니다 </h1>
         <p class="wow fadeInDown" data-wow-delay="0.2s"> 모든 주문에 무료 배송 서비스가 제공됩니다 <br class="hidden-xs">
-        
+
         </p>
 <<<<<<< HEAD
         <p><input type="hidden" name="key" value="cart"><input type="hidden" name="methodName" value="checkStock">
         <button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="click"  name="cartToOrder" id="cartToOrder">결제</button></p>
       </div>
-  
+
   <form action="${path}/orders/orderMain.jsp" method="post" id="cartForm">
    <div class="split-features">
     <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
@@ -250,7 +250,7 @@
 =======
         <p><button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="button"  name="cartToOrder" id="cartToOrder">결제</button></p>
       </div>
-  
+
 
    <div class="split-features">
     <table id="cartTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
@@ -261,7 +261,7 @@
 	      <td width="30%"><!-- <div class="col-md-6 nopadding"> -->
 	        <div class="split-image"> <img class="img-responsive wow fadeIn" src="../images/iPhone-app.png" alt="Image" width="140px"/> </div>
 	      </td>
-	      
+
 	      <td width="40%">
 	        <div ><!-- class="split-content" -->
 	          <h2 class="wow fadeInUp">장바구니 상품1</h2>
@@ -288,7 +288,7 @@
 =======
     	<hr>
     	<table id="countTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
-    		
+
     		<tr><td>소계</td><td id="totalPrice1" ></td></tr>
     		<tr><td>배송</td><td id="express">무료</td></tr>
     		<tr><td>총계</td><td id="totalPrice2" ><p></td></tr>
@@ -304,24 +304,24 @@
 <<<<<<< HEAD
   </form>
 =======
-  
+
 >>>>>>> merge221027
- 
-   
+
+
     <!-- Footer Section -->
     <jsp:include page="../common/footer.jsp"/>
   </div>
-    
-    <!-- Scroll To Top --> 
-    
-    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a> 
-    
-    <!-- Scroll To Top Ends--> 
-    
+
+    <!-- Scroll To Top -->
+
+    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a>
+
+    <!-- Scroll To Top Ends-->
+
   </div>
-  <!-- Main Section --> 
+  <!-- Main Section -->
 </div>
-<!-- Wrapper--> 
+<!-- Wrapper-->
 
 
 </body>
