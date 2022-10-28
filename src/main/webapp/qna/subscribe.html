@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>QnA_main</title>
+<title>QnA_sub</title>
 <link rel="icon" href="images/favicon.png" type="image/png" sizes="16x16">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="iLand Multipurpose Landing Page Template">
@@ -16,18 +16,9 @@
 <link rel="stylesheet" href="../hyo_css/ionicons.min.css">
 <!-- Resource style -->
 <link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
-
-<style type="text/css">
-	a{color: #000}
-    a:hover{
-    	color: #000;
-    	text-decoration: underline;
-    }
-</style>
-
 </head>
 <body>
-<div class="main">
+<div class="qna_sub">
   <div class="container">
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -54,50 +45,89 @@
     <!-- /.navbar-collapse -->
   </div>
   
+
   
-  <!-- /.container-fluid -->
+  <!--- 검색 폼 --->
   <div class="main app form" id="main"><!-- Main Section-->
     <div class="hero-section">
-    
-		<!-- Subscribe Form -->
-	    <div class="cta-sub no-color">
-	      <div class="container">
-	        <div class="cta-inner">
-	          <h1 class="wow fadeInUp" data-wow-delay="0s">Apple 지원</h1>
-	          
-	      </div>
-	    </div>
-    </div>
-  </div>
+      <div class="container nopadding">
 
-	<div class="pitch text-center">
-      <div class="container">
-        <div class="col-md-12">
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
-            <div class="pitch-content">
-              <h1><a href="../qna/qnaSub_iPhone.html">iPhone</a></h1>
-            </div>
-          </div>
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
-            <div class="pitch-content">
-              <h1><a href="../qna/qnaSub_Watch.html">Watch</a></h1>
-              </div>
-          </div>
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
-            <div class="pitch-content">
-              <h1><a href="../qna/qnaSub_AirPods.html">AirPods</a></h1>
-              </div>
-          </div>
-        </div>
+
       </div>
     </div>
-  
-  
-  <!-- Main Section --> 
+   </div>
+
+      <form name="writeForm" method="post" action="${path}/front?key=elec&methodName=insert" 
+  onSubmit='return checkValid()' enctype="multipart/form-data">
+ 	<!--- 게시판 --->
+    <div class= "container">
+    	<div class="row">
+    	    <table class= "table table-stripped" style= "text-align: center;">
+    	    	<tbody>
+    	    		<tr>
+        <td width="1220" height="45" colspan="2" bgcolor="#00cc00">
+            <p align="center"><font color="white" size="3"><b> 질문 등록 </b></font></p>
+        </td>
+    </tr>
+    <tr>
+        <td width="200" height="35" >
+            <p align="right"><b><span style="font-size:10pt;">제품 종류</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_num" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="200" height="35" >
+            <p align="right"><b><span style="font-size:10pt;">제목</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_num" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="150" height="35">
+            <p align="right"><b><span style="font-size:10pt;">emailId</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<input type=text name="model_name" size="52"></span></b></td>
+    </tr>
+    <tr>
+        <td width="150" height="250">
+            <p align="right"><b><span style="font-size:10pt;">질문 내용</span></b></p>
+        </td>
+        <td width="450" height="20"><b><span style="font-size:9pt;">
+		<textarea name="description" cols="50" rows="16"></textarea></span></b></td>
+    </tr>
+    <tr>
+        <td width="450" height="20" colspan="2" align="center"><b><span style="font-size:9pt;"><input type=submit value=등록하기> 
+        <input type=reset value=다시쓰기></span></b></td>
+    </tr>
+    	    	</tbody>
+    	    </table>
+    	</div>
+    </div>
+
+</form>
 </div>
+<hr>
+
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-7"> <img src="../images/logo1.png" width="80"  alt="Image" />
+            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
+            <div class="footer-text">
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Contact Us</h1>
+            <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
+                © 2021 KOSTA All rights reserved. </p>
+        </div>
+    </div>
+</div>
+
+
 
 </body>
 </html>

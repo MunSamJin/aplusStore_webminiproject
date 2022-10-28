@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Locale.Category;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -21,86 +22,63 @@ public class QnaController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 	
 	/**
-	 *  ÀüÃ¼°Ë»ö
+	 *  ì „ì²´ê²€ìƒ‰
 	 * */
 	public ModelAndView select(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
 		List<QnaDTO> list = qnaService.selectAll();  
-		request.setAttribute("list", list);//ºä¿¡¼­ ${list}
+		request.setAttribute("list", list); //ë·°ì—ì„œ ${list}
 		
-		return new ModelAndView("elec/list.jsp"); //forward¹æ½ÄÀ¸·Î ÀÌµ¿
+		return new ModelAndView("elec/list.jsp"); //forwardë°©ì‹ìœ¼ë¡œ ì´ë™
 	}
 	
 	/**
-	 * µî·ÏÇÏ±â
+	 * ë“±ë¡í•˜ê¸°
 	 * */
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
-		//Àü¼ÛµÈ µ¥ÀÌÅÍ ¹Ş±â 
-		String qNum = request.getParameter("q_num");
+		//ì „ì†¡ëœ ë°ì´í„° ë°›ê¸° 
+		String qNum = request.getParameter("qNum");
 		String category = request.getParameter("category");
-		String emailId = request.getParameter("email_id");
-		String qSubject = request.getParameter("q_subject");
-		String qContent = request.getParameter("q_content");
-		String qDate = request.getParameter("q_date");
-		String qHits = request.getParameter("q_hits");
+		String emailId = request.getParameter("emailId");
+		String qSubject = request.getParameter("qSubject");
+		String qContent = request.getParameter("qContent");
+		String qDate = request.getParameter("qDate");
+		String qHits = request.getParameter("qHits");
 				
 		QnaDTO qna = 
 			new QnaDTO(qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits));
 		
 		qnaService.insert(qna);
-		return new ModelAndView("front", true);//key=elec&methodName=select ±âº»À¸·Î ¼³Á¤µÈ´Ù.	
+		return new ModelAndView("front", true);//key=elec&methodName=select ê¸°ë³¸ìœ¼ë¡œ ì„¤ì •ëœë‹¤.
 	}
 	
 	/**
-	 * »ó¼¼º¸±â 
-	 * */
-	public ModelAndView selectByModelNum(HttpServletRequest request, HttpServletResponse response)
-			throws Exception {
-		
-		 String qNum = request.getParameter("qNum");
-		 boolean state = request.getParameter("flag")==null ? true : false;
-		 
-
-		 
-		 //µÎ¹øÂ° ÀÎ¼ö boolean Á¶È¸¼ö Áõ°¡¿©ºÎ¸¦ ÆÇ´ÜÇÒ ÀÎ¼ö(trueÀÌ¸é, falseÀÌ¸é Áõ°¡¾ÈÇÔ)
-		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, state);
-		request.setAttribute("qna", qnaDTO);
-		
-		
-		return new ModelAndView("qna/read.jsp"); //forward¹æ½Ä 
-		
-	}
-	
-	
-	/**
-	 *  ¼öÁ¤Æû
+	 *  ìˆ˜ì •í¼
 	 * */
 	public ModelAndView updateForm(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
+		String qNum = request.getParameter("qnaService");
+		QnaDTO qnaDTO = qnaService.selectByqSubject(qnaService, false);
 		
-		String qNum = request.getParameter("qNum");
-		QnaDTO qnaDTO = qnaService.selectByQNum(qNum, false);
+		request.setAttribute("QnaDTO", qnaDTO);
 		
-		request.setAttribute("qna", qnaDTO);
-		//request.setAttribute("pageNo", pageNo);
-		
-		return new ModelAndView("elec/update.jsp");//forward¹æ½Ä
+		return new ModelAndView("elec/update.jsp");//forwardë°©ì‹
 	}
 	
 	/**
-	 * ¼öÁ¤¿Ï·á
+	 * ìˆ˜ì •ì™„ë£Œ
 	 * */
 	public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-	   //¼öÁ¤ÇÒ Á¤º¸ 5°³ ¹Ş±â
+	   //ìˆ˜ì •í•  ì •ë³´ 5ê°œ ë°›ê¸°
 		String qNum = request.getParameter("qNum");
 		String category = request.getParameter("category");
 		String emailId = request.getParameter("emailId");
@@ -109,27 +87,24 @@ public class QnaController implements Controller{
 		String qDate = request.getParameter("qDate");
 		String qHits = request.getParameter("qHits");
 		
-	
-		
 		qnaService.update( new QnaDTO( qNum, category, emailId, qSubject, qContent, qDate, Integer.parseInt(qHits)));
 		
-		//¼öÁ¤ÀÌ ¿Ï·á°¡ µÈÈÄ..
+		//ìˆ˜ì •ì´ ì™„ë£Œê°€ ëœí›„..
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("front?key=elec&methodName=selectByQNum&qNum="+qNum+"&qNum="+qNum);
 	    mv.setRedirect(true);
 		return mv;
 	}
 	/**
-	 * »èÁ¦
+	 * ì‚­ì œ
 	 * */
-	public ModelAndView delete(HttpServletRequest request, HttpServletResponse response)
+	public ModelAndView delete(HttpServletRequest request, String category, HttpServletResponse response)
 			throws Exception {
-		//Àü¼ÛµÇ´Â 2°³¹Ş±â
+		//ì „ì†¡ë˜ëŠ” 2ê°œë°›ê¸°
 		String qNum = request.getParameter("qNum");
 		String emailId = request.getParameter("emailId");
 		
-		
-		qnaService.delete(qNum, emailId);
+		qnaService.delete(qNum, category, emailId);
 		
 		return new ModelAndView("front", true);
 	}

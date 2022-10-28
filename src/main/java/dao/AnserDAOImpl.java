@@ -4,23 +4,23 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Properties;
 
-import dto.QnaDTO;
 import dto.AnserDTO;
 import util.DbUtil;
 
 public class AnserDAOImpl implements AnserDAO {
+	private Properties proFile = new Properties();
 
-	//´äº¯ µî·Ï
+	//ë‹µë³€ ë“±ë¡
 	@Override
 	public int insert(AnserDTO anserDTO) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
-		String sql= proFile.getProperty("Anser.insert");
+		
 		//insert into answer values(?,?,?,sysdate);
+		String sql= "insert into answer values(?,?,?,sysdate)";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -35,15 +35,15 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-	//´äº¯¹øÈ£¿¡ ÇØ´çÇÏ´Â ´äº¯ »èÁ¦
+	//ë‹µë³€ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ë‹µë³€ ì‚­ì œ
 	@Override
 	public int delete(String aNum) throws SQLException {
 		Connection con=null;
 		PreparedStatement ps=null;
 		int result=0;
 		
-		//delete from answer(Å×ÀÌºí¸í) where qNum=?;
-		String sql= proFile.getProperty("Anser.delete");
+		//delete from answer(í…Œì´ë¸”ëª…) where qNum=?;
+		String sql= "delete from answer where qNum=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -57,16 +57,17 @@ public class AnserDAOImpl implements AnserDAO {
 		return result;
 	}
 
-	//´äº¯¹øÈ£¿¡ ÇØ´çÇÏ´Â ´äº¯ ¼öÁ¤
+	//ë‹µë³€ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ë‹µë³€ ìˆ˜ì •
 	@Override
 	public int update(AnserDTO anserDTO) throws SQLException {
 		PreparedStatement ps = null;
 		  Connection con = null;
 		  int result=0;
+		  String sql= proFile.getProperty("Anser.update");
 		  try {
 		   con = DbUtil.getConnection();
-		   //QNA.update= update QnaDTO set qNum=?, qSubject=?, qContent=?;
-		   ps = con.prepareStatement("update QnaDTO set qNum=?, qSubject=?, qContent=?");
+		 //update Electronics set model_name=?,price=?,description=? where model_num=? and password=?;
+		   ps = con.prepareStatement("update Electronics set model_name=?,price=?,description=? where model_num=? and password=?");
 		   
 		   ps = con.prepareStatement(sql);
 		   ps.setString(1, anserDTO.getaNum());
@@ -83,6 +84,7 @@ public class AnserDAOImpl implements AnserDAO {
 		  return result;
 	}
 
+	//ì§ˆë¬¸ë²ˆí˜¸ì— í•´ë‹¹í•˜ëŠ” ë‹µë³€ ê²€ìƒ‰
 	@Override
 	public AnserDTO selectByqNum(String qNum) throws SQLException {
 		Connection con=null;
@@ -90,7 +92,7 @@ public class AnserDAOImpl implements AnserDAO {
 		ResultSet rs=null;
 		AnserDTO anserDTO = null;
 		
-		String sql= proFile.getProperty("Anser.selectBymodelNum");
+		String sql= proFile.getProperty("select * from Electronics where model_num=?");
 		//select * from Electronics where model_num=?
 		try {
 			con = DbUtil.getConnection();

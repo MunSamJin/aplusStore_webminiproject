@@ -38,7 +38,7 @@ public class QnaDAOImpl implements QnaDAO {
 		List<QnaDTO> list = new ArrayList<QnaDTO>();
 		
 		//select * from QnaDTO(필드명) order by question(테이블명) desc -전체조회
-		String sql= proFile.getProperty("QNA.select");
+		String sql= "select * from QnaDTO order by question desc";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -65,7 +65,7 @@ public class QnaDAOImpl implements QnaDAO {
 	      int result=0;
 	      
 	      //update QNA set readnum=readnum+1 where qNum=?
-	      String sql= proFile.getProperty("QNA.updateReadnum");
+	      String sql= "update QNA set readnum=readnum+1 where qNum=?";
 	      try {
 	         con = DbUtil.getConnection();
 	         ps = con.prepareStatement("update question set readnum=readnum+1 where question=?"); //question:테이블명
@@ -86,7 +86,7 @@ public class QnaDAOImpl implements QnaDAO {
 		int result=0;
 		
 		//insert into QnaDTO values(?,?,?,?,?,sysdate,0,?,?);
-		String sql= proFile.getProperty("QNA.insert");
+		String sql= "insert into QnaDTO values(?,?,?,?,?,sysdate,0,?,?)";
 		
 		try {
 			con = DbUtil.getConnection();
@@ -115,7 +115,7 @@ public class QnaDAOImpl implements QnaDAO {
 		int result=0;
 		
 		//delete from question(테이블명) where qNum=? and emailId=?;
-		String sql= proFile.getProperty("QNA.delete");
+		String sql= "delete from question where qNum=? and emailId=?";
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -169,7 +169,7 @@ public class QnaDAOImpl implements QnaDAO {
 		ResultSet rs=null;
 		QnaDTO qnaDTO = null;
 		
-		String sql= proFile.getProperty("QNA.selectByqSubject");
+		String sql= proFile.getProperty("select * from QnaDTO where qSubject=?");
 		//select * from QnaDTO where qSubject=?
 		try {
 			con = DbUtil.getConnection();
@@ -189,4 +189,4 @@ public class QnaDAOImpl implements QnaDAO {
 	}
 
 
-}//클래스끝
+}//class끝
