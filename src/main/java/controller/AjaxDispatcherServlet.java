@@ -18,42 +18,41 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(urlPatterns = "/ajax" , loadOnStartup = 1)
 public class AjaxDispatcherServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	
+   private static final long serialVersionUID = 1L;
+   
      Map<String, AjaxController> ajaxMap;
      Map<String, Class<?>> ajaxClzMap;
- 	@Override
-	public void init() throws ServletException {
-		//map = (Map<String, Controller>)super.getServletContext().getAttribute("map");
-		
-		ServletContext application = super.getServletContext();
-		Object obj = application.getAttribute("ajaxMap");
-		ajaxMap = (Map<String, AjaxController>)obj;
-		
-		ajaxClzMap = (Map<String, Class<?>>)super.getServletContext().getAttribute("ajaxClzMap");
-		
-	}
+    @Override
+   public void init() throws ServletException {
+      //map = (Map<String, Controller>)super.getServletContext().getAttribute("map");
+      
+      ServletContext application = super.getServletContext();
+      Object obj = application.getAttribute("ajaxMap");
+      ajaxMap = (Map<String, AjaxController>)obj;
+      
+      ajaxClzMap = (Map<String, Class<?>>)super.getServletContext().getAttribute("ajaxClzMap");
+      
+   }
    
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String key = request.getParameter("key"); //customer
-		String methodName = request.getParameter("methodName"); //idCheck , insert , selectAll
-		
-		System.out.println("key = " + key+", methodName = " + methodName);
-		try {
-			Class<?> clz = ajaxClzMap.get(key);
-			Method method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
-			
-			AjaxController controller = ajaxMap.get(key);
-			method.invoke(controller, request , response);
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}
+   protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+      String key = request.getParameter("key"); //customer
+      String methodName = request.getParameter("methodName"); //idCheck , insert , selectAll
+      
+      System.out.println("key = " + key+", methodName = " + methodName);
+      try {
+         Class<?> clz = ajaxClzMap.get(key);
+         Method method = clz.getMethod(methodName, HttpServletRequest.class , HttpServletResponse.class);
+         
+         AjaxController controller = ajaxMap.get(key);
+         method.invoke(controller, request , response);
+         
+      }catch (Exception e) {
+         e.printStackTrace();
+      }
 
-	}//service 메소드 끝
+   }//service 메소드 끝
 
 }
-
 
 
 

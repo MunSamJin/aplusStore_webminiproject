@@ -13,9 +13,14 @@ public class OrderDTO {
 	private String orderPhone; //주문자 휴대폰번호
 	private int totalPrice;//총금액
 
-	private List<OrderDetailDTO> detailList;
+	//private List<OrderDetailDTO> detailList;
 
 	public OrderDTO() {}
+	
+	public OrderDTO(String orderState) {
+		super();
+		this.orderState = orderState;
+	}
 
 	public OrderDTO(int totalPrice) {
 		super();
@@ -31,6 +36,8 @@ public class OrderDTO {
 		this.realEmail = realEmail;
 		this.orderPhone = orderPhone;
 	}
+	
+	
 
 	public OrderDTO(String memberGuest, String orderName, String realAddr, String orderState, String realEmail, String orderPhone, int totalPrice) {
 		super();
@@ -129,13 +136,6 @@ public class OrderDTO {
 		this.orderDate = orderDate;
 	}
 
-	public List<OrderDetailDTO> getDetailList() {
-		return detailList;
-	}
-
-	public void setDetailList(List<OrderDetailDTO> detailList) {
-		this.detailList = detailList;
-	}
 
 
 

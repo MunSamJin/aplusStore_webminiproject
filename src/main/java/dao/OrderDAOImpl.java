@@ -165,42 +165,49 @@ public class OrderDAOImpl implements OrderDAO {
 		return 0;
 	}
 
-
+	
 	/**
-	 * 주문 상세가져오기
+	 *  본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * */
-	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
+	
+	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) {
 		Connection con=null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
 		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
 
-		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
-				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=?";
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state "
+				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=? and o.order_mail=?";
 		try {
-
+			
+			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
+			
 			ps.setString(1, orderNum);
+			ps.setString(2, realEmail);	
 			rs = ps.executeQuery();
 
-			if(rs.next()) {
+			while(rs.next()) {
+				System.out.println("--------->");
 				String a =rs.getString(1);
 				String b =rs.getString(2);
 				String c =rs.getString(3);
 				int d =rs.getInt(4);
 				int e =rs.getInt(5);
-				int f =rs.getInt(6);
+				String f =rs.getString(6);
 
 				OrderDTO orderDTO = new OrderDTO(f);
-				OrderDetailDTO dto = new OrderDetailDTO(a,b,c,d,e, orderDTO);
-				list.add(dto);
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderDTO);
+				list.add(detailDTO);
 			}
-
+		} catch(Exception e) {
+			e.printStackTrace();
 		} finally {
-			DbUtil.dbClose(null, ps, rs);
+			DbUtil.dbClose(con, ps, rs);
 		}
 		return list;
 	}
+
 
 
 

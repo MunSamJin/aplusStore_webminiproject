@@ -49,7 +49,20 @@
  
 </style>
 
+<<<<<<< HEAD
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+=======
+<!-- Jquery and Js Plugins --> 
+<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+
+<script type="text/javascript" src="../js/plugins.js"></script> 
+<script type="text/javascript" src="../js/menu.js"></script> 
+<script type="text/javascript" src="../js/custom.js"></script>
+<script src="../js/jquery.subscribe.js"></script> 
+
+>>>>>>> ran
 
 <script type="text/javascript" >
 $(function(){
@@ -67,6 +80,7 @@ $(function(){
                     $("#subscribeform").hide();
                     
                     let str="";
+<<<<<<< HEAD
                  
                   $.each(result, function(index, item){
                       str+="<tr>";
@@ -83,6 +97,24 @@ $(function(){
                   
                   $("#listTable tr:gt(0)").remove();
                   $("#listTable tr:eq(0)").after(str);
+=======
+  					
+      				$.each(result, function(index, item){
+      				    str+="<tr>";
+      				    str+=`<td><img src='../images/${item.detailModelName}.jpeg' height='150px'></td>`;
+      				    str+=`<td><a href='#'>${item.detailModelNum}</a></td>`;
+      				    str+=`<td>${item.detailModelName}</td>`;
+      				    str+=`<td>${item.detailQty}</td>`;
+      				    str+=`<td>${item.salePrice}</td>`;
+      				  	str+=`<td>${item.orderDTO.orderState}</td>`;
+      				    str+="</tr>";
+      			 	});
+      				
+      				alert(str)
+      				
+      				$("#listTable tr:gt(0)").remove();
+      				$("#listTable tr:eq(0)").after(str);
+>>>>>>> ran
                  
                  
                     //$("#result").load("GuestPage.html");
@@ -95,8 +127,13 @@ $(function(){
                  }  
               });//ajax끝
         });
+<<<<<<< HEAD
       
       
+=======
+	   
+	   
+>>>>>>> ran
   
 });//ready끝
 
@@ -145,12 +182,19 @@ $(function(){
             <p class="wow fadeInUp" data-wow-delay="0.2s"> 
             
              <form class="subscribe-form wow zoomIn"  method="post" name="subscribeform" id="subscribeform">
+<<<<<<< HEAD
               <input class="mail" type="hidden" name="key" value="order" ><br>  
                <input class="mail" type="hidden" name="methodName" value="searchByOrderNum"><br>  
               <input class="mail" type="text" name="orderNum" placeholder="주문번호" autocomplete="off" id="orderNum"><br>
               <p></p>          
               <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail"><br>
               <p></p>     
+=======
+              <input class="mail" type="hidden" name="key" value="pay" ><br>  
+               <input class="mail" type="hidden" name="methodName" value="getOrders"><br>  
+              <input class="mail" type="text" name="orderNum" placeholder="주문번호" autocomplete="off" id="orderNum"><br>            
+              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail">
+>>>>>>> ran
               <input class="submit-button" type="button" value="조회하기" name="search" id="search">
              </form>
                  <!-- Scroll To Top --> 
@@ -163,6 +207,25 @@ $(function(){
   <!-- Main Section --> 
 </div>
 <!-- Wrapper--> 
+<<<<<<< HEAD
+=======
+    
+<table id="listTable" cellspacing="0">
+	<tr bgcolor=yellows">
+		<th></th>
+		<th>주문상세번호</th>
+		<th>상품명</th>
+		<th>주문수량</th>
+		<th>제품금액</th>
+		<th>주문상태</th>
+	</tr>	
+</table>
+
+
+ 
+    
+
+>>>>>>> ran
 
 <!-- footer -->
 <div class="footer">
@@ -182,6 +245,7 @@ $(function(){
     </div>
 </div>
 
+<<<<<<< HEAD
 <!-- Jquery and Js Plugins --> 
 <script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
 <script type="text/javascript" src="../js/bootstrap.min.js"></script>
@@ -192,5 +256,7 @@ $(function(){
 <script src="../js/jquery.subscribe.js"></script>
 
 
+=======
+>>>>>>> ran
 </body>
 </html>

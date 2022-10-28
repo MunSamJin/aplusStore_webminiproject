@@ -38,9 +38,9 @@ public interface OrderDAO {
 	List<CartDTO> cartMenuSelect(String emailId) throws SQLException;
 
 	/**
-	 * 주문내역 검색
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * @throws SQLException 
 	 * */
-	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
+	List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
 
 }

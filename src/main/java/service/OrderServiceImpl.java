@@ -25,9 +25,6 @@ import dto.CartDTO;
 import dto.OrderDTO;
 
 
-
-
-
 public class OrderServiceImpl implements OrderService {
 	private OrderDAO orderDAO = new OrderDAOImpl();
 
@@ -66,13 +63,18 @@ public class OrderServiceImpl implements OrderService {
 		System.out.println("Service list = " + list);
 		return list;
 	}
-
+	
+	/**
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
+	 * */
 	@Override
-	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
-		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum);
+	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum, realEmail);
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}
+		System.out.println("service list = "+list);
+		
 		return list;
 	}
 
