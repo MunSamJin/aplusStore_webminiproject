@@ -124,7 +124,7 @@
 					    		
 					    		+"</td>";
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
-					    str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
+					    str+="<td>￦" + numberDot(item.modelPrice * item.modelCount) + "</td>";
 					    //str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
 					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.modelName}"}></td>`;
 					    str+="</tr>";
@@ -138,9 +138,13 @@
 					$("#cartTable tr:gt(0)").remove();
 					$("#cartTable tr:eq(0)").after(str);
 					//$("#cartTable").html(str);
-					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + totalPrice);
-					$("#totalPrice1").text("￦"+totalPrice);
-					$("#totalPrice2").text("￦"+(totalPrice));
+					
+					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + (numberDot(totalPrice)));
+					
+					//let formatPrice = " ￦<fmt:formatNumber value='" + totalPrice + "'/>";
+					//$("#totalPrice1").text(formatPrice);
+					$("#totalPrice1").text("￦"+(numberDot(totalPrice)));
+					$("#totalPrice2").text(" ￦"+(numberDot(totalPrice)));
 					
 				} , 
 				error : function(err){  
@@ -199,6 +203,11 @@
 				//location.href("");
 
 			})
+			
+			//숫자 콤마
+			function numberDot(num){
+			    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 
 
 			select();
@@ -271,7 +280,7 @@
 
 </div>
 <!-- Main Section -->
-</div>
+<!-- </div> -->
 <!-- Wrapper-->
 
 
