@@ -12,6 +12,12 @@ public class CartDTO {
 	private int modelStock;
 
 	public CartDTO() {}
+	
+	public CartDTO(String modelNum, int modelCount) {
+		super();
+		this.modelNum = modelNum;
+		this.modelCount = modelCount;
+	}
 
 	public CartDTO(String cartNum, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelCount, int modelStock) {
 		super();

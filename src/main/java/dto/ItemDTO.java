@@ -13,6 +13,12 @@ public class ItemDTO {
 
     public ItemDTO() {
     }
+    
+    public ItemDTO(String modelName,int modelPrice, int modelStock) {
+    	this.modelName = modelName;
+    	this.modelPrice = modelPrice;
+    	this.modelStock = modelStock;
+    }
 
     //악세서리 등록을 위해서 사용
 
