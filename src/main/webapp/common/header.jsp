@@ -59,7 +59,7 @@
                         <li><a class="page-scroll" href="${path}/user/login.jsp">로그인</a></li>
                         <li><a class="page-scroll" href="${path}/cart/cart.jsp">장바구니</a></li>
 
-                        <li><a class="page-scroll" href="#contact">배송조회</a></li>
+                        <li><a class="page-scroll" href="${path}/admin/SearchGuest.html">배송조회</a></li>
                         <li><a class="page-scroll" href="${path}/items/search.jsp">
                             <img src="${path}/images/search_icon.png" height="20px">
                         </a></li>

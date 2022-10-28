@@ -224,6 +224,7 @@
                     <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
+                        <input type="button" id="ad">
                         <form class="subscribe-form wow zoomIn">
                             Category : <select name="CRUD" class="mail" id="CRUD">
                             <option disabled selected>C.R.U.D</option>
