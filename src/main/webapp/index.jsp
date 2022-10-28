@@ -33,13 +33,6 @@
           <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to Aplus Store!</h1>
           <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
           <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-            <form class="subscribe-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
-              <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
-              <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
-            </form>
-            <!-- subscribe message -->
-            <div id="mesaj"></div>
-            <!-- subscribe message -->
           </div>
         </div>
       </div>
