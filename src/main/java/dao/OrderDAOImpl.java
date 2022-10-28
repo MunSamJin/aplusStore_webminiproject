@@ -19,21 +19,35 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 	 */
 	@Override
-	public List<ItemDTO> cartMenuSelect(String emailId) throws SQLException {
+	public List<CartDTO> cartMenuSelect(String emailId) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		CartDTO cartDTO = null;
 		ItemDTO itemDTO = null;
-		List<ItemDTO> list = new ArrayList<ItemDTO>();
-		String sql = "";
+		List<CartDTO> list = new ArrayList<CartDTO>();
+		String sql = "select b.model_num, i.model_name, b.model_count, i.model_price, i.model_stock "
+				+ "from basket b, items i "
+				+ "where b.model_num = i.model_num "
+				+ "and b.email_id=?";
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, emailId);
+			rs = ps.executeQuery();
+			while(rs.next() ) {
+				cartDTO = new CartDTO(rs.getString(1), rs.getInt(3));
+				itemDTO = new ItemDTO(rs.getString(2), rs.getInt(4),rs.getInt(5));
+				list.add(cartDTO);
+			}
+			
+		}finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
 		
-		
-		
-		
-		
-		return null;
+		System.out.println("DAO list = " + list);
+		return list;
 	}
 	
 	

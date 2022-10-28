@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dto.ItemDTO;
+import dto.CartDTO;
 import dto.OrderDTO;
 
 import service.OrderService;
@@ -54,16 +54,13 @@ public class OrderController implements AjaxController {
 			/**
 			 * OrderService 호출 - 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 			 */
-			List<ItemDTO> list = orderService.cartMenuSelect(emailId);
+			List<CartDTO> list = orderService.cartMenuSelect(emailId);
 			
+			PrintWriter out = response.getWriter();
+			out.print(list);
+
 			}
 			
-			
-
-			
-			
-			
-		
 			
 			//총가격
 			String totalPrice = request.getParameter("totalPrice");

@@ -13,6 +13,12 @@ public class ItemDTO {
 
     public ItemDTO() {
     }
+    
+    public ItemDTO(String modelName,int modelPrice, int modelStock) {
+    	this.modelName = modelName;
+    	this.modelPrice = modelPrice;
+    	this.modelStock = modelStock;
+    }
 
     public ItemDTO(int modelNum, String category, String modelName, int modelPrice, String modelOption, String modelColor, String modelGPS, int modelStock, String modelRegDate) {
         this.modelNum = modelNum;
