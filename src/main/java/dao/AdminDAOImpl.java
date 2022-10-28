@@ -9,12 +9,10 @@ import java.util.List;
 
 import dto.AdminDTO;
 import dto.AdminDetailDTO;
-<<<<<<< HEAD
-=======
+
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
->>>>>>> merge221027
 import util.DbUtil;
 
 public class AdminDAOImpl implements AdminDAO {
@@ -255,9 +253,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}		
 		return adminDTO;
 	}
-<<<<<<< HEAD
-=======
-	
+
 	/**
 	 * 댓글정보 가져오기
 	 * */
@@ -295,7 +291,7 @@ public class AdminDAOImpl implements AdminDAO {
 		}
 		return list;
 	}
->>>>>>> merge221027
+
 
 
 }

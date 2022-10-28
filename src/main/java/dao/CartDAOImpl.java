@@ -18,58 +18,43 @@ public class CartDAOImpl implements CartDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
-		
+
 		String category = null;
 		String modelNum = null;
 		int modelPrice = 0;
-<<<<<<< HEAD
-=======
 		int modelStock = 0;
->>>>>>> merge221027
 		int result = 0;
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, modelName);
-			
+
 			rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
 				modelNum = rs.getString(1);
 				category = rs.getString(2);
 				modelPrice = rs.getInt(4);
-<<<<<<< HEAD
-				
-				result = insert(con, category, modelNum, modelName, emailId, modelPrice);
-=======
 				modelStock = rs.getInt(8);
 				System.out.println(modelNum+category+modelPrice+modelStock);
 				result = insert(con, category, modelNum, modelName, emailId, modelPrice, modelStock);
->>>>>>> merge221027
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
+
 		return result;
 	}
-	
+
 	//insert
-<<<<<<< HEAD
-	public int insert(Connection con, String category, String modelNum, String modelName, String emailId, int modelPrice) throws SQLException {
-		PreparedStatement ps = null;
-		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, ?, 1)";
-		int result = 0;
-=======
 	public int insert(Connection con, String category, String modelNum, String modelName, String emailId, int modelPrice, int modelStock) throws SQLException {
 		PreparedStatement ps = null;
 		String sql = "insert into basket values(cart_num_seq.nextval, ?, ?, ?, ?, ?, 1, ?)";
 		int result = 0;
 		System.out.println("insert with stock");
->>>>>>> merge221027
-		
+
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, category);
@@ -77,21 +62,18 @@ public class CartDAOImpl implements CartDAO {
 			ps.setString(3, modelName);
 			ps.setString(4, emailId);
 			ps.setInt(5, modelPrice);
-<<<<<<< HEAD
-=======
 			ps.setInt(6, modelStock);
->>>>>>> merge221027
-			
+
 			result = ps.executeUpdate();
-			
+
 		} finally {
 			DbUtil.dbClose(null, ps);
 		}
-		
+
 		return result;
 	}
-	
-	
+
+
 	//중복 체크
 	public CartDTO overlapCheck(String emailId, String modelName) throws SQLException{
 		Connection con = null;
@@ -106,23 +88,19 @@ public class CartDAOImpl implements CartDAO {
 			ps.setString(1, emailId);
 			ps.setString(2, modelName);
 			rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
-<<<<<<< HEAD
-				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7));
-=======
 				cart = new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getInt(8));
->>>>>>> merge221027
 				System.out.println("dao overlap find");
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
+
 		return cart;
 	}
-	
+
 
 	@Override
 	public int delete(String cartNum) throws SQLException {
@@ -130,51 +108,47 @@ public class CartDAOImpl implements CartDAO {
 		PreparedStatement ps = null;
 		String sql = "delete basket where cart_num=?";
 		int result = 0;
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cartNum);
-			
+
 			result = ps.executeUpdate();
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps);
 		}
-		
+
 		return result;
 	}
 
-	
+
 	@Override
 	public int update(String cartNum, int modelCount) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
 		String sql = "update basket set model_count=? where cart_num=?";
 		int result = 0;
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, modelCount);
 			ps.setString(2, cartNum);
-			
+
 			System.out.println("dao update " + modelCount + cartNum);
 			result = ps.executeUpdate();
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps);
 		}
 		System.out.println("update result " + result);
 		return result;
 	}
-<<<<<<< HEAD
 
-=======
-	
-	
->>>>>>> merge221027
-	
+
+
 	@Override
 	public List<CartDTO> select(String emailId) throws SQLException {
 		Connection con = null;
@@ -182,84 +156,77 @@ public class CartDAOImpl implements CartDAO {
 		ResultSet rs = null;
 		String sql = "select * from basket where email_id=?";
 		List<CartDTO> list = new ArrayList<CartDTO>();
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, emailId);
 			rs = ps.executeQuery();
-			
+
 			while(rs.next()) {
-<<<<<<< HEAD
-				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7)));
-=======
 				//재고수량 업데이트
 				int modelStock = cartStockSelect(con, rs.getString(4));
 				list.add(new CartDTO(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getInt(6), rs.getInt(7), modelStock));
->>>>>>> merge221027
-				
+
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
+
 		return list;
 	}
-	
-	
-<<<<<<< HEAD
 
-=======
+
 	//select시 재고수량 조회
 	public int cartStockSelect(Connection con, String modelName) throws SQLException{
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
-		
+
 		int modelStock = 0;
-		
+
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, modelName);
 			rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
-				
+
 				modelStock = rs.getInt(8);
 				if(cartStockUpdate(con, modelStock, modelName) > 0) {
 					System.out.println("modelStock update complete");
 				}
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(null, ps, rs);
 		}
-		
+
 		return modelStock;
 	}
-	
+
 	//재고수량 업데이트
 	public int cartStockUpdate(Connection con, int modelStock, String modelName) throws SQLException{
 		PreparedStatement ps = null;
 		String sql = "update basket set model_stock=? where model_name=?";
 		int result = 0;
-		
+
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, modelStock);
 			ps.setString(2, modelName);
 			result = ps.executeUpdate();
-			
+
 		} finally {
 			DbUtil.dbClose(null, ps);
 		}
-		
+
 		return result;
 	}
 
-	
-	
+
+
 	//비회원
 	//items에서 원하는 모델명 정보 찾아서 cart로 담기
 	@Override
@@ -269,23 +236,22 @@ public class CartDAOImpl implements CartDAO {
 		ResultSet rs = null;
 		String sql = "select * from items where model_name=?";
 		CartDTO cart = null;
-		
+
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, modelName);
 			rs = ps.executeQuery();
-			
+
 			if(rs.next()) {
 				//cartNum, category, modelNum, modelName, email, modelPrice, modelCount, modelStock
 				cart = new CartDTO(null, rs.getString(2), rs.getString(1), rs.getString(3), null, rs.getInt(4), 1, rs.getInt(8));
 			}
-			
+
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
+
 		return cart;
 	}
->>>>>>> merge221027
 }

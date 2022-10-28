@@ -1,9 +1,7 @@
 package dao;
 
-<<<<<<< HEAD
-=======
 import dto.AdminLoginDTO;
->>>>>>> merge221027
+
 import dto.ItemDTO;
 import util.DbUtil;
 
@@ -17,9 +15,7 @@ import java.util.List;
 public class ItemDAOImpl implements ItemDAO{
     @Override
     public List<ItemDTO> itemsSelectAll()  {
-<<<<<<< HEAD
-        return null;
-=======
+
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -58,7 +54,7 @@ public class ItemDAOImpl implements ItemDAO{
         }
 
         return list;
->>>>>>> merge221027
+
     }
 
     @Override
@@ -195,8 +191,7 @@ public class ItemDAOImpl implements ItemDAO{
     }
 
     @Override
-<<<<<<< HEAD
-=======
+
     public int insertItemByWatch(ItemDTO itemDTO){
         Connection con = null;
         PreparedStatement ps = null;
@@ -227,7 +222,7 @@ public class ItemDAOImpl implements ItemDAO{
 
     
     @Override
->>>>>>> merge221027
+
     public int deleteItem(ItemDTO modelName) {
         return 0;
     }
@@ -236,8 +231,6 @@ public class ItemDAOImpl implements ItemDAO{
     public int updateItem(ItemDTO itemDTO)  {
         return 0;
     }
-<<<<<<< HEAD
-=======
 
     @Override
     public AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException {
@@ -270,5 +263,5 @@ public class ItemDAOImpl implements ItemDAO{
         System.out.println("다오 입력갑"+dbDTO);
         return dbDTO;
     }
->>>>>>> merge221027
+
 }

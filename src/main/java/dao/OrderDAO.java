@@ -2,17 +2,17 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-<<<<<<< HEAD
+
 
 import dto.OrderDTO;
-=======
+
 import java.util.List;
 
 
 import dto.ItemDTO;
-import dto.OrderDTO;
+
 import dto.OrderDetailDTO;
->>>>>>> merge221027
+
 
 public interface OrderDAO {
 	/**
@@ -30,10 +30,7 @@ public interface OrderDAO {
 	 *  결제 시 상품 테이블에서 상품재고 감소
 	 */
 	int decreaseByModelStock(String modelStock) throws SQLException;
-<<<<<<< HEAD
 
-	
-=======
 	
 	/**
 	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
@@ -45,5 +42,5 @@ public interface OrderDAO {
 	 * @throws SQLException 
 	 * */
 	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
->>>>>>> merge221027
+
 }
