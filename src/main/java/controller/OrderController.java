@@ -162,7 +162,7 @@ public class OrderController implements AjaxController {
 	}
 	
 	/**
-	 * 주문내역 조회(주문번호에 해당하는 주문내역)
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * @throws SQLException 
 	 * */
 	public void getOrders(HttpServletRequest request, HttpServletResponse response)

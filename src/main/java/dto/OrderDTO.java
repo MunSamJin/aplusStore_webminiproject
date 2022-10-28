@@ -16,6 +16,11 @@ public class OrderDTO {
 	//private List<OrderDetailDTO> detailList;
 
 	public OrderDTO() {}
+	
+	public OrderDTO(String orderState) {
+		super();
+		this.orderState = orderState;
+	}
 
 	public OrderDTO(int totalPrice) {
 		super();
@@ -31,6 +36,8 @@ public class OrderDTO {
 		this.realEmail = realEmail;
 		this.orderPhone = orderPhone;
 	}
+	
+	
 
 	public OrderDTO(String memberGuest, String orderName, String realAddr, String orderState, String realEmail, String orderPhone, int totalPrice) {
 		super();

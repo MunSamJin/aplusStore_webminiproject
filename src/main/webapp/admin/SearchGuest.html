@@ -65,7 +65,7 @@ $(function(){
       				    str+=`<td>${item.detailModelName}</td>`;
       				    str+=`<td>${item.detailQty}</td>`;
       				    str+=`<td>${item.salePrice}</td>`;
-      				  	//str+=`<td>${item.orderDTO.totalPrice}</td>`;
+      				  	str+=`<td>${item.orderDTO.orderState}</td>`;
       				    str+="</tr>";
       			 	});
       				
@@ -159,7 +159,7 @@ $(function(){
 		<th>상품명</th>
 		<th>주문수량</th>
 		<th>제품금액</th>
-		<!--  <th>총금액</th>-->
+		<th>주문상태</th>
 	</tr>	
 </table>
 

@@ -167,7 +167,7 @@ public class OrderDAOImpl implements OrderDAO {
 
 	
 	/**
-	 * 주문가져오기
+	 *  본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * */
 	
 	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) {
@@ -176,8 +176,8 @@ public class OrderDAOImpl implements OrderDAO {
 		ResultSet rs = null;
 		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
 
-		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.total_price "
-				+ "from a_orders o, order_detail2 d where o.order_num = d.order_num and o.order_num=? and o.order_mail=?";
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state "
+				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=? and o.order_mail=?";
 		try {
 			
 			con = DbUtil.getConnection();
@@ -194,7 +194,7 @@ public class OrderDAOImpl implements OrderDAO {
 				String c =rs.getString(3);
 				int d =rs.getInt(4);
 				int e =rs.getInt(5);
-				int f =rs.getInt(6);
+				String f =rs.getString(6);
 
 				OrderDTO orderDTO = new OrderDTO(f);
 				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderDTO);
@@ -207,6 +207,7 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 		return list;
 	}
+
 
 
 
