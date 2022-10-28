@@ -48,8 +48,8 @@ public class Mail{
             // 이메일 내용
            
             msg.setText(
-            		"고객명 : "+dto.getOrderName()+"\n결제번호 : "+dto.getOrderNum()+
-            		"\n결제일자 : "+dto.getOrderDate()+"\n상품정보 : ", 
+            		dto.getOrderName()+"님의 주문번호는 "+dto.getOrderNum()+
+            		"입니다. ", 
             		"UTF-8");
            
             // 이메일 헤더

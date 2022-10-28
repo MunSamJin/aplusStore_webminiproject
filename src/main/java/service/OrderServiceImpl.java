@@ -43,11 +43,11 @@ public class OrderServiceImpl implements OrderService {
 
 		if(orderNum==0)throw new SQLException("등록되지 않았습니다.");
 
-		//		String mailId = dto.getRealEmail();
-		//		System.out.println("mailId"+mailId);
+				String mailId = dto.getRealEmail();
+				System.out.println("mailId"+mailId);
 
-		//Mail mail = new Mail();
-		//mail.mailSend(mailId,dto);
+		Mail mail = new Mail();
+		mail.mailSend(mailId,dto);
 
 		return orderNum;
 	}

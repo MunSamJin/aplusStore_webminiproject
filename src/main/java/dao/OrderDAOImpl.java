@@ -46,7 +46,7 @@ public class OrderDAOImpl implements OrderDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		
-		//System.out.println("DAO list = " + list);
+		System.out.println("DAO list = " + list);
 		return list;
 
 	}
@@ -103,6 +103,7 @@ public class OrderDAOImpl implements OrderDAO {
 			 //장바구니 비우기
 			 	basketDelete(con, emailId);
 			 //상품재고 감소
+			 	decreaseByModelStock(con, cartList);
 				
 			 con.commit();
 				
@@ -157,9 +158,31 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 상품재고 감소
 	 */
 	@Override
-	public int decreaseByModelStock(String modelStock) throws SQLException {
+	public int[] decreaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException {
+		//update items set model_stock = model_stock-? where model_num=?
 
-		return 0;
+		PreparedStatement ps = null;
+		int[] result=null;
+		String sql = "update items set model_stock = model_stock-? where model_num=?";
+				
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			for(CartDTO cart : cartList) {
+				ps.setInt(1, cart.getModelCount());
+				ps.setString(2, cart.getModelNum());
+				ps.addBatch();
+				ps.clearParameters();
+			}
+			
+			result = ps.executeBatch();
+			
+		}finally {
+			DbUtil.dbClose(null, ps);
+		}
+		
+		return result;
 	}
 
 

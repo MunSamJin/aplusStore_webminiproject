@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 import dto.CartDTO;
+import dto.ItemDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
 
@@ -24,15 +25,7 @@ public interface OrderDAO {
 	 * 결제 시 주문상세 테이블에 레코드 삽입
 	 */
 	public int[] orderDetailInsert(Connection con, List<CartDTO> cartList) throws SQLException;
-	
 
-	/**
-	 *  결제 시 상품 테이블에서 상품재고 감소
-	 */
-	int decreaseByModelStock(String modelStock) throws SQLException;
-
-	
-	
 
 	/**
 	 * 주문내역 검색
@@ -56,5 +49,11 @@ public interface OrderDAO {
 	 * 장바구니 비우기
 	 */
 	int basketDelete(Connection con, String emailId) throws SQLException;
+
+	
+	/**
+	 * 상품재고 감소
+	 */
+	int[] decreaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException;
 
 }
