@@ -2,6 +2,8 @@ package mail;
 
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -10,12 +12,14 @@ import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import dto.OrderDTO;
  
-public class Mail{
+public class Mail {
+	
  
-    public static void mailSend(String mailId, OrderDTO dto) {
+    public void sendEmail(String email) {
+    	
+    	Random random = new Random();
+    	int checkNum = random.nextInt(888888) + 111111;
          
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
@@ -34,24 +38,20 @@ public class Mail{
             //편지보낸시간
             msg.setSentDate(new Date());
             InternetAddress from = new InternetAddress() ;
-            from = new InternetAddress("orchid59@naver.com"); //발신자 아이디
+            from = new InternetAddress("sikkkkkk@naver.com"); //발신자 아이디
             // 이메일 발신자
             msg.setFrom(from);
             // 이메일 수신자
-            InternetAddress to = new InternetAddress(mailId); //받을사람 아이디
+            InternetAddress to = new InternetAddress(email); //받을사람 아이디
             msg.setRecipient(Message.RecipientType.TO, to);
-           
             // 이메일 제목
-            msg.setSubject(
-            		"결제하신 내역을 안내해드립니다.", 
-            		"UTF-8");
+            msg.setSubject("회원가입 인증 이메일 입니다.", "UTF-8");
             // 이메일 내용
-           
-            msg.setText(
-            		"고객명 : "+dto.getOrderName()+"\n결제번호 : "+dto.getOrderNum()+
-            		"\n결제일자 : "+dto.getOrderDate()+"\n상품정보 : ", 
-            		"UTF-8");
-           
+            msg.setText(" \"홈페이지를 방문해주셔서 감사합니다.\" +\r\n"
+                    + "                \"<br><br>\" + \r\n"
+            		+ "                \"인증 번호는 \" " + checkNum + " \"입니다.\" + \r\n"
+            		+ "                \"<br>\" + \r\n"
+            		+ "                \"해당 인증번호를 인증번호 확인란에 기입하여 주세요.\";", "UTF-8");
             // 이메일 헤더
             msg.setHeader("content-Type", "text/html");
             //메일보내기
@@ -64,7 +64,10 @@ public class Mail{
         }catch (Exception msg_e) {
             msg_e.printStackTrace();
         }
+    	
+
     }
+
 }
  
 class MyAuthentication extends Authenticator {
@@ -72,8 +75,8 @@ class MyAuthentication extends Authenticator {
     PasswordAuthentication pa;
     public MyAuthentication(){
          
-        String id = "orchid59@naver.com";  //네이버 이메일 아이디
-        String pw = "1051102qqq";        //네이버 비밀번호
+        String id = "sikkkkkk@naver.com";  //네이버 이메일 아이디
+        String pw = "dkfrhtlvsi0!";        //네이버 비밀번호
  
         // ID와 비밀번호를 입력한다.
         pa = new PasswordAuthentication(id, pw);
@@ -84,4 +87,3 @@ class MyAuthentication extends Authenticator {
         return pa;
     }
 }
-

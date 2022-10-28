@@ -33,6 +33,11 @@ public interface UserService {
     */
    public int update(UserDTO userdto) throws SQLException;
    
+   /**
+    *  이메일 인증
+    */
+
+   
 }
 
 

@@ -11,6 +11,8 @@
 <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 <script type="text/javascript">
 $(function(){
+	
+	//가입 관련
 	   $("#btn").click(function(){
 		   let state=true; //가입 또는 수정을 할때 유효성체크를 하고 ajax를 실행해도 되는지 여부를 판단는 변수(true면 ajax한다, false이면 ajax안한다.) 
 		   //유효성체크필요!(값 존재유무)
@@ -26,6 +28,28 @@ $(function(){
 	
 	
 	   });
+	
+	   $(".email_auth_btn").click(function(){	     	 
+	    	 var email = $('#email').val();
+	    	 
+	    	 if(email == ''){
+	    	 	alert("이메일을 입력해주세요.");
+	    	 	return false;
+	    	 }
+	    	 
+	    	 $.ajax({
+				type : "POST",
+				url : "../ajax",
+				data : {key:"user" , methodName:"checkEmail"},
+				success: function(succmessage){
+					alert("인증번호가 발송되었습니다.");
+					
+				},
+				error: function(failmessage){
+					alert("메일 발송에 실패했습니다. 이메일을 다시 확인해주세요.");
+				}
+			}); 
+		});
 	
 	
 });//끝

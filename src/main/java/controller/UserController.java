@@ -15,13 +15,14 @@ import javax.servlet.http.HttpSession;
 import dao.UserDAO;
 import dao.UserDAOImpl;
 import dto.UserDTO;
-
+import mail.Mail;
 import service.UserService;
 import service.UserServiceImpl;
 
 public class UserController implements Controller {
 	private UserDAO userDAO = new UserDAOImpl();
 	private	UserService userService = new UserServiceImpl();
+	private Mail mail = new Mail();
 	
 	  @Override
 	   public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response)
@@ -179,8 +180,10 @@ public class UserController implements Controller {
 		 else out.print("사용가능합니다.");
 		 
 	 }
-
-
-
-
+	 
+	 /**
+	  * 이메일 인증
+	  */
+	 
+	 
 }
