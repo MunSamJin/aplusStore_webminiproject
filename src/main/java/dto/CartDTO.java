@@ -99,4 +99,11 @@ public class CartDTO {
 		this.modelStock = modelStock;
 	}
 
+	@Override
+	public String toString() {
+		return "[cartNum=" + cartNum + ", category=" + category + ", modelNum=" + modelNum + ", modelName="
+				+ modelName + ", emailId=" + emailId + ", modelPrice=" + modelPrice + ", modelCount=" + modelCount
+				+ ", modelStock=" + modelStock + "]";
+	}
+
 }

@@ -22,13 +22,22 @@ public class CartServiceImpl implements CartService {
 			}
 		} else {//장바구니에 있는 상품 -> update 수량 변경으로 바뀐다
 			System.out.println("insert -> update");
-			update(cart.getCartNum(), cart.getModelCount()+1);
+			update(cart.getModelName(), cart.getModelCount()+1);
 		}
 	}
 
-	@Override
+	/*@Override
 	public void delete(String cartNum) throws SQLException {
 		int result = dao.delete(cartNum);
+		
+		if(result<=0) {
+			throw new SQLException("장바구니 삭제에 실패했습니다");
+		}
+	}*/
+	
+	@Override
+	public void delete(String emailId, String modelName) throws SQLException {
+		int result = dao.delete(emailId, modelName);
 		
 		if(result<=0) {
 			throw new SQLException("장바구니 삭제에 실패했습니다");
@@ -36,8 +45,8 @@ public class CartServiceImpl implements CartService {
 	}
 
 	@Override
-	public void update(String cartNum, int modelCount) throws SQLException {
-		int result = dao.update(cartNum, modelCount);
+	public void update(String modelName, int modelCount) throws SQLException {
+		int result = dao.update(modelName, modelCount);
 
 		if(result<=0) {
 			throw new SQLException("장바구니 수정에 실패했습니다");
@@ -63,7 +72,7 @@ public class CartServiceImpl implements CartService {
 		CartDTO cart = dao.selectForGuest(modelName);
 		
 		if(cart == null) {
-			throw new SQLException("비회원 장바구니 추가에 실패했습니다");
+			throw new SQLException("비회원 장바구니 처리에 실패했습니다");
 		}
 		return cart;
 	}

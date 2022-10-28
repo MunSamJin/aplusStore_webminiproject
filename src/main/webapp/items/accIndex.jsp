@@ -49,8 +49,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="table-left wow fadeInUp" data-wow-delay="0.4s">
-                        <div><a href="../front?key=item&methodName=ItemReadByCategory&category=accessory&gps=case">
-                            <img src="../images/acc_case_picto.png" height="300px" id="goCase">
+                        <div><a href="${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=case">
+                            <img src="${path}/images/acc_case_picto.png" height="300px" id="goCase">
                         </a></div>
                         <div class="pricing-details">
                         </div>
@@ -58,8 +58,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="table-right table-center wow fadeInUp" data-wow-delay="0.6s">
-                        <div><a href="../front?key=item&methodName=ItemReadByCategory&category=accessory&gps=cable">
-                            <img src="../images/acc_cable_picto.png" height="300px" id="goCable">
+                        <div><a href="${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=cable">
+                            <img src="${path}/images/acc_cable_picto.png" height="300px" id="goCable">
                         </a></div>
                         <div class="pricing-details">
                         </div>
@@ -67,8 +67,8 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-                        <div><a href="../front?key=item&methodName=ItemReadByCategory&category=accessory&gps=band">
-                            <img src="../images/acc_band_picto.png" height="300px" id="goBand">
+                        <div><a href="${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=band">
+                            <img src="${path}/images/acc_band_picto.png" height="300px" id="goBand">
                         </a></div>
                         <div class="pricing-details">
                         </div>

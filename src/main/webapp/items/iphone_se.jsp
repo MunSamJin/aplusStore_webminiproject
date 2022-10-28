@@ -40,7 +40,7 @@
                 let color = $("input[type=radio][name=color]:checked").val();
                 let storage = $("input[type=radio][name=storage]:checked").val();
                 let modelName = model + "_" + color + "_" + storage;
-                location.href = "cartServlet?methodName=addCart&modelNum=" + modelName;
+                location.href = "${path}/front?key=cart&methodName=insert&modelNum=" + modelName;
 
             });
 
@@ -61,13 +61,13 @@
             $("input[type=radio][name=color]").click(function () {
                 let c = $(this).val();
 
-<<<<<<< HEAD
+
                 if(c =="midnight"){
                     $("#mainImg").attr("src","../images/iphone-se-main_midnight.jpeg");
 
                 }else if(c =="starlight"){
                     $("#mainImg").attr("src","../images/iphone-se-main_starlight.jpeg");
-=======
+
                 $("#cart").click(function () {
                     let modelName = "_"+
                         color.options[color.selectedIndex].value+"_"+
@@ -77,7 +77,7 @@
 
 
                 });
->>>>>>> basic_setting
+
 
                 }else if(c =="red"){
                     $("#mainImg").attr("src","../images/iphone-se-main_red.jpeg");

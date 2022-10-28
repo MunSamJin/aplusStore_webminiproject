@@ -15,9 +15,12 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Edu/util/mail/activation-1.1.1.jar"/>
 	<classpathentry kind="lib" path="C:/Edu/util/mail/javax.mail-1.6.2.jar"/>
 =======
 >>>>>>> samjin
+=======
+>>>>>>> seary
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

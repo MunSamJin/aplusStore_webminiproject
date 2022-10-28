@@ -188,7 +188,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="${path}/common/header.jsp"/>
 <!-- /.navbar-collapse -->
 </div>
 <!-- /.container-fluid -->
@@ -224,14 +224,22 @@
         <div class="hero-section">
             <div class="container nopadding">
                 <div class="col-md-5"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s"
+<<<<<<< HEAD
                                            src="${path}/images/search_main.png" alt="App" name="jong"/></div>
+=======
+                                           src="${path}/images/search_main.png" alt="App" id="jong"/></div>
+>>>>>>> seary
                 <div class="col-md-7">
                     <div class="hero-content">
                         <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
                         <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
+<<<<<<< HEAD
                             <input type="button" id="adminInfo" value="주문 관리 페이지" class="mail">
+=======
+                            <input type="button" id="ad">
+>>>>>>> seary
                             <form class="subscribe-form wow zoomIn">
                                 Category : <select name="CRUD" class="mail" id="CRUD">
                                 <option disabled selected>C.R.U.D</option>
@@ -472,19 +480,27 @@
         </div>
 
         <!-- Footer Section -->
+<<<<<<< HEAD
         <jsp:include page="../common/footer.jsp"/>
+=======
+        <jsp:include page="${path}/common/footer.jsp"/>
+>>>>>>> seary
     </div>
 
     <!-- Scroll To Top -->
 
     <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a>
 
+<<<<<<< HEAD
     <!-- Scroll To Top Ends-->
+=======
+    <!— Scroll To Top Ends—>
+>>>>>>> seary
 
 </div>
-<!-- Main Section -->
+<!— Main Section —>
 </div>
-<!-- Wrapper-->
+<!— Wrapper—>
 
 
 </body>
