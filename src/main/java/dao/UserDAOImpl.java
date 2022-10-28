@@ -56,7 +56,7 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			con = DbUtil.getConnection();
 
-			ps = con.prepareStatement("update member set email_id=?,phone=?,pwd=?,name=?,addr=?");
+			ps = con.prepareStatement("update member set email_id=?,phone=?,pwd=?,addr=?");
 			
 			ps.setString(1, userDTO.getEmailId());
 			ps.setString(2, userDTO.getPhone());
@@ -87,8 +87,7 @@ public class UserDAOImpl implements UserDAO {
 		
 
 		
-		String sql = "insert into member values(?,?,?,?,?)";//"insert into member(emailId,phone,pwd,name,addr)values(?, ?, ? ,?, ?)"
-		System.out.println("query.regUser" + sql);
+		String sql ="insert into member values(?,?,?,?,?)";//"insert into member(emailId,phone,pwd,name,addr)values(?, ?, ? ,?, ?)"
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -98,6 +97,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(4, userDTO.getName());
 			ps.setString(5, userDTO.getAddr());
 			
+			System.out.println("userDTO = " + userDTO);
 			result = ps.executeUpdate();
 			
 

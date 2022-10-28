@@ -41,14 +41,28 @@ public class UserServiceImpl implements UserService {
 	 * 회원가입
 	 */
 	
-	public int insert(UserDTO userDTO) throws SQLException {
-		
-			int result = userDAO.insert(userDTO);
+	public void insert(UserDTO userDTO) throws SQLException {
 			
-			 return result;
-	
-		
+			int result = userDAO.insert(userDTO);
+			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다.");
+			
 	}
+		
 	
-
+	/**
+	 * 정보 수정
+	 */
+	
+	public int update(UserDTO userdto) throws SQLException{
+		
+		int result = userDAO.update(userdto);
+		
+		if(result > 0) {
+			return result;
+		}else {
+			throw new SQLException("정보 수정을 실패하였습니다.");
+		}
+		
+	
+	}
 }

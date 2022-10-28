@@ -1,7 +1,10 @@
 package service;
 
 import java.sql.SQLException;
+
 import javax.naming.AuthenticationException;
+
+import controller.ModelAndView;
 import dto.UserDTO;
 
 
@@ -22,7 +25,14 @@ public interface UserService {
    /**
     *  회원가입
     */
-   public int insert(UserDTO userDTO) throws SQLException;
+   public void insert(UserDTO userDTO) throws SQLException;
+   
+   
+   /**
+    *  회원정보변경
+    */
+   public int update(UserDTO userdto) throws SQLException;
+   
 }
 
 
