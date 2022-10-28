@@ -7,21 +7,21 @@
 <head>
     <meta charset="utf-8">
     <title>iLand Multipurpose Landing Page Template</title>
-    <link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+    <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
     <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${path}/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
     <link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
           type="text/css">
-    <link rel="stylesheet" href="../css/animate.css">
+    <link rel="stylesheet" href="${path}/css/animate.css">
     <!-- Resource style -->
-    <link rel="stylesheet" href="../css/owl.carousel.css">
-    <link rel="stylesheet" href="../css/owl.theme.css">
-    <link rel="stylesheet" href="../css/ionicons.min.css">
+    <link rel="stylesheet" href="${path}/css/owl.carousel.css">
+    <link rel="stylesheet" href="${path}/css/owl.theme.css">
+    <link rel="stylesheet" href="${path}/css/ionicons.min.css">
 
     <!-- Resource style -->
-    <link href="../css/style.css" rel="stylesheet" type="text/css" media="all"/>
+    <link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
     <style>
         fieldset {
             border: 0;
@@ -38,16 +38,16 @@
     </style>
 
     <!-- Jquery and Js Plugins -->
-    <script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+    <script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="../js/plugins.js"></script>
-    <script type="text/javascript" src="../js/menu.js"></script>
-    <script type="text/javascript" src="../js/custom.js"></script>
-    <script src="../js/jquery.subscribe.js"></script>
-    <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
+    <script type="text/javascript" src="${path}/js/plugins.js"></script>
+    <script type="text/javascript" src="${path}/js/menu.js"></script>
+    <script type="text/javascript" src="${path}/js/custom.js"></script>
+    <script src="${path}/js/jquery.subscribe.js"></script>
+    <script type="text/javascript" src="${path}/js/jquery-3.6.1.min.js"></script>
     <style type="text/css">
-        #admin{
+        #admin {
             height: 300px;
             margin: 250px 100px 100px 100px;
         }
@@ -55,6 +55,7 @@
     <style type="text/css">
         /* Google Web Font */
         @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
+
         * {
             box-sizing: border-box;
         }
@@ -68,43 +69,50 @@
             border-radius: 5px;
             overflow: hidden;
         }
+
         .member caption {
             font-size: 20px;
             margin-bottom: 30px;
         }
+
         .member tr {
             border-bottom: 1px solid #eee;
         }
+
         .member tr:last-child {
             border: none;
         }
+
         .member tr:nth-child(odd) {
             background-color: #ddd;
         }
+
         .member th,
         .member td {
             padding: 12px;
 
         }
+
         .member tr th {
             background-color: royalblue;
             color: #fff;
         }
+
         .member tr th:first-child {
             border-radius: 5px 0 0 0;
         }
+
         .member tr th:last-child {
             border-radius: 0 5px 0 0;
         }
+
         .member tr td:last-child {
 
             font-weight: 500;
         }
 
 
-
-
-        input, select , textarea {
+        input, select, textarea {
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
@@ -151,21 +159,22 @@
             <div class="col-md-7">
                 <div class="hero-content">
                     <h1 class="wow fadeInUp" data-wow-delay="0.1s">작성 게시물 확인</h1>
-                    <div  data-wow-delay="0.3s" id="add">
+                    <div data-wow-delay="0.3s" id="add">
 
 
                         <form name="writeForm" method="post" action="${path}/front?key=elec&methodName=insert"
-                              onSubmit='return checkValid()' enctype="multipart/form-data" class="subscribe-form wow zoomIn">
+                              onSubmit='return checkValid()' enctype="multipart/form-data"
+                              class="subscribe-form wow zoomIn">
 
-                            <table align="center"  width="600px" border="1" class="member">
+                            <table align="center" width="600px" border="1" class="member">
 
                                 <tr>
-                                    <td width="150" height="20" >
+                                    <td width="150" height="20">
                                         <p align="right"><b><span style=" font-size:9pt;">Category</span></b></p>
                                     </td>
 
                                     <td><input type="text" name="category" class="mail" id="category"
-                                               value="${requestScope.questionDTO.qCate}">
+                                               value="${requestScope.questionDTO.qCate}" readonly>
                                     </td>
                                 </tr>
 
@@ -173,7 +182,7 @@
                                     <td width="150" height="20">
                                         <p align="right"><b><span style="font-size:9pt;">제목</span></b></p>
                                     </td>
-                                    <td width="450" height="20" ><b><span style="font-size:9pt;">
+                                    <td width="450" height="20"><b><span style="font-size:9pt;">
 		<input type=text name="subject" size="50" value="${requestScope.questionDTO.qSubject}"></span></b></td>
                                 </tr>
                                 <tr>
@@ -182,16 +191,52 @@
                                     </td>
                                     <td width="450" height="20"><b><span style="font-size:9pt;">
 		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"
-                  value="${requestScope.questionDTO.qContent}"
-        ></textarea></span></b></td>
+
+        >${requestScope.questionDTO.qContent}</textarea></span></b></td>
                                 </tr>
 
                                 <tr align="center">
-                                    <td width="450" height="20" colspan="2" align="center"><b><span style="font-size:9pt;">
+                                    <td width="450" height="20" colspan="2" align="center"><b><span
+                                            style="font-size:9pt;">
             <input type="submit" value="글쓰기" id="submit">
         <input type="reset" value="다시쓰기" id="reset"></span></b></td>
                                 </tr>
+
+                                <tr>
+                                    <th colspan="2">
+                                        답변
+                                    </th>
+                                </tr>
+                                <c:choose>
+                                    <c:when test="${empty questionDTO.list}">
+                                        답변 정보가 없습니다.<br>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <c:forEach items="${questionDTO.list}" var="answer">
+                                            <tr>
+                                                <td>
+                                                    답변일
+                                                </td>
+                                                <td>
+                                                        ${answer.aDate}
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    답변내용
+                                                </td>
+                                                <td>
+                                                        ${answer.AContent}
+                                                </td>
+                                            </tr>
+                                        </c:forEach>
+                                    </c:otherwise>
+                                </c:choose>
+
+
                             </table>
+
+
 
                         </form>
 
@@ -205,7 +250,6 @@
         </div>
     </div>
 </div>
-
 
 
 <!-- Client Section -->

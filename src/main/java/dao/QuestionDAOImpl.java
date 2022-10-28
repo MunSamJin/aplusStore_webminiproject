@@ -98,8 +98,8 @@ public class QuestionDAOImpl implements QuestionDAO{
             while (rs.next()){
                 AnswerDTO answerDTO = new AnswerDTO(
                         rs.getInt(1),
-                        rs.getString(2),
-                        rs.getInt(3),
+                        rs.getInt(2),
+                        rs.getString(3),
                         rs.getString(4)
                 );
                 list.add(answerDTO);
@@ -108,7 +108,7 @@ public class QuestionDAOImpl implements QuestionDAO{
         }finally {
             DbUtil.dbClose(null, ps, rs);
         }
-
+        System.out.println("답변 다오"+list);
         return list;
     }
 

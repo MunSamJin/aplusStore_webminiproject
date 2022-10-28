@@ -10,6 +10,7 @@ public class QuestionDTO {
     private String qDate;
     private int qHits;
     private String qCate;
+    private List<AnswerDTO> list;
 
     public QuestionDTO(int qNum, String eMail, String qSubject, String qContent, String qDate, int qHits, String qCate, List<AnswerDTO> list) {
         this.qNum = qNum;
@@ -22,7 +23,10 @@ public class QuestionDTO {
         this.list = list;
     }
 
-    private List<AnswerDTO> list;
+    public QuestionDTO(List<AnswerDTO> list) {
+        this.list = list;
+    }
+
 
     public QuestionDTO(int qNum, String eMail, String qSubject, String qContent, String qDate, int qHits, String qCate) {
         this.qNum = qNum;
