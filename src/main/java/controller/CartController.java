@@ -29,22 +29,27 @@ public class CartController implements AjaxController{
 		String emailId = req.getParameter("emailId");
 		
 		//session
-		/*if(emailId == null) {
+		if(emailId == null) {
 			List<CartDTO> guestCartList = (List<CartDTO>)session.getAttribute("guestCartList");
-			guestCartList 
+			for(CartDTO cart : guestCartList) {
+				//장바구니 상품 재고 업데이트
+				cart.setModelStock(service.selectForGuest(cart.getModelName()).getModelStock());
+			}
 			
-		} else {
+			JSONArray arr = JSONArray.fromObject(guestCartList);
+			System.out.println("controller session json = " + arr);
+			PrintWriter out = resp.getWriter();
 			
-		}*/
-		
-		List<CartDTO> list = service.select(emailId);
-		JSONArray arr = JSONArray.fromObject(list);
-		System.out.println("controller json = " + arr);
-		PrintWriter out = resp.getWriter();
-		
-		out.print(arr);
-		
-		
+			out.print(arr);
+			
+		} else { //db
+			List<CartDTO> list = service.select(emailId);
+			JSONArray arr = JSONArray.fromObject(list);
+			System.out.println("controller json = " + arr);
+			PrintWriter out = resp.getWriter();
+			
+			out.print(arr);
+		}
 	}
 	
 	
@@ -85,13 +90,30 @@ public class CartController implements AjaxController{
 	public void delete(HttpServletRequest req, HttpServletResponse resp) throws Exception{
 		resp.setContentType("text/html;charset=UTF-8"); 
 		
+		session = req.getSession();
+		String emailId = (String)session.getAttribute("emailId");
 		//String emailId = req.getParameter("emailId");
-		String cartNum = req.getParameter("cartNum");
-		
-		//service.delete(emailId, modelNum);
-		service.delete(cartNum);
+		String modelName = req.getParameter("modelName");
 		PrintWriter out = resp.getWriter();
-		out.println("삭제 되었습니다");
+		
+		
+		if(emailId == null) { //비회원
+			List<CartDTO> guestCartList = (List<CartDTO>) session.getAttribute("guestCartList");
+			for(CartDTO cart : guestCartList) {
+				if(cart.getModelName().equals(modelName)) {
+					guestCartList.remove(cart);
+					out.println("삭제 되었습니다");
+					break;
+				}
+			}
+			
+		} else { //회원
+			service.delete(emailId, modelName);
+			//service.delete(cartNum);
+			
+			out.println("삭제 되었습니다");
+		}
+		
 	}
 
 	
@@ -99,9 +121,26 @@ public class CartController implements AjaxController{
 	 * 수정
 	 */
 	public void update(HttpServletRequest req, HttpServletResponse resp) throws Exception{
-		String cartNum = req.getParameter("cartNum");
-		String modelCount = req.getParameter("modelCount");
-		service.update(cartNum, Integer.parseInt(modelCount));
+		session = req.getSession();
+		String emailId = (String) session.getAttribute("emailId");
+		
+		String modelName = req.getParameter("modelName");
+		int modelCount = Integer.parseInt(req.getParameter("modelCount"));
+		
+		
+		
+		if(emailId == null) {//비회원
+			List<CartDTO> guestCartList = (List<CartDTO>) session.getAttribute("guestCartList");
+			for(CartDTO cart : guestCartList) {
+				if(cart.getModelName().equals(modelName)) {
+					cart.setModelCount(modelCount);
+					break;
+				}
+			}
+			
+		} else {//회원
+			service.update(modelName, modelCount);
+		}
 		
 	}
 

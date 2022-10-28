@@ -94,13 +94,7 @@
 						}
 						
 						
-<<<<<<< HEAD
-=======
-						//품절 여부
-						//if()
-						//$("#soldOut").css("display:block");
-						
->>>>>>> merge221027-2
+
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
 					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
@@ -117,7 +111,8 @@
 					    		+"</td>";
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
 					    str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
-					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
+					    //str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
+					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.modelName}"}></td>`;
 					    str+="</tr>";
 					    
 					    totalPrice += (item.modelPrice * item.modelCount);
@@ -149,8 +144,8 @@
 					url :"${path}/ajax" , 
 					type:"post", 
 					dataType:"text"  , 
-					//data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelNum: $(this).attr("id")},
-					data: {key:"cart", methodName : "delete", cartNum: $(this).attr("id")},
+					data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelName: $(this).attr("id")},
+					//data: {key:"cart", methodName : "delete", cartNum: $(this).attr("id")},
 					success :function(result){
 						alert(result);
 						select();//다시 전체검색
@@ -169,7 +164,8 @@
 					url :"${path}/ajax" , 
 					type:"post", 
 					dataType:"text"  , 
-					data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().children('td:eq(0)').text(), modelCount: $(this).val()},
+					//data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().children('td:eq(0)').text(), modelCount: $(this).val()},
+					data: {key:"cart", methodName : "update", modelName: $(this).parent().prev().text() , modelCount: $(this).val()},
 					success :function(result){
 						select();//다시 전체검색
 						

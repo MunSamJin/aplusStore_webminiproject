@@ -102,7 +102,7 @@ public class CartDAOImpl implements CartDAO {
 	}
 	
 
-	@Override
+	/*@Override
 	public int delete(String cartNum) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -121,23 +121,45 @@ public class CartDAOImpl implements CartDAO {
 		}
 		
 		return result;
+	}*/
+	
+	@Override
+	public int delete(String emailId, String modelName) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		String sql = "delete basket where email_id=? and model_name=?";
+		int result = 0;
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, emailId);
+			ps.setString(2, modelName);
+			
+			result = ps.executeUpdate();
+			
+		} finally {
+			DbUtil.dbClose(con, ps);
+		}
+		
+		return result;
 	}
 
 	
 	@Override
-	public int update(String cartNum, int modelCount) throws SQLException {
+	public int update(String modelName, int modelCount) throws SQLException {
 		Connection con = null;
 		PreparedStatement ps = null;
-		String sql = "update basket set model_count=? where cart_num=?";
+		String sql = "update basket set model_count=? where model_name=?";
 		int result = 0;
 		
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setInt(1, modelCount);
-			ps.setString(2, cartNum);
+			ps.setString(2, modelName);
 			
-			System.out.println("dao update " + modelCount + cartNum);
+			System.out.println("dao update " + modelName + modelCount);
 			result = ps.executeUpdate();
 			
 		} finally {

@@ -24,13 +24,13 @@ public interface CartService {
 	/**
 	 * ��ٱ��� ����
 	 */
-	void delete(String cartNum) throws SQLException;
-	
+	//void delete(String cartNum) throws SQLException;
+	void delete(String emailId, String modelName) throws SQLException;
 	
 	
 	/**
 	 * ��ٱ��� ����
 	 */
-	void update(String cartNum, int modelCount) throws SQLException;
-	
+	//void update(String cartNum, int modelCount) throws SQLException;
+	void update(String modelName, int modelCount) throws SQLException;
 }

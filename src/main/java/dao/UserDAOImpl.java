@@ -18,21 +18,20 @@ public class UserDAOImpl implements UserDAO {
 	
 	
 	
-	public UserDAOImpl() {
-		try {
-		//dbQuery를 준비한 ~.properties파일을 로딩해서 Properties 자료구조에 저장한다.
-		
-		//현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될 때 classes폴더의 위치를 
-		//동적으로 가져와서 경로를 설정해야한다.
-		InputStream is = getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
-		
-		proFile.load(is);
-		System.out.println("query.userlogin = " + proFile.getProperty("query.userlogin"));
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		
-		}
+	/*
+	 * public UserDAOImpl() { try { //dbQuery를 준비한 ~.properties파일을 로딩해서 Properties
+	 * 자료구조에 저장한다.
+	 * 
+	 * //현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될 때 classes폴더의 위치를 //동적으로 가져와서 경로를 설정해야한다.
+	 * InputStream is =
+	 * getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
+	 * 
+	 * proFile.load(is); System.out.println("query.userlogin = " +
+	 * proFile.getProperty("query.userlogin")); }catch(Exception e){
+	 * e.printStackTrace(); }
+	 * 
+	 * }
+	 */
 
 	
 
