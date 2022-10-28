@@ -151,7 +151,10 @@
 
             transition: 0.5s;
         }
-
+        #admin{
+            height: 300px;
+            margin: 10px 100px 100px 100px;
+        }
        </style>
 
 </head>

@@ -136,6 +136,11 @@
                 location.href=
                     "${path}/admin/AdminLogin.jsp";
             });
+
+            $("#adminInfo").click(function () {
+                location.href=
+                    "${path}/admin/AdminInfo.jsp";
+            });
         });
 
     </script>
@@ -176,6 +181,8 @@
             }//selectAll 함수끝
 
             selectAll();
+
+
 
         });
     </script>
@@ -224,7 +231,7 @@
                         <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
                         <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
-                            <input type="button" id="ad">
+                            <input type="button" id="adminInfo" value="주문 관리 페이지" class="mail">
                             <form class="subscribe-form wow zoomIn">
                                 Category : <select name="CRUD" class="mail" id="CRUD">
                                 <option disabled selected>C.R.U.D</option>

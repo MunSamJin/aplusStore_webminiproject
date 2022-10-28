@@ -182,8 +182,8 @@
                                     <td width="150" height="20">
                                         <p align="right"><b><span style="font-size:9pt;">제목</span></b></p>
                                     </td>
-                                    <td width="450" height="20"><b><span style="font-size:9pt;">
-		<input type=text name="subject" size="50" value="${requestScope.questionDTO.qSubject}"></span></b></td>
+                                    <td width="450" height="20"><b><span>
+		<input type=text name="subject" size="50" value="${requestScope.questionDTO.qSubject}" readonly></span></b></td>
                                 </tr>
                                 <tr>
                                     <td width="150" height="20">
@@ -192,7 +192,7 @@
                                     <td width="450" height="20"><b><span style="font-size:9pt;">
 		<textarea name="content" cols="50" rows="10" style="width: 400px; height: 250px"
 
-        >${requestScope.questionDTO.qContent}</textarea></span></b></td>
+                  readonly>${requestScope.questionDTO.qContent}</textarea></span></b></td>
                                 </tr>
 
                                 <tr align="center">
