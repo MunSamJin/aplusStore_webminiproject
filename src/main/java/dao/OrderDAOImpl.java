@@ -176,7 +176,7 @@ public class OrderDAOImpl implements OrderDAO {
 		ResultSet rs = null;
 		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
 
-		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state "
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state, o.total_price "
 				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=? and o.order_mail=?";
 		try {
 			
@@ -195,9 +195,12 @@ public class OrderDAOImpl implements OrderDAO {
 				int d =rs.getInt(4);
 				int e =rs.getInt(5);
 				String f =rs.getString(6);
+				int g =rs.getInt(7);
 
-				OrderDTO orderDTO = new OrderDTO(f);
-				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderDTO);
+				OrderDTO orderState = new OrderDTO(f);
+				OrderDTO totalPrice = new OrderDTO(g);
+				
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState, totalPrice);
 				list.add(detailDTO);
 			}
 		} catch(Exception e) {

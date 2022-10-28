@@ -57,6 +57,8 @@ $(function(){
                  	$("#subscribeform").hide();
                  	
                     let str="";
+  					let state;
+  					let total;
   					
       				$.each(result, function(index, item){
       				    str+="<tr>";
@@ -65,11 +67,25 @@ $(function(){
       				    str+=`<td>${item.detailModelName}</td>`;
       				    str+=`<td>${item.detailQty}</td>`;
       				    str+=`<td>${item.salePrice}</td>`;
-      				  	str+=`<td>${item.orderDTO.orderState}</td>`;
-      				    str+="</tr>";
+      				  	//str+=`<td>${item.orderDTO.orderState}</td>`;
+      				  	//if(item.orderDTO.orderState=="상품준비중"){
+      				 	//str+=`<td><input type='button' value='주문취소' name='${item.orderDTO.orderState}'></td>`;
+      				  	//} else {
+      				  	//  str+=`<td>완료</td>`;
+      				  	//	}
+      				  
+      				  	state = item.orderDTO.orderState;
+      				    
+      				    
+      				    total = item.orderDTO.totalPrice;
+      				    
+      				  	str+="</tr>";
       			 	});
       				
-      				alert(str)
+      				alert(state)
+      				str+="<tr><th colspan='5'>"+"상품상태 : "+state+"</th></tr>";
+
+					str+="<tr><th colspan='5'>"+"총 금액 : "+total+"</th></tr>";
       				
       				$("#listTable tr:gt(0)").remove();
       				$("#listTable tr:eq(0)").after(str);
@@ -153,13 +169,13 @@ $(function(){
 <!-- Wrapper--> 
     
 <table id="listTable" cellspacing="0">
-	<tr bgcolor=yellows">
+	<tr bgcolor="yellows">
 		<th></th>
 		<th>주문상세번호</th>
 		<th>상품명</th>
 		<th>주문수량</th>
 		<th>제품금액</th>
-		<th>주문상태</th>
+		
 	</tr>	
 </table>
 

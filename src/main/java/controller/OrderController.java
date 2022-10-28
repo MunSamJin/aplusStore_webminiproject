@@ -172,7 +172,7 @@ public class OrderController implements AjaxController {
 		String orderNum = request.getParameter("orderNum");
 		String realEmail = request.getParameter("realEmail");
 		
-		System.out.println("controller_searchByOrderNum확인= "+orderNum+","+realEmail);
+		System.out.println("controller_getOrders확인= "+orderNum+","+realEmail);
 		
 		List<OrderDetailDTO> list = orderService.getOrders(orderNum, realEmail);
 		
