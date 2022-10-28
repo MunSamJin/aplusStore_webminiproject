@@ -22,15 +22,27 @@
         .a{border:solid red 5px}
         span{width:150px; color:red}
         input{border:solid gray 1px}
-        table{width:100%}
-        th,td{border:1px gray solid; text-align:center;padding:3px}
+
         h2{text-align:center}
 
         a{text-decoration: none;}
         a:hover{color: red}
 
     </style>
+    <style type="text/css">
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
 
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {background-color: lightseagreen;}
+    </style>
     <script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
 
     <script type="text/javascript" >
@@ -124,8 +136,8 @@
         <div class="hero-section">
             <div class="container nopadding">
                 <div class="hero-content">
-                    <h1 class="wow fadeInUp" data-wow-delay="0.1s">@@님의 배송현황</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"> 주문번호 : 0000101010</p>
+                    <h1 class="wow fadeInUp" data-wow-delay="0.1s">관리자 주문 관리 페이지</h1>
+
                     <hr>
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 
@@ -138,7 +150,7 @@
 
                         <form name="inForm" method="post" id="inForm">
                             <table cellspacing="0">
-                                <tr bgcolor="pink" >
+                                <tr bgcolor="#e0ffff">
                                     <th >주문번호</th>
                                     <th >주문상태</th>
                                 </tr>
@@ -168,7 +180,7 @@
 
                         <h2> 주문 리스트 </h2>
                         <table  id="listTable" cellspacing="0">
-                            <tr bgcolor="pink">
+                            <tr bgcolor="#e0ffff">
                                 <th>주문번호</th>
                                 <th>회원여부</th>
                                 <th>주문일</th>
@@ -181,10 +193,11 @@
                             </tr>
 
                         </table>
+                        
 
-                        </form>
                         <!-- subscribe message -->
-                        <div id="mesaj"></div>
+                        <div id="mesaj">
+                    </div>
                         <!-- subscribe message -->
                     </div>
                 </div>
