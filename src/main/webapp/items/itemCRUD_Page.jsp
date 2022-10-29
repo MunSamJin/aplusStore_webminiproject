@@ -68,7 +68,7 @@
             border-bottom: 1px solid #ddd;
         }
 
-        tr:hover {background-color: coral;}
+        tr:hover {background-color: lightblue;}
     </style>
     <script type="text/javascript">
         $(function () {
@@ -141,7 +141,11 @@
                 location.href=
                     "${path}/admin/AdminInfo.jsp";
             });
+
+
         });
+
+
 
     </script>
     <script type="text/javascript" >
@@ -167,6 +171,7 @@
                             str+=`<td>${"${item.modelGPS}"}</td>`;
                             str+=`<td>${"${item.modelStock}"}</td>`;
                             str+=`<td>${"${item.modelRegDate}"}</td>`;
+                            str+=`<td><button name='delete' value="삭제하기" id='${"${item.modelName}"}'>삭제하기</button>`
                             str+=`</tr>`;
                         });
 
@@ -182,6 +187,19 @@
 
             selectAll();
 
+
+            $(document).on("click","button", function(){
+
+                let modelName = $(this).attr("id");
+
+                if(confirm(modelName+" 을 정말로 삭제하시겠습니까?")){
+                    location.href = "${path}/front?key=item&methodName=deleteItem&modelName="+modelName;
+                    alert(modelName+"가 삭제되었습니다.")
+                }else {
+                    alert(modelName+" 제품이 삭제되지 않았습니다.")
+                }
+
+            });
 
 
         });
@@ -238,7 +256,6 @@
                                 <option>제품조회</option>
                                 <option>제품등록</option>
                                 <option>제품수정</option>
-                                <option>제품삭제</option>
                             </select>
 
 
@@ -246,9 +263,7 @@
                                     제품 수정페이지
                                 </div>
 
-                                <div id="delete" hidden>
-                                    제품 삭제페이지
-                                </div>
+
 
 
 
@@ -429,6 +444,7 @@
                             <th>GPS</th>
                             <th>재고량</th>
                             <th>등록일</th>
+                            <th>삭제</th>
                         </tr>
 
                     </table>
@@ -449,27 +465,7 @@
 
 
         <!-- Client Section -->
-        <div class="client-section">
-            <div class="container text-center">
-                <div class="clients owl-carousel owl-theme">
-                    <div class="single"><img src="${path}/images/client_hg.png" alt="효경" height="50px"/></div>
-                    <div class="single"><img src="${path}/images/client_jy.png" alt="종영" height="50px"/></div>
-                    <div class="single"><img src="${path}/images/client_r.png" alt="란" height="50px"/></div>
-                    <div class="single"><img src="${path}/images/client_ys.png" alt="용식" height="50px"/></div>
-                    <div class="single"><img src="${path}/images/client_sj.png" alt="삼진" height="50px"/></div>
-                    <div class="single"><img src="${path}/images/client_sr.png" alt="세륜" height="50px"/></div>
-                </div>
-            </div>
-        </div>
 
-        <div class="feature-sub">
-            <div class="container">
-                <div class="sub-inner">
-                    <h1 class="wow fadeInUp">Creative Landing App For Your Easy Life! Simple Reliable & Understandable for
-                        your customers </h1>
-                    <a href="#" class="btn btn-action wow fadeInUp">Buy now</a></div>
-            </div>
-        </div>
 
         <!-- Footer Section -->
         <jsp:include page="../common/footer.jsp"/>

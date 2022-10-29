@@ -195,21 +195,19 @@
                   readonly>${requestScope.questionDTO.qContent}</textarea></span></b></td>
                                 </tr>
 
-                                <tr align="center">
-                                    <td width="450" height="20" colspan="2" align="center"><b><span
-                                            style="font-size:9pt;">
-            <input type="submit" value="글쓰기" id="submit">
-        <input type="reset" value="다시쓰기" id="reset"></span></b></td>
-                                </tr>
 
                                 <tr>
-                                    <th colspan="2">
+                                    <th colspan="2" style="text-align: center">
                                         답변
                                     </th>
                                 </tr>
                                 <c:choose>
                                     <c:when test="${empty questionDTO.list}">
-                                        답변 정보가 없습니다.<br>
+                                        <tr>
+                                            <td colspan="2" style="text-align: center">
+                                                답변정보가 없습니다. 조금만 기다려주세요.
+                                            </td>
+                                        </tr>
                                     </c:when>
                                     <c:otherwise>
                                         <c:forEach items="${questionDTO.list}" var="answer">

@@ -223,8 +223,29 @@ public class ItemDAOImpl implements ItemDAO{
     
     @Override
 
-    public int deleteItem(ItemDTO modelName) {
-        return 0;
+    public int deleteItem(String modelName) {
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "DELETE FROM ITEMS WHERE MODEL_NAME = ?";
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setString(1, modelName);
+
+
+            result = ps.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            DbUtil.dbClose(con, ps);
+        }
+        return result;
+
     }
 
     @Override

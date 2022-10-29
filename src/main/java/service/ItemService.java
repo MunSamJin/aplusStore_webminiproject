@@ -76,7 +76,7 @@ public interface ItemService {
      * 상품 삭제
      * @param : modelName을 받아서 해당 제품을 삭제한다.
      * */
-     public int deleteItem(ItemDTO modelName) throws SQLException;
+     public int deleteItem(String modelName) throws SQLException;
 
     /**
      * 상품 수정

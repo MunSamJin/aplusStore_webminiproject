@@ -67,7 +67,7 @@ public interface ItemDAO {
      * 상품 삭제
      * @param : modelName을 받아서 해당 제품을 삭제한다.
      * */
-    int deleteItem(ItemDTO modelName) ;
+    int deleteItem(String modelName) ;
 
     /**
      * 상품 수정

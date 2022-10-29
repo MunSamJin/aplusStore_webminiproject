@@ -222,4 +222,18 @@ public class ItemController implements Controller {
     }
 
 
+
+    /**
+     * 아이템 삭제 method
+     * */
+    public ModelAndView deleteItem(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+
+        String modelName = req.getParameter("modelName");
+
+        int re = service.deleteItem(modelName);
+
+
+        return new ModelAndView("/items/itemCRUD_Page.jsp");
+    }
+
 }

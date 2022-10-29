@@ -134,7 +134,7 @@
                     <label for="blue">blue</label>
                     <input type="radio" name="color" id="blue" value="blue">
                 </p>
-
+                <h1 class="wow fadeInUp">₩ 769,000</h1>
 
                 <span id="span" hidden></span>
                 <div><h1> </h1></div>
@@ -146,13 +146,10 @@
         </div>
     </div>
     <div id="accordion">
-        <h3>Section 1</h3>
+        <h3>제품구성</h3>
         <div>
             <p>
-                Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer
-                ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit
-                amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut
-                odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.
+                <img src="../images/airpods-max-content.jpeg" width="100%">
             </p>
         </div>
         <h3>Section 2</h3>

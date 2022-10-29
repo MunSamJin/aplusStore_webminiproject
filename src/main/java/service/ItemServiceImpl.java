@@ -76,8 +76,11 @@ public class ItemServiceImpl implements ItemService{
 
 
     @Override
-    public int deleteItem(ItemDTO modelName)  {
-        return 0;
+    public int deleteItem(String modelName)  {
+        int re = dao.deleteItem(modelName);
+
+
+        return re;
     }
 
     @Override
