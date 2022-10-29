@@ -68,7 +68,7 @@
 	
 		<script type="text/javascript">
 			$(function(){
-				let emailId="";//orchid59@naver.com
+				let emailId="";//sikkk@naver.com
 				//let sessonID = session.getAttribute("emailId");
 
 				//장바구니에서 결제버튼 누르면! 

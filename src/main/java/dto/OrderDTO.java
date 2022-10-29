@@ -22,9 +22,10 @@ public class OrderDTO {
 		this.totalPrice = totalPrice;
 	}
 	
-	public OrderDTO(int orderNum, String orderName) {
+	public OrderDTO(int orderNum, String orderName, String realEmail) {
 		this.orderNum = orderNum;
 		this.orderName = orderName;
+		this.realEmail = realEmail;
 	}
 
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {

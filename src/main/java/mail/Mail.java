@@ -1,7 +1,6 @@
 package mail;
 
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
 import javax.mail.Authenticator;
 import javax.mail.Message;
@@ -17,7 +16,7 @@ import dto.OrderDTO;
  
 public class Mail{
  
-    public static void mailSend(OrderDTO dto, OrderDTO orderNum) {
+    public static void mailSend(OrderDTO orderNumber, OrderDTO dto) {
            	
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
@@ -50,7 +49,7 @@ public class Mail{
             // 이메일 내용
            
             msg.setText(
-            		dto.getOrderName()+"님의 주문번호는 "+orderNum.getOrderNum()+"입니다.\n"
+            		dto.getOrderName()+"님의 주문번호는 "+orderNumber.getOrderNum()+"입니다.\n"
             		, "UTF-8");
             
            

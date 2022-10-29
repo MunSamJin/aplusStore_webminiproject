@@ -10,7 +10,6 @@ import java.util.List;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
-import mail.Mail;
 import util.DbUtil;
 
 
@@ -61,13 +60,13 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 
 	public int orderInsert(OrderDTO dto, List<CartDTO> cartList, String emailId) throws SQLException {
-		System.out.println("orderInsert...외니...?");
+		System.out.println("dao orderInsert...왔니...?");
 
 		Connection con = null;
 		PreparedStatement ps = null;
 		int result =0;
 		String sql =
-				"insert into a_orders values (order_num_seq.nextval,?,?,?,sysdate,1,?,?,?,?)"; //주문번호, 연락처, 주소, 주문날짜, 주문수단, 주문상태, 회원여부, 이메일, 총가격
+				"insert into a_orders values (order_num_seq.nextval,?,?,?,sysdate,1,?,?,?,?)"; //주문번호, 이름, 연락처, 주소, 주문날짜, 주문수단, 주문상태, 회원여부, 이메일, 총가격
 
 		try {
 			con = DbUtil.getConnection();
@@ -88,34 +87,28 @@ public class OrderDAOImpl implements OrderDAO {
 			if(result == 0) {
 				con.rollback();
 				throw new SQLException("등록할 수 없습니다.");
+				
 			}else {
-
+				//주문상세 등록하기
 			 	int re [] = orderDetailInsert(con, cartList);
+			 	
 			 	for(int i : re) {
 				 	if(i != 1) {
 				 			con.rollback();
 				 			throw new SQLException("주문할 수 없습니다...");
 					}
 			 	}
-			 	
-			 //주문내역 이메일 보내기
-			 	OrderDTO orderNum = selectOrderNum(con, emailId);
-			 	Mail mail = new Mail();
-			 	mail.mailSend(dto,orderNum);
-			 	System.out.println("emailId" + emailId);
-			 	System.out.println("orderDTO.getOrderName()" + dto.getOrderName());
-			 	System.out.println("orderDTO.getOrderNum()"+orderNum.getOrderNum());
-			 	
-			 //장바구니 비우기
-			 	System.out.println("장바구니 비우러가자...");
+			 	//장바구니 비우기
+			 	System.out.println("dao 장바구니 비우러가자...");
 			 	basketDelete(con, emailId);
-			 //상품재고 감소
+			 	
+			 	//상품재고 감소
 			 	decreaseByModelStock(con, cartList);
 				
-			 con.commit();
-				
-
-			}
+			 	con.commit();
+			 	
+			}//ifEnd
+			
 		}finally {
 			DbUtil.dbClose(con, ps);
 		}
@@ -134,14 +127,12 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		PreparedStatement ps = null;
 		int result [] = null;
-		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?,?)";
+		String sql = "insert into order_detail2 values (detail_model_num_seq.nextval,order_num_seq.currval,?,?,?)"; //주문상세번호, 주문번호, 상품이름, 주문수량, 할인가격(단가)
 		
-
 		try{
 			ps = con.prepareStatement(sql);
 
 			//장바구니 결제 목록 가져오기
-
 			for(CartDTO cart : cartList) {
 				ps.setString(1, cart.getModelName());//상품이름
 				ps.setInt(2, cart.getModelCount()); //주문수량
@@ -149,9 +140,8 @@ public class OrderDAOImpl implements OrderDAO {
 				ps.addBatch();
 				ps.clearParameters();
 			}
-			
 
-			result = ps.executeBatch();//일괄처리
+			result = ps.executeBatch(); //일괄처리
 
 		}finally {
 			DbUtil.dbClose(null, ps);
@@ -166,8 +156,7 @@ public class OrderDAOImpl implements OrderDAO {
 	 */
 	@Override
 	public int[] decreaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException {
-		//update items set model_stock = model_stock-? where model_num=?
-
+	
 		PreparedStatement ps = null;
 		int[] result=null;
 		String sql = "update items set model_stock = model_stock-? where model_num=?";
@@ -240,14 +229,16 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		System.out.println("cartDel = " + emailId);
 		int result = 0;
+		
 		try {
 			ps = con.prepareStatement(sql_delete);
 			ps.setString(1,emailId);
 			result = ps.executeUpdate();
+			
 		} finally {
 			DbUtil.dbClose(null, ps);
 		}
-		System.out.println("cartresult = " + result);
+		System.out.println("장바구니비우기 dao result = " + result);
 		return result;
 	}
 	
@@ -256,26 +247,29 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 주문내역 이메일 발송을 위한 select
 	 */
 	@Override
-	public OrderDTO selectOrderNum(Connection con, String emailId) throws SQLException {
+	public OrderDTO selectOrderNum(String emailId) throws SQLException {
+		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select order_num_seq.currval, order_name from a_orders";
+		
+		String sql = "select order_num_seq.currval, order_name, order_mail from a_orders";
 		
 		System.out.println("selectOrderNum emailId = " + emailId);
 		
 		OrderDTO orderDTO = null;
 		
 		try {
+			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				orderDTO = new OrderDTO(rs.getInt(1), rs.getString(2));
+				orderDTO = new OrderDTO(rs.getInt(1), rs.getString(2), rs.getString(3));
 			}
 		} finally {
-			DbUtil.dbClose(null, ps, rs);
+			DbUtil.dbClose(con, ps, rs);
 		}
-		System.out.println("orderDTO = " + orderDTO);
+		System.out.println("주문내역메일발송 dao orderDTO = " + orderDTO);
 		return orderDTO;
 	}
 

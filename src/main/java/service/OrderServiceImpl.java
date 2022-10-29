@@ -1,26 +1,14 @@
 package service;
 
 import java.sql.SQLException;
-
 import java.util.List;
-import java.util.Map;
-
-import dao.OrderDAO;
-import dao.OrderDAOImpl;
-
-import dto.OrderDTO;
-
-import dto.ItemDTO;
-import dto.OrderDTO;
-import dto.OrderDetailDTO;
 
 import dao.OrderDAO;
 import dao.OrderDAOImpl;
 import dto.CartDTO;
 import dto.OrderDTO;
-
-
-
+import dto.OrderDetailDTO;
+import mail.Mail;
 
 
 public class OrderServiceImpl implements OrderService {
@@ -30,7 +18,6 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 *  주문테이블에 주문내역 등록하기
 	 */
-
 	@Override
 	public int insert(OrderDTO dto , List<CartDTO> cartList, String emailId) throws SQLException {
 		//orderDAO호출 - 주문 테이블에 등록하기
@@ -40,13 +27,18 @@ public class OrderServiceImpl implements OrderService {
 
 		if(orderNum==0)throw new SQLException("등록되지 않았습니다.");
 
-		String mailId = dto.getRealEmail();
-		System.out.println("mailId"+mailId);
-				
+		//주문 완료 후 주문내역 메일 발송
+		//System.out.println("mailId"+mailId);
 		
-		
+		//dao에서 주문내역 조회하기
+		OrderDTO orderNumber = orderDAO.selectOrderNum(emailId);
+
 		//Mail mail = new Mail();
-		//mail.mailSend(mailId,dto);
+		//mail.mailSend(orderNumber, dto);
+		
+		System.out.println("메일보내기 서비스 orderDTO.getRealEmail() " + dto.getRealEmail());
+		System.out.println("메일보내기 서비스 orderDTO.getOrderName() " + dto.getOrderName());
+		System.out.println("메일보내기 서비스 orderDTO.getOrderNum() " + orderNumber.getOrderNum());
 
 		return orderNum;
 	}
@@ -61,6 +53,7 @@ public class OrderServiceImpl implements OrderService {
 		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
 
 		//System.out.println("Service list = " + list);
+		
 		return list;
 	}
 

@@ -53,6 +53,6 @@ public interface OrderDAO {
 	/**
 	 * 주문내역 이메일 발송을 위한 select
 	 */
-	OrderDTO selectOrderNum(Connection con, String emailId) throws SQLException;
+	OrderDTO selectOrderNum(String emailId) throws SQLException;
 
 }
