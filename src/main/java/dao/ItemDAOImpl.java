@@ -220,6 +220,38 @@ public class ItemDAOImpl implements ItemDAO{
         return result;
     }
 
+    public ItemDTO updateItemRead(int modelNum) {
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        ItemDTO itemDTO = null;
+        String sql ="select * from ITEMS where model_num = ?";
+
+        try{
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+            ps.setInt(1, modelNum);
+
+            rs = ps.executeQuery();
+
+            if(rs.next()){
+                itemDTO = new ItemDTO(rs.getInt(1),rs.getString(2),
+                        rs.getString(3), rs.getInt(4),
+                        rs.getString(5), rs.getString(6),
+                        rs.getString(7), rs.getInt(8),
+                        rs.getString(9));
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            DbUtil.dbClose(con, ps, rs);
+        }
+        return itemDTO;
+    }
+
+
     
     @Override
 
@@ -249,8 +281,35 @@ public class ItemDAOImpl implements ItemDAO{
     }
 
     @Override
-    public int updateItem(ItemDTO itemDTO)  {
-        return 0;
+    public int updateItem(ItemDTO itemDTO) {
+
+        Connection con = null;
+        PreparedStatement ps = null;
+        int result = 0;
+        String sql = "update ITEMS SET CATEGORY=?, MODEL_NAME =?, MODEL_PRICE =?,MODEL_OPTION =?, MODEL_COLOR =?, MODEL_GPS =?, MODEL_STOCK =? where MODEL_NUM =?";
+
+
+        try {
+            con = DbUtil.getConnection();
+            ps = con.prepareStatement(sql);
+
+
+            ps.setString(1, itemDTO.getCategory());
+            ps.setString(2, itemDTO.getModelName());
+            ps.setInt(3, itemDTO.getModelPrice());
+            ps.setString(4,itemDTO.getModelOption());
+            ps.setString(5, itemDTO.getModelColor());
+            ps.setString(6,itemDTO.getModelGPS());
+            ps.setInt(7,itemDTO.getModelStock());
+            ps.setInt(8, itemDTO.getModelNum());
+
+            result = ps.executeUpdate();
+        }catch (Exception e){
+            e.printStackTrace();
+        } finally {
+            DbUtil.dbClose(con, ps);
+        }
+        return result;
     }
 
     @Override
@@ -284,5 +343,6 @@ public class ItemDAOImpl implements ItemDAO{
         System.out.println("다오 입력갑"+dbDTO);
         return dbDTO;
     }
+
 
 }

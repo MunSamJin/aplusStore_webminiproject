@@ -85,7 +85,10 @@ public class ItemServiceImpl implements ItemService{
 
     @Override
     public int updateItem(ItemDTO itemDTO) {
-        return 0;
+        System.out.println("updateItem 서비스"+itemDTO);
+        int re = dao.updateItem(itemDTO);
+
+        return re;
     }
 
 
@@ -97,4 +100,12 @@ public class ItemServiceImpl implements ItemService{
         return db;
     }
 
+    @Override
+    public ItemDTO updateItemRead(int modelNum) throws SQLException {
+        System.out.println("업데이트값 읽어오기 호출 "+modelNum);
+        ItemDTO db = dao.updateItemRead(modelNum);
+
+
+        return db;
+    }
 }

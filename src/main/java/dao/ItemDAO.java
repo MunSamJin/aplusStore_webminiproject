@@ -20,7 +20,7 @@ public interface ItemDAO {
     /**
      * 제품 상세 페이지
      * @param : 모델 이름을 입력해서
-     * @return : 해당하는 이름의 제품을 ItemsDTO List 로 리턴
+     * @return : 해당하는 이름의 제품을 ItemsDTO 로 리턴
      * 왜냐하면, iphon14 를  선택하면, 같은 모델의 색상, 다른 용량이 모두 나와서 그중 하나 선택 되도록해야함
      * (마치 카테고리처럼)
      * ItemReadServlet
@@ -59,7 +59,7 @@ public interface ItemDAO {
     int insertItemByWatch(ItemDTO itemDTO);
 
 
-
+    ItemDTO updateItemRead(int modelNum);
 
 
     /**

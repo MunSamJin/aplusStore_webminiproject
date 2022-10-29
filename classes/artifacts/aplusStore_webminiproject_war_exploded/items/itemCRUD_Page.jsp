@@ -171,7 +171,8 @@
                             str+=`<td>${"${item.modelGPS}"}</td>`;
                             str+=`<td>${"${item.modelStock}"}</td>`;
                             str+=`<td>${"${item.modelRegDate}"}</td>`;
-                            str+=`<td><button name='delete' value="삭제하기" id='${"${item.modelName}"}'>삭제하기</button>`
+                            str+=`<td><button name='update' value='${"${item.modelNum}"}'>수정하기</button>`
+                            str+=`<td><button name='delete' id='${"${item.modelName}"}'>삭제하기</button>`
                             str+=`</tr>`;
                         });
 
@@ -187,8 +188,22 @@
 
             selectAll();
 
+            $(document).on("click","button[name=update]", function(){
 
-            $(document).on("click","button", function(){
+                let modelNum = $(this).attr("value");
+
+                // let left = Math.ceil((window.screen.width)/2);
+                // let top = Math.ceil((window.screen.height)/2);
+
+
+
+                window.open("${path}/front?key=item&methodName=updateItemRead&modelNum="+modelNum,"update","width=400, height=380");
+
+
+
+            });
+
+            $(document).on("click","button[name=delete]", function(){
 
                 let modelName = $(this).attr("id");
 
@@ -200,6 +215,7 @@
                 }
 
             });
+
 
 
         });
@@ -255,15 +271,7 @@
                                 <option disabled selected>C.R.U.D</option>
                                 <option>제품조회</option>
                                 <option>제품등록</option>
-                                <option>제품수정</option>
                             </select>
-
-
-                                <div id="update" hidden>
-                                    제품 수정페이지
-                                </div>
-
-
 
 
 
@@ -444,6 +452,7 @@
                             <th>GPS</th>
                             <th>재고량</th>
                             <th>등록일</th>
+                            <th>수정</th>
                             <th>삭제</th>
                         </tr>
 

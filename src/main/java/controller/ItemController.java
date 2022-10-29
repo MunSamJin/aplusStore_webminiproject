@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.List;
 import com.oreilly.servlet.MultipartRequest;
@@ -236,4 +237,47 @@ public class ItemController implements Controller {
         return new ModelAndView("/items/itemCRUD_Page.jsp");
     }
 
+    /*
+    * 수정하기 눌렀을때 데이터값 불러오기 및 팝업창 띄우기
+    * */
+    public ModelAndView updateItemRead(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException, SQLException {
+        String url = "items/itemCRUD_Update.jsp";
+        String modelNum = req.getParameter("modelNum");
+
+
+        ItemDTO itemDTO = service.updateItemRead(Integer.parseInt(modelNum));
+        req.setAttribute("itemDTO", itemDTO);
+
+
+        return new ModelAndView(url);
+    }
+
+    /*
+     * item 수정하기
+     * */
+    public ModelAndView updateItem(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException, SQLException {
+        resp.setContentType("text/html;charset=UTF-8");
+        System.out.println("Item Ajax controller- updateItem");
+
+        String modelNum = req.getParameter("modelNum");
+        String category = req.getParameter("category");
+
+        String modelName = req.getParameter("modelName");
+        String modelPrice = req.getParameter("modelPrice");
+        String modelSize = req.getParameter("modelOption");
+        String modelColor = req.getParameter("modelColor");
+        String gps = req.getParameter("modelGPS");
+        String modelStock = req.getParameter("modelStock");
+        String modelRegDate = req.getParameter("modelRegDate");
+
+        System.out.println(modelNum+","+category+", "+modelName+","+modelPrice+","+modelSize+","+modelColor+","+gps+","+modelStock+","+modelRegDate);
+
+        ItemDTO itemDTO = new ItemDTO(Integer.parseInt(modelNum),category,modelName, Integer.parseInt(modelPrice),
+                modelSize,modelColor,gps, Integer.parseInt(modelStock),modelRegDate);
+
+        int result = service.updateItem(itemDTO);
+
+        return new ModelAndView("items/itemCRUD_Update_Reuslt.jsp",false);
+    }
 }

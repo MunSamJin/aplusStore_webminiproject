@@ -90,4 +90,10 @@ public interface ItemService {
       * */
      AdminLoginDTO adminLogin(AdminLoginDTO adminLoginDTO) throws SQLException;
 
+
+     /**
+      * 아이템 업데이트 하기전에 값 읽어오기
+      * */
+     public ItemDTO updateItemRead(int modelName) throws SQLException;
+
 }

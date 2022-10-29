@@ -38,4 +38,31 @@ public class ItemAjaxController implements AjaxController{
         out.print(arr);
 
     }
+//    public void updateItem(HttpServletRequest req, HttpServletResponse resp)
+//            throws ServletException, IOException, SQLException {
+//        resp.setContentType("text/html;charset=UTF-8");
+//        System.out.println("Item Ajax controller- updateItem");
+//
+//        String modelNum = req.getParameter("modelNum");
+//        String category = req.getParameter("category");
+//
+//        String modelName = req.getParameter("modelName");
+//        String modelPrice = req.getParameter("modelPrice");
+//        String modelSize = req.getParameter("modelOption");
+//        String modelColor = req.getParameter("modelColor");
+//        String gps = req.getParameter("modelGPS");
+//        String modelStock = req.getParameter("modelStock");
+//        String modelRegDate = req.getParameter("modelRegDate");
+//
+//        System.out.println(modelNum+","+category+", "+modelName+","+modelPrice+","+modelSize+","+modelColor+","+gps+","+modelStock+","+modelRegDate);
+//
+//        ItemDTO itemDTO = new ItemDTO(Integer.parseInt(modelNum),category,modelName, Integer.parseInt(modelPrice),
+//                modelSize,modelColor,gps, Integer.parseInt(modelStock),modelRegDate);
+//
+//        int result = service.updateItem(itemDTO);
+//
+//        PrintWriter out = resp.getWriter();
+//        out.print(result);
+//    }
+
 }
