@@ -31,6 +31,28 @@
 
  .form .hero-section {background: #fff;}
  .nopadding {background: whitesmoke;}
+ .subscribe-form .mail {background-color: #fff;}
+ .app img {
+ 	
+ 	margin: 65px 140px;
+ };
+ 
+ .b {
+ 	width: 100px;
+ 	margin: 65px 140px;
+ };
+ 
+ .form .subscribe-form .submit-button {width: 320px;}
+ .form .hero-content p {margin: 0 0 15px 0;}
+ .form .hero-content {
+    padding: 100px 0 100px 20px;
+    overflow: hidden;
+}
+.form .subscribe-form .submit-button {
+    padding: 0 130px 0 130px;
+}
+.col{padding: 10px}
+
  
 </style>
 
@@ -123,6 +145,8 @@ $(function(){
   <div class="main app form" id="main"><!-- Main Section-->
     <div class="hero-section">
       <div class="container nopadding">
+      <div class="col">
+      <!-- 파워포인트에서 배경제거 해서 새로 넣어주시면 더 깔끔해요! -->
         <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/delivery.png" alt="App" /> </div>
         <div class="col-md-7">
           <div class="hero-content">
@@ -134,7 +158,8 @@ $(function(){
                <input class="mail" type="hidden" name="methodName" value="searchByOrderNum"><br>  
               <input class="mail" type="text" name="orderNum" placeholder="주문번호" autocomplete="off" id="orderNum"><br>
               <p></p>          
-              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail">
+              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail"><br>
+              <p></p>     
               <input class="submit-button" type="button" value="조회하기" name="search" id="search">
              </form>
                  <!-- Scroll To Top --> 
@@ -142,12 +167,31 @@ $(function(){
     <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a> 
     
     <!-- Scroll To Top Ends--> 
-    
+    </div>
   </div>
   <!-- Main Section --> 
-</div>
+
 <!-- Wrapper--> 
 
+<!-- footer -->
+<div class="footer">
+    <div class="container">
+        <div class="col-md-7">
+        
+        	<!-- margin 중복 적용 문제 때문에 footer부분 사과 이미지 주석처리 해놨어요!ㅠ -->
+        	<!-- <img src="../images/logo1.png" class="b" width="80px"  alt="Image" /> -->
+            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
+            <div class="footer-text">
+
+            </div>
+        </div>
+        <div class="col-md-5">
+            <h1>Contact Us</h1>
+            <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
+                © 2021 KOSTA All rights reserved. </p>
+        </div>
+    </div>
+</div>
 
 <!-- Jquery and Js Plugins --> 
 <script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
@@ -156,6 +200,8 @@ $(function(){
 <script type="text/javascript" src="../js/plugins.js"></script> 
 <script type="text/javascript" src="../js/menu.js"></script> 
 <script type="text/javascript" src="../js/custom.js"></script>
-<script src="../js/jquery.subscribe.js"></script> 
+<script src="../js/jquery.subscribe.js"></script>
+
+
 </body>
 </html>
