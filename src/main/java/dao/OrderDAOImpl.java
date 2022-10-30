@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import dto.CartDTO;
 import dto.ItemDTO;
 import dto.OrderDTO;
@@ -176,7 +178,7 @@ public class OrderDAOImpl implements OrderDAO {
 		ResultSet rs = null;
 		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
 
-		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state, o.total_price "
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state "
 				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.order_num=? and o.order_mail=?";
 		try {
 			
@@ -195,12 +197,12 @@ public class OrderDAOImpl implements OrderDAO {
 				int d =rs.getInt(4);
 				int e =rs.getInt(5);
 				String f =rs.getString(6);
-				int g =rs.getInt(7);
+				//int g =rs.getInt(7);
 
 				OrderDTO orderState = new OrderDTO(f);
-				OrderDTO totalPrice = new OrderDTO(g);
+				//OrderDTO totalPrice = new OrderDTO(g);
 				
-				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState, totalPrice);
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState);
 				list.add(detailDTO);
 			}
 		} catch(Exception e) {
@@ -211,6 +213,56 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 	}
 
+
+
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	@Override
+	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
+		
+		String sql = "select d.detail_model_num, o.order_num, d.detail_model_name, d.detail_qty, d.sale_price, o.order_state, o.total_price "
+				+ "from a_orders o join order_detail2 d on (o.order_num = d.order_num) where o.emailId=?";
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+
+			ps.setString(1, emailId);
+			rs = ps.executeQuery();
+
+			System.out.println("getDetailList = " + emailId);
+
+			while(rs.next()) {
+				System.out.println("--------->");
+				String a =rs.getString(1);
+				String b =rs.getString(2);
+				String c =rs.getString(3);
+				int d =rs.getInt(4);
+				int e =rs.getInt(5);
+				String f =rs.getString(6);
+				//int g =rs.getInt(7);
+
+				OrderDTO orderState = new OrderDTO(f);
+				//OrderDTO totalPrice = new OrderDTO(g);
+				
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState);
+				list.add(detailDTO);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		System.out.println("getDetailList_DAO 값 : " + list);
+		return list;
+
+	}
 
 
 

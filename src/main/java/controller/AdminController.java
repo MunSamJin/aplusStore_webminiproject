@@ -158,10 +158,13 @@ public class AdminController implements AjaxController {
 		System.out.println("controller - arr값 : "+arr);
 	}
 	
+	
+	
 	/**
 	 * 주문번호에 따라 배송상태 불러오기
 	 * @throws SQLException 
 	 * */
+	/*
 	public void getOrderState(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");   
@@ -177,6 +180,6 @@ public class AdminController implements AjaxController {
 		out.print(arr);
 
 	}
-	
+	*/
 
 }

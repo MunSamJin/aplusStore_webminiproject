@@ -93,6 +93,7 @@ public class OrderDetailDTO {
 	public void setOrderDTO(OrderDTO orderDTO) {
 		this.orderDTO = orderDTO;
 	}
+
 	
 	
 }

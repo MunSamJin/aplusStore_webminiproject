@@ -30,4 +30,8 @@ public interface OrderService {
 	 * */
 	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
 
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
 }

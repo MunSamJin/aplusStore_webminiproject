@@ -136,10 +136,7 @@ public class OrderDTO {
 		this.orderDate = orderDate;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderDTO [orderState=" + orderState + "]";
-	}
+	
 
 	
 

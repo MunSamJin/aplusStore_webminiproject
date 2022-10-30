@@ -77,6 +77,20 @@ public class OrderServiceImpl implements OrderService {
 		
 		return list;
 	}
+	
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	@Override
+	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getDetailList(emailId);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		System.out.println("service list = "+list);
+		
+		return list;
+	}
 
 
 

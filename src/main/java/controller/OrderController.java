@@ -185,6 +185,29 @@ public class OrderController implements AjaxController {
 		
 		
 	}
+	
+	public void getDetailList(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException, SQLException {
+		response.setContentType("text/html;charset=UTF-8");   
+		
+		String emailId = request.getParameter("emailId");
+		
+		System.out.println("controller - emailId값  : "+emailId);
+		
+		//로그인 사용자의 
+		HttpSession session =  request.getSession();
+		session.getAttribute("emailId");
+		
+		List<OrderDetailDTO> list = orderService.getDetailList(emailId);//아이디가 인수로 전달
+		
+		//list를 응답할수 없기때문에 list를 jsonArray변환해서 보낸다.
+		JSONArray arr = JSONArray.fromObject(list);
+		
+		PrintWriter out = response.getWriter();
+		out.print(arr);
+		
+		System.out.println("controller - arr값 : "+arr);
+	}
 
 
 }
