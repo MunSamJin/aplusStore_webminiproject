@@ -82,8 +82,8 @@ $(function(){
                  	$("#subscribeform").hide();
                  	
                     let str="";
-  					let state="";
-  					let total="";
+  					let state;
+  					let total;
   					
       				$.each(result, function(index, item){
       				    str+="<tr>";
@@ -177,9 +177,7 @@ $(function(){
             
              <form class="subscribe-form wow zoomIn"  method="post" name="subscribeform" id="subscribeform">
               <input class="mail" type="hidden" name="key" value="pay" ><br>  
-               <input class="mail" type="hidden" name="methodName" value="getOrders"><br>  
-              <input class="mail" type="text" name="orderNum" placeholder="주문번호" autocomplete="off" id="orderNum"><br>            
-              <input class="mail" type="email" name="realEmail" placeholder="이메일주소" autocomplete="off" id="realEmail">
+               <input class="mail" type="hidden" name="methodName" value="getDetailList"><br>  
               <input class="submit-button" type="button" value="조회하기" name="search" id="search">
              </form>
                  <!-- Scroll To Top --> 

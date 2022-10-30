@@ -39,7 +39,7 @@
                         </c:choose>
                         
                         <li><a class="page-scroll" href="${path}/cart/cart.jsp">장바구니</a></li>
-                        <li><a class="page-scroll" href="#contact">배송조회</a></li>
+                        <li><a class="page-scroll" href="${path}/admin/SearchGuest.jsp">배송조회</a></li>
                         <li><a class="page-scroll" href="${path}/items/search.jsp">
                             <img src="${path}/images/search_icon.png" height="20px">
                             

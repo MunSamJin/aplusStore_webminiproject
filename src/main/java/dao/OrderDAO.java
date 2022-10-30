@@ -23,10 +23,10 @@ public interface OrderDAO {
 
 
 	/**
-	 * 주문내역 검색 - 주문내역 조회 시
-	 * @throws SQLException 
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
+	 * @throws SQLException
 	 * */
-	List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
+	List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
 	
 
 	/**
@@ -62,4 +62,9 @@ public interface OrderDAO {
 	 */
 	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
 
+
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
 }

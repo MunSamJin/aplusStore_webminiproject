@@ -33,6 +33,14 @@ public class OrderDetailDTO {
 		this.orderDTO = orderDTO;
 	}
 
+	public OrderDTO getOrderDTO() {
+		return orderDTO;
+	}
+
+	public void setOrderDTO(OrderDTO orderDTO) {
+		this.orderDTO = orderDTO;
+	}
+
 	public String getDetailModelNum() {
 		return detailModelNum;
 	}

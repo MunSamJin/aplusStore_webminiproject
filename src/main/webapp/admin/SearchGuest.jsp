@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -87,7 +88,7 @@ $(function(){
   					
       				$.each(result, function(index, item){
       				    str+="<tr>";
-      				    str+=`<td><img src='../images/${item.detailModelName}.jpeg' height='150px'></td>`;
+      				    str+=`<td><img src='${path}/images/${item.detailModelName}.jpeg' height='150px'></td>`;
       				    str+=`<td><a href='#'>${item.detailModelNum}</a></td>`;
       				    str+=`<td>${item.detailModelName}</td>`;
       				    str+=`<td>${item.detailQty}</td>`;
@@ -132,34 +133,7 @@ $(function(){
 </script>
 </head>
 <body>
-<div class="wrapper">
-  <div class="container">
-    <nav class="navbar navbar-default navbar-fixed-top">
-      <div class="container"> 
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header page-scroll">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
-          <a class="navbar-brand page-scroll" href="#main"><img src="../images/logo1.png" width="80"  alt="iLand" /></a> </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            
-
-            <li><a class="page-scroll" href="#contact">Store</a></li>
-            <li><a class="page-scroll" href="#contact">iPhone</a></li>
-            <li><a class="page-scroll" href="#contact">Watch</a></li>
-            <li><a class="page-scroll" href="#contact">AirPods</a></li>
-            <li><a class="page-scroll" href="#contact">액세서리</a></li>
-            <li><a class="page-scroll" href="#contact">고객지원</a></li>
-            <li><a class="page-scroll" href="#contact">로그인</a></li>
-            <li><a class="page-scroll" href="#contact">장바구니</a></li>
-            <li><a class="page-scroll" href="#contact">배송조회</a></li>
-
-
-          </ul>
-        </div>
-      </div>
-    </nav>
+<jsp:include page="../common/header.jsp"/>
     <!-- /.navbar-collapse --> 
   </div>
   <!-- /.container-fluid -->
@@ -206,30 +180,7 @@ $(function(){
 
 
 <!-- footer -->
-<div class="footer">
-    <div class="container">
-        <div class="col-md-7">
-        
-           <!-- margin 중복 적용 문제 때문에 footer부분 사과 이미지 주석처리 해놨어요!ㅠ -->
-           <!-- <img src="../images/logo1.png" class="b" width="80px"  alt="Image" /> -->
-            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
-            <div class="footer-text">
-
-            </div>
-        </div>
-        <div class="col-md-5">
-            <h1>Contact Us</h1>
-            <p> (13637) 경기도 성남시 분당구 성남대로 34 6층(구미동 하나프라자빌딩)  <br class="hidden-xs">
-                © 2021 KOSTA All rights reserved. </p>
-        </div>
-    </div>
-</div>
-
-
- 
-    
-
-
+          <jsp:include page="../common/footer.jsp"/>
 
 
 </body>

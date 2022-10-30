@@ -58,15 +58,6 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 
-	@Override
-	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException {
-		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum);
-		if(list == null) {
-			throw new SQLException("출력되는 값이 없습니다.");
-		}
-		return list;
-	}
-
 	
 	/**
 	 * 주문할 때 회원 정보 화면에 보여주기
@@ -78,6 +69,30 @@ public class OrderServiceImpl implements OrderService {
 		
 		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
 		System.out.println("userInfoSelect 서비스list  = " + list);
+		return list;
+	}
+
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	@Override
+	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getDetailList(emailId);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		System.out.println("service list = "+list);
+
+		return list;
+	}
+	@Override
+	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.getOrders(orderNum, realEmail);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		System.out.println("service list = "+list);
+
 		return list;
 	}
 

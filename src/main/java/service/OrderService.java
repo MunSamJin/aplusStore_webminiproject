@@ -26,12 +26,12 @@ public interface OrderService {
 	 * 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
 	 */
 	List<CartDTO> cartMenuSelect(String emailId) throws SQLException;
-	
+
 
 	/**
-	 * 주문 상세조회
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * */
-	public List<OrderDetailDTO> getOrders(String orderNum) throws SQLException;
+	public List<OrderDetailDTO> getOrders(String orderNum, String realEmail) throws SQLException;
 
 	
 	/**
@@ -41,8 +41,11 @@ public interface OrderService {
 	 */
 	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
 
-	
 
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
+	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
 
 
 

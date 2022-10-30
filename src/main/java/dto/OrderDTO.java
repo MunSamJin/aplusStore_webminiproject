@@ -27,7 +27,10 @@ public class OrderDTO {
 		this.orderName = orderName;
 		this.realEmail = realEmail;
 	}
-
+	public OrderDTO(String orderState) {
+		super();
+		this.orderState = orderState;
+	}
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {
 		super();
 		this.orderName = orderName;
