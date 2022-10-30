@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>iLand Multipurpose Landing Page Template</title>
+    <title>A+ Store</title>
     <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
@@ -192,12 +192,17 @@
 
                 let modelNum = $(this).attr("value");
 
-                // let left = Math.ceil((window.screen.width)/2);
-                // let top = Math.ceil((window.screen.height)/2);
+                let popupWidth = 400;
+                let popupHeight = 450;
+
+                let left = Math.ceil((window.screen.width)/2)-(popupWidth/2) ;
+                let top = Math.ceil((window.screen.height)/2 -(popupHeight));
 
 
 
-                window.open("${path}/front?key=item&methodName=updateItemRead&modelNum="+modelNum,"update","width=400, height=380");
+                window.open("${path}/front?key=item&methodName=updateItemRead&modelNum="+modelNum,"update",
+                    'status=no, height='+popupHeight+',width='+popupWidth+
+                ',left='+left+'top='+top);
 
 
 

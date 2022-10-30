@@ -5,7 +5,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>iLand Multipurpose Landing Page Template</title>
+  <title>A+ Store</title>
   <link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="iLand Multipurpose Landing Page Template">
@@ -31,7 +31,7 @@
 
   <div class="main app form" id="main"><!-- Main Section-->
 
-    <div class="hero-section">
+    <div class="hero-section" style="background-color: #F9F9FA">
 
       <table id="menu" style="margin-left:auto; margin-right:auto;">
         <tr>

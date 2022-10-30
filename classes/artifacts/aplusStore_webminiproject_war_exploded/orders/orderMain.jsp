@@ -5,9 +5,36 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
-		
-		
 		<link rel="stylesheet" type="text/css" href="${path}/css/samjin.css">
+<%--		종영--%>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="iLand Multipurpose Landing Page Template">
+		<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
+		<link href="${path}/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+		<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet"
+			  type="text/css">
+		<link rel="stylesheet" href="${path}/css/animate.css">
+		<!-- Resource style -->
+		<link rel="stylesheet" href="${path}/css/owl.carousel.css">
+		<link rel="stylesheet" href="${path}/css/owl.theme.css">
+		<link rel="stylesheet" href="${path}/css/ionicons.min.css">
+		<!-- Resource style -->
+		<link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all"/>
+		<!-- Jquery and Js Plugins -->
+		<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+		<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
+
+		<script type="text/javascript" src="${path}/js/plugins.js"></script>
+		<script type="text/javascript" src="${path}/js/menu.js"></script>
+		<script type="text/javascript" src="${path}/js/custom.js"></script>
+		<script src="${path}/js/jquery.subscribe.js"></script>
+
+
+
+
+
+<%--		종영2--%>
+
 		
 		
 		<script type="text/javascript" src="${path}/js/jquery-3.6.1.min.js"></script>
@@ -148,6 +175,21 @@
 	
 	</head>
 	<body>
+	<jsp:include page="../common/header.jsp"/>
+	</div>
+	<div class="main app form" id="main"><!-- Main Section-->
+		<div class="hero-section">
+			<div class="container">
+				<div class="col-md-12 col-sm-12 nopadding">
+					<div class="pricing-intro">
+						<h1 class="wow fadeInUp" data-wow-delay="0.2s">Apple 제품 구입하기</h1>
+					</div>
+				</div>
+			</div>
+
+
+
+
 		<form name="orderForm" method="post" id="orderForm">
 
 		
@@ -364,5 +406,20 @@
 			</div>
 		
 		</form>
+	<jsp:include page="../common/footer.jsp"/>
+	</div>
+
+	<!-- Scroll To Top -->
+
+	<a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a>
+
+	<!-- Scroll To Top Ends-->
+
+	</div>
+	<!-- Main Section -->
+	</div>
+	<!-- Wrapper-->
+
+
 	</body>
 </html>

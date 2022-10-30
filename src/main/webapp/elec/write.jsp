@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/style.css">
 
-<title>iLand Multipurpose Landing Page Template</title>
+<title>A+ Store</title>
     <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
