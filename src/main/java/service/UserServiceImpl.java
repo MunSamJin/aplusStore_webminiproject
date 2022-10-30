@@ -1,16 +1,21 @@
 package service;
 
+import java.io.PrintWriter;
 import java.sql.SQLException;
 
 import javax.naming.AuthenticationException;
+import javax.servlet.http.HttpSession;
 
 import dao.UserDAO;
 import dao.UserDAOImpl;
 import dto.UserDTO;
+import mail.LoginMail;
 
 public class UserServiceImpl implements UserService {
 
 	private UserDAO userDAO = new UserDAOImpl();
+	//private LoginMail mail = new LoginMail();
+
 	
 	@Override
 	public UserDTO loginCheck(UserDTO userdto) throws SQLException, AuthenticationException {//id,pwd만 가진 userdto가 옴.
@@ -23,16 +28,17 @@ public class UserServiceImpl implements UserService {
 		return dbDTO;
 	}
 	
+	/**
+	 * 아이디 찾기
+	 */
+	
 	@Override
-	public UserDTO lookforId(UserDTO userDTO) throws SQLException {
+	public void lookforId(String emailId, String phone) throws SQLException {
 
 		
-		//UserDTO dto = userDAO.lookforId(userDTO);
-		//if(dto==null) {
-		//	throw new AuthenticationException("다시 입력해주세요.");
-		//}
 		
-		return null; //dto
+		
+		
 	}
 
 	
@@ -41,14 +47,44 @@ public class UserServiceImpl implements UserService {
 	 * 회원가입
 	 */
 	
-	public int insert(UserDTO userDTO) throws SQLException {
-		
-			int result = userDAO.insert(userDTO);
+	public void insert(UserDTO userDTO) throws SQLException {
 			
-			 return result;
-	
-		
+			int result = userDAO.insert(userDTO);
+			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다.");
+			
+			
 	}
 	
-
+	/**
+	 * 메일 인증 
+	 */
+	
+	public void checkMail(String comfEmail) throws Exception{
+	/*	
+		HttpSession session = request.getSession();
+		   int result = session.getAttribute(mailNum);
+			if(mailNum.equals(comfEmail)) {
+		*/		
+			}
+	
+				
+		
+	
+	
+	/**
+	 * 정보 수정
+	 */
+	
+	public int update(UserDTO userdto) throws SQLException{
+		
+		int result = userDAO.update(userdto);
+		
+		if(result > 0) {
+			return result;
+		}else {
+			throw new SQLException("정보 수정을 실패하였습니다.");
+		}
+		
+	
+	}
 }

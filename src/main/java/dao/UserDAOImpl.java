@@ -15,24 +15,6 @@ import util.DbUtil;
 
 public class UserDAOImpl implements UserDAO {
 
-	private Properties proFile = new Properties();
-	
-	
-	
-	/*
-	 * public UserDAOImpl() { try { //dbQuery를 준비한 ~.properties파일을 로딩해서 Properties
-	 * 자료구조에 저장한다.
-	 * 
-	 * //현재 프로젝트가 런타임(실행)될 때, 즉 서버가 실행될 때 classes폴더의 위치를 //동적으로 가져와서 경로를 설정해야한다.
-	 * InputStream is =
-	 * getClass().getClassLoader().getResourceAsStream("dbQuery.properties");
-	 * 
-	 * proFile.load(is); System.out.println("query.userlogin = " +
-	 * proFile.getProperty("query.userlogin")); }catch(Exception e){
-	 * e.printStackTrace(); }
-	 * 
-	 * }
-	 */
 
 	
 	
@@ -56,7 +38,7 @@ public class UserDAOImpl implements UserDAO {
 		try {
 			con = DbUtil.getConnection();
 
-			ps = con.prepareStatement("update member set email_id=?,phone=?,pwd=?,name=?,addr=?");
+			ps = con.prepareStatement("update member set email_id=?,phone=?,pwd=?,addr=?");
 			
 			ps.setString(1, userDTO.getEmailId());
 			ps.setString(2, userDTO.getPhone());
@@ -87,8 +69,7 @@ public class UserDAOImpl implements UserDAO {
 		
 
 		
-		String sql = "insert into member values(?,?,?,?,?)";//"insert into member(emailId,phone,pwd,name,addr)values(?, ?, ? ,?, ?)"
-		System.out.println("query.regUser" + sql);
+		String sql ="insert into member values(?,?,?,?,?)";//"insert into member(emailId,phone,pwd,name,addr)values(?, ?, ? ,?, ?)"
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -98,6 +79,7 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(4, userDTO.getName());
 			ps.setString(5, userDTO.getAddr());
 			
+			System.out.println("userDTO = " + userDTO);
 			result = ps.executeUpdate();
 			
 
@@ -151,7 +133,7 @@ public class UserDAOImpl implements UserDAO {
 	 */
  
 	@Override
-	public UserDTO lookforId(String id, String name){
+	public UserDTO lookforId(String emailId, String phone){
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -159,20 +141,19 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 			con = DbUtil.getConnection();
-			ps = con.prepareStatement("select * from member where email_id=? and name=?");//select * from member where email_id=? and name=?
-			ps.setString(1, id);
-			ps.setString(2, name);
+			ps = con.prepareStatement("select * from member where email_id=? and phone=?");//select * from member where email_id=? and name=?
+			ps.setString(1, emailId);
+			ps.setString(2, phone);
 			rs = ps.executeQuery();
 		
 			while(rs.next()) {
 				dto=new UserDTO();
 
 				dto.setEmailId(rs.getString("emailId"));
-
+				dto.setPhone(rs.getString("phone"));
 				dto.setPwd(rs.getString("pwd"));
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
-				dto.setPhone(rs.getString("phone"));
 				
 			}
 		}catch(SQLException e) {
@@ -189,7 +170,7 @@ public class UserDAOImpl implements UserDAO {
 	 */
 
 	@Override
-	public UserDTO lookforPwd(String id, String phone){
+	public UserDTO lookforPwd(String emailId, String name){
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -199,9 +180,9 @@ public class UserDAOImpl implements UserDAO {
 		
 		try {
 			con=DbUtil.getConnection();
-			ps=con.prepareStatement("select * from member");
-			ps.setString(1, id);
-			ps.setString(2, phone);
+			ps=con.prepareStatement("select * from member where email_id=? and name=?");
+			ps.setString(1, emailId);
+			ps.setString(2, name);
 		
 			rs =ps.executeQuery();
 		
@@ -209,11 +190,10 @@ public class UserDAOImpl implements UserDAO {
 				dto = new UserDTO();
 
 				dto.setEmailId(rs.getString("emailId"));
-
+				dto.setPhone(rs.getString("phone"));
 				dto.setPwd(rs.getString("pwd"));
 				dto.setName(rs.getString("name"));
 				dto.setAddr(rs.getString("addr"));
-				dto.setPhone(rs.getString("phone"));
 				
 			}
 		}catch(SQLException e) {
