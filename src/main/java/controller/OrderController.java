@@ -134,20 +134,20 @@ public class OrderController implements AjaxController {
 	
 	
 	//배송을원합니다.
-//	public void userInfoSelect(HttpServletRequest request, HttpServletResponse response)
-//			throws ServletException, IOException, SQLException {
-//		HttpSession session = request.getSession();
-//		//String emailId = session.getAttribute("emailId");
-//		String emailId = "sikkk@naver.com";
-//
-//		List<UserDTO> list = orderService.userInfoSelect(emailId);
-//		System.out.println("userInfoSelect 컨트롤러 list = " + list);
-//
-//		JSONArray arr = JSONArray.fromObject(list);
-//
-//		PrintWriter out = response.getWriter();
-//		out.print(list);
-//
-//	}
+	public void userInfoSelect(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		HttpSession session = request.getSession();
+		//String emailId = session.getAttribute("emailId");
+		String emailId = "sikkk@naver.com";
+		
+		List<UserDTO> list = orderService.userInfoSelect(emailId);
+		System.out.println("userInfoSelect 컨트롤러 list = " + list);
+		
+		JSONArray arr = JSONArray.fromObject(list);
+		
+		PrintWriter out = response.getWriter();
+		out.print(list);
+
+	}
 
 }
