@@ -1,7 +1,10 @@
 package service;
 
 import java.sql.SQLException;
+
 import javax.naming.AuthenticationException;
+
+import controller.ModelAndView;
 import dto.UserDTO;
 
 
@@ -15,14 +18,26 @@ public interface UserService {
    /**
     *  아이디 찾기
     */
-   public UserDTO lookforId(UserDTO userDTO)throws SQLException;
+   public void lookforId(String emailId, String phone)throws SQLException;
 
 
    
    /**
     *  회원가입
     */
-   public int insert(UserDTO userDTO) throws SQLException;
+   public void insert(UserDTO userDTO) throws SQLException;
+   
+   
+   /**
+    *  회원정보변경
+    */
+   public int update(UserDTO userdto) throws SQLException;
+   
+   /**
+    *  이메일 인증
+    */
+
+   
 }
 
 

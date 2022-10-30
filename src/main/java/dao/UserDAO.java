@@ -27,7 +27,7 @@ public interface UserDAO {
 	 * 아이디 찾기
 	 */
 	
-	public UserDTO lookforId(String email, String name);
+	public UserDTO lookforId(String emailId, String phone);
 	
 	
 	/**
@@ -40,7 +40,7 @@ public interface UserDAO {
 	 * 비밀번호 찾기 
 	 */
 	
-	public UserDTO lookforPwd(String id, String phone);
+	public UserDTO lookforPwd(String emailId, String name);
 	
 	/**
 	 * 아이디 중복체크

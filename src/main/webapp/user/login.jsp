@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Aplus ID 생성 - Aplus(kosta)</title>
 
+
 </head>
 <body>
 
@@ -52,7 +53,7 @@
 				  </div>
                   
                   <div class="text-center">
-                    <a class="small" href="#">Aplus ID 또는 암호를 잊으셨습니까</a>
+                    <a class="small" href="lookforPwd.jsp">Aplus ID 또는 암호를 잊으셨습니까</a>
                   </div>
                 </div>
 
