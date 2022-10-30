@@ -27,24 +27,23 @@ public class CartInsertController implements Controller {
 
 	public ModelAndView insert(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		HttpSession session = request.getSession();
-//		String emailId = (String)session.getAttribute("emailId");
-		String emailId = request.getParameter("emailId");
+		Object obj = session.getAttribute("emailId");
+		//String emailId = request.getParameter("emailId");
 		String modelName = request.getParameter("modelName");
 
 		System.out.println("CartInsert........");
-		service.insert(modelName, emailId);
 
 
 		//session에 저장
-		if(emailId == null) {
+		if(obj == null) {
 			List<CartDTO> guestCartList = (List<CartDTO>) session.getAttribute("guestCartList");
 
 			if(guestCartList == null) {//비회원 장바구니 만들기
 				guestCartList = new ArrayList<CartDTO>();
-
+				session.setAttribute("guestCartList", guestCartList);
+				
 				CartDTO cart = service.selectForGuest(modelName);
 				guestCartList.add(cart);
-				session.setAttribute("guestCartList", guestCartList);
 
 			} else {
 
@@ -61,9 +60,9 @@ public class CartInsertController implements Controller {
 
 				//새로 추가
 				if(n == guestCartList.size()) {
+					session.setAttribute("guestCartList", guestCartList);
 					CartDTO cart = service.selectForGuest(modelName);
 					guestCartList.add(cart);
-					session.setAttribute("guestCartList", guestCartList);
 				}
 			}
 
@@ -71,7 +70,7 @@ public class CartInsertController implements Controller {
 			return new ModelAndView("cart/cart.jsp"); //forward
 
 		} else { //회원
-
+           String emailId = (String)obj;
 			service.insert(modelName, emailId);
 			return new ModelAndView("cart/cart.jsp", true);
 		}

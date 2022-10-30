@@ -6,7 +6,11 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
+<<<<<<< HEAD
     <title>A+ Store</title>
+=======
+    <title>iLand Multipurpose Landing Page Template</title>
+>>>>>>> seryun
     <link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="iLand Multipurpose Landing Page Template">
@@ -227,7 +231,7 @@
     </script>
 </head>
 <body>
-<jsp:include page="../common/header.jsp"/>
+<jsp:include page="${path}/common/header.jsp"/>
 <!-- /.navbar-collapse -->
 </div>
 <!-- /.container-fluid -->
@@ -263,20 +267,43 @@
         <div class="hero-section">
             <div class="container nopadding">
                 <div class="col-md-5"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s"
+<<<<<<< HEAD
                                            src="${path}/images/search_main.png" alt="App" name="jong"/></div>
+=======
+                                           src="${path}/images/search_main.png" alt="App" id="jong"/></div>
+>>>>>>> seryun
                 <div class="col-md-7">
                     <div class="hero-content">
                         <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
                         <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
                         <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
+<<<<<<< HEAD
                             <input type="button" id="adminInfo" value="주문 관리 페이지" class="mail">
+=======
+                            <input type="button" id="ad">
+>>>>>>> seryun
                             <form class="subscribe-form wow zoomIn">
                                 Category : <select name="CRUD" class="mail" id="CRUD">
                                 <option disabled selected>C.R.U.D</option>
                                 <option>제품조회</option>
                                 <option>제품등록</option>
+<<<<<<< HEAD
                             </select>
+=======
+                                <option>제품수정</option>
+                                <option>제품삭제</option>
+                            </select>
+
+
+                                <div id="update" hidden>
+                                    제품 수정페이지
+                                </div>
+
+                                <div id="delete" hidden>
+                                    제품 삭제페이지
+                                </div>
+>>>>>>> seryun
 
 
 
@@ -457,8 +484,11 @@
                             <th>GPS</th>
                             <th>재고량</th>
                             <th>등록일</th>
+<<<<<<< HEAD
                             <th>수정</th>
                             <th>삭제</th>
+=======
+>>>>>>> seryun
                         </tr>
 
                     </table>
@@ -468,6 +498,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
 
 
 
@@ -484,17 +515,61 @@
         <!-- Footer Section -->
         <jsp:include page="../common/footer.jsp"/>
     </div>
+=======
+>>>>>>> seryun
 
     <!-- Scroll To Top -->
 
     <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a>
 
+<<<<<<< HEAD
     <!-- Scroll To Top Ends-->
+=======
+        </c:otherwise>
+
+        </c:choose>
+
+
+
+
+        <!-- Client Section -->
+        <div class="client-section">
+            <div class="container text-center">
+                <div class="clients owl-carousel owl-theme">
+                    <div class="single"><img src="${path}/images/client_hg.png" alt="효경" height="50px"/></div>
+                    <div class="single"><img src="${path}/images/client_jy.png" alt="종영" height="50px"/></div>
+                    <div class="single"><img src="${path}/images/client_r.png" alt="란" height="50px"/></div>
+                    <div class="single"><img src="${path}/images/client_ys.png" alt="용식" height="50px"/></div>
+                    <div class="single"><img src="${path}/images/client_sj.png" alt="삼진" height="50px"/></div>
+                    <div class="single"><img src="${path}/images/client_sr.png" alt="세륜" height="50px"/></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="feature-sub">
+            <div class="container">
+                <div class="sub-inner">
+                    <h1 class="wow fadeInUp">Creative Landing App For Your Easy Life! Simple Reliable & Understandable for
+                        your customers </h1>
+                    <a href="#" class="btn btn-action wow fadeInUp">Buy now</a></div>
+            </div>
+        </div>
+
+        <!-- Footer Section -->
+        <jsp:include page="${path}/common/footer.jsp"/>
+    </div>
+
+    <!-- Scroll To Top -->
+
+    <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a>
+
+    <!— Scroll To Top Ends—>
+>>>>>>> seryun
 
 </div>
-<!-- Main Section -->
+<!— Main Section —>
 </div>
-<!-- Wrapper-->
+<!— Wrapper—>
 
 
 </body>
