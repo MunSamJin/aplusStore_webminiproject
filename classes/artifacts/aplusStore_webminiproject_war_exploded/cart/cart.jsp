@@ -4,30 +4,34 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
+
 	<title>A+ Store</title>
-	<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+
+
+	<link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
+
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="iLand Multipurpose Landing Page Template">
 	<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="${path}/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 	<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
-	<link rel="stylesheet" href="../css/animate.css">
+	<link rel="stylesheet" href="${path}/css/animate.css">
 	<!-- Resource style -->
-	<link rel="stylesheet" href="../css/owl.carousel.css">
-	<link rel="stylesheet" href="../css/owl.theme.css">
-	<link rel="stylesheet" href="../css/ionicons.min.css">
+	<link rel="stylesheet" href="${path}/css/owl.carousel.css">
+	<link rel="stylesheet" href="${path}/css/owl.theme.css">
+	<link rel="stylesheet" href="${path}/css/ionicons.min.css">
 	<!-- Resource style -->
-	<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="${path}/css/style.css" rel="stylesheet" type="text/css" media="all" />
 
 	<!-- Jquery and Js Plugins -->
-	<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 
-	<script type="text/javascript" src="../js/plugins.js"></script>
-	<script type="text/javascript" src="../js/menu.js"></script>
-	<script type="text/javascript" src="../js/custom.js"></script>
-	<script src="../js/jquery.subscribe.js"></script>
+	<script type="text/javascript" src="${path}/js/plugins.js"></script>
+	<script type="text/javascript" src="${path}/js/menu.js"></script>
+	<script type="text/javascript" src="${path}/js/custom.js"></script>
+	<script src="${path}/js/jquery.subscribe.js"></script>
 
 	<style type="text/css">
 		table img{width:140px; height:160px;}
@@ -45,25 +49,32 @@
 					url:"${path}/ajax",
 					type:"post",
 					dataType:"json",
-					data:{key:"cart", methodName : "select", emailId: "sikkk@naver.com"/* `${sessionScope.emailId}` */},
+					data:{key:"cart", methodName : "select", /*emailId: "sikkk@naver.com" `${sessionScope.emailId}` */},
 					success: function(result){
+						let resultCheck = 0;
+						
 						$.each(result, function(index, item){
 							if(item.modelStock <= 0){ //품절
-								if(confirm(" 품절 상품은 결제에 포함되지 않습니다. 그대로 주문을 진행하려면 확인을 누르세요.")){
-									location.href = "${path}/orders/orderMain.jsp";
-								}
-
+								resultCheck = 1;
 							} else if(item.modelStock < item.modelCount){ //재고량 < 주문수량
-								if(confirm(item.modelName + " 상품 재고량이 부족합니다. 수량이 맞지 않는 제품은 결제에 포함되지 않습니다. 수량 변경없이 그대로 주문을 진행하려면 확인을 누르세요.")){
-									location.href = "${path}/orders/orderMain.jsp";
-								}
-
-							}  else{
-								if(confirm("결제하시겠습니까?")){ //정상
-									location.href = "${path}/orders/orderMain.jsp";
-								}
+								resultCheck = 2;
 							}
 						})
+						
+						
+						if(resultCheck == 0){
+							if(confirm("결제하시겠습니까?")){ //정상
+								location.href = "${path}/orders/orderMain.jsp";
+							}
+						} else if(resultCheck == 1){
+							if(confirm(" 품절 상품은 결제에 포함되지 않습니다. 그대로 주문을 진행하려면 확인을 누르세요.")){
+								location.href = "${path}/orders/orderMain.jsp";
+							}
+						} else if(resultCheck == 2){
+							if(confirm(item.modelName + " 상품 재고량이 부족합니다. 수량이 맞지 않는 제품은 결제에 포함되지 않습니다. 수량 변경없이 그대로 주문을 진행하려면 확인을 누르세요.")){
+								location.href = "${path}/orders/orderMain.jsp";
+							}
+						}
 
 					},
 					error : function(err){
@@ -73,81 +84,91 @@
 
 			});
 
+		
+		
+		
+		//장바구니 전체검색
+		   function select(){	
+			   $.ajax({
+				url :"${path}/ajax" , 
+				type:"post", 
+				dataType:"json"  , 
+				data: {key:"cart", methodName : "select" /*,emailId: "sikkk@naver.com" `${sessionScope.emailId}` */}, 
+				success :function(result){
+					let str="";
+					let totalPrice = 0;
+					$.each(result, function(index, item){
+						if(Object.keys(result).length == 0){//빈 장바구니
+							//alert(Object.keys(result).length);
+							//str = `<div style='height:500px; text-align:center;'>장바구니가 비었습니다</div>`;
+						}
+						
+						
+						//imgName 조작
+						let imgName = item.modelName;
+						let name = imgName.split("_");
+						if((item.category=="iphone") || (item.category=="watch")){
+							imgName = name[0]+"_"+name[1];
+						}
+						
+						
 
+					    str+="<tr>";
+					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
+					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
+					    str+="<td><img src='${path}/images/" + imgName + ".jpeg'></a></td>";
+					    str+=`<td>${"${item.modelName}"}</td>`;
+					    str+="<td><select name='modelCount' id='selectModelCount'>"+
+					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
+					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
+					    		
+					    		if(item.modelStock <= 0){
+					    			 str+="<b style='color:red'>  품절</b>"
+					    		}
+					    		
+					    		+"</td>";
+					    //str+=`<td>${"${item.modelPrice}"}</td>`;
+					    str+="<td>￦" + numberDot(item.modelPrice * item.modelCount) + "</td>";
+					    //str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
+					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.modelName}"}></td>`;
+					    str+="</tr>";
+					    
+					    totalPrice += (item.modelPrice * item.modelCount);
+				    });
+					
+					
+					
+					//$("#cartTable tr:eq(0)").remove();
+					$("#cartTable tr:gt(0)").remove();
+					$("#cartTable tr:eq(0)").after(str);
+					//$("#cartTable").html(str);
+					
+					$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + (numberDot(totalPrice)));
+					
+					//let formatPrice = " ￦<fmt:formatNumber value='" + totalPrice + "'/>";
+					//$("#totalPrice1").text(formatPrice);
+					$("#totalPrice1").text("￦"+(numberDot(totalPrice)));
+					$("#totalPrice2").text(" ￦"+(numberDot(totalPrice)));
+					
+				} , 
+				error : function(err){  
+					alert(err+"에러 발생했어요.");
+				}  
+			});
+		   }
+		   
+		   
+		   
+		   //장바구니 삭제
+		   $(document).on("click", "[name=delete]", function(){
+			   //alert($(this).attr("id"));
+			   $.ajax({
+					url :"${path}/ajax" , 
+					type:"post", 
+					dataType:"text"  , 
+					data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelName: $(this).attr("id")},
+					//data: {key:"cart", methodName : "delete", cartNum: $(this).attr("id")},
 
-			//장바구니 전체검색
-			function select(){
-				$.ajax({
-					url :"${path}/ajax" ,
-					type:"post",
-					dataType:"json"  ,
-					data: {key:"cart", methodName : "select", emailId: "sikkk@naver.com"/* `${sessionScope.emailId}` */},
-					success :function(result){
-						let str="";
-						let totalPrice = 0;
-						$.each(result, function(index, item){
-							//imgName 조작
-							let imgName = item.modelName;
-							let name = imgName.split("_");
-							if((item.category=="iphone") || (item.category=="watch")){
-								imgName = name[0]+"_"+name[1];
-							}
-
-							//품절 여부
-							//if()
-							//$("#soldOut").css("display:block");
-
-
-							str+="<tr>";
-							str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
-							str+=`<td display='none'>${"${item.modelNum}"}</td>`;
-							str+="<td><img src='${path}/images/" + imgName + ".jpeg'></a></td>";
-							str+=`<td>${"${item.modelName}"}</td>`;
-							str+="<td><select name='modelCount' id='selectModelCount'>"+
-									"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
-									+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
-
-							if(item.modelStock <= 0){
-								str+="<b style='color:red'>  품절</b>"
-							}
-
-							+"</td>";
-							//str+=`<td>${"${item.modelPrice}"}</td>`;
-							str+="<td>￦" + (item.modelPrice * item.modelCount) + "</td>";
-							str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
-							str+="</tr>";
-
-							totalPrice += (item.modelPrice * item.modelCount);
-						});
-
-
-
-						//$("#cartTable tr:eq(0)").remove();
-						$("#cartTable tr:gt(0)").remove();
-						$("#cartTable tr:eq(0)").after(str);
-						//$("#cartTable").html(str);
-						$("#cartEx").text("장바구니에 들어있는 상품입니다	￦" + totalPrice);
-						$("#totalPrice1").text("￦"+totalPrice);
-						$("#totalPrice2").text("￦"+(totalPrice));
-
-					} ,
-					error : function(err){
-						alert(err+"에러 발생했어요.");
-					}
-				});
-			}
-
-
-
-			//장바구니 삭제
-			$(document).on("click", "[name=delete]", function(){
-				alert($(this).attr("id"));
-				$.ajax({
-					url :"${path}/ajax" ,
-					type:"post",
-					dataType:"text"  ,
-					//data: {key:"cart", methodName : "delete", emailId: `${sessionScope.emailId}`, modelNum: $(this).attr("id")},
-					data: {key:"cart", methodName : "delete", cartNum: $(this).attr("id")},
 					success :function(result){
 						alert(result);
 						select();//다시 전체검색
@@ -159,14 +180,17 @@
 			})
 
 
-			//장바구니 업데이트
-			$(document).on("change","#selectModelCount",function(){
-				//alert("수정 " + $(this).val());
-				$.ajax({
-					url :"${path}/ajax" ,
-					type:"post",
-					dataType:"text"  ,
-					data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().children('td:eq(0)').text(), modelCount: $(this).val()},
+		   
+		   //장바구니 업데이트
+		   $(document).on("change","#selectModelCount",function(){
+			   //alert("수정 " + $(this).val());
+			   $.ajax({
+					url :"${path}/ajax" , 
+					type:"post", 
+					dataType:"text"  , 
+					//data: {key:"cart", methodName : "update", cartNum: $(this).parent().parent().children('td:eq(0)').text(), modelCount: $(this).val()},
+					data: {key:"cart", methodName : "update", modelName: $(this).parent().prev().text() , modelCount: $(this).val()},
+
 					success :function(result){
 						select();//다시 전체검색
 
@@ -178,15 +202,21 @@
 			})
 
 
+			
 			//이미지 선택시 이동
 			$(document).on("click","img",function(){
-				//location.href("");
+				alert();
 
 			})
+			
+			//숫자 콤마
+			function numberDot(num){
+			    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 
 
 			select();
-		})
+		})//readyEnd
 	</script>
 </head>
 
@@ -255,7 +285,7 @@
 
 </div>
 <!-- Main Section -->
-</div>
+<!-- </div> -->
 <!-- Wrapper-->
 
 

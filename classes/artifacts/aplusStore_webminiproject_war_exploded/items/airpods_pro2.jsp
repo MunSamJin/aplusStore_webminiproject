@@ -35,7 +35,7 @@
 
             $("#cart").click(function () {
 
-                location.href = "${path}front?key=cart&methodName=insert&modelNum=AirPods_Pro_2nd";
+                location.href = "${path}front?key=cart&methodName=insert&modelName=AirPods_Pro_2nd";
             });
 
         });

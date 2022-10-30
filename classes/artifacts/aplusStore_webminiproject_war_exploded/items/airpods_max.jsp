@@ -39,7 +39,7 @@
                 let color = $("input[type=radio][name=color]:checked").val();
 
                 let modelName = "AirPods_Max_" +color;
-                location.href = "${path}front?key=cart&methodName=insert&gpsName=" + modelName;
+                location.href = "${path}front?key=cart&methodName=insert&modelName=" + modelName;
 
             });
 

@@ -267,11 +267,8 @@
         <div class="hero-section">
             <div class="container nopadding">
                 <div class="col-md-5"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s"
-<<<<<<< HEAD
                                            src="${path}/images/search_main.png" alt="App" name="jong"/></div>
-=======
-                                           src="${path}/images/search_main.png" alt="App" id="jong"/></div>
->>>>>>> seryun
+
                 <div class="col-md-7">
                     <div class="hero-content">
                         <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
@@ -280,9 +277,7 @@
 
 <<<<<<< HEAD
                             <input type="button" id="adminInfo" value="주문 관리 페이지" class="mail">
-=======
-                            <input type="button" id="ad">
->>>>>>> seryun
+
                             <form class="subscribe-form wow zoomIn">
                                 Category : <select name="CRUD" class="mail" id="CRUD">
                                 <option disabled selected>C.R.U.D</option>

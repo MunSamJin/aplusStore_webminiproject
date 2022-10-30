@@ -100,7 +100,7 @@
     <div class="split-features">
         <div class="col-md-6 nopadding">
             <div class="split-image">
-                <img class="img-responsive wow fadeIn" src="../images/airpod3rd_main.jpeg" alt="Image" id="mainImg"
+                <img class="img-responsive wow fadeIn" src="${path}/images/airpod3rd_main.jpeg" alt="Image" id="mainImg"
                      style="height: 440px; border-radius: 20px;"/>
             </div>
         </div>

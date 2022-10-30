@@ -39,7 +39,7 @@
                 let color = $("input[type=radio][name=color]:checked").val();
 
                 let modelName = model + "_" + color+"_49_cellular";
-                location.href = "${path}front?key=cart&methodName=insert&modelNum=" + modelName;
+                location.href = "${path}front?key=cart&methodName=insert&modelName=" + modelName;
 
             });
 
