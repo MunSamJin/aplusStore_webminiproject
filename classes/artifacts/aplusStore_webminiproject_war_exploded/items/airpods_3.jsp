@@ -39,7 +39,7 @@
                 let charge = $("input[type=radio][name=charge]:checked").val();
 
                 let modelName = "=AirPods_3rd_" +charge;
-                location.href = "${path}front?key=cart&methodName=insert&gpsName=" + modelName;
+                location.href = "${path}/front?key=cart&methodName=insert&gpsName=" + modelName;
 
             });
 

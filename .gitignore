@@ -297,12 +297,7 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
-<<<<<<< HEAD
+
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,gradle,maven,macos,windows,intellij+all
-=======
-# End of https://www.toptal.com/developers/gitignore/api/java,eclipse,gradle,maven,macos,windows,intellij+all
-<<<<<<< HEAD
->>>>>>> seryun
-=======
->>>>>>> jy_plus_main
->>>>>>> jy_plus_main_new
+
+

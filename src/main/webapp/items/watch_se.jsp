@@ -40,7 +40,7 @@
                 let size = $("input[type=radio][name=size]:checked").val();
                 let gps = $("input[type=radio][name=gps]:checked").val();
                 let modelName = "_" + color + "_" + size+ "_" +gps;
-                location.href = "${path}front?key=cart&methodName=insert&modelName=se" + modelName;
+                location.href = "${path}/front?key=cart&methodName=insert&modelName=se" + modelName;
 
             });
 
