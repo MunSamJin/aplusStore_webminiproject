@@ -10,6 +10,7 @@ import java.util.List;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
+import dto.UserDTO;
 import util.DbUtil;
 
 
@@ -271,6 +272,42 @@ public class OrderDAOImpl implements OrderDAO {
 		}
 		System.out.println("주문내역메일발송 dao orderDTO = " + orderDTO);
 		return orderDTO;
+	}
+
+
+
+	/**
+	 * 주문할 때 회원 정보 화면에 보여주기
+	 */
+	@Override
+	public List<UserDTO> userInfoSelect(String emailId) throws SQLException {
+		System.out.println("userInfoSelect DAO 왔니??");
+		System.out.println("userInfoSelect emailId = " + emailId);
+		
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "select * from member where email_id=?";
+
+		List<UserDTO> list = new ArrayList<UserDTO>();
+		
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement(sql);
+			ps.setString(1, emailId);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+			
+				list.add(new UserDTO(rs.getString(1), rs.getString(2), rs.getString(3),
+						rs.getString(4), rs.getString(5)));
+			}
+		} finally {
+			DbUtil.dbClose(con, ps, rs);
+		}
+		System.out.println("주문할 때 회원 정보 dao list =  " + list);
+		return list;
 	}
 
 }

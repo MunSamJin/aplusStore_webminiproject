@@ -8,6 +8,7 @@ import dao.OrderDAOImpl;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
+import dto.UserDTO;
 import mail.Mail;
 
 
@@ -63,6 +64,20 @@ public class OrderServiceImpl implements OrderService {
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}
+		return list;
+	}
+
+	
+	/**
+	 * 주문할 때 회원 정보 화면에 보여주기
+	 */
+	@Override
+	public List<UserDTO> userInfoSelect(String emailId) throws SQLException {
+		
+		List<UserDTO> list = orderDAO.userInfoSelect(emailId);
+		
+		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
+		System.out.println("userInfoSelect 서비스list  = " + list);
 		return list;
 	}
 
