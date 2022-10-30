@@ -25,7 +25,7 @@ public interface UserService {
    /**
     *  회원가입
     */
-   public void insert(UserDTO userDTO) throws SQLException;
+   public int insert(UserDTO userDTO) throws SQLException;
    
    
    /**

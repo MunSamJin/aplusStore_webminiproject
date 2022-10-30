@@ -22,8 +22,8 @@ import service.UserServiceImpl;
 public class UserController implements Controller {
 	private UserDAO userDAO = new UserDAOImpl();
 	private	UserService userService = new UserServiceImpl();
-	//private LoginMail mail = new LoginMail();
-	//private LookforAccount LookforAccount = new LookforAccount();
+	// LoginMail mail = new LoginMail();
+	 LookforAccount lookforAccount = new LookforAccount();
 	
 	
 	  @Override
@@ -39,8 +39,8 @@ public class UserController implements Controller {
 	  *  회원정보 수정
 	  */
 	 
-	 public void update(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException {
+	 public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
+				throws ServletException, IOException, SQLException {
 
 		 String emailId = request.getParameter("emailId");
 		 String pwd = request.getParameter("pwd");
@@ -49,10 +49,10 @@ public class UserController implements Controller {
 
 		 UserDTO dto = new UserDTO(emailId, phone, pwd, addr);
 
-		 //userService.update(dto);
+		 userService.update(dto);
 		 
-		 //int result = userDAO.update(dto);
 		 
+		 return new ModelAndView("index.jsp", true);
 	 }
 	 
 	 /**
@@ -61,33 +61,31 @@ public class UserController implements Controller {
 	 public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, SQLException {
 
+		 PrintWriter out = response.getWriter();
+		 
 		 String emailId = request.getParameter("emailId");
 		 String pwd = request.getParameter("pwd");
 		 String name = request.getParameter("name");
 		 String addr = request.getParameter("addr");
 		 String phone = request.getParameter("phone");
-		 int comfEmail = Integer.parseInt(request.getParameter("email_auth_key"));
-		 int mailNum = Integer.parseInt(request.getParameter("${mailNum}"));
-
+		 int comfEmail = Integer.parseInt(request.getParameter("email"));//고객이 입력한 인증번호
+		 int mailNum = Integer.parseInt(request.getParameter("${mailNum}"));//인증번호
+		 
+		 System.out.println(comfEmail);
+		 System.out.println(mailNum);
+		 
 		 UserDTO dto = new UserDTO(emailId, phone, pwd, name, addr);
-		 //int result = userService.insert(dto);
 		 
-		 
-		/* 
 		 if(mailNum == comfEmail) {
 			 userService.insert(dto);
 			 return new ModelAndView("user/login.jsp", true);
 		 }else {
-			 return new ModelAndView("error/error.jsp", false);
+			 out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
+			 return new ModelAndView("user/register.jsp", true);
 		 }
-		*/
-		 //userService.insert(dto);
-		 //userService.checkMail(comfEmail);
 		
-		// userService.insert(dto);
-		// userService.checkMail(comfEmail);
+
 		
-		 return new ModelAndView("user/login.jsp", true);
 		 
 	 }
 	 
@@ -154,17 +152,20 @@ public class UserController implements Controller {
 		String phone = request.getParameter("phone");
 		String emailId = request.getParameter("emailId");
 		String name = null;
+		
 		UserDTO userdto = null;
 		userdto = userDAO.lookforId(emailId, phone);
-	/*	
+		
+		System.out.println("userdto = " + userdto);
 		if(userdto != null) {
 			out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
-			LookforAccount.lookforAccount(emailId, name);
-			
+			lookforAccount.lookforAccount(emailId, name);
+		 
+		 
 		}else {
 			out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");
 		}
-	*/	
+	
 		return new ModelAndView("login.jsp", true);
 	 }
   
@@ -182,15 +183,18 @@ public class UserController implements Controller {
 			
 			UserDTO userdto = null;
 			userdto = userDAO.lookforPwd(emailId, name);
-		/*	
+			
 			if(userdto != null) {
 				out.println("<script>alert('가입하신 이메일로 임시 비밀번호 전송되었습니다.');</script>");
-				LookforAccount.lookforAccount(emailId, name);
+				int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
+				System.out.println("임시 비밀번호 num = " +  num);
+				HttpSession session = request.getSession();
+				session.setAttribute("num", num);//이렇게 저장이 될까?
 				
 			}else {
 				out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");
 			}
-		*/
+		
 			return new ModelAndView("login.jsp", true);
 		 }
 

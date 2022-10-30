@@ -43,9 +43,16 @@ $(function(){
 				url : "/ajax",
 				dataType:"text",
 				data : {key:"user", methodName:"checkEmail"},
-				success: function(succmessage){
+				success: function(mailNum){
+					if(mailNum != 0){ //여기 있는 mailNum을 어떻게 form에 넣어서 다시 front로 가져갈까?
 					alert("인증번호가 발송되었습니다.");
-				
+					}else{
+	   					//text내용지우고
+	   					$("input[type=text]").val("");
+	   					$("span").text("이미 사용중인 아이디입니다.");
+	   					
+	   					$("[name=methodName]").val("insert");
+					}
 				
 				},
 				error: function(failmessage){
@@ -82,7 +89,7 @@ $(function(){
 					<input type="text" placeholder="ex)01012345678(-없이)" name="phone" id="phone" required>
 					<span id="phone_ck" class="dpn">연락처를 입력해주세요.</span>
             		<input type="text" class="form-control" id="addr" name="addr" placeholder="경상북도 울릉군 독도" required>
-            		<span id="addr_ck" class="youraddr"> 주소를 입력해주세요.
+            		<span id="addr_ck" class="youraddr"> 주소를 입력해주세요.</span>
 
 				 <div class="email_auth">
 					<input type="text" placeholder="기입한 아이디 이메일" name="email" id="email" class="email" required>
