@@ -34,10 +34,18 @@
 	<script src="${path}/js/jquery.subscribe.js"></script>
 
 	<style type="text/css">
-		table img{width:140px; height:160px;}
+		#cartTable {margin:auto;}
+		#cartTable tr, td, select {font-size: 14pt; vertical-align: middle; height: 180px;}
+		#cartTable img{width:140px; height:160px; border-radius: 20px;}
 		#cartTable td:first-child {display:none;}
 		#cartTable td:nth-child(2) {display:none;}
-
+		#cartTable input {border-radius: 20px; background-color: gray;}
+		#cartToOrder {border-radius: 20px;}
+		#countTable {margin:auto;}
+		#countTable tr, td {text-align: right; vertical-align: middle; font-size: 14pt; height:35px;}
+		
+		select { border: none; border-radius: 20px; width:40px; height: 35px;}
+		
 	</style>
 
 	<script type="text/javascript">
@@ -105,10 +113,14 @@
 						
 						
 						//imgName 조작
+						let cartModelName = "";
 						let imgName = item.modelName;
 						let name = imgName.split("_");
 						if((item.category=="iphone") || (item.category=="watch")){
 							imgName = name[0]+"_"+name[1];
+						}
+						for(let i=0 ; i<name.length; i++){
+							cartModelName +=  name[i].toUpperCase() + " ";
 						}
 						
 						
@@ -116,8 +128,8 @@
 					    str+="<tr>";
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
 					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
-					    str+="<td><img src='${path}/images/" + imgName + ".jpeg'></a></td>";
-					    str+=`<td>${"${item.modelName}"}</td>`;
+					    str+="<td style='text-align: center;'><img src='${path}/images/" + imgName + ".jpeg' id="+ (item.modelName + "/" + item.category) +"></a></td>";
+					    str+="<td style='text-align: center;'>" + cartModelName + "</td>";
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
 					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
@@ -130,7 +142,7 @@
 					    //str+=`<td>${"${item.modelPrice}"}</td>`;
 					    str+="<td>￦" + numberDot(item.modelPrice * item.modelCount) + "</td>";
 					    //str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.cartNum}"}></td>`;
-					    str+=`<td><input type='button' value='삭제' name='delete' id=${"${item.modelName}"}></td>`;
+					    str+=`<td><input type='button' class="btn btn-primary btn-action btn-fill wow" value='삭제' name='delete' id=${"${item.modelName}"}></td>`;
 					    str+="</tr>";
 					    
 					    totalPrice += (item.modelPrice * item.modelCount);
@@ -204,8 +216,53 @@
 
 			
 			//이미지 선택시 이동
-			$(document).on("click","img",function(){
-				// alert();
+			$(document).on("click","table img",function(){
+				let imgName = $(this).attr("id").split("/");
+				alert(imgName[0]);
+				
+				if(imgName.includes("watch_band")){
+					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=band`;
+				} else if(imgName.includes("case")){
+					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=case`;
+				} else if(imgName.includes("cable")){
+					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=cable`;
+				} else if(imgName[1].includes("AirPods")){
+					if(imgName.includes("2")){
+						location.href = `${path}/items/airpods_2.jsp`;
+					} else if(imgName.includes("3")){
+						location.href = `${path}/items/airpods_3.jsp`;
+					} else if(imgName.includes("max")){
+						location.href = `${path}/items/airpods_max.jsp`;
+					} else if(imgName.includes("pro2")){
+						location.href = `${path}/items/airpods_pro2.jsp`;
+					}
+					
+				} else if(imgName[1].includes("iphone")){
+					if(imgName.includes("12")){
+						location.href = `${path}/items/iphone_12.jsp`;
+					} else if(imgName.includes("13")){
+						location.href = `${path}/items/iphone_13&mini.jsp`;
+					} else if(imgName.includes("14")){
+						if(imgName.includes("pro")){
+							location.href = `${path}/items/iphone_14pro&Max.jsp`;
+						} else{
+							location.href = `${path}/items/iphone_14&plus.jsp`;
+						}
+						
+					} else if(imgName.includes("se")){
+						location.href = `${path}/items/iphone_se.jsp`;
+					}
+				} else if(imgName[1].includes("watch")){
+					if(imgName.includes("8")){
+						location.href = `${path}/items/watch_8.jsp`;
+					} else if(imgName.includes("se")){
+						location.href = `${path}/items/watch_se.jsp`;
+					} else if(imgName.includes("ultra")){
+						alert();
+						location.href = `${path}/items/watch_ultra.jsp`;
+					}
+					
+				}
 
 			})
 			
@@ -240,11 +297,11 @@
 				<tr style="display:none;">
 					<td ></td>
 					<td ></td>
-					<td width="30%"><!-- <div class="col-md-6 nopadding"> -->
+					<td width="20%"><!-- <div class="col-md-6 nopadding"> -->
 						<div class="split-image"> <img class="img-responsive wow fadeIn" src="../images/iPhone-app.png" alt="Image" width="140px"/> </div>
 					</td>
 
-					<td width="40%">
+					<td width="50%" style="text-align: center;">
 						<div ><!-- class="split-content" -->
 							<h2 class="wow fadeInUp">장바구니 상품1</h2>
 							<p class="wow fadeInUp">상품 설명</p>
@@ -257,11 +314,12 @@
 			</table>
 			<div class="split-features">
 				<hr>
-				<table id="countTable" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
+				<table id="countTable" class="wow fadeInDown" data-wow-delay="0.2s" style="text-align:center; margin:auto; vertical-align: center; width:1000px;">
 
-					<tr><td>소계</td><td id="totalPrice1" ></td></tr>
+					<tr><td width="70%">소계</td><td id="totalPrice1" ></td></tr>
 					<tr><td>배송</td><td id="express">무료</td></tr>
-					<tr><td>총계</td><td id="totalPrice2" ><p></td></tr>
+					<tr><td>총계</td><td id="totalPrice2" style="font-weight: bold;" ></td></tr>
+					<tr></tr>
 					<tr>
 						<td colspan="2"><p>
 							<button class="btn btn-primary btn-action btn-fill wow fadeInDown" data-wow-delay="0.2s" type="button"  name="cartToOrder" id="cartToOrder">결제</button>
