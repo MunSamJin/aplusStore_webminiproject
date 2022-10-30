@@ -68,16 +68,28 @@
 	
 		<script type="text/javascript">
 			$(function(){
-				let emailId="";//orchid59@naver.com
+				let emailId="";//sikkk@naver.com
 				//let sessonID = session.getAttribute("emailId");
 
 				//장바구니에서 결제버튼 누르면! 
 				if(emailId==null || emailId==""){ //세션ID(emailId)가 null이면 비회원
-					$("#guest").click(function(){
-						$("#choice").show();	
-						//Apple ID로 결제하기 - 로그인 화면 가져오기
+					
+					//Apple ID로 결제하기
+					$("#memberId").click(function(){
+						//로그인 화면으로 이동, 로그인 완료되면 
+						$("#memberGuest").hide();
+						$("#choice").show();
 					});
+					
+				
+					//방문객으로 계속하기
+					$("#guest").click(function(){
+						$("#memberGuest").hide();
+						$("#choice").show();	
+					});
+				
 				}else { //세션ID가 null이 아니면 회원
+					
 					$("#memberGuest").hide();
 					$("#choice").show();	
 				}
@@ -85,21 +97,54 @@
 					
 				//배송을 원합니다.
 				$("#deliver").click(function(){
+					
 					$("#cardInfo").hide();
 					$("#pickupDiv").hide();
 					$("#orderInfo").show();	
 					$("#orderInfoDetail").show();	
-					$("#pageMoveDiv").show();	
+					$("#pageMoveDiv").show();
+					
+					/* if(emailId==null || emailId==""){ 
+						
+						$("#cardInfo").hide();
+						$("#pickupDiv").hide();
+						$("#orderInfo").show();	
+						$("#orderInfoDetail").show();	
+						$("#pageMoveDiv").show();
+						
+					}else{
+						$.ajax({
+				   			url :"../ajax" , //서버요청주소
+				   			type:"post", //요청방식(method방식 : get | post | put | delete )
+				   			dataType: "json", //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+				   			data: {key:"pay" , methodName : "userInfoSelect" }, //서버에게 보낼 데이터정보(parameter정보)
+				   			success :function(result){ //성공했을때 실행할 함수 
+				   				
+								$.each(result, function(index, item){
+									alert(result);
+								});
+				   				
+				   				$("#orderInfo").show();
+				   		
+				   			} , 
+				   			error : function(err){  //실패했을때 실행할 함수 
+				   				alert(err+"에러 발생했어요.");
+				   			}  
+				   		});//ajax끝 
+					}*/
+						
 				});
 				
 				
 				//직접 픽업하겠습니다.
 				$("#pickup").click(function(){
-					$("#pickupDiv").load("pickup.jsp");
-					$("#orderInfo").hide();
-					$("#orderInfoDetail").show();
-					$("#pickupDiv").show();
-					$("#pageMoveDiv").show();	
+					
+						$("#pickupDiv").load("pickup.jsp");
+						$("#orderInfo").hide();
+						$("#orderInfoDetail").show();
+						$("#pickupDiv").show();
+						$("#pageMoveDiv").show();	
+		
 				});
 				
 				
@@ -162,7 +207,7 @@
 					<tr>
 						<td style="width: 30%">
 							<h2>Apple ID로 결제하기</h2><br>
-							<input type="text" name="memberId" id="memberId" placeholder="Apple ID"><br><br> 
+							<input type="button" name="memberId" id="memberId" value="로그인하기" style="cursor: pointer;"><br><br> 
 						</td>
 						<td style="width: 30%; border-left: solid; border-color: #E6E6E6;">
 							<h2>방문객 결제</h2><br>

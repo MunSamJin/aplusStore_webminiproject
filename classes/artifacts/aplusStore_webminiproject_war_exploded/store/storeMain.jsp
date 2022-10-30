@@ -4,20 +4,20 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>A+ Store</title>
-		<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+	<title>iLand Multipurpose Landing Page Template</title>
+		<link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="iLand Multipurpose Landing Page Template">
 		<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-		<link href="../hyo_css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="${path}/hyo_css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="../hyo_css/animate.css">
+		<link rel="stylesheet" href="${path}/hyo_css/animate.css">
 	<!-- Resource style -->
-		<link rel="stylesheet" href="../hyo_css/owl.carousel.css">
-		<link rel="stylesheet" href="../hyo_css/owl.theme.css">
-		<link rel="stylesheet" href="../hyo_css/ionicons.min.css">
+		<link rel="stylesheet" href="${path}/hyo_css/owl.carousel.css">
+		<link rel="stylesheet" href="${path}/hyo_css/owl.theme.css">
+		<link rel="stylesheet" href="${path}/hyo_css/ionicons.min.css">
 	<!-- Resource style -->
-		<link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="${path}/hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
 		
 		<style type="text/css">
 			table{cursor: pointer;}
@@ -67,8 +67,8 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Apple의 진짜 매력을 경험할 수 있는 Apple의 매장.</h1>
-	            <p class="wow fadeInUp" data-wow-delay="0.2s"> Apple 제품을 쇼핑하고, 전문가의 조언도 직접 받을 수 있습니다. </p>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus의 진짜 매력을 경험할 수 있는 Aplus 매장</h1>
+	            <p class="wow fadeInUp" data-wow-delay="0.2s"> Aplus 제품을 쇼핑하고, 전문가의 조언도 직접 받을 수 있습니다. </p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
 	        	<div id="mesaj"></div>
@@ -77,7 +77,7 @@
 	          </div>
 	        </div>
 	        
-	       <div style="width: 10%; margin-left: auto;margin-right: auto;"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/maps-icon-8214.png" alt="App"/></div>
+	       <div style="width: 10%; margin-left: auto;margin-right: auto;"><img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="${path}/images/maps-icon-8214.png" alt="App"/></div>
 	      </div>
 	    </div>
 	
@@ -97,7 +97,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 명동</td></tr>
+	              	<tr><td>Aplus Store 명동</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 중구 남문대로 2가 9-1</td></tr>
 	              	<tr><td>하이드파크</td></tr>
@@ -117,7 +117,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 가로수길</td></tr>
+	              	<tr><td>Aplus Store 가로수길</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 강남구</td></tr>
 	              	<tr><td>가로수길 43</td></tr>
@@ -137,7 +137,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 여의도</td></tr>
+	              	<tr><td>Aplus Store 여의도</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 영등포구 국제금융로 10</td></tr>
 	              	<tr><td>IFC MALL, L1</td></tr>
@@ -157,7 +157,7 @@
 	              		</td>
 	              	</tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 잠실</td></tr>
+	              	<tr><td>Aplus Store 잠실</td></tr>
 	              	<tr><td><br></td></tr>
 	              	<tr><td>서울 송파구 올림픽로 300</td></tr>
 	              	<tr><td>롯데월드몰 1F</td></tr>
@@ -184,12 +184,12 @@
 
 	
 	<!-- Jquery and Js Plugins --> 
-	<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript" src="../js/plugins.js"></script>
-	<script type="text/javascript" src="../js/menu.js"></script>
-	<script type="text/javascript" src="../js/custom.js"></script>
-	<script src="../js/jquery.subscribe.js"></script>
+	<script type="text/javascript" src="${path}/js/plugins.js"></script>
+	<script type="text/javascript" src="${path}/js/menu.js"></script>
+	<script type="text/javascript" src="${path}/js/custom.js"></script>
+	<script src="${path}/js/jquery.subscribe.js"></script>
 </body>
 </html>

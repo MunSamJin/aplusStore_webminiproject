@@ -4,13 +4,8 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-<<<<<<< HEAD
-	<title>A+ Store</title>
-		<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
-=======
 	<title>iLand Multipurpose Landing Page Template</title>
 		<link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
->>>>>>> samjin
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="iLand Multipurpose Landing Page Template">
 		<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">

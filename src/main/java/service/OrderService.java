@@ -39,7 +39,7 @@ public interface OrderService {
 	 * @param emailId
 	 * @return
 	 */
-	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
+//	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
 
 	
 

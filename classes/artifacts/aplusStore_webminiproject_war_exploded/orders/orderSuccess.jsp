@@ -13,7 +13,7 @@
 		<div>
 			<div id="successMessage">결제가 완료되었습니다.</div>
 			<br>
-			<h3>고객님의 제품이 3일 이내에 도착합니다.</h3>
+			<h3>감사합니다.</h3>
 		</div>
 	</body>
 </html>

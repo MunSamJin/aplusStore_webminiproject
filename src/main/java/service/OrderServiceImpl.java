@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
 		//dao에서 주문내역 조회하기
 		OrderDTO orderNumber = orderDAO.selectOrderNum(emailId);
 
-		//Mail mail = new Mail();
-		//mail.mailSend(orderNumber, dto);
+		Mail mail = new Mail();
+		mail.mailSend(orderNumber, dto);
 		
 		System.out.println("메일보내기 서비스 orderDTO.getRealEmail() " + dto.getRealEmail());
 		System.out.println("메일보내기 서비스 orderDTO.getOrderName() " + dto.getOrderName());
@@ -71,14 +71,14 @@ public class OrderServiceImpl implements OrderService {
 	/**
 	 * 주문할 때 회원 정보 화면에 보여주기
 	 */
-	@Override
-	public List<UserDTO> userInfoSelect(String emailId) throws SQLException {
-		
-		List<UserDTO> list = orderDAO.userInfoSelect(emailId);
-		
-		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
-		System.out.println("userInfoSelect 서비스list  = " + list);
-		return list;
-	}
+//	@Override
+//	public List<UserDTO> userInfoSelect(String emailId) throws SQLException {
+//
+//		List<UserDTO> list = orderDAO.userInfoSelect(emailId);
+//
+//		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
+//		System.out.println("userInfoSelect 서비스list  = " + list);
+//		return list;
+//	}
 
 }

@@ -2,21 +2,15 @@ package mail;
 
 import java.util.Date;
 import java.util.Properties;
-
-
-import dto.OrderDTO;
-
-import javax.mail.*;
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-<<<<<<< HEAD
-public class Mail{
- 
-   public static void mailSend(String mailId, OrderDTO dto) {
-         
-=======
 import dto.OrderDTO;
 
  
@@ -24,7 +18,6 @@ public class Mail{
  
     public static void mailSend(OrderDTO orderNumber, OrderDTO dto) {
            	
->>>>>>> samjin
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
         p.put("mail.smtp.host", "smtp.naver.com");      // smtp 서버 주소
@@ -75,7 +68,6 @@ public class Mail{
     }
 }
  
-	
 class MyAuthentication extends Authenticator {
       
     PasswordAuthentication pa;
@@ -93,3 +85,4 @@ class MyAuthentication extends Authenticator {
         return pa;
     }
 }
+

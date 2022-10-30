@@ -4,20 +4,20 @@
 <html lang="en">
 <head>
 	<meta charset="utf-8">
-	<title>A+ Store</title>
-		<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+	<title>iLand Multipurpose Landing Page Template</title>
+		<link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="iLand Multipurpose Landing Page Template">
 		<meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
-		<link href="../hyo_css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="${path}/hyo_css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all" />
 		<link href="https://fonts.googleapis.com/css?family=Open%20Sans:300,400,500,600,700" rel="stylesheet" type="text/css">
-		<link rel="stylesheet" href="../hyo_css/animate.css">
+		<link rel="stylesheet" href="${path}/hyo_css/animate.css">
 	<!-- Resource style -->
-		<link rel="stylesheet" href="../hyo_css/owl.carousel.css">
-		<link rel="stylesheet" href="../hyo_css/owl.theme.css">
-		<link rel="stylesheet" href="../hyo_css/ionicons.min.css">
+		<link rel="stylesheet" href="${path}/hyo_css/owl.carousel.css">
+		<link rel="stylesheet" href="${path}/hyo_css/owl.theme.css">
+		<link rel="stylesheet" href="${path}/hyo_css/ionicons.min.css">
 	<!-- Resource style -->
-		<link href="../hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
+		<link href="${path}/hyo_css/style.css" rel="stylesheet" type="text/css" media="all" />
 	<style type="text/css">
 		table{margin-left:auto; margin-right:auto; width: 50%}
 		tr,td{text-align: left;}
@@ -60,7 +60,7 @@
 		      		
 	   		    // 커스텀 오버레이에 표시할 내용입니다     
 	   		    // HTML 문자열 또는 Dom Element 입니다 
-	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Apple 잠실"+"<br>전자제품 판매점</button><span class='right'></span></div>";
+	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Aplus Store 잠실"+"<br>전자제품 판매점</button><span class='right'></span></div>";
 	
 	   		    // 커스텀 오버레이가 표시될 위치입니다 
 	   		    let position = new kakao.maps.LatLng(37.5134449, 127.1041032);  
@@ -89,7 +89,7 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Apple 잠실</h1>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus Store 잠실</h1>
 	            <p class="wow fadeInUp" data-wow-delay="0.2s"> 폐점 시간 10:00 오후</p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
@@ -125,7 +125,7 @@
 	              	<tr><td><br></td></tr>
 	              	<tr><td>찾아오는 길</td></tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Apple 잠실은 송파구 롯데월드몰에 위치해 있습니다. 잠실로 또는 올림픽로를 통해 오실 수 있으며, 쇼핑몰 내에 주차가 가능합니다. 대중교통편: 지하철 2호선 또는 8호선 잠실역(10번 혹은 11번 출구) 하차 후 롯데월드몰 방면으로 오시면 됩니다. 근방에 지선버스(초록), 간선버스(파랑), 광역버스, 공항버스를 포함한 다양한 종류의 버스가 정차합니다.</td></tr>
+	              	<tr><td>Aplus Store 잠실은 송파구 롯데월드몰에 위치해 있습니다. 잠실로 또는 올림픽로를 통해 오실 수 있으며, 쇼핑몰 내에 주차가 가능합니다. 대중교통편: 지하철 2호선 또는 8호선 잠실역(10번 혹은 11번 출구) 하차 후 롯데월드몰 방면으로 오시면 됩니다. 근방에 지선버스(초록), 간선버스(파랑), 광역버스, 공항버스를 포함한 다양한 종류의 버스가 정차합니다.</td></tr>
 	              </table>
 	            </div>
 	          </div>
@@ -145,12 +145,12 @@
 
 	
 	<!-- Jquery and Js Plugins --> 
-	<script type="text/javascript" src="../js/jquery-2.1.1.js"></script>
-	<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script>
+	<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript" src="../js/plugins.js"></script>
-	<script type="text/javascript" src="../js/menu.js"></script>
-	<script type="text/javascript" src="../js/custom.js"></script>
-	<script src="../js/jquery.subscribe.js"></script>
+	<script type="text/javascript" src="${path}/js/plugins.js"></script>
+	<script type="text/javascript" src="${path}/js/menu.js"></script>
+	<script type="text/javascript" src="${path}/js/custom.js"></script>
+	<script src="${path}/js/jquery.subscribe.js"></script>
 </body>
 </html>

@@ -60,6 +60,6 @@ public interface OrderDAO {
 	/**
 	 * 주문할 때 회원 정보 화면에 보여주기
 	 */
-	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
+//	List<UserDTO> userInfoSelect(String emailId) throws SQLException;
 
 }
