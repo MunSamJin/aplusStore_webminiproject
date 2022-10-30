@@ -37,23 +37,28 @@ public class OrderController implements AjaxController {
 			throws ServletException, IOException, SQLException {
 
 		String memberGuest = null;
-		HttpSession session = request.getSession();
-
-
-		// 로그인 사용자 인지 아닌지를 판단(비회원, 회원인지 판단한다.)
-
-		//String emailId = session.getAttribute("emailId");
-		String emailId = "sikkk@naver.com";
-		
 		List<CartDTO> list=null;
+		int totalPrice=0; //총구매금액
 		
-		//총구매금액
-		int totalPrice=0;
-		
+		// 로그인 사용자 인지 아닌지를 판단(비회원, 회원인지 판단한다.)
+		HttpSession session = request.getSession();
+		String emailId = (String) session.getAttribute("emailId");
+		//String emailId = "sikkk@naver.com";
+
 		if(emailId==null || emailId.equals("")) { //로그인이 안되었다면
 			memberGuest = "0"; //비회원
 
 			//장바구니에 담긴 상품을 session.getAttribute("cart정보")로 가져온다.
+			list = (List<CartDTO>)session.getAttribute("guestCartList");
+			System.out.println("list = " + list);
+			
+			for(CartDTO cart : list) {
+				totalPrice +=(cart.getModelCount()*cart.getModelPrice());
+				
+				System.out.println("totalPrice" + totalPrice);
+				System.out.println("cart.getModelCount()" + cart.getModelCount());
+				System.out.println("cart.getModelPrice()" + cart.getModelPrice());
+			}//forEnd
 
 		}else {//로그인 되었다면
 			memberGuest = "1"; //회원
