@@ -20,6 +20,33 @@
   <!-- Resource style -->
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 
+<style>
+.client-section {background: radial-gradient(black, #0000009c); padding: 15px 0;}
+.nopadding {padding: 0 0 40px;}
+.review-section {padding: 50px 0;}
+.review-single img {width: 100px; height: 100px;}
+.img-responsive wow fadeInUp img {width: 120px; height: 120px;}
+.col-md-5,.col-md-7 {width: 44%;}
+.navbar-default {background-color: #fff;}
+.navbar {padding-top: 20px; height: 90px;}
+.form .hero-section {padding: 150px 0 0;}
+.back-to-top {background: rgb(30 184 88);}
+.form .hero-section {background: repeating-linear-gradient(44deg, #ebbcc212, transparent 100px);}
+.clients .single img {-webkit-filter: none; opacity: inherit;}
+.feature-sub .sub-inner .btn-action {background: #d0112b; border-color: #d0112b;}
+.pitch-intro p {font-size: 16px;}
+.feature-sub {background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${path}/images/imgStore/magsafe-202209.jpeg) no-repeat center center}
+.split-features {background: #f5f5f7; padding: 110px 0;}
+.split-content {padding: 120px 250px 50px 10px;}
+.second {padding: 120px 30px 50px 250px;}
+.pitch {background-color: #f4f4f4;}
+.review-section {background: #fff;}
+.split-features2 {padding: 100px 0;}
+.pitch-intro {padding: 30px 0 70px 0;}
+.pitch {padding: 40px 0 40px 0;}
+
+</style>
+
 </head>
 <body>
 <jsp:include page="common/header.jsp"/>
@@ -27,56 +54,73 @@
 <div class="main app form" id="main"><!-- Main Section-->
   <div class="hero-section">
     <div class="container nopadding">
-      <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="images/app-signup.png" alt="App" /> </div>
+      <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" style="margin: 60px;" src="${path}/images/imgStore/applecare-plus-homepage_2x.png" alt="App" /> </div>
       <div class="col-md-7">
         <div class="hero-content">
-          <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to Aplus Store!</h1>
-          <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
-          <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
-          </div>
+          <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to</h1>
+          <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; font-size:70px">Aplus Store!</h1>
+          <p class="wow fadeInUp" data-wow-delay="0.1s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
         </div>
       </div>
-    </div>
+   	</div>
   </div>
+
 
   <!-- Client Section -->
   <div class="client-section">
     <div class="container text-center">
       <div class="clients owl-carousel owl-theme">
-        <div class="single"> <img src="images/client1.png" alt="Image" /> </div>
-        <div class="single"> <img src="images/client2.png" alt="Image" /> </div>
-        <div class="single"> <img src="images/client3.png" alt="Image" /> </div>
-        <div class="single"> <img src="images/client1.png" alt="Image" /> </div>
-        <div class="single"> <img src="images/client2.png" alt="Image" /> </div>
-        <div class="single"> <img src="images/client3.png" alt="Image" /> </div>
+          <div class="single">
+          	<a href="${path}/items/iphoneIndex.jsp">
+          	<img src="${path}/images/imgStore/store-card-13-iphone-nav-202209.png" alt="아이폰" height="50px" background= "#000"/></a>
+          </div>
+          <div class="single">
+          	<a href="${path}/items/watchIndex.jsp">
+          	<img src="${path}/images/imgStore/store-card-13-watch-nav-202209_GEO_KR.png" alt="애플워치" height="50px"/></a>
+          </div>
+          <div class="single">
+          	<a href="${path}/items/ariPodIndex.jsp">
+          	<img src="${path}/images/imgStore/store-card-13-airpods-nav-202209.png" alt="에어팟" height="50px"/></a>
+          </div>
+          <div class="single">
+          	<a href="${path}/items/accIndex.jsp">
+          	<img src="${path}/images/imgStore/store-card-13-accessories-nav-202209.png" alt="악세서리" height="50px"/></a>
+          </div>
+          <div class="single">
+          	<a href="${path}/items/accIndex.jsp">
+          	<img src="${path}/images/imgStore/store-card-13-airtags-nav-202108.png" alt="악세서리" height="50px"/></a>
+          </div>
+      	</div>
       </div>
     </div>
   </div>
+  
+    
+  
   <div class="app-features text-center" id="features">
     <div class="container">
-      <h1 class="wow fadeInDown" data-wow-delay="0.1s">Features & Overviews</h1>
-      <p class="wow fadeInDown" data-wow-delay="0.2s"> Aliquam sagittis ligula et sem lacinia, ut facilisis enim sollicitudin. Proin nisi est,<br class="hidden-xs">
-        convallis nec purus vitae, iaculis posuere sapien. </p>
+      <h1 class="wow fadeInDown" data-wow-delay="0.1s">ApplePlue을 더욱 더 즐기는 방법</h1>
+      <p class="wow fadeInDown" data-wow-delay="0.2s">How to enjoy appleplus more and more</p>
       <div class="col-md-4 features-left">
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.2s">
           <div class="icon"> <i class="ion-ios-analytics-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>MagSafe</h1>
+            <p>다채로운 컬러로 착착 붙이는 재미가 있는</br> 케이스 및 지갑. 게다가 더 빠른 무선 충전까지.</p>
           </div>
         </div>
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.3s">
           <div class="icon"> <i class="ion-ios-briefcase-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>AirPods Pro</h1>
+            <p>온몸을 휘감는 듯한 사운드를 선사하는</br> 개인 맞춤형 공간 음향. 오직 Apple에서만 제공!</p>
           </div>
         </div>
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.4s">
           <div class="icon"> <i class="ion-ios-chatboxes-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>Apple Watch</h1>
+            <p>iPhone을 어디에 두었는지 모를 땐?</br> 시계를 탭해 iPhone에서 소리가 울리게 하는 기능이 딱!</p>
           </div>
         </div>
       </div>
@@ -85,22 +129,22 @@
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.6s">
           <div class="icon"> <i class="ion-ios-cloud-download-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>AirTag</h1>
+            <p>하나는 열쇠에, 또 하나는 백팩에. 어디 두었는지 기억이 나지 않을 땐, ‘나의 찾기’ 앱으로 찾는 것도 손쉽게.</p>
           </div>
         </div>
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.7s">
           <div class="icon"> <i class="ion-ios-copy-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>App Store</h1>
+            <p>가장 엄격한 개인 정보 보호 기준을 준수하는</br> 180만여 개의 다양한 앱 마련.</p>
           </div>
         </div>
         <div class="col-md-12 wow fadeInDown" data-wow-delay="0.8s">
           <div class="icon"> <i class="ion-ios-game-controller-b-outline"></i> </div>
           <div class="feature-single">
-            <h1>Lorem Ipsum</h1>
-            <p> Some lorem contetnt to fill the gap and make it look clean and organized. </p>
+            <h1>apple-one</h1>
+            <p>Apple One 음악, 영화, 게임 등을 위한</br> 4가지 서비스를 하나로 묶은 간편한 구독 서비스.</p>
           </div>
         </div>
       </div>
@@ -108,17 +152,19 @@
   </div>
   <div class="split-features">
     <div class="col-md-6 nopadding">
-      <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/app_image.png" alt="Image" /> </div>
+      <div class="split-image"> <img class="img-responsive wow fadeIn" src="${path}/images/imgStore/xdr_display__cxbhgrgt5keq_large.jpg" alt="Image" width= "600px"/> </div>
     </div>
     <div class="col-md-6 nopadding">
       <div class="split-content">
-        <h1 class="wow fadeInUp">Designed for effective product landing page</h1>
-        <p class="wow fadeInUp"> Pellentesque eget dolor gravida, tempus purus ac, ultricies mauris. Etiam est nisl, molestie sed egestas bibendum, varius eu diam. Suspendisse est metus, ultrices sit amet dolor in, rhoncus malesuada mi.</p>
+        <h1 class="wow fadeInUp">당신만의 iPhone.</h1>
+        <p class="wow fadeInUp">iOS 16이 잠금 화면에 자신만의 개성을 더하는 새롭고 재밌는 방식을 선보입니다. 레이어 효과로 사진을 돋보이게 할 수 있고, ‘활동’ 링을</br> 보거나, 다양한 실시간 앱 정보를 확인할 수도 있습니다.</p>
         <ul class="wow fadeInUp">
-          <li>Nulla ornare purus non consequat ultricies.</li>
-          <li>Etiam est nisl, molestie sed egestas bibendum</li>
-          <li>Aliquam vel euismod elit, sed suscipit est.</li>
-          <li>Curabitur egestas justo neque viverra vel. </li>
+          <li>App tracking transparency</li>
+          <li>Collision detection function</li>
+          <li>OLED technology and True Tone technology</li>
+          <li>wireless charging</li>
+          <li>a bigger screen</li>
+          <li>Camera details</li>
         </ul>
       </div>
     </div>
@@ -129,18 +175,20 @@
 
     <div class="col-md-6 nopadding">
       <div class="split-content second">
-        <h1 class="wow fadeInUp">The best way to show your product to the world</h1>
-        <p class="wow fadeInUp"> Pellentesque eget dolor gravida, tempus purus ac, ultricies mauris. Etiam est nisl, molestie sed egestas bibendum, varius eu diam. Suspendisse est metus, ultrices sit amet dolor in, rhoncus malesuada mi.</p>
+        <h1 class="wow fadeInUp">부담 없이 빠져들다.</h1>
+        <p class="wow fadeInUp">건강과 피트니스에 대한 통찰을 제공하는 강력한 센서. 여기에 한층 향상된 성능을 위한 더 빠른 듀얼 코어 프로세서까지.</br> 수많은 기능들로 가득 찬 Apple Watch SE, 최신 Apple Watch를</br> 가장 부담없이 만나는 방법입니다.</p>
         <ul class="wow fadeInUp">
-          <li>Nulla ornare purus non consequat ultricies.</li>
-          <li>Etiam est nisl, molestie sed egestas bibendum</li>
-          <li>Aliquam vel euismod elit, sed suscipit est.</li>
-          <li>Curabitur egestas justo neque viverra vel. </li>
+          <li>a meeting with speed and style</li>
+          <li>Optimization optimization</li>
+          <li>Collision detection function</li>
+          <li>Remote control of the camera remote control</li>
+          <li>Tracking the menstrual cycle tracking</li>
+          <li>Various apps</li>
         </ul>
       </div>
     </div>
     <div class="col-md-6 nopadding">
-      <div class="split-image"> <img class="img-responsive wow fadeIn" src="images/app_image2.png" alt="Image" /> </div>
+      <div class="split-image"> <img class="img-responsive wow fadeIn" src="${path}/images/imgStore/hero__fmx18j9bq0ya_large.jpg" alt="Image"  width= "600px"/> </div>
     </div>
   </div>
 
@@ -149,34 +197,87 @@
   <div class="pitch text-center">
     <div class="container">
       <div class="pitch-intro">
-        <h1 class="wow fadeInDown" data-wow-delay="0.2s">More Awesome Features</h1>
-        <p class="wow fadeInDown" data-wow-delay="0.2s"> Pellentesque eget dolor gravida, tempus purus ac, ultricies mauris. Etiam est nisl, molestie sed egestas bibendum, varius eu diam. Suspendisse est metus, ultrices sit amet dolor in, rhoncus malesuada mi.</p>
+        <h1 class="wow fadeInDown" data-wow-delay="0.2s">Other Services</h1>
+        <p class="wow fadeInDown" data-wow-delay="0.2s">Experience various services in the appropriate application.</p>
       </div>
       <div class="col-md-12">
         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-          <div class="pitch-icon"> <i class="ion-ios-checkmark-outline"></i> </div>
+          <div class="pitch-icon"><img src="${path}/images/imgStore/communication.png" alt="배송" width= "52px"/></div>
           <div class="pitch-content">
-            <h1>Great Options</h1>
-            <p> Aliquam vel euismod elit, sed suscipit est. Sed tincidunt venenatis ligula ac luctus. Fusce egestas volutpat mi sed pellentesque. </p>
+            <h1>업무일 기준 무료 익일 배송</h1>
+            <p>오후 3시 이전에 주문된 재고 보유 제품에 한합니다.</p>
           </div>
         </div>
         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-          <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
+          <div class="pitch-icon"><img src="${path}/images/imgStore/coin.png" width= "52px" alt="금융"/></div>
           <div class="pitch-content">
-            <h1>Voice Callings</h1>
-            <p> Aliquam vel euismod elit, sed suscipit est. Sed tincidunt venenatis ligula ac luctus. Fusce egestas volutpat mi sed pellentesque. </p>
+            <h1>금융 혜택</h1>
+            <p>무이자 할부를 통해 Apple 제품을 부담 없이 구매하실 수 있습니다.</p>
           </div>
         </div>
         <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-          <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
+          <div class="pitch-icon"><img src="${path}/images/imgStore/delivery2_main.png" width= "60px" alt="질문"/></div>
           <div class="pitch-content">
-            <h1>Sharing Files</h1>
-            <p> Aliquam vel euismod elit, sed suscipit est. Sed tincidunt venenatis ligula ac luctus. Fusce egestas volutpat mi sed pellentesque.  </p>
+            <h1>도움이 필요하다면</h1>
+            <p>질문이 있으신가요? 전문가와 전화로 상담하거나 온라인으로 채팅하세요. 080-330-8877로 전화 주세요.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
+  
+  	<div id="review-section" class="review-section">
+    <div class="container">
+      <div class="col-md-10 col-md-offset-1">
+        <div class="reviews owl-carousel owl-theme">
+          <div class="review-single">
+          <img class="img-circle" src="images/customer1.png" alt="Client Testimonoal" />
+            <div class="review-text wow fadeInUp" data-wow-delay="0.2s">
+              <p>맡은 역할 자세히</p>
+              <h3>고종영</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+          <div class="review-single"><img class="img-circle" src="images/customer2.png" alt="Client Testimonoal" />
+            <div class="review-text">
+              <p>맡은 역할 자세히</p>
+              <h3>천세륜</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+          <div class="review-single"><img class="img-circle" src="images/customer3.png" alt="Client Testimonoal" />
+            <div class="review-text">
+              <p>맡은 역할 자세히</p>
+              <h3>엄용식</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+          <div class="review-single"><img class="img-circle" src="images/customer4.png" alt="Client Testimonoal" />
+            <div class="review-text">
+              <p>맡은 역할 자세히</p>
+              <h3>채란</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+          <div class="review-single"><img class="img-circle" src="images/customer5.png" alt="Client Testimonoal" />
+            <div class="review-text">
+              <p>맡은 역할 자세히</p>
+              <h3>문삼진</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+          <div class="review-single"><img class="img-circle" src="images/customer4.png" alt="Client Testimonoal" />
+            <div class="review-text">
+              <p>맡은 역할 자세히</p>
+              <h3>안효경</h3>
+              <h3>맡은 역할</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="feature-sub">
     <div class="container">
       <div class="sub-inner">
@@ -184,128 +285,7 @@
         <a href="#" class="btn btn-action wow fadeInUp">Buy now</a> </div>
     </div>
   </div>
-  <div id="review-section" class="review-section">
-    <div class="container">
-      <div class="col-md-10 col-md-offset-1">
-        <div class="reviews owl-carousel owl-theme">
-          <div class="review-single"><img class="img-circle" src="images/customer1.png" alt="Client Testimonoal" />
-            <div class="review-text wow fadeInUp" data-wow-delay="0.2s">
-              <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
-              <h3>Johnathan Doe</h3>
-              <h3>Marketing Head Matrix media</h3>
-            </div>
-          </div>
-          <div class="review-single"><img class="img-circle" src="images/customer2.png" alt="Client Testimonoal" />
-            <div class="review-text">
-              <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
-              <h3>Oidila Matik</h3>
-              <h3>President Lexo Inc</h3>
-            </div>
-          </div>
-          <div class="review-single"><img class="img-circle" src="images/customer3.png" alt="Client Testimonoal" />
-            <div class="review-text">
-              <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
-              <h3>- Alex Dattilo</h3>
-              <h3>CEO Optima Inc</h3>
-            </div>
-          </div>
-          <div class="review-single"><img class="img-circle" src="images/customer4.png" alt="Client Testimonoal" />
-            <div class="review-text">
-              <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
-              <h3>- Robert Hammer</h3>
-              <h3>design head Omega Corp</h3>
-            </div>
-          </div>
-          <div class="review-single"><img class="img-circle" src="images/customer5.png" alt="Client Testimonoal" />
-            <div class="review-text">
-              <p>Morbi eget dictum enim. Praesent sed quam sit amet lorem tempor rhoncus. <br>In hac habitasse platea dictumst. Vivamus in accumsan ex</p>
-              <h3>- Rita Valentine</h3>
-              <h3>CEO Behena digital</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="pricing" class="pricing-section text-center">
-    <div class="container">
-      <div class="col-md-12 col-sm-12 nopadding">
-        <div class="pricing-intro">
-          <h1 class="wow fadeInUp" data-wow-delay="0s">Easy Pricing Plans</h1>
-          <p class="wow fadeInUp" data-wow-delay="0.2s"> Lorem ipsum dolor sit. Incidunt laborum beatae earum nihil odio consequatur officiis <br class="hidden-xs">tempore consequuntur officia ducimus unde doloribus quod unt repell </p>
-        </div>
-        <div class="col-sm-4">
-          <div class="table-left wow fadeInUp" data-wow-delay="0.4s">
-            <div class="icon"> <i class="ion-ios-paperplane-outline"></i> </div>
-            <div class="pricing-details">
-              <h2>Starter Plan</h2>
-              <span>Free</span>
-              <ul>
-                <li>Consectetur adipiscing</li>
-                <li>Nunc luctus nulla et tellus</li>
-                <li>Suspendisse quis metus</li>
-                <li>Vestibul varius fermentum erat</li>
-              </ul>
-              <button class="btn btn-primary btn-action btn-fill">Get Plan</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="table-right table-center wow fadeInUp" data-wow-delay="0.6s">
-            <div class="icon"> <i class="ion-ios-analytics-outline"></i> </div>
-            <div class="pricing-details">
-              <h2>Popular Plan</h2>
-              <span>$3.99</span>
 
-              <ul>
-                <li>Consectetur adipiscing</li>
-                <li>Nunc luctus nulla et tellus</li>
-                <li>Suspendisse quis metus</li>
-                <li>Vestibul varius fermentum erat</li>
-              </ul>
-              <button class="btn btn-primary btn-action btn-fill">Buy Now</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4">
-          <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
-            <div class="icon"> <i class="ion-ios-color-wand-outline"></i> </div>
-            <div class="pricing-details">
-              <h2>Premium Plan</h2>
-              <span>$9.50</span>
-              <ul>
-                <li>Consectetur adipiscing</li>
-                <li>Nunc luctus nulla et tellus</li>
-                <li>Suspendisse quis metus</li>
-                <li>Vestibul varius fermentum erat</li>
-              </ul>
-              <button class="btn btn-primary btn-action btn-fill">Buy Now</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Subscribe Form -->
-  <div class="cta-sub no-color">
-    <div class="container">
-      <div class="cta-inner">
-        <h1 class="wow fadeInUp" data-wow-delay="0s">Sign Up to Our Newsletter and get exciting offers</h1>
-        <p class="wow fadeInUp" data-wow-delay="0.2s"> Enter your email address we promise, never disclose<br class="hidden-xs">
-          or sell your email address. </p>
-        <div class="form wow fadeInUp" data-wow-delay="0.3s">
-          <form class="subscribe-form center-form wow zoomIn" action="php/subscribe.php" method="post" name="subscribeform" id="subscribeform">
-            <input class="mail" type="email" name="email" placeholder="Join the wait list" autocomplete="off" id="subemail">
-            <input class="submit-button" type="submit" value="Subscribe" name="send" id="subsubmit">
-          </form>
-          <!-- subscribe message -->
-          <div id="mesaj"></div>
-          <!-- subscribe message -->
-        </div>
-      </div>
-    </div>
-  </div>
 
   <!-- Footer Section -->
   <jsp:include page="common/footer.jsp"/>

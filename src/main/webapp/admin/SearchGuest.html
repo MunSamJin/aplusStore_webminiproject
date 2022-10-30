@@ -33,9 +33,15 @@
  .nopadding {background: whitesmoke;}
  .subscribe-form .mail {background-color: #fff;}
  .app img {
- 	width: 300px;
+ 	
  	margin: 65px 140px;
  };
+ 
+ .b {
+ 	width: 100px;
+ 	margin: 65px 140px;
+ };
+ 
  .form .subscribe-form .submit-button {width: 320px;}
  .form .hero-content p {margin: 0 0 15px 0;}
  .form .hero-content {
@@ -45,6 +51,7 @@
 .form .subscribe-form .submit-button {
     padding: 0 130px 0 130px;
 }
+.col{padding: 10px}
 
  
 </style>
@@ -138,6 +145,8 @@ $(function(){
   <div class="main app form" id="main"><!-- Main Section-->
     <div class="hero-section">
       <div class="container nopadding">
+      <div class="col">
+      <!-- 파워포인트에서 배경제거 해서 새로 넣어주시면 더 깔끔해요! -->
         <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/delivery.png" alt="App" /> </div>
         <div class="col-md-7">
           <div class="hero-content">
@@ -158,17 +167,19 @@ $(function(){
     <a id="back-top" class="back-to-top page-scroll" href="#main"> <i class="ion-ios-arrow-thin-up"></i> </a> 
     
     <!-- Scroll To Top Ends--> 
-    
+    </div>
   </div>
   <!-- Main Section --> 
-</div>
+
 <!-- Wrapper--> 
 
 <!-- footer -->
 <div class="footer">
     <div class="container">
         <div class="col-md-7">
-        	<img src="../images/logo1.png" width="80px"  alt="Image" />
+        
+        	<!-- margin 중복 적용 문제 때문에 footer부분 사과 이미지 주석처리 해놨어요!ㅠ -->
+        	<!-- <img src="../images/logo1.png" class="b" width="80px"  alt="Image" /> -->
             <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
             <div class="footer-text">
 
