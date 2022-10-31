@@ -68,8 +68,7 @@
 	
 		<script type="text/javascript">
 			$(function(){
-				let emailId="";//sikkk@naver.com
-				//let sessonID = session.getAttribute("emailId");
+				let emailId="${sessionScope.emailId}"; //sikkk@naver.com
 
 				//장바구니에서 결제버튼 누르면! 
 				if(emailId==null || emailId==""){ //세션ID(emailId)가 null이면 비회원
@@ -77,6 +76,8 @@
 					//Apple ID로 결제하기
 					$("#memberId").click(function(){
 						//로그인 화면으로 이동, 로그인 완료되면 
+						window.open("${path}/user/login.jsp", "_self");
+						
 						$("#memberGuest").hide();
 						$("#choice").show();
 					});
@@ -85,7 +86,7 @@
 					//방문객으로 계속하기
 					$("#guest").click(function(){
 						$("#memberGuest").hide();
-						$("#choice").show();	
+						$("#choice").show();
 					});
 				
 				}else { //세션ID가 null이 아니면 회원
@@ -186,6 +187,8 @@
 				   				alert(err+"에러 발생했어요.");
 				   			}  
 				   		});//ajax끝
+				   		
+					window.open("orderSuccess.jsp", "_self");
 				   });
 				
 			});//readyEnd
