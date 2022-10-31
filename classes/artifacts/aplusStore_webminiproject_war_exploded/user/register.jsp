@@ -38,14 +38,19 @@ $(function(){
 	    	 	return false;
 	    	 }
 	    	 
+	    	 int 
+	    	 
 	    	 $.ajax({
 				type : "POST",
 				url : "/ajax",
 				dataType:"text",
 				data : {key:"user", methodName:"checkEmail"},
-				success: function(mailNum){
-					if(mailNum != 0){ //여기 있는 mailNum을 어떻게 form에 넣어서 다시 front로 가져갈까?
+				success: function(num){
+					if(num != 0){ //여기 있는 mailNum을 어떻게 form에 넣어서 다시 front로 가져갈까?
 					alert("인증번호가 발송되었습니다.");
+					
+					
+					//location.href = "${path}/front?key=user&methodName=insert&modelName=" + modelName;
 					}else{
 	   					//text내용지우고
 	   					$("input[type=text]").val("");
@@ -92,10 +97,8 @@ $(function(){
             		<span id="addr_ck" class="youraddr"> 주소를 입력해주세요.</span>
 
 				 <div class="email_auth">
-					<input type="text" placeholder="기입한 아이디 이메일" name="email" id="email" class="email" required>
-					<button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button>
+					<input type="text" placeholder="이메일" name="email" id="email" class="email" required>
 			     </div>
-					<input type="text" placeholder="인증번호 입력" id="email_auth_key" required>
 				 </div>
 					<button type="submit" id="btn" value="가입" class="join_btn">가입하기</button>
 			</form>

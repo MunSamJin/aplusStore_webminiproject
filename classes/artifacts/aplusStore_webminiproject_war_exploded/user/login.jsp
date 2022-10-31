@@ -38,20 +38,6 @@
 
 <!-- /.navbar-collapse -->
 </div>
-<<<<<<< HEAD
-              <!-- Sign In Form -->
-           	<c:choose>
-				<c:when test="${empty emailId}">
-				<form class="form-horizontal" method="post" action="../front">
-				   <c:if test="${param.flag==1}">
-				       <input type="hidden" name="flag" value = "1" /> 
-				   </c:if>
-				
-               		<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
-					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
-               
-                <div class="form-floating mb-3">
-=======
 <div class="main app form" id="main"><!-- Main Section-->
   <div class="hero-section">
     <div class="container">
@@ -61,7 +47,6 @@
         </div>
       </div>
     </div>
->>>>>>> 1031-last-ys
 
 
     <div class="clearfix"></div>
@@ -135,7 +120,6 @@
 <!-- Main Section -->
 </div>
 <!-- Wrapper-->
-
 
 </body>
 </html>

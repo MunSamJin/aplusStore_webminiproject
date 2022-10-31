@@ -13,12 +13,11 @@
 
   <!-- DBCP기술 연결 -->
 
-
 	<Resource name="jdbc/myoracle" auth="Container"
-	type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
-	url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=C:/edu/AplusWallet/Wallet_kosta"
-	username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
-	maxWaitMillis="-1"/>
+			  type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+			  url="jdbc:oracle:thin:@kosta_high?TNS_ADMIN=/Users/jy/Desktop/edu/Wallet_kosta"
+			  username="admin" password="Apluskosta!!123" maxTotal="20" maxIdle="10"
+			  maxWaitMillis="-1"/>
 
     
 
