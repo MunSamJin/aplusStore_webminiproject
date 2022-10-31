@@ -67,4 +67,15 @@ public interface OrderDAO {
 	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
 	 * */
 	List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
+	
+	
+	/**
+	 * 상품재고 증가
+	 */
+	int[] increaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException;
+	
+	/**
+	 * 주문상태 변경
+	 * */
+	int update(OrderDTO orderDTO) throws SQLException;
 }

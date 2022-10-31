@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.AdminDTO;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
@@ -367,6 +368,62 @@ public class OrderDAOImpl implements OrderDAO {
 		return list;
 
 	}
+	
+
+	/**
+	 * 상품재고 증가
+	 */
+	@Override
+	public int[] increaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException {
+	
+		PreparedStatement ps = null;
+		int[] result=null;
+		String sql = "update items set model_stock = model_stock+? where model_num=?";
+				
+		try {
+			
+			ps = con.prepareStatement(sql);
+			
+			for(CartDTO cart : cartList) {
+				ps.setInt(1, cart.getModelCount());
+				ps.setString(2, cart.getModelNum());
+				ps.addBatch();
+				ps.clearParameters();
+			}
+			
+			result = ps.executeBatch();
+			
+		}finally {
+			DbUtil.dbClose(null, ps);
+		}
+		
+		return result;
+	}
+
+
+
+	@Override
+	public int update(OrderDTO orderDTO) throws SQLException {
+		Connection con = null;
+		PreparedStatement ps = null;	
+		int result=0;
+		try {
+			con = DbUtil.getConnection();
+			ps = con.prepareStatement("update a_orders set order_state=? where order_num=?");
+   
+			ps.setString(1, orderDTO.getOrderState());
+			ps.setInt(2, orderDTO.getOrderNum());			
+			result = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.dbClose(con, ps);
+		} 
+		System.out.println("order"+orderDTO.getOrderState());
+		return result;
+	}
+
 }
 
 

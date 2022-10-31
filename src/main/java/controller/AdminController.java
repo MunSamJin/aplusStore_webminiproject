@@ -139,6 +139,7 @@ public class AdminController implements AjaxController {
 	 * 주문상세페이지 조회
 	 * @throws SQLException 
 	 * */
+	/*
 	public void getDetailList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");   
@@ -156,7 +157,7 @@ public class AdminController implements AjaxController {
 		out.print(arr);
 
 		System.out.println("controller - arr값 : "+arr);
-	}
+	}*/
 	
 	
 	

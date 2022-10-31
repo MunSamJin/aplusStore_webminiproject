@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dto.AdminDTO;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
@@ -150,6 +151,10 @@ public class OrderController implements AjaxController {
 		out.print(list);
 
 	}
+	
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
 	public void getDetailList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -158,7 +163,7 @@ public class OrderController implements AjaxController {
 
 		System.out.println("controller - emailId값  : "+emailId);
 
-		//로그인 사용자의
+		//로그인 사용자
 		HttpSession session =  request.getSession();
 		session.getAttribute("emailId");
 
@@ -195,6 +200,24 @@ public class OrderController implements AjaxController {
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 
-
 	}
+	
+	/**
+	 * 주문취소 시 레코드 수정하기 (상품준비중->주문취소)
+	 * */
+	/*
+	public void update(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String orderState = request.getParameter("orderState");
+		String orderNum = request.getParameter("orderNum");
+		
+		OrderDTO dto = new OrderDTO(orderNum, orderState);
+		int result = orderService.update(dto);
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		
+	}*/
+	
 }
