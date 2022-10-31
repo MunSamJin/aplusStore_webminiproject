@@ -2,22 +2,23 @@ package mail;
 
 import java.util.Date;
 import java.util.Properties;
+import java.util.Random;
+
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
-import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-import dto.OrderDTO;
-
  
-public class Mail{
+public class LookforAccount {
  
-    public static void mailSend(OrderDTO orderNumber, OrderDTO dto) {
-           	
+    public int lookforAccount(String emailId, String name) {
+    	
+    	Random random = new Random();
+		int num = random.nextInt(888888) + 111111;
+         
         Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     // gmail은 true 고정
         p.put("mail.smtp.host", "smtp.naver.com");      // smtp 서버 주소
@@ -35,24 +36,37 @@ public class Mail{
             //편지보낸시간
             msg.setSentDate(new Date());
             InternetAddress from = new InternetAddress() ;
-            from = new InternetAddress("orchid59@naver.com"); //발신자 아이디
+            from = new InternetAddress("sikkkkkk@naver.com"); //발신자 아이디
             // 이메일 발신자
             msg.setFrom(from);
             // 이메일 수신자
-            InternetAddress to = new InternetAddress(dto.getRealEmail()); //받을사람 아이디
+            InternetAddress to = new InternetAddress(emailId); //받을사람 아이디
             msg.setRecipient(Message.RecipientType.TO, to);
            
             // 이메일 제목
             msg.setSubject(
-            		"결제하신 내역을 안내해드립니다.", 
-            		"UTF-8");
+                  "회원 아이디 찾기", "UTF-8");
             // 이메일 내용
+           if(name ==null) {//아이디 찾기일 경우
+            String ch = emailId;
+            String st = "*";
+            int nu = 3;
+            ch = ch.substring(0,nu) + st + ch.substring(nu + 1);
            
             msg.setText(
-            		dto.getOrderName()+"님의 주문번호는 "+orderNumber.getOrderNum()+"입니다.\n"
-            		, "UTF-8");
-            
-           
+            		 "고객님 반갑습니다." +
+            	                "<br><br>" + 
+            	                "가입하신 아이디는 " + ch + "입니다." + 
+            	                "<br>");
+          
+           }else{//비밀번호 찾기일 경우
+        	   msg.setText(
+              		 name + "고객님 임시비밀번호 발급 요청을 하신 게 아니라면\n"
+              		 		+ "연락부탁드립니다." +
+              	                "<br><br>" + 
+              	                "임시비밀번호는 " + num + "입니다." + 
+              	                "<br>");
+           }
             // 이메일 헤더
             msg.setHeader("content-Type", "text/html");
             //메일보내기
@@ -65,24 +79,10 @@ public class Mail{
         }catch (Exception msg_e) {
             msg_e.printStackTrace();
         }
+   
+    		return num;
     }
 }
  
-class MyAuthentication extends Authenticator {
-      
-    PasswordAuthentication pa;
-    public MyAuthentication(){
-         
-    	String id = "orchid59@naver.com";  //네이버 이메일 아이디
-        String pw = "1051102qqq";        //네이버 비밀번호
- 
-        // ID와 비밀번호를 입력한다.
-        pa = new PasswordAuthentication(id, pw);
-    }
- 
-    // 시스템에서 사용하는 인증정보
-    public PasswordAuthentication getPasswordAuthentication() {
-        return pa;
-    }
-}
+
 

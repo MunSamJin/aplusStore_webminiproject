@@ -13,14 +13,13 @@ public class UserDTO {
 		this.emailId = emailId;
 		this.pwd = pwd;
 	}
-	public UserDTO(String emailId, String pwd, String addr, String phone) {
+	public UserDTO(String emailId,String phone, String pwd, String addr) {
 		this(emailId, pwd);
-		this.addr = addr;
 		this.phone = phone;
+		this.addr = addr;
 	}
-	public UserDTO(String emailId, String pwd, String name, String addr, String phone) {
-		this(emailId, pwd, addr, phone);
-
+	public UserDTO(String emailId,String phone, String pwd, String name, String addr) {
+		this(emailId, phone ,pwd, addr);
 		this.name = name;
 	}
 	
@@ -33,6 +32,14 @@ public class UserDTO {
 	public void setEmailId(String id) {
 		this.emailId = emailId;
 
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 	
 	public String getPwd() {
@@ -59,17 +66,6 @@ public class UserDTO {
 		this.addr = addr;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	
-	
-	
 	
 	
 	
