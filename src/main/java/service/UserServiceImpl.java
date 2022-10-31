@@ -51,9 +51,7 @@ public class UserServiceImpl implements UserService {
 	public int insert(UserDTO userDTO) throws SQLException {
 			
 			int result = userDAO.insert(userDTO);
-			if(result == 0 )throw new SQLException("회원가입에 실패하였습니다.\n"
-					+ "다시 확인해주세요.");
-			
+			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다. 다시 확인해주세요.");
 			return result;
 	}
 	

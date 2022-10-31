@@ -23,7 +23,7 @@ public class UserController implements Controller {
 	private UserDAO userDAO = new UserDAOImpl();
 	private	UserService userService = new UserServiceImpl();
 	// LoginMail mail = new LoginMail();
-	 LookforAccount lookforAccount = new LookforAccount();
+	// LookforAccount lookforAccount = new LookforAccount();
 	
 	
 	  @Override
@@ -69,28 +69,20 @@ public class UserController implements Controller {
 	 public ModelAndView insert(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, SQLException {
 
-		 PrintWriter out = response.getWriter();
 		 
 		 String emailId = request.getParameter("emailId");
 		 String pwd = request.getParameter("pwd");
 		 String name = request.getParameter("name");
 		 String addr = request.getParameter("addr");
 		 String phone = request.getParameter("phone");
-		 int comfEmail = Integer.parseInt(request.getParameter("email"));//고객이 입력한 인증번호
-		 int mailNum = Integer.parseInt(request.getParameter("${mailNum}"));//인증번호
+		 //int comfEmail = Integer.parseInt(request.getParameter("email"));//고객이 입력한 인증번호
+		// int mailNum = Integer.parseInt(request.getParameter("${mailNum}"));//인증번호
 		 
-		 System.out.println(comfEmail);
-		 System.out.println(mailNum);
 		 
 		 UserDTO dto = new UserDTO(emailId, phone, pwd, name, addr);
+		 userService.insert(dto);
 		 
-		 if(mailNum == comfEmail) {
-			 userService.insert(dto);
-			 return new ModelAndView("user/login.jsp", true);
-		 }else {
-			 out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
-			 return new ModelAndView("user/register.jsp", true);
-		 }
+		 return new ModelAndView("user/login.jsp", true);
 		
 
 		
@@ -158,20 +150,17 @@ public class UserController implements Controller {
 		
 		String phone = request.getParameter("phone");
 		String emailId = request.getParameter("emailId");
-		String name = null;
+		String pwd = null;
+		String addr = null;
 		
-		UserDTO userdto = null;
-		userdto = userDAO.lookforId(emailId, phone);
+		UserDTO dto = userDAO
 		
-		System.out.println("userdto = " + userdto);
-		if(userdto != null) {
-			out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
-			lookforAccount.lookforAccount(emailId, name);
+		
+		UserDTO userdto = userDAO.lookforId(emailId, phone);
+		
+		
 		 
-		 
-		}else {
-			out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");
-		}
+		
 	
 		return new ModelAndView("login.jsp", true);
 	 }
@@ -194,7 +183,7 @@ public class UserController implements Controller {
 			
 			if(userdto != null) {
 				out.println("<script>alert('가입하신 이메일로 임시 비밀번호 전송되었습니다.');</script>");
-				int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
+				//int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
 				
 			}else {
 				out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");

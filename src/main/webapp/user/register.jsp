@@ -97,10 +97,8 @@ $(function(){
             		<span id="addr_ck" class="youraddr"> 주소를 입력해주세요.</span>
 
 				 <div class="email_auth">
-					<input type="text" placeholder="기입한 아이디 이메일" name="email" id="email" class="email" required>
-					<button type="button" id="email_auth_btn" class="email_auth_btn">인증번호 받기</button>
+					<input type="text" placeholder="이메일" name="email" id="email" class="email" required>
 			     </div>
-					<input type="text" placeholder="인증번호 입력" id="email_auth_key" required>
 				 </div>
 					<button type="submit" id="btn" value="가입" class="join_btn">가입하기</button>
 			</form>

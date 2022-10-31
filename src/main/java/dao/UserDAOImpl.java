@@ -70,7 +70,6 @@ public class UserDAOImpl implements UserDAO {
 			ps.setString(4, userDTO.getName());
 			ps.setString(5, userDTO.getAddr());
 			
-			System.out.println("userDTO = " + userDTO);
 			result = ps.executeUpdate();
 			
 
