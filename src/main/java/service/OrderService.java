@@ -1,12 +1,7 @@
 package service;
 
 import java.sql.SQLException;
-
-
-import dto.OrderDTO;
-
 import java.util.List;
-import java.util.Map;
 
 import dto.CartDTO;
 import dto.OrderDTO;
@@ -47,6 +42,20 @@ public interface OrderService {
 	 * */
 	public List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
 
+	
+	/**
+	 * 주문상태 바꿔서 다시 등록하기(상품준비중->주문취소)
+	 * */
+	public int insert(OrderDTO orderDTO) throws SQLException;
+	
+	
+	/**
+	 * 주문상태 레코드 수정하기 (상품준비중->주문취소)
+	 * */
+	public int update(OrderDTO orderDTO) throws SQLException;
 
-
+	/**
+	 * 주문취소 후 페이지 고침
+	 * */
+	public List<OrderDetailDTO> success(String orderNum) throws SQLException;
 }

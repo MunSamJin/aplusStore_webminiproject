@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.OrderDAO;
+import dao.OrderDAOImpl;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
@@ -192,6 +194,10 @@ public class OrderController implements AjaxController {
 		out.print(list);
 
 	}
+	
+	/**
+	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
+	 * */
 	public void getDetailList(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		response.setContentType("text/html;charset=UTF-8");
@@ -200,7 +206,7 @@ public class OrderController implements AjaxController {
 
 		System.out.println("controller - emailId값  : "+emailId);
 
-		//로그인 사용자의
+		//로그인 사용자
 		HttpSession session =  request.getSession();
 		session.getAttribute("emailId");
 
@@ -237,6 +243,65 @@ public class OrderController implements AjaxController {
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 
+	}
+	
+	/**
+	 * 주문상태 바꿔서 다시 등록하기(상품준비중->주문취소)
+	 * */
+	public void insert(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		String orderNum = request.getParameter("orderNum");
+		String orderState = request.getParameter("orderState");
+				
+		System.out.println("orderState변수 = "+orderState);
+		OrderDTO dto = new OrderDTO(Integer.parseInt(orderNum), orderState);
+		
+		OrderDAO dao = new OrderDAOImpl();
+		int result = dao.insert(dto);
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+	}
+	
+	/**
+	 * 주문취소 시 레코드 수정하기 (상품준비중->주문취소)
+	 * */
+	public void update(HttpServletRequest request, HttpServletResponse response)
+			throws Exception {
+		
+		String orderState = request.getParameter("orderState");
+		String orderNum = request.getParameter("orderNum");
+		
+		OrderDTO dto = new OrderDTO(Integer.parseInt(orderNum), orderState);
+		int result = orderService.update(dto);
+		
+		PrintWriter out = response.getWriter();
+		out.print(result);
+		
+	}
+	
+	/**
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
+	 * @throws SQLException
+	 * */
+	public void success(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException, SQLException {
+		response.setContentType("text/html;charset=UTF-8");
+
+		String orderNum = request.getParameter("orderNum");
+
+		System.out.println("controller_success확인= "+orderNum);
+
+		List<OrderDetailDTO> list = orderService.success(orderNum);
+
+		JSONArray arr = JSONArray.fromObject(list);
+
+		System.out.println("컨트롤러쪽 arr 확인 : "+arr);
+
+		PrintWriter out = response.getWriter();
+		out.print(arr);
 
 	}
+	
 }

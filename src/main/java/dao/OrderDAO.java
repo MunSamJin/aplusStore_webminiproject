@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import dto.AdminDTO;
 import dto.CartDTO;
 import dto.OrderDTO;
 import dto.OrderDetailDTO;
@@ -67,4 +68,28 @@ public interface OrderDAO {
 	 * 로그인하여 배송조회를 누르면 주문내역이 조회되는 기능
 	 * */
 	List<OrderDetailDTO> getDetailList(String emailId) throws SQLException;
+	
+	
+	/**
+	 * 상품재고 증가
+	 */
+	int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO) throws SQLException;
+	
+	/**
+	 * 주문상태 바꿔서 다시 등록하기(상품준비중->주문취소)
+	 * */
+	int insert(OrderDTO orderDTO);
+	
+	
+	/**
+	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
+	 * @throws SQLException
+	 * */
+	List<OrderDetailDTO> success(String orderNum) throws SQLException;
+
+	/**
+	 * 주문상태 레코드 수정하기 (상품준비중->주문취소)
+	 * */
+	int update(OrderDTO orderDTO);
+	
 }

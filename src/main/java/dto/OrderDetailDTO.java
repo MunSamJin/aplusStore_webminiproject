@@ -7,10 +7,16 @@ public class OrderDetailDTO {
 	private String detailModelName;
 	private int detailQty;
 	private int salePrice;
+	private String category;
 	
 	private OrderDTO orderDTO;
 	
 	public OrderDetailDTO() {}
+	
+	public OrderDetailDTO(int detailQty, String detailModelName) {
+		this.detailQty = detailQty;
+		this.detailModelName = detailModelName;
+	}
 
 	public OrderDetailDTO(String detailModelNum, String orderNum, String detailModelName, int detailQty,
 			int salePrice) {
@@ -30,6 +36,20 @@ public class OrderDetailDTO {
 		this.detailModelName = detailModelName;
 		this.detailQty = detailQty;
 		this.salePrice = salePrice;
+		this.orderDTO = orderDTO;
+	}
+	
+	
+
+	public OrderDetailDTO(String detailModelNum, String orderNum, String detailModelName, int detailQty, int salePrice,
+			String category, OrderDTO orderDTO) {
+		super();
+		this.detailModelNum = detailModelNum;
+		this.orderNum = orderNum;
+		this.detailModelName = detailModelName;
+		this.detailQty = detailQty;
+		this.salePrice = salePrice;
+		this.category = category;
 		this.orderDTO = orderDTO;
 	}
 
@@ -79,6 +99,14 @@ public class OrderDetailDTO {
 
 	public void setSalePrice(int salePrice) {
 		this.salePrice = salePrice;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 	
