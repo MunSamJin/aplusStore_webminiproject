@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.QnaDTO;
+
 
 /**
  *사용자의 모든 요청을 처리할 진입점 Controller이다(FrontController의 역할한다)
