@@ -26,7 +26,7 @@ public class ItemDAOImpl implements ItemDAO{
             //전체 레코드 수를 구한다.
 
             con = DbUtil.getConnection();
-            con.setAutoCommit(false);
+           // con.setAutoCommit(false);
 
 
             ps = con.prepareStatement(sql);
@@ -46,6 +46,8 @@ public class ItemDAOImpl implements ItemDAO{
                         );
                 list.add(ItemDTO);
             }
+            
+            System.out.println("111111111111111111111");
 
         }catch (Exception e){
             e.printStackTrace();

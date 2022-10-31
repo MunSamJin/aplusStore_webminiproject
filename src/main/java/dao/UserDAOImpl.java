@@ -16,15 +16,6 @@ import util.DbUtil;
 public class UserDAOImpl implements UserDAO {
 
 
-	
-	
-	
-
-
-	
-
-
-
 	/*
 	 * 개인정보 수정
 	 */
@@ -103,7 +94,6 @@ public class UserDAOImpl implements UserDAO {
 		Connection con = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		
 		UserDTO dbuserDTO = null;
 		
 
@@ -112,7 +102,6 @@ public class UserDAOImpl implements UserDAO {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
 			ps.setString(1, userDTO.getEmailId());
-
 			ps.setString(2, userDTO.getPwd());
 			rs = ps.executeQuery();
 			if(rs.next()) {
@@ -124,7 +113,7 @@ public class UserDAOImpl implements UserDAO {
 		}finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		
+		System.out.println("유저다오 dbuserDTO = " + dbuserDTO);
 		return dbuserDTO; 
 	}
 

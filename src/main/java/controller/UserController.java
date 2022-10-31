@@ -23,7 +23,7 @@ public class UserController implements Controller {
 	private UserDAO userDAO = new UserDAOImpl();
 	private	UserService userService = new UserServiceImpl();
 	// LoginMail mail = new LoginMail();
-	 LookforAccount lookforAccount = new LookforAccount();
+	 //LookforAccount lookforAccount = new LookforAccount();
 	
 	
 	  @Override
@@ -103,11 +103,14 @@ public class UserController implements Controller {
 
 		 String emailId = request.getParameter("emailId");
 		 String pwd = request.getParameter("pwd");
+		 UserDTO dto = null;
 		 
 		 System.out.println("emailId = " + emailId);
 		 System.out.println("pwd = " + pwd);
 		 //서비스 호출
-		 UserDTO dto = userService.loginCheck(new UserDTO(emailId, pwd));
+		 dto = new UserDTO(emailId, pwd);
+			dto  =	userService.loginCheck(dto);
+		 System.out.println("로그인 컨트롤러 dto = " + dto);
 		 
 		 //로그인 성공하면 세션에 정보를 저장.
 		 HttpSession session = request.getSession();
@@ -159,7 +162,7 @@ public class UserController implements Controller {
 		System.out.println("userdto = " + userdto);
 		if(userdto != null) {
 			out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
-			lookforAccount.lookforAccount(emailId, name);
+			//lookforAccount.lookforAccount(emailId, name);
 		 
 		 
 		}else {
@@ -186,10 +189,9 @@ public class UserController implements Controller {
 			
 			if(userdto != null) {
 				out.println("<script>alert('가입하신 이메일로 임시 비밀번호 전송되었습니다.');</script>");
-				int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
-				System.out.println("임시 비밀번호 num = " +  num);
+				//int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
 				HttpSession session = request.getSession();
-				session.setAttribute("num", num);//이렇게 저장이 될까?
+				//session.setAttribute("num", num);//이렇게 저장이 될까?
 				
 			}else {
 				out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");

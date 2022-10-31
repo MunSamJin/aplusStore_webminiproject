@@ -18,11 +18,12 @@ public class UserServiceImpl implements UserService {
 
 	
 	@Override
-	public UserDTO loginCheck(UserDTO userdto) throws SQLException, AuthenticationException {//id,pwd만 가진 userdto가 옴.
+	public UserDTO loginCheck(UserDTO userdto) throws SQLException {//id,pwd만 가진 userdto가 옴.
 
 		UserDTO dbDTO = userDAO.loginCheck(userdto);
+		System.out.println("로그인 서비스 dbDTO = " + dbDTO);
 		if(dbDTO==null) {
-			throw new AuthenticationException("정보를 다시 확인해주세요.");
+			throw new SQLException("정보를 다시 확인해주세요.");
 		}
 		
 		return dbDTO;

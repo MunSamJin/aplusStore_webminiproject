@@ -13,14 +13,14 @@ import mail.LoginMail;
 
 public class UserAjaxController implements AjaxController {
 	
-	LoginMail loginMail = new LoginMail();
+	//LoginMail loginMail = new LoginMail();
 	@Override
 	public void handleRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 
 	}
-	
+	/*
 	public void checkEmail(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 	 boolean succmessage = true;
@@ -33,13 +33,13 @@ public class UserAjaxController implements AjaxController {
 	 
 	 PrintWriter out = response.getWriter();
 	 if(Id.equals(email)) { //equals
-		int mailNum = loginMail.mail(email);
+		//int mailNum = loginMail.mail(email);
 		
 		//HttpSession session = request.getSession(); 이렇게 세션 저장 가능할까?
 		//session.setAttribute("mailNum", mailNum);
 		
-		out.println(mailNum);
+		//out.println(mailNum);
 	   }else out.println(failmessage);
 	}
- 
+ */
 }
