@@ -21,6 +21,10 @@
            	<c:choose>
 				<c:when test="${empty emailId}">
 				<form class="form-horizontal" method="post" action="../front">
+				   <c:if test="${param.flag==1}">
+				       <input type="hidden" name="flag" value = "1" /> 
+				   </c:if>
+				
                		<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
 					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
                
