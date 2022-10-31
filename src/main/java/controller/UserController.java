@@ -100,8 +100,12 @@ public class UserController implements Controller {
 	 
 	  public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
 				throws Exception {
-		 
+		 String url="index.jsp";
 		 //두 개의 전송 되는 값을 받는다.
+		  String flag = request.getParameter("flag");
+		  if(flag!=null) {
+			  url="orders/orderMain.jsp";
+		  }
 
 		 String emailId = request.getParameter("emailId");
 		 String pwd = request.getParameter("pwd");
@@ -119,7 +123,14 @@ public class UserController implements Controller {
 		 session.setAttribute("emailName", dto.getName());
 		 session.setAttribute("emailAddr", dto.getAddr() );
 		 
-		return new ModelAndView("index.jsp", true);
+		 //비회원이 장바구니에 담았다가 결재할때 로그인을 해서 결재 하려면
+		 //guestCart에 있었던 정보를 DB cart에 저장을해야한다.
+		 // 장바구니 세션의 정보를 가져와서 db에 insert
+		 
+		 
+		 //index.jsp or orderMain.jsp
+		 
+		return new ModelAndView(url, true);
 		 
 	 }
 	 

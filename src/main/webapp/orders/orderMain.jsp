@@ -76,7 +76,7 @@
 					//Apple ID로 결제하기
 					$("#memberId").click(function(){
 						//로그인 화면으로 이동, 로그인 완료되면 
-						window.open("${path}/user/login.jsp", "_self");
+						window.open("${path}/user/login.jsp?flag=1", "_self");
 						
 						$("#memberGuest").hide();
 						$("#choice").show();

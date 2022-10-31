@@ -38,6 +38,7 @@ public class OrderController implements AjaxController {
 
 		String memberGuest = null;
 		List<CartDTO> list=null;
+		List<CartDTO> guestCartList = null;
 		int totalPrice=0; //총구매금액
 		
 		// 로그인 사용자 인지 아닌지를 판단(비회원, 회원인지 판단한다.)
@@ -45,14 +46,14 @@ public class OrderController implements AjaxController {
 		String emailId = (String) session.getAttribute("emailId");
 		//String emailId = "sikkk@naver.com";
 
-		if(emailId==null || emailId.equals("")) { //로그인이 안되었다면
+		if(emailId==null || emailId.equals("")) { //처음부터 로그인이 안되었다면
 			memberGuest = "0"; //비회원
 
 			//장바구니에 담긴 상품을 session.getAttribute("cart정보")로 가져온다.
-			list = (List<CartDTO>)session.getAttribute("guestCartList");
-			System.out.println("list = " + list);
+			guestCartList = (List<CartDTO>)session.getAttribute("guestCartList");
+			System.out.println("guestCartList = " + guestCartList);
 			
-			for(CartDTO cart : list) {
+			for(CartDTO cart : guestCartList) {
 				totalPrice +=(cart.getModelCount()*cart.getModelPrice());
 				
 				System.out.println("totalPrice" + totalPrice);
@@ -62,18 +63,33 @@ public class OrderController implements AjaxController {
 
 		}else {//로그인 되었다면
 			memberGuest = "1"; //회원
-
-			//OrderService 호출 - 해당 회원의 장바구니에 저장되어있는 메뉴들을 가져오는 메소드
-			list = orderService.cartMenuSelect(emailId);
-			//System.out.println("list = " + list);
-
-			for(CartDTO cart : list) {
-				totalPrice +=(cart.getModelCount()*cart.getModelPrice());
+			
+			//세션장바구니 
+			guestCartList = (List<CartDTO>)session.getAttribute("guestCartList");
+			
+			if(guestCartList.size()!=0) { //세션에 장바구니 정보가 담겨있다면 - 중간에 로그인
+				// 비회원으로 접속했다가 비회원으로 주문하면서 로그인하면, DB무시하고 세션 장바구니 정보로 주문한다.
+		
+				for(CartDTO cart : guestCartList) {
+					totalPrice +=(cart.getModelCount()*cart.getModelPrice());
+					
+					//System.out.println("totalPrice" + totalPrice);
+					//System.out.println("cart.getModelCount()" + cart.getModelCount());
+					//System.out.println("cart.getModelPrice()" + cart.getModelPrice());
+				}//forEnd
 				
-				//System.out.println("totalPrice" + totalPrice);
-				//System.out.println("cart.getModelCount()" + cart.getModelCount());
-				//System.out.println("cart.getModelPrice()" + cart.getModelPrice());
-			}//forEnd
+			}else if(list.size()==0 || list.isEmpty()){ //세션에 장바구니가 정보가 없다면 - 처음부터 로그인
+				list = orderService.cartMenuSelect(emailId); //DB에서 장바구니 정보를 꺼내와라.
+				
+				for(CartDTO cart : list) {
+					totalPrice +=(cart.getModelCount()*cart.getModelPrice());
+					
+					System.out.println("totalPrice" + totalPrice);
+					System.out.println("cart.getModelCount()" + cart.getModelCount());
+					System.out.println("cart.getModelPrice()" + cart.getModelPrice());
+				}//forEnd
+			}
+			
 		}//ifEnd
 
 		//OrderMain에서 넘어오는 값 받기
@@ -131,9 +147,30 @@ public class OrderController implements AjaxController {
 		
 		//OrderService 호출 - 주문테이블에 등록하기		
 		System.out.println("OrderController의 주문.....................");
-		int result = orderService.insert(dto, list, emailId);// list는 cartList정보
-
+		
 		PrintWriter out = response.getWriter();
+		int result=0;
+		
+		
+		if(emailId==null || emailId.equals("")) {
+			
+			result = orderService.insert(dto, guestCartList, emailId);// list는 cartList정보
+			
+		}else {
+			
+			if(guestCartList.size()!=0 ) {
+				
+				result = orderService.insert(dto, guestCartList, emailId);// list는 cartList정보
+				
+			}else if(list.size()==0 || list.isEmpty()){
+				
+				result = orderService.insert(dto, list, emailId);// list는 cartList정보
+			}
+			
+		}
+		
+		
+		
 		out.print(result);
 
 	}
