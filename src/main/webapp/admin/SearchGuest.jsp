@@ -183,10 +183,18 @@ $(function(){
                let str="";
 					let state="";
 					let total="";
+									
 					
  				$.each(result, function(index, item){
+ 					
+ 					let imgName = item.detailModelName;
+	                let name = imgName.split("_");
+	                if((item.category=="iphone") || (item.category=="watch")){
+	                     imgName = name[0]+"_"+name[1];
+	                }
+ 					
  				    str+="<tr>";
- 				    str+=`<td><img src="${path}/images/${'${item.detailModelName}'}.jpeg" height="150px"></td>`;
+ 				    str+=`<td><img src="${path}/images/${'${imgName}'}.jpeg" height="150px"></td>`;
  				    str+=`<td>${"${item.detailModelNum}"}</a></td>`;
  				    str+=`<td>${"${item.detailModelName}"}</td>`;
  				    str+=`<td>${"${item.detailQty}"}</td>`;

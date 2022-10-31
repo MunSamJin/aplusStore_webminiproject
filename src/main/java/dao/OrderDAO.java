@@ -73,22 +73,23 @@ public interface OrderDAO {
 	/**
 	 * 상품재고 증가
 	 */
-	int[] increaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException;
+	int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO) throws SQLException;
 	
 	/**
 	 * 주문상태 바꿔서 다시 등록하기(상품준비중->주문취소)
 	 * */
 	int insert(OrderDTO orderDTO);
 	
-	/**
-	 * 주문상태 레코드 수정하기 (상품준비중->주문취소)
-	 * */
-	int update(OrderDTO orderDTO);
 	
 	/**
 	 * 본인의 주문내역 조회(비회원 - 주문번호, 이메일로 확인 후 페이지 표시)
 	 * @throws SQLException
 	 * */
 	List<OrderDetailDTO> success(String orderNum) throws SQLException;
+
+	/**
+	 * 주문상태 레코드 수정하기 (상품준비중->주문취소)
+	 * */
+	int update(OrderDTO orderDTO);
 	
 }

@@ -373,19 +373,19 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 상품재고 증가
 	 */
 	@Override
-	public int[] increaseByModelStock(Connection con, List<CartDTO> cartList) throws SQLException {
+	public int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO) throws SQLException {
 	
 		PreparedStatement ps = null;
 		int[] result=null;
-		String sql = "update items set model_stock = model_stock+? where model_num=?";
+		String sql = "update items set model_stock = model_stock+? where model_name=?";
 				
 		try {
 			
 			ps = con.prepareStatement(sql);
 			
-			for(CartDTO cart : cartList) {
-				ps.setInt(1, cart.getModelCount());
-				ps.setString(2, cart.getModelNum());
+			for(OrderDetailDTO detailDTO : orderDetailDTO) {
+				ps.setInt(1, detailDTO.getDetailQty());
+				ps.setString(2, detailDTO.getDetailModelName());
 				ps.addBatch();
 				ps.clearParameters();
 			}
@@ -422,7 +422,6 @@ public class OrderDAOImpl implements OrderDAO {
 	}
 
 
-
 	@Override
 	public int update(OrderDTO orderDTO) {
 		Connection con = null;
@@ -430,10 +429,25 @@ public class OrderDAOImpl implements OrderDAO {
 		int result=0;
 		try {
 			con = DbUtil.getConnection();
+			con.setAutoCommit(false);
 			ps = con.prepareStatement("update a_orders set order_state='주문취소' where order_num=?");
    
 			ps.setInt(1, orderDTO.getOrderNum());			
 			result = ps.executeUpdate();
+			
+			System.out.println("DAO update result " + result);
+			
+			
+			if(result==0) {
+				con.rollback();
+				throw new SQLException();
+			}else {
+				//상품재고 증가시키기
+				List<OrderDetailDTO> orderDetailList = this.getOrderDetailByOrderNum(con, orderDTO.getOrderNum());
+				increaseByModelStock(con, orderDetailList);
+				
+				con.commit();
+			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -443,7 +457,40 @@ public class OrderDAOImpl implements OrderDAO {
 		System.out.println("order"+orderDTO.getOrderState());
 		return result;
 	}
+	
+	/**
+	 * 주문번호에 해당하는 주문상세정보 가져오기 
+	 * */
+	public List<OrderDetailDTO> getOrderDetailByOrderNum(Connection con, int orderNum){
+		PreparedStatement ps =null;
+		ResultSet rs = null;
+		List<OrderDetailDTO> list = new ArrayList<OrderDetailDTO>();
 
+		String sql = "select * from order_detail2 where order_Num=?";
+		try {
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, orderNum);
+			rs = ps.executeQuery();
+
+			while(rs.next()) {
+				System.out.println("--------->");
+				String a =rs.getString(1);
+				String b =rs.getString(2);
+				String c =rs.getString(3);
+				int d =rs.getInt(4);
+				int e =rs.getInt(5);
+				
+				OrderDetailDTO orderDetailDTO = new OrderDetailDTO(a, c, a, d, e);
+				
+				list.add(orderDetailDTO);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		} finally {
+			DbUtil.dbClose(null, ps, rs);
+		}
+		return list;
+	}
 
 
 	@Override
