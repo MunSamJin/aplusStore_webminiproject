@@ -107,6 +107,7 @@ public class OrderServiceImpl implements OrderService {
 
 	@Override
 	public int update(OrderDTO orderDTO) throws SQLException {
+		System.out.println("오더서비스 들어왔니???");
 		
 		int result = orderDAO.update(orderDTO);
 		if(result<=0) {

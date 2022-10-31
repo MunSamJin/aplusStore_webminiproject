@@ -270,6 +270,8 @@ public class OrderController implements AjaxController {
 	public void update(HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
 		
+		System.out.println("오더컨트롤러 들어왔니??");
+		
 		String orderState = request.getParameter("orderState");
 		String orderNum = request.getParameter("orderNum");
 		

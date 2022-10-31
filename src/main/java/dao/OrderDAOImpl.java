@@ -373,11 +373,13 @@ public class OrderDAOImpl implements OrderDAO {
 	 * 상품재고 증가
 	 */
 	@Override
-	public int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO) throws SQLException {
-	
+	public int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO, OrderDTO orderDTO) throws SQLException {
+		System.out.println("상품재고 증가시켰니??");
+		
 		PreparedStatement ps = null;
 		int[] result=null;
-		String sql = "update items set model_stock = model_stock+? where model_name=?";
+		String sql = "update items set model_stock = model_stock+? where model_num=?";
+		
 				
 		try {
 			
@@ -385,9 +387,12 @@ public class OrderDAOImpl implements OrderDAO {
 			
 			for(OrderDetailDTO detailDTO : orderDetailDTO) {
 				ps.setInt(1, detailDTO.getDetailQty());
-				ps.setString(2, detailDTO.getDetailModelName());
+				ps.setInt(2, orderDTO.getOrderNum());
 				ps.addBatch();
 				ps.clearParameters();
+				
+				System.out.println("detailDTO.getDetailQty() 수량 " + detailDTO.getDetailQty());
+				System.out.println("orderDTO.getOrderNum() 주문번호 " + orderDTO.getOrderNum());
 			}
 			
 			result = ps.executeBatch();
@@ -395,7 +400,7 @@ public class OrderDAOImpl implements OrderDAO {
 		}finally {
 			DbUtil.dbClose(null, ps);
 		}
-		
+		System.out.println("상품재고증가 result" + result);
 		return result;
 	}
 
@@ -418,12 +423,15 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 		   DbUtil.dbClose(con, ps);
 		}
+		
 		  return result;
 	}
 
 
 	@Override
 	public int update(OrderDTO orderDTO) {
+		System.out.println("오더DAO 들어왔니??");
+		
 		Connection con = null;
 		PreparedStatement ps = null;	
 		int result=0;
@@ -438,13 +446,19 @@ public class OrderDAOImpl implements OrderDAO {
 			System.out.println("DAO update result " + result);
 			
 			
-			if(result==0) {
+			if(result==0) { //0이면 실패, 1이면 성공
 				con.rollback();
 				throw new SQLException();
 			}else {
+				System.out.println("주문취소됐니???");
+				
 				//상품재고 증가시키기
 				List<OrderDetailDTO> orderDetailList = this.getOrderDetailByOrderNum(con, orderDTO.getOrderNum());
-				increaseByModelStock(con, orderDetailList);
+				//System.out.println("주문상세 정보 불러왔니???" + orderDetailList);
+				//System.out.println("orderDTO.getOrderNum()" + orderDTO.getOrderNum());
+				
+				increaseByModelStock(con, orderDetailList,orderDTO);
+				System.out.println("상품재고 증가시켰니??");
 				
 				con.commit();
 			}
@@ -454,7 +468,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(con, ps);
 		} 
-		System.out.println("order"+orderDTO.getOrderState());
+		//System.out.println("order"+orderDTO.getOrderState());
 		return result;
 	}
 	
@@ -475,7 +489,7 @@ public class OrderDAOImpl implements OrderDAO {
 			while(rs.next()) {
 				System.out.println("--------->");
 				String a =rs.getString(1);
-				String b =rs.getString(2);
+				int b =rs.getInt(2);
 				String c =rs.getString(3);
 				int d =rs.getInt(4);
 				int e =rs.getInt(5);

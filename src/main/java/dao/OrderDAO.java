@@ -73,7 +73,7 @@ public interface OrderDAO {
 	/**
 	 * 상품재고 증가
 	 */
-	int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO) throws SQLException;
+	int[] increaseByModelStock(Connection con, List<OrderDetailDTO> orderDetailDTO, OrderDTO orderDTO) throws SQLException;
 	
 	/**
 	 * 주문상태 바꿔서 다시 등록하기(상품준비중->주문취소)
