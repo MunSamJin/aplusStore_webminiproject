@@ -14,10 +14,6 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-<<<<<<< HEAD
-=======
-	<classpathentry kind="lib" path="C:/Edu/util/activation-1.1.1.jar"/>
-	<classpathentry kind="lib" path="C:/Edu/util/javax.mail-1.6.2.jar"/>
->>>>>>> 1031-ys
+
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

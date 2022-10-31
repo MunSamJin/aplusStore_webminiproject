@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
 <title>Aplus ID 생성 - Aplus(kosta)</title>
 
+
 </head>
 <body>
 
@@ -21,10 +22,6 @@
            	<c:choose>
 				<c:when test="${empty emailId}">
 				<form class="form-horizontal" method="post" action="../front">
-				   <c:if test="${param.flag==1}">
-				       <input type="hidden" name="flag" value = "1" /> 
-				   </c:if>
-				
                		<input type="hidden" name="key" value = "user" /> <!-- Controller를 찾는 정보 -->
 					<input type="hidden" name="methodName" value = "login" />  <!-- 메소드이름 -->
                
@@ -56,7 +53,7 @@
 				  </div>
                   
                   <div class="text-center">
-                    <a class="small" href="#">Aplus ID 또는 암호를 잊으셨습니까</a>
+                    <a class="small" href="lookforPwd.jsp">Aplus ID 또는 암호를 잊으셨습니까</a>
                   </div>
                 </div>
 
