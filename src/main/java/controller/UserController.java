@@ -153,7 +153,7 @@ public class UserController implements Controller {
 		String pwd = null;
 		String addr = null;
 		
-		UserDTO dto = userDAO
+		
 		
 		
 		UserDTO userdto = userDAO.lookforId(emailId, phone);

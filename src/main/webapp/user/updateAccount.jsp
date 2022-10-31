@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="${path}/css/join.css">
 </head>
 <body>
+<jsp:include page="../common/header.jsp"/>
 <div id="container" class="container">
 	<div class="content">
 		<div class="join_wrap" ">
@@ -32,6 +33,6 @@
 	</div>
 
 
-
+<jsp:include page="../common/footer.jsp"/>
 </body>
 </html>

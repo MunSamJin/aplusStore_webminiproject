@@ -8,7 +8,6 @@
 <link rel="stylesheet" href="${path}/css/join.css">
 </head>
 <body>
-
   
 <div id="container" class="container">
 	<div class="content">
@@ -34,7 +33,6 @@
 
 	</div>
 </div>
-
 </body>
 </html>
 

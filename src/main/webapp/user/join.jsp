@@ -5,6 +5,7 @@
 
 <script src="/controller/resources/js/jquery.form.min.js"></script>
 
+<jsp:include page="../common/header.jsp"/>
 <div class="container">
 	<div class="col-lg-8 col-lg-offset-2 text-center">
 		<div class="logo">
@@ -41,4 +42,4 @@
 
 </div>
 
-
+<jsp:include page="../common/footer.jsp"/>
