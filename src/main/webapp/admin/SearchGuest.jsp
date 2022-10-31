@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>iLand Multipurpose Landing Page Template</title>
-<link rel="icon" href="../images/favicon.png" type="image/png" sizes="16x16">
+<link rel="icon" href="${path}/images/favicon.png" type="image/png" sizes="16x16">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="iLand Multipurpose Landing Page Template">
 <meta name="keywords" content="iLand HTML Template, iLand Landing Page, Landing Page Template">
@@ -58,14 +58,14 @@
 </style>
 
 <!-- Jquery and Js Plugins --> 
-<script type="text/javascript" src="../js/jquery-3.6.1.min.js"></script>
-<script type="text/javascript" src="../js/jquery-2.1.1.js"></script> 
-<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="${path}/js/jquery-2.1.1.js"></script> 
+<script type="text/javascript" src="${path}/js/bootstrap.min.js"></script>
 
-<script type="text/javascript" src="../js/plugins.js"></script> 
-<script type="text/javascript" src="../js/menu.js"></script> 
-<script type="text/javascript" src="../js/custom.js"></script>
-<script src="../js/jquery.subscribe.js"></script> 
+<script type="text/javascript" src="${path}/js/plugins.js"></script> 
+<script type="text/javascript" src="${path}/js/menu.js"></script> 
+<script type="text/javascript" src="${path}/js/custom.js"></script>
+<script src="${path}/js/jquery.subscribe.js"></script> 
 
 
 <script type="text/javascript" >
@@ -73,12 +73,12 @@ $(function(){
 	   
 	$("#search").on("click" , function(){      
         $.ajax({
-                 url :"../ajax" , //서버요청주소
+                 url :"${path}/ajax" , //서버요청주소
                  type:"post", //요청방식(method방식 : get | post | put | delete )
                  dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
                  data: $("#subscribeform").serialize() ,//서버에게 보낼 데이터정보(parameter정보)
                  success :function(result){ //성공했을때 실행할 함수 
-                    alert(result)
+                    //alert(result)
                  
                  	$("#subscribeform").hide();
                  	
@@ -87,6 +87,7 @@ $(function(){
   					let total="";
   					
       				$.each(result, function(index, item){
+      					   					
       				    str+="<tr>";
       				    str+=`<td><img src="${path}/images/${'${item.detailModelName}'}.jpeg" height="150px"></td>`;
       				    str+=`<td>${"${item.detailModelNum}"}</a></td>`;
@@ -107,7 +108,7 @@ $(function(){
       			 	});
       				
       				
-      				str+="<tr><th colspan='5'>"+"상품상태 : "+"<a href='#'>"+state+"</a></th></tr>";
+      				str+="<tr><th colspan='5'>"+"상품상태 : "+"<a href='#' id='stateTest'>"+state+"</a></th></tr>";
 
 					str+="<tr><th colspan='5'>"+"총 금액 : "+total+"</th></tr>";
       				
@@ -162,6 +163,10 @@ $(function(){
             success :function(result){
             	alert("주문을 취소했습니다.");
             	
+            	//주문취소가 되었으니 눌려진 부분의 
+            	$("#stateTest").text("주문취소");
+            	
+    	
             } , //성공했을때 실행할 함수
             error : function(err){
                 alert(err+"에러 발생했어요.");
@@ -170,7 +175,7 @@ $(function(){
         
         $("#inForm > table > tbody > tr:nth-child(1) > td").hide();
         
-        $.ajax({
+      /*   $.ajax({
             url :"../ajax" , //서버요청주소
             type:"post", //요청방식(method방식 : get | post | put | delete )
             dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
@@ -187,14 +192,8 @@ $(function(){
 					
  				$.each(result, function(index, item){
  					
- 					let imgName = item.detailModelName;
-	                let name = imgName.split("_");
-	                if((item.category=="iphone") || (item.category=="watch")){
-	                     imgName = name[0]+"_"+name[1];
-	                }
- 					
  				    str+="<tr>";
- 				    str+=`<td><img src="${path}/images/${'${imgName}'}.jpeg" height="150px"></td>`;
+ 				    str+=`<td><img src="${path}/images/${'${item.detailModelName}'}.jpeg" height="150px"></td>`;
  				    str+=`<td>${"${item.detailModelNum}"}</a></td>`;
  				    str+=`<td>${"${item.detailModelName}"}</td>`;
  				    str+=`<td>${"${item.detailQty}"}</td>`;
@@ -229,7 +228,7 @@ $(function(){
             error : function(err){  //실패했을때 실행할 함수 
                alert(err+"에러 발생했어요.");
             }  
-         });//ajax끝
+         });//ajax끝 */
     });
 
 
@@ -252,7 +251,7 @@ $(function(){
       <div class="container nopadding">
       <div class="col">
       <!-- 파워포인트에서 배경제거 해서 새로 넣어주시면 더 깔끔해요! -->
-        <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="../images/delivery.png" alt="App" /> </div>
+        <div class="col-md-5"> <img class="img-responsive wow fadeInUp" data-wow-delay="0.1s" src="${path}/images/delivery.png" alt="App" /> </div>
         <div class="col-md-7">
           <div class="hero-content">
             <h1 class="wow fadeInUp" data-wow-delay="0.1s">배송조회</h1>
@@ -277,6 +276,7 @@ $(function(){
 <!-- Wrapper--> 
     
 <table id="listTable" cellspacing="0">
+	<tr>
 		<th></th>
 		<th>주문상세번호</th>
 		<th>상품명</th>
@@ -284,12 +284,10 @@ $(function(){
 		<th>제품금액</th>
 		
 	</tr>	
-	
 </table>
 <!-- 주문취소 폼 -->
     <form name="inForm" method="post" id="inForm">
         <table cellspacing="0">
-            </tr>
             <tr>
                 <td>
                 	<input type="text" size="8" name="orderState" id="orderState">

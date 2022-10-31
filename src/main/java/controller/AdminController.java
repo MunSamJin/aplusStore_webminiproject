@@ -74,7 +74,7 @@ public class AdminController implements AjaxController {
 		String orderState = request.getParameter("orderState");
 		String orderDate = request.getParameter("orderDate");
 				
-		System.out.println("orderState변수 = "+orderState);
+		//System.out.println("orderState변수 = "+orderState);
 		AdminDTO dto = new AdminDTO(orderNum, orderState, orderDate);
 		
 		AdminDAO dao = new AdminDAOImpl();
@@ -124,7 +124,7 @@ public class AdminController implements AjaxController {
 		String orderNum = request.getParameter("orderNum");
 		String realEmail = request.getParameter("realEmail");
 		
-		System.out.println("controller_searchByOrderNum확인= "+orderNum+","+realEmail);
+		//System.out.println("controller_searchByOrderNum확인= "+orderNum+","+realEmail);
 		
 		List<AdminDetailDTO> list = service.searchByOrderNum(orderNum, realEmail);
 		

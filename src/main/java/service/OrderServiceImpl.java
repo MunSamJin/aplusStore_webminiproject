@@ -24,7 +24,7 @@ public class OrderServiceImpl implements OrderService {
 		//orderDAO호출 - 주문 테이블에 등록하기
 		int orderNum = orderDAO.orderInsert(dto, cartList, emailId);
 
-		System.out.println("orderNum 서비스"+orderNum);
+		//System.out.println("orderNum 서비스"+orderNum);
 
 		if(orderNum==0)throw new SQLException("등록되지 않았습니다.");
 
@@ -37,9 +37,9 @@ public class OrderServiceImpl implements OrderService {
 		//Mail mail = new Mail();
 		//mail.mailSend(orderNumber, dto);
 		
-		System.out.println("메일보내기 서비스 orderDTO.getRealEmail() " + dto.getRealEmail());
-		System.out.println("메일보내기 서비스 orderDTO.getOrderName() " + dto.getOrderName());
-		System.out.println("메일보내기 서비스 orderDTO.getOrderNum() " + orderNumber.getOrderNum());
+		//System.out.println("메일보내기 서비스 orderDTO.getRealEmail() " + dto.getRealEmail());
+		//System.out.println("메일보내기 서비스 orderDTO.getOrderName() " + dto.getOrderName());
+		//System.out.println("메일보내기 서비스 orderDTO.getOrderNum() " + orderNumber.getOrderNum());
 
 		return orderNum;
 	}
@@ -68,7 +68,7 @@ public class OrderServiceImpl implements OrderService {
 		List<UserDTO> list = orderDAO.userInfoSelect(emailId);
 		
 		if(list.size()==0 || list.isEmpty()) throw new SQLException("해당 정보가 없습니다");
-		System.out.println("userInfoSelect 서비스list  = " + list);
+		//System.out.println("userInfoSelect 서비스list  = " + list);
 		return list;
 	}
 
@@ -81,7 +81,7 @@ public class OrderServiceImpl implements OrderService {
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}
-		System.out.println("service list = "+list);
+		//System.out.println("service list = "+list);
 
 		return list;
 	}
@@ -91,7 +91,7 @@ public class OrderServiceImpl implements OrderService {
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}
-		System.out.println("service list = "+list);
+		//System.out.println("service list = "+list);
 
 		return list;
 	}
@@ -121,7 +121,7 @@ public class OrderServiceImpl implements OrderService {
 		if(list == null) {
 			throw new SQLException("출력되는 값이 없습니다.");
 		}
-		System.out.println("service list = "+list);
+		//System.out.println("service list = "+list);
 
 		return list;
 	}

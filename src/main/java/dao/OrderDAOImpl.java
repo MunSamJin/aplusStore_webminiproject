@@ -44,7 +44,7 @@ public class OrderDAOImpl implements OrderDAO {
 			DbUtil.dbClose(con, ps, rs);
 		}
 		
-		System.out.println("DAO list = " + list);
+		//System.out.println("DAO list = " + list);
 		return list;
 
 	}
@@ -61,7 +61,7 @@ public class OrderDAOImpl implements OrderDAO {
 	@Override
 
 	public int orderInsert(OrderDTO dto, List<CartDTO> cartList, String emailId) throws SQLException {
-		System.out.println("dao orderInsert...왔니...?");
+		//System.out.println("dao orderInsert...왔니...?");
 
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -100,7 +100,7 @@ public class OrderDAOImpl implements OrderDAO {
 					}
 			 	}
 			 	//장바구니 비우기
-			 	System.out.println("dao 장바구니 비우러가자...");
+			 	//System.out.println("dao 장바구니 비우러가자...");
 			 	basketDelete(con, emailId);
 			 	
 			 	//상품재고 감소
@@ -214,10 +214,10 @@ public class OrderDAOImpl implements OrderDAO {
 				String f =rs.getString(6);
 				int g =rs.getInt(7);
 
-				OrderDTO orderState = new OrderDTO(f);
-				OrderDTO totalPrice = new OrderDTO(g);
+				OrderDTO orderDTO = new OrderDTO(f,g);
+				//OrderDTO totalPrice = new OrderDTO(g);
 
-				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState);
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderDTO);
 				list.add(detailDTO);
 			}
 		} catch(Exception e) {
@@ -237,7 +237,7 @@ public class OrderDAOImpl implements OrderDAO {
 		PreparedStatement ps = null;
 		String sql_delete = "delete from basket where email_id =?";
 		
-		System.out.println("cartDel = " + emailId);
+		//System.out.println("cartDel = " + emailId);
 		int result = 0;
 		
 		try {
@@ -248,7 +248,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(null, ps);
 		}
-		System.out.println("장바구니비우기 dao result = " + result);
+		//System.out.println("장바구니비우기 dao result = " + result);
 		return result;
 	}
 	
@@ -264,7 +264,7 @@ public class OrderDAOImpl implements OrderDAO {
 		
 		String sql = "select order_num_seq.currval, order_name, order_mail from a_orders";
 		
-		System.out.println("selectOrderNum emailId = " + emailId);
+		//System.out.println("selectOrderNum emailId = " + emailId);
 		
 		OrderDTO orderDTO = null;
 		
@@ -279,7 +279,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		System.out.println("주문내역메일발송 dao orderDTO = " + orderDTO);
+		//System.out.println("주문내역메일발송 dao orderDTO = " + orderDTO);
 		return orderDTO;
 	}
 
@@ -290,8 +290,8 @@ public class OrderDAOImpl implements OrderDAO {
 	 */
 	@Override
 	public List<UserDTO> userInfoSelect(String emailId) throws SQLException {
-		System.out.println("userInfoSelect DAO 왔니??");
-		System.out.println("userInfoSelect emailId = " + emailId);
+		//System.out.println("userInfoSelect DAO 왔니??");
+		//System.out.println("userInfoSelect emailId = " + emailId);
 		
 		Connection con = null;
 		PreparedStatement ps = null;
@@ -315,7 +315,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		System.out.println("주문할 때 회원 정보 dao list =  " + list);
+		//System.out.println("주문할 때 회원 정보 dao list =  " + list);
 		return list;
 	}
 
@@ -339,10 +339,10 @@ public class OrderDAOImpl implements OrderDAO {
 			ps.setString(1, emailId);
 			rs = ps.executeQuery();
 
-			System.out.println("getDetailList = " + emailId);
+			//System.out.println("getDetailList = " + emailId);
 
 			while(rs.next()) {
-				System.out.println("--------->");
+				//System.out.println("--------->");
 				String a =rs.getString(1);
 				String b =rs.getString(2);
 				String c =rs.getString(3);
@@ -363,7 +363,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}
-		System.out.println("getDetailList_DAO 값 : " + list);
+		//System.out.println("getDetailList_DAO 값 : " + list);
 		return list;
 
 	}
@@ -435,7 +435,7 @@ public class OrderDAOImpl implements OrderDAO {
 			ps.setInt(1, orderDTO.getOrderNum());			
 			result = ps.executeUpdate();
 			
-			System.out.println("DAO update result " + result);
+			//System.out.println("DAO update result " + result);
 			
 			
 			if(result==0) {
@@ -454,7 +454,7 @@ public class OrderDAOImpl implements OrderDAO {
 		} finally {
 			DbUtil.dbClose(con, ps);
 		} 
-		System.out.println("order"+orderDTO.getOrderState());
+		//System.out.println("order"+orderDTO.getOrderState());
 		return result;
 	}
 	
@@ -473,7 +473,7 @@ public class OrderDAOImpl implements OrderDAO {
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
-				System.out.println("--------->");
+				//System.out.println("--------->");
 				String a =rs.getString(1);
 				String b =rs.getString(2);
 				String c =rs.getString(3);
@@ -511,7 +511,7 @@ public class OrderDAOImpl implements OrderDAO {
 			rs = ps.executeQuery();
 
 			while(rs.next()) {
-				System.out.println("--------->");
+				//System.out.println("--------->");
 				String a =rs.getString(1);
 				String b =rs.getString(2);
 				String c =rs.getString(3);
@@ -520,10 +520,9 @@ public class OrderDAOImpl implements OrderDAO {
 				String f =rs.getString(6);
 				int g =rs.getInt(7);
 
-				OrderDTO orderState = new OrderDTO(f);
-				OrderDTO totalPrice = new OrderDTO(g);
+				OrderDTO orderDTO = new OrderDTO(f,g);
 
-				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderState);
+				OrderDetailDTO detailDTO = new OrderDetailDTO(a, b, c, d, e, orderDTO);
 				list.add(detailDTO);
 			}
 		} catch(Exception e) {

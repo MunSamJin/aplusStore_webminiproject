@@ -27,6 +27,15 @@ public class OrderDTO {
 		this.orderState = orderState;
 	}
 	
+	
+	
+	
+	public OrderDTO(String orderState, int totalPrice) {
+		super();
+		this.orderState = orderState;
+		this.totalPrice = totalPrice;
+	}
+
 	public OrderDTO(int orderNum, String orderState) {
 		super();
 		this.orderNum = orderNum;

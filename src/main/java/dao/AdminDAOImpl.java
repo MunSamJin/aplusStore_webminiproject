@@ -111,7 +111,7 @@ public class AdminDAOImpl implements AdminDAO {
 				//+ "where o.order_num =? "; 
 				// + "where o.order_mail=?";
 		
-		System.out.println("orderNum=|" + orderNum +"," + realEmail+"|");
+		//System.out.println("orderNum=|" + orderNum +"," + realEmail+"|");
 		try {
 			con = DbUtil.getConnection();
 			ps = con.prepareStatement(sql);
@@ -204,7 +204,7 @@ public class AdminDAOImpl implements AdminDAO {
 			ps.setString(1, orderNum);
 			rs = ps.executeQuery();
 			
-			System.out.println("DAO_detailList sql = "+sql);
+			//System.out.println("DAO_detailList sql = "+sql);
 			
 			if(rs.next()) {
 
@@ -222,7 +222,7 @@ public class AdminDAOImpl implements AdminDAO {
 		} finally {
 			DbUtil.dbClose(con, ps, rs);
 		}		
-		System.out.println("getDetailList_DAO 값 : "+list);
+		//System.out.println("getDetailList_DAO 값 : "+list);
 		return list;
 		
 	}

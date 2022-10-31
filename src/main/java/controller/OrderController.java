@@ -58,9 +58,9 @@ public class OrderController implements AjaxController {
 			for(CartDTO cart : guestCartList) {
 				totalPrice +=(cart.getModelCount()*cart.getModelPrice());
 				
-				System.out.println("totalPrice" + totalPrice);
-				System.out.println("cart.getModelCount()" + cart.getModelCount());
-				System.out.println("cart.getModelPrice()" + cart.getModelPrice());
+				//System.out.println("totalPrice" + totalPrice);
+				//System.out.println("cart.getModelCount()" + cart.getModelCount());
+				//System.out.println("cart.getModelPrice()" + cart.getModelPrice());
 			}//forEnd
 
 		}else {//로그인 되었다면
@@ -144,11 +144,11 @@ public class OrderController implements AjaxController {
 		OrderDTO dto =
 				new OrderDTO(memberGuest, orderName, realAddr, orderState, realEmail, orderPhone, totalPrice);
 
-		System.out.println("Controller에서 dto" + dto);
+		//System.out.println("Controller에서 dto" + dto);
 		
 		
 		//OrderService 호출 - 주문테이블에 등록하기		
-		System.out.println("OrderController의 주문.....................");
+		//System.out.println("OrderController의 주문.....................");
 		
 		PrintWriter out = response.getWriter();
 		int result=0;
@@ -186,7 +186,7 @@ public class OrderController implements AjaxController {
 		String emailId = "sikkk@naver.com";
 		
 		List<UserDTO> list = orderService.userInfoSelect(emailId);
-		System.out.println("userInfoSelect 컨트롤러 list = " + list);
+		//System.out.println("userInfoSelect 컨트롤러 list = " + list);
 		
 		JSONArray arr = JSONArray.fromObject(list);
 		
@@ -204,7 +204,7 @@ public class OrderController implements AjaxController {
 
 		String emailId = request.getParameter("emailId");
 
-		System.out.println("controller - emailId값  : "+emailId);
+		//System.out.println("controller - emailId값  : "+emailId);
 
 		//로그인 사용자
 		HttpSession session =  request.getSession();
@@ -218,7 +218,7 @@ public class OrderController implements AjaxController {
 		PrintWriter out = response.getWriter();
 		out.print(arr);
 
-		System.out.println("controller - arr값 : "+arr);
+		//System.out.println("controller - arr값 : "+arr);
 	}
 
 	/**
@@ -232,13 +232,13 @@ public class OrderController implements AjaxController {
 		String orderNum = request.getParameter("orderNum");
 		String realEmail = request.getParameter("realEmail");
 
-		System.out.println("controller_getOrders확인= "+orderNum+","+realEmail);
+		//System.out.println("controller_getOrders확인= "+orderNum+","+realEmail);
 
 		List<OrderDetailDTO> list = orderService.getOrders(orderNum, realEmail);
 
 		JSONArray arr = JSONArray.fromObject(list);
 
-		System.out.println("컨트롤러쪽 arr 확인 : "+arr);
+		//System.out.println("컨트롤러쪽 arr 확인 : "+arr);
 
 		PrintWriter out = response.getWriter();
 		out.print(arr);
@@ -254,7 +254,7 @@ public class OrderController implements AjaxController {
 		String orderNum = request.getParameter("orderNum");
 		String orderState = request.getParameter("orderState");
 				
-		System.out.println("orderState변수 = "+orderState);
+		//System.out.println("orderState변수 = "+orderState);
 		OrderDTO dto = new OrderDTO(Integer.parseInt(orderNum), orderState);
 		
 		OrderDAO dao = new OrderDAOImpl();
@@ -291,13 +291,13 @@ public class OrderController implements AjaxController {
 
 		String orderNum = request.getParameter("orderNum");
 
-		System.out.println("controller_success확인= "+orderNum);
+		//System.out.println("controller_success확인= "+orderNum);
 
 		List<OrderDetailDTO> list = orderService.success(orderNum);
 
 		JSONArray arr = JSONArray.fromObject(list);
 
-		System.out.println("컨트롤러쪽 arr 확인 : "+arr);
+		//System.out.println("컨트롤러쪽 arr 확인 : "+arr);
 
 		PrintWriter out = response.getWriter();
 		out.print(arr);
