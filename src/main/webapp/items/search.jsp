@@ -39,7 +39,7 @@
         <div class="col-md-7">
           <div class="hero-content">
             <h1 class="wow fadeInUp" data-wow-delay="0.1s">어떤 제품을 찾으세요?</h1>
-            <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
+            <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta A+ Store </p>
             <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
               <form class="subscribe-form wow zoomIn" action="${path}/front?key=item&methodName=ItemSearch" method="post" name="searchform" id="searchform">
                 <input class="mail" type="text" name="search" placeholder="🔎" id="search">

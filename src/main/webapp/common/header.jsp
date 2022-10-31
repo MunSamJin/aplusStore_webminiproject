@@ -11,7 +11,7 @@
                         <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand page-scroll" href="${path}/index.jsp"><img src="${path}/images/logo1.png" width="80" alt="iLand">
+                    <a class="navbar-brand page-scroll" href="${path}/index.jsp"><img src="${path}/images/logo1.png" width="70" alt="iLand">
                     </a></div>
 
                 <!-- Collect the nav links, forms, and other content for toggling -->

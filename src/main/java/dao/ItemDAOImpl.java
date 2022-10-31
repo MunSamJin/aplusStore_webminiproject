@@ -20,7 +20,7 @@ public class ItemDAOImpl implements ItemDAO{
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<ItemDTO> list = new ArrayList<ItemDTO>();
-        String sql = "SELECT * FROM items";
+        String sql = "SELECT * FROM items where CATEGORY NOT in('king')";
 
         try{
             //전체 레코드 수를 구한다.

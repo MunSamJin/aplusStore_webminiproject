@@ -60,7 +60,7 @@
 		      		
 	   		    // 커스텀 오버레이에 표시할 내용입니다     
 	   		    // HTML 문자열 또는 Dom Element 입니다 
-	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Aplus Store 가로수길"+"<br>전자제품 판매점</button><span class='right'></span></div>";
+	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"A+ Store 가로수길"+"<br>전자제품 판매점</button><span class='right'></span></div>";
 	
 	   		    // 커스텀 오버레이가 표시될 위치입니다 
 	   		    let position = new kakao.maps.LatLng(37.5208062, 127.0227158);  
@@ -89,7 +89,7 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus Store 가로수길</h1>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">A+ Store 가로수길</h1>
 	            <p class="wow fadeInUp" data-wow-delay="0.2s"> 폐점 시간 10:00 오후</p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
@@ -125,7 +125,7 @@
 	              	<tr><td><br></td></tr>
 	              	<tr><td>찾아오는 길</td></tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Aplus Store 가로수길은 패션과 문화의 거리, 가로수길의 중간 쯤에 위치해 있습니다. 압구정로 12길과 도산대로 13길이 만나는 지점에 가깝죠. 주차공간이 여의치 않으므로 대중교통을 이용하시길 바랍니다. 대중교통편: 지하철 3호선 신사역 8번 출구에서 도보로 10분 거리입니다. 주변에 버스정류장도 있습니다.</td></tr>
+	              	<tr><td>A+ Store 가로수길은 패션과 문화의 거리, 가로수길의 중간 쯤에 위치해 있습니다. 압구정로 12길과 도산대로 13길이 만나는 지점에 가깝죠. 주차공간이 여의치 않으므로 대중교통을 이용하시길 바랍니다. 대중교통편: 지하철 3호선 신사역 8번 출구에서 도보로 10분 거리입니다. 주변에 버스정류장도 있습니다.</td></tr>
 	              </table>
 	            </div>
 	          </div>

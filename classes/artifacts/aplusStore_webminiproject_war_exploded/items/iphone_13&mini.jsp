@@ -90,17 +90,17 @@
                 let c = $(this).val();
 
                 if(c =="midnight"){
-                    $("#mainImg").attr("src","../images/iphone-13-main_midnight.jpeg");
+                    $("#mainImg").attr("src","../images/13_midnight.jpeg");
                 }else if(c =="pink"){
-                    $("#mainImg").attr("src","../images/iphone-13-main_pink.jpeg");
+                    $("#mainImg").attr("src","../images/13_pink.jpeg");
                 }else if(c =="blue"){
-                    $("#mainImg").attr("src","../images/iphone-13-main_blue.jpeg");
+                    $("#mainImg").attr("src","../images/13_blue.jpeg");
                 }else if(c =="starlight"){
-                    $("#mainImg").attr("src","../images/iphone-13-main_starlight.jpeg");
+                    $("#mainImg").attr("src","../images/13_starlight.jpeg");
                 }else if(c =="green"){
-                    $("#mainImg").attr("src","../images/iphone-13-main_green.jpeg");
+                    $("#mainImg").attr("src","../images/13_green.jpeg");
                 }else if(c =="red"){
-                $("#mainImg").attr("src","../images/iphone-13-main_red.jpeg");
+                $("#mainImg").attr("src","../images/13_red.jpeg");
             }
 
             });

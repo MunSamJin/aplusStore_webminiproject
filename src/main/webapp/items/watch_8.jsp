@@ -95,13 +95,13 @@
                 let c = $(this).val();
 
                 if(c =="black"){
-                    $("#mainImg").attr("src","../images/iphone-14-pro-main_black.jpeg");
+                    $("#mainImg").attr("src","../images/14pro_black.jpeg");
                 }else if(c =="gold"){
-                    $("#mainImg").attr("src","../images/iphone-14-pro-main_gold.jpeg");
+                    $("#mainImg").attr("src","../images/14pro_gold.jpeg");
                 }else if(c =="purple"){
-                    $("#mainImg").attr("src","../images/iphone-14-pro-main_purple.jpeg");
+                    $("#mainImg").attr("src","../images/14pro_purple.jpeg");
                 }else if(c =="silver"){
-                    $("#mainImg").attr("src","../images/iphone-14-pro-main_silver.jpeg");
+                    $("#mainImg").attr("src","../images/14pro_silver.jpeg");
                 }
 
             });

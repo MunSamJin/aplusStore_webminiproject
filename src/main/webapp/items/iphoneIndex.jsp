@@ -112,7 +112,7 @@
                     <p>프로 그 이상, iPhone 14Pro</p>
                 </div>
                 <div class="jb-text2">
-                    <p>With Aplus Store 🍎+</p>
+                    <p>With A+ Store 🍎+</p>
                 </div>
             </div>
         </div>

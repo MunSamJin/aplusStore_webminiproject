@@ -49,11 +49,11 @@
                 let c = $(this).val();
 
                 if(c =="starlight"){
-                    $("#mainImg").attr("src","../images/watch-ultra-main_starlight.jpeg");
+                    $("#mainImg").attr("src","../images/ultra_starlight.jpeg");
                 }else if(c =="green"){
-                    $("#mainImg").attr("src","../images/watch-ultra-main_green.jpeg");
+                    $("#mainImg").attr("src","../images/ultra_green.jpeg");
                 }else if(c =="orange"){
-                    $("#mainImg").attr("src","../images/watch-ultra-main_orange.jpeg");
+                    $("#mainImg").attr("src","../images/ultra_orange.jpeg");
                 }
 
             });
