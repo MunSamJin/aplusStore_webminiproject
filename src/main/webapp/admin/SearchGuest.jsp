@@ -88,11 +88,11 @@ $(function(){
   					
       				$.each(result, function(index, item){
       				    str+="<tr>";
-      				    str+=`<td><img src='${path}/images/${item.detailModelName}.jpeg' height='150px'></td>`;
-      				    str+=`<td><a href='#'>${item.detailModelNum}</a></td>`;
-      				    str+=`<td>${item.detailModelName}</td>`;
-      				    str+=`<td>${item.detailQty}</td>`;
-      				    str+=`<td>${item.salePrice}</td>`;
+      				    str+=`<td><img src="${path}/images/${'${item.detailModelName}'}.jpeg" height="150px"></td>`;
+      				    str+=`<td>${"${item.detailModelNum}"}</a></td>`;
+      				    str+=`<td>${"${item.detailModelName}"}</td>`;
+      				    str+=`<td>${"${item.detailQty}"}</td>`;
+      				    str+=`<td>${"${item.salePrice}"}</td>`;
       				  	//str+=`<td>${item.orderDTO.orderState}</td>`;
       				  	//if(item.orderDTO.orderState=="상품준비중"){
       				 	//str+=`<td><input type='button' value='주문취소' name='${item.orderDTO.orderState}'></td>`;
@@ -107,7 +107,7 @@ $(function(){
       			 	});
       				
       				
-      				str+="<tr><th colspan='5'>"+"상품상태 : "+state+"</th></tr>";
+      				str+="<tr><th colspan='5'>"+"상품상태 : "+"<a href='#'>"+state+"</a></th></tr>";
 
 					str+="<tr><th colspan='5'>"+"총 금액 : "+total+"</th></tr>";
       				
@@ -118,13 +118,114 @@ $(function(){
                     //$("#result").load("GuestPage.html");
                     //$("#result").show();
                     
-                    
+                  	 
                  } , 
                  error : function(err){  //실패했을때 실행할 함수 
                     alert(err+"에러 발생했어요.");
                  }  
               });//ajax끝
         });
+	////////////////////////////////////////////////////////////////////
+	 
+	//클릭했을 때 값을 폼에 넣기
+    $(document).on("click","a", function(){
+    	
+        
+    	let orderState = $(this).text();
+    	//alert(orderState);
+    	$("#orderState").val(orderState);
+    	
+    	//alert(${"$('orderState')"});
+    	
+        //let orderState = $(this).next();
+       // $("#orderState").val(orderState);
+        
+        
+
+    });
+
+    /////////////////////////////////////////////////////////////
+
+    $("#btn").click(function(){
+    	let orderState= $("#orderState").val();
+        //alert(orderState)
+    	
+        //let orderState= $("").val();
+        //alert("확인" +"orderState: '$(#orderState).val()'");
+        //alert("orderState:" +$("#orderState").val());
+
+        $.ajax({
+            url :"../ajax" , //서버요청주소
+            type:"post", //요청방식(method방식 : get | post | put | delete )
+            dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+            data: {key:"pay" , methodName : "update" , orderNum: $("#orderNum").val()}, //서버에게 보낼 데이터정보(parameter정보)  , 
+            success :function(result){
+            	alert("주문을 취소했습니다.");
+            	
+            } , //성공했을때 실행할 함수
+            error : function(err){
+                alert(err+"에러 발생했어요.");
+            }  //실패했을때 실행할 함수
+        });//ajax끝
+        
+        $("#inForm > table > tbody > tr:nth-child(1) > td").hide();
+        
+        $.ajax({
+            url :"../ajax" , //서버요청주소
+            type:"post", //요청방식(method방식 : get | post | put | delete )
+            dataType:"json"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+            data: $("#subscribeform").serialize() ,//서버에게 보낼 데이터정보(parameter정보)
+            success :function(result){ //성공했을때 실행할 함수 
+               alert(result)
+            
+            	$("#subscribeform").hide();
+            	
+               let str="";
+					let state="";
+					let total="";
+					
+ 				$.each(result, function(index, item){
+ 				    str+="<tr>";
+ 				    str+=`<td><img src="${path}/images/${'${item.detailModelName}'}.jpeg" height="150px"></td>`;
+ 				    str+=`<td>${"${item.detailModelNum}"}</a></td>`;
+ 				    str+=`<td>${"${item.detailModelName}"}</td>`;
+ 				    str+=`<td>${"${item.detailQty}"}</td>`;
+ 				    str+=`<td>${"${item.salePrice}"}</td>`;
+ 				  	//str+=`<td>${item.orderDTO.orderState}</td>`;
+ 				  	//if(item.orderDTO.orderState=="상품준비중"){
+ 				 	//str+=`<td><input type='button' value='주문취소' name='${item.orderDTO.orderState}'></td>`;
+ 				  	//} else {
+ 				  	//  str+=`<td>완료</td>`;
+ 				  	//	}
+ 				  
+ 				  	state = item.orderDTO.orderState;    				    
+ 				    total = item.orderDTO.totalPrice;
+ 				    
+ 				  	str+="</tr>";
+ 			 	});
+ 				
+ 				
+ 				str+="<tr><th colspan='5'>"+"상품상태 : "+"<a href='#'>"+state+"</a></th></tr>";
+
+				str+="<tr><th colspan='5'>"+"총 금액 : "+total+"</th></tr>";
+ 				
+ 				$("#listTable tr:gt(0)").remove();
+ 				$("#listTable tr:eq(0)").after(str);
+            
+            
+               //$("#result").load("GuestPage.html");
+               //$("#result").show();
+               
+             	 
+            } , 
+            error : function(err){  //실패했을때 실행할 함수 
+               alert(err+"에러 발생했어요.");
+            }  
+         });//ajax끝
+    });
+
+
+
 	   
 	   
   
@@ -164,11 +265,10 @@ $(function(){
     </div>
   </div>
   <!-- Main Section --> 
-
+  
 <!-- Wrapper--> 
     
 <table id="listTable" cellspacing="0">
-	<tr bgcolor="yellows">
 		<th></th>
 		<th>주문상세번호</th>
 		<th>상품명</th>
@@ -176,7 +276,29 @@ $(function(){
 		<th>제품금액</th>
 		
 	</tr>	
+	
 </table>
+<!-- 주문취소 폼 -->
+    <form name="inForm" method="post" id="inForm">
+        <table cellspacing="0">
+            </tr>
+            <tr>
+                <td>
+                	<input type="text" size="8" name="orderState" id="orderState">
+                	<input type="button" name="orderState" value="주문취소" id="btn">&nbsp;&nbsp;
+					
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5" align="center">
+                    <input type="hidden" name="key" value="pay">
+                    <input type="hidden" name="methodName" value="insert">         
+                </td>
+            </tr>
+        </table>
+    </form>
+    <br>
+
 
 
 <!-- footer -->

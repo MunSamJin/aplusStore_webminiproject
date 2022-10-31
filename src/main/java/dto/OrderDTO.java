@@ -33,6 +33,7 @@ public class OrderDTO {
 		this.orderState = orderState;
 	}
 	
+	
 	public OrderDTO(int orderNum, String orderName, String realEmail) {
 		this.orderNum = orderNum;
 		this.orderName = orderName;

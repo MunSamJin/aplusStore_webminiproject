@@ -96,4 +96,33 @@ public class OrderServiceImpl implements OrderService {
 		return list;
 	}
 
+	@Override
+	public int insert(OrderDTO orderDTO) throws SQLException {
+		int result = orderDAO.insert(orderDTO);
+		if(result<=0) {
+			throw new SQLException("실패");
+		}
+		return result;
+	}
+
+	@Override
+	public int update(OrderDTO orderDTO) throws SQLException {
+		int result = orderDAO.update(orderDTO);
+		if(result<=0) {
+			throw new SQLException("실패");
+		}
+		return result;
+	}
+
+	@Override
+	public List<OrderDetailDTO> success(String orderNum) throws SQLException {
+		List<OrderDetailDTO> list = orderDAO.success(orderNum);
+		if(list == null) {
+			throw new SQLException("출력되는 값이 없습니다.");
+		}
+		System.out.println("service list = "+list);
+
+		return list;
+	}
+
 }
