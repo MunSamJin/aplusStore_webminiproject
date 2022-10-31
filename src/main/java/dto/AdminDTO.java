@@ -22,12 +22,20 @@ public class AdminDTO {
 		super();
 		this.orderState = orderState;
 	}
-
+	
 	public AdminDTO(String orderNum, String orderState, String orderDate) {
 		super();
 		this.orderNum = orderNum;
 		this.orderState = orderState;
 		this.orderDate = orderDate;
+	}
+
+	public AdminDTO(String orderNum, String orderState, String orderDate, String realEmail) {
+		super();
+		this.orderNum = orderNum;
+		this.orderState = orderState;
+		this.orderDate = orderDate;
+		this.realEmail = realEmail;
 	}
 	
 

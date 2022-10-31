@@ -7,6 +7,7 @@ import dao.AdminDAO;
 import dao.AdminDAOImpl;
 import dto.AdminDTO;
 import dto.AdminDetailDTO;
+import mail.MailPickup;
 
 public class AdminServiceImpl implements AdminService {
 	private AdminDAO adminDAO = new AdminDAOImpl();
@@ -32,6 +33,17 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public int update(AdminDTO orderDTO) throws SQLException {
 		int result = adminDAO.update(orderDTO);
+		
+		//픽업준비중으로 상태가 변경되었다면 메일을 보내자
+		String realEmail = orderDTO.getRealEmail();
+		String orderName = orderDTO.getOrderName();
+		String orderState = orderDTO.getOrderState();
+		
+		//System.out.println("서비스 " + realEmail + orderName + orderState);
+		
+		MailPickup mailPickup = new MailPickup();
+		mailPickup.mailSend(realEmail);
+		
 		if(result<=0) {
 			throw new SQLException("실패");
 		}

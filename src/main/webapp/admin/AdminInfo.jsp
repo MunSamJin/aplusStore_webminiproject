@@ -88,12 +88,13 @@
             $(document).on("click","a", function(){
                 //alert($(this).text())
                 let orderNum = $(this).text();
-
                 let orderState = $(this).parent().next();
-
+                let realEmail = $(this).parent().parent().children("td:eq(6)").text();
+                //alert(realEmail);
+                
                 $("#orderNum").val(orderNum);
                 $("#orderState").val(orderState);
-
+                $("#realEmail").val(realEmail);
             });
 
             /////////////////////////////////////////////////////////////
@@ -107,7 +108,7 @@
                     url :"../ajax" , //서버요청주소
                     type:"post", //요청방식(method방식 : get | post | put | delete )
                     dataType:"text"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
-                    data: {key:"order" , methodName : "update" , orderNum: $("#orderNum").val() , orderState}, //서버에게 보낼 데이터정보(parameter정보)
+                    data: {key:"order" , methodName : "update" , orderNum: $("#orderNum").val() , orderState, realEmail:$("#realEmail").val()}, //서버에게 보낼 데이터정보(parameter정보)
                     success :function(result){
                         getOrderList();//화면갱신
                     } , //성공했을때 실행할 함수
@@ -155,8 +156,11 @@
                                     <th >주문상태</th>
                                 </tr>
                                 <tr>
-                                    <td style="text-align:left"><input type="text" size="8" name="orderNum" id="orderNum">
-                                        <span>상품준비중인 경우에만 주문취소 가능합니다.</span></td>
+                                    <td style="text-align:left">
+                                    	<input type="text" size="8" name="orderNum" id="orderNum">
+                                    	<input type="hidden" id="realEmail">
+                                        <span>상품준비중인 경우에만 주문취소 가능합니다.</span>
+                                    </td>
                                     <td>
                                         <input type="radio" size="8" name="orderState" id="픽업대기중" value="픽업대기중">픽업대기중
                                         <input type="radio" size="8" name="orderState" id="상품준비중" value="상품준비중">상품준비중

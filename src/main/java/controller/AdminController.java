@@ -94,8 +94,11 @@ public class AdminController implements AjaxController {
 		String orderNum = request.getParameter("orderNum");
 		String orderState = request.getParameter("orderState");
 		String orderDate = request.getParameter("orderDate");
+		String realEmail = request.getParameter("realEmail");
 		
-		AdminDTO dto = new AdminDTO(orderNum, orderState, orderDate);
+		System.out.println("컨트롤러 realEmail " + realEmail);
+		
+		AdminDTO dto = new AdminDTO(orderNum, orderState, orderDate, realEmail);
 		int result = service.update(dto);
 		
 		PrintWriter out = response.getWriter();

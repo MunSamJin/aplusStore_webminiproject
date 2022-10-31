@@ -34,8 +34,8 @@ public class OrderServiceImpl implements OrderService {
 		//dao에서 주문내역 조회하기
 		OrderDTO orderNumber = orderDAO.selectOrderNum(emailId);
 
-		//Mail mail = new Mail();
-		//mail.mailSend(orderNumber, dto);
+		Mail mail = new Mail();
+		mail.mailSend(orderNumber, dto);
 		
 		System.out.println("메일보내기 서비스 orderDTO.getRealEmail() " + dto.getRealEmail());
 		System.out.println("메일보내기 서비스 orderDTO.getOrderName() " + dto.getOrderName());
