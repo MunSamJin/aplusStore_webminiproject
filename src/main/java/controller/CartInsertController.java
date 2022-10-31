@@ -67,7 +67,7 @@ public class CartInsertController implements Controller {
 			}
 
 			System.out.println(guestCartList);
-			return new ModelAndView("cart/cart.jsp"); //forward
+			return new ModelAndView("cart/cart.jsp", true);
 
 		} else { //회원
            String emailId = (String)obj;

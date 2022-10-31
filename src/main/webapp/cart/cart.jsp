@@ -132,10 +132,10 @@
 					    str+="<td style='text-align: center;'>" + cartModelName + "</td>";
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
-					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select><p>"
+					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
 					    		
 					    		if(item.modelStock <= 0){
-					    			 str+="<b style='color:red'>  품절</b>"
+					    			 str+="<b style='color:red'>&nbsp;품절</b>"
 					    		}
 					    		
 					    		+"</td>";
@@ -218,47 +218,45 @@
 			//이미지 선택시 이동
 			$(document).on("click","table img",function(){
 				let imgName = $(this).attr("id").split("/");
-				alert(imgName[0]);
 				
-				if(imgName.includes("watch_band")){
+				if(imgName[0].includes("watch_band")){
 					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=band`;
-				} else if(imgName.includes("case")){
+				} else if(imgName[0].includes("case")){
 					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=case`;
-				} else if(imgName.includes("cable")){
+				} else if(imgName[0].includes("cable")){
 					location.href = `${path}/front?key=item&methodName=ItemReadByCategory&category=accessory&gps=cable`;
 				} else if(imgName[1].includes("AirPods")){
-					if(imgName.includes("2")){
+					if(imgName[0].includes("2")){
 						location.href = `${path}/items/airpods_2.jsp`;
-					} else if(imgName.includes("3")){
+					} else if(imgName[0].includes("3")){
 						location.href = `${path}/items/airpods_3.jsp`;
-					} else if(imgName.includes("max")){
+					} else if(imgName[0].includes("max")){
 						location.href = `${path}/items/airpods_max.jsp`;
-					} else if(imgName.includes("pro2")){
+					} else if(imgName[0].includes("pro2")){
 						location.href = `${path}/items/airpods_pro2.jsp`;
 					}
 					
 				} else if(imgName[1].includes("iphone")){
-					if(imgName.includes("12")){
+					if(imgName[0].includes("12")){
 						location.href = `${path}/items/iphone_12.jsp`;
-					} else if(imgName.includes("13")){
+					} else if(imgName[0].includes("13")){
 						location.href = `${path}/items/iphone_13&mini.jsp`;
-					} else if(imgName.includes("14")){
-						if(imgName.includes("pro")){
+					} else if(imgName[0].includes("14")){
+						if(imgName[0].includes("pro")){
 							location.href = `${path}/items/iphone_14pro&Max.jsp`;
 						} else{
 							location.href = `${path}/items/iphone_14&plus.jsp`;
 						}
 						
-					} else if(imgName.includes("se")){
+					} else if(imgName[0].includes("se")){
 						location.href = `${path}/items/iphone_se.jsp`;
 					}
 				} else if(imgName[1].includes("watch")){
-					if(imgName.includes("8")){
+					if(imgName[0].includes("8")){
 						location.href = `${path}/items/watch_8.jsp`;
-					} else if(imgName.includes("se")){
+					} else if(imgName[0].includes("se")){
 						location.href = `${path}/items/watch_se.jsp`;
-					} else if(imgName.includes("ultra")){
-						alert();
+					} else if(imgName[0].includes("ultra")){
 						location.href = `${path}/items/watch_ultra.jsp`;
 					}
 					
@@ -273,6 +271,7 @@
 
 
 			select();
+			
 		})//readyEnd
 	</script>
 </head>
@@ -280,6 +279,7 @@
 <body>
 <jsp:include page="../common/header.jsp"/>
 <!-- /.container-fluid -->
+</div>
 <!-- Main Section-->
 <div class="main app form" id="main">
 	<div class="app-features text-center" id="features">
@@ -297,18 +297,18 @@
 				<tr style="display:none;">
 					<td ></td>
 					<td ></td>
-					<td width="20%"><!-- <div class="col-md-6 nopadding"> -->
+					<td width="12%"><!-- <div class="col-md-6 nopadding"> -->
 						<div class="split-image"> <img class="img-responsive wow fadeIn" src="../images/iPhone-app.png" alt="Image" width="140px"/> </div>
 					</td>
 
-					<td width="50%" style="text-align: center;">
+					<td width="40%" style="text-align: center;">
 						<div ><!-- class="split-content" -->
 							<h2 class="wow fadeInUp">장바구니 상품1</h2>
 							<p class="wow fadeInUp">상품 설명</p>
 						</div>
 					</td>
-					<td width="15%"><h2 class="wow fadeInUp">수량</h2></td>
-					<td width="15%"><h2 class="wow fadeInUp">가격</h2></td>
+					<td width="33%"><h2 class="wow fadeInUp" style="display:inline-block;">수량</h2></td>
+					<td width="15"><h2 class="wow fadeInUp"  style="display:inline-block;">가격</h2></td>
 					<td><input type="button" value="삭제" name="delete" class="wow fadeInUp"></td>
 				</tr>
 			</table>
@@ -343,7 +343,7 @@
 
 </div>
 <!-- Main Section -->
-<!-- </div> -->
+</div>
 <!-- Wrapper-->
 
 
