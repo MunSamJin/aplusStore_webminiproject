@@ -47,14 +47,6 @@ public class UserServiceImpl implements UserService {
 	 * 회원가입
 	 */
 	
-<<<<<<< HEAD
-	public void insert(UserDTO userDTO) throws SQLException {
-			
-			int result = userDAO.insert(userDTO);
-			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다.");
-			
-			
-=======
 	public int insert(UserDTO userDTO) throws SQLException {
 			
 			int result = userDAO.insert(userDTO);
@@ -62,7 +54,6 @@ public class UserServiceImpl implements UserService {
 					+ "다시 확인해주세요.");
 			
 			return result;
->>>>>>> 1031-ys
 	}
 	
 	/**

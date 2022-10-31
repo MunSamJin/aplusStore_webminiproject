@@ -25,11 +25,7 @@ public interface UserService {
    /**
     *  회원가입
     */
-<<<<<<< HEAD
-   public void insert(UserDTO userDTO) throws SQLException;
-=======
    public int insert(UserDTO userDTO) throws SQLException;
->>>>>>> 1031-ys
    
    
    /**
