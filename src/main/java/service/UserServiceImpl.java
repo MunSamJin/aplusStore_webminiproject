@@ -18,11 +18,12 @@ public class UserServiceImpl implements UserService {
 
 	
 	@Override
-	public UserDTO loginCheck(UserDTO userdto) throws SQLException, AuthenticationException {//id,pwd만 가진 userdto가 옴.
+	public UserDTO loginCheck(UserDTO userdto) throws SQLException {//id,pwd만 가진 userdto가 옴.
 
 		UserDTO dbDTO = userDAO.loginCheck(userdto);
+		System.out.println("로그인 서비스 dbDTO = " + dbDTO);
 		if(dbDTO==null) {
-			throw new AuthenticationException("정보를 다시 확인해주세요.");
+			throw new SQLException("정보를 다시 확인해주세요.");
 		}
 		
 		return dbDTO;
@@ -47,12 +48,11 @@ public class UserServiceImpl implements UserService {
 	 * 회원가입
 	 */
 	
-	public void insert(UserDTO userDTO) throws SQLException {
+	public int insert(UserDTO userDTO) throws SQLException {
 			
 			int result = userDAO.insert(userDTO);
-			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다.");
-			
-			
+			if(result == 0 ) throw new SQLException("회원가입에 실패하였습니다. 다시 확인해주세요.");
+			return result;
 	}
 	
 	/**
@@ -75,16 +75,21 @@ public class UserServiceImpl implements UserService {
 	 * 정보 수정
 	 */
 	
-	public int update(UserDTO userdto) throws SQLException{
+	public int update(String emailId, UserDTO dto) throws SQLException{
 		
-		int result = userDAO.update(userdto);
+		int result = userDAO.update(emailId, dto);
 		
-		if(result > 0) {
-			return result;
-		}else {
+		System.out.println("result 서비스 업데이트 = " + result);
+		if(result == 0) {
 			throw new SQLException("정보 수정을 실패하였습니다.");
+		}else {
+			return result;
 		}
 		
 	
 	}
+	
+	
+	
+	
 }

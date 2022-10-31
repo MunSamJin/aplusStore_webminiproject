@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,8 +83,8 @@ $(function(){
                  	$("#subscribeform").hide();
                  	
                     let str="";
-  					let state="";
-  					let total="";
+  					let state;
+  					let total;
   					
       				$.each(result, function(index, item){
       				    str+="<tr>";
@@ -124,6 +125,41 @@ $(function(){
                  }  
               });//ajax끝
         });
+	
+    /////////////////////////////////////////////////////////////
+
+    //아이디를 클릭했을 때 값을 폼에 넣기
+    $(document).on("click","a", function(){
+        //alert($(this).text())
+        let orderNum = $(this).text();
+
+        let orderState = $(this).parent().next();
+
+        $("#orderNum").val(orderNum);
+        $("#orderState").val(orderState);
+
+    });
+
+    /////////////////////////////////////////////////////////////
+
+    $("#btn").click(function(){
+        //radio의 선택된 값
+        let orderState= $(":radio:checked").val();
+        alert(orderState)
+
+        $.ajax({
+            url :"../ajax" , //서버요청주소
+            type:"post", //요청방식(method방식 : get | post | put | delete )
+            dataType:"text"  , //서버가 보내온 데이터(응답)타입(text | html | xml | json )
+            data: {key:"order" , methodName : "update" , orderNum: $("#orderNum").val() , orderState}, //서버에게 보낼 데이터정보(parameter정보)
+            success :function(result){
+                getOrderList();//화면갱신
+            } , //성공했을때 실행할 함수
+            error : function(err){
+                alert(err+"에러 발생했어요.");
+            }  //실패했을때 실행할 함수
+        });//ajax끝
+    });
 	   
 	   
   
@@ -190,6 +226,33 @@ $(function(){
     </div>
   </div>
   <!-- Main Section --> 
+   <h2> 회원 - 주문취소 </h2>
+
+                        <form name="inForm" method="post" id="inForm">
+                            <table cellspacing="0">
+                                <tr bgcolor="red">
+                                    <th >주문번호</th>
+                                    <th >주문상태</th>
+                                </tr>
+                                <tr>
+                                    <td style="text-align:left"><input type="text" size="8" name="orderNum" id="orderNum">
+                                        <span>상품준비중인 경우에만 주문취소 가능합니다.</span></td>
+                                    <td>
+                                        <input type="radio" size="8" name="orderState" id="주문취소" value="주문취소">주문취소
+                                    	주문취소를 하면 되돌릴 수 없습니다.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="5" align="center">
+                                        <input type="hidden" name="key" value="order">
+                                        <input type="hidden" name="methodName" value="insert">
+                                        <input type="button" value="주문상태변경"  id="btn">
+                                    </td>
+                                </tr>
+                            </table>r
+                        </form>
+                        <br>
+  
 
 <!-- Wrapper--> 
     
@@ -212,7 +275,7 @@ $(function(){
         
            <!-- margin 중복 적용 문제 때문에 footer부분 사과 이미지 주석처리 해놨어요!ㅠ -->
            <!-- <img src="../images/logo1.png" class="b" width="80px"  alt="Image" /> -->
-            <p> Kosta 248기 2nd mini Project - Aplus Store🍎  </p>
+            <p> Kosta 248기 2nd mini Project - A+ Store🍎  </p>
             <div class="footer-text">
 
             </div>

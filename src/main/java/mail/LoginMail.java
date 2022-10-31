@@ -15,7 +15,7 @@ import javax.mail.internet.MimeMessage;
  
 public class LoginMail {
  
-    public int mail(String mailId) {
+    public int mail(String emailId) {
     	
     	Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111;
@@ -37,11 +37,11 @@ public class LoginMail {
             //편지보낸시간
             msg.setSentDate(new Date());
             InternetAddress from = new InternetAddress() ;
-            from = new InternetAddress("sikkkkkk@naver.com"); //발신자 아이디
+            from = new InternetAddress("orchid59@naver.com"); //발신자 아이디
             // 이메일 발신자
             msg.setFrom(from);
             // 이메일 수신자
-            InternetAddress to = new InternetAddress(mailId); //받을사람 아이디
+            InternetAddress to = new InternetAddress(emailId); //받을사람 아이디
             msg.setRecipient(Message.RecipientType.TO, to);
            
             // 이메일 제목

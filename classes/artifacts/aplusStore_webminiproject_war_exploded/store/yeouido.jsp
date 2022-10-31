@@ -60,7 +60,7 @@
 		      		
 	   		    // 커스텀 오버레이에 표시할 내용입니다     
 	   		    // HTML 문자열 또는 Dom Element 입니다 
-	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"Aplus Store여의도"+"<br>전자제품 판매점</button><span class='right'></span></div>";
+	   		    let content = "<div class ='label'><span class='left'></span><button class='center'>"+"A+ Store여의도"+"<br>전자제품 판매점</button><span class='right'></span></div>";
 	
 	   		    // 커스텀 오버레이가 표시될 위치입니다 
 	   		    let position = new kakao.maps.LatLng(37.5256135, 126.9260939);  
@@ -89,7 +89,7 @@
 	        
 	        <div style="margin-left: auto; margin-right: auto; text-align: center;">
 	          <div class="hero-content">
-	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">Aplus Store 여의도</h1>
+	            <h1 class="wow fadeInUp" data-wow-delay="0.1s">A+ Store 여의도</h1>
 	            <p class="wow fadeInUp" data-wow-delay="0.2s"> 폐점 시간 10:00 오후</p>
 	            <div class="sub-form wow fadeInUp" data-wow-delay="0.3s">
 	              <!-- subscribe message -->
@@ -125,7 +125,7 @@
 	              	<tr><td><br></td></tr>
 	              	<tr><td>찾아오는 길</td></tr>
 	              	<tr><td><br></td></tr>
-	              	<tr><td>Aplus Store 여의도는 서울의 중심부인 영등포구 IFC몰 L1에 위치해 있습니다. 대중교통편: 지하철 5호선, 9호선이 만나는 여의도역에 하차하여 3번 출구 방향 IFC몰이 연결되어 있습니다. 주변에 다양한 버스 노선 및 버스정류장도 있으며. 주차공간은 IFC몰 유료 주차장을 이용하실 수 있습니다.</td></tr>
+	              	<tr><td>A+ Store 여의도는 서울의 중심부인 영등포구 IFC몰 L1에 위치해 있습니다. 대중교통편: 지하철 5호선, 9호선이 만나는 여의도역에 하차하여 3번 출구 방향 IFC몰이 연결되어 있습니다. 주변에 다양한 버스 노선 및 버스정류장도 있으며. 주차공간은 IFC몰 유료 주차장을 이용하실 수 있습니다.</td></tr>
 	              </table>
 	            </div>
 	          </div>

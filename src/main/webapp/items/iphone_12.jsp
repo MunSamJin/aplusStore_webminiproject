@@ -62,15 +62,15 @@
                 let c = $(this).val();
 
                 if(c =="black"){
-                    $("#mainImg").attr("src","../images/iphone-12-main_black.jpeg");
+                    $("#mainImg").attr("src","../images/12_black.jpeg");
                 }else if(c =="green"){
-                    $("#mainImg").attr("src","../images/iphone-12-main_green.jpeg");
+                    $("#mainImg").attr("src","../images/12_green.jpeg");
                 }else if(c =="purple"){
-                    $("#mainImg").attr("src","../images/iphone-12-main_purple.jpeg");
+                    $("#mainImg").attr("src","../images/12_purple.jpeg");
                 }else if(c =="white"){
-                    $("#mainImg").attr("src","../images/iphone-12-main_white.jpeg");
+                    $("#mainImg").attr("src","../images/12_white.jpeg");
                 }else if(c =="red"){
-                    $("#mainImg").attr("src","../images/iphone-12-main_red.jpeg");
+                    $("#mainImg").attr("src","../images/12_red.jpeg");
                 }
 
             });
@@ -149,7 +149,7 @@
                 <h1 class="wow fadeInUp">용량 선택하기</h1>
                 <p class="wow fadeInUp">
 
-                    <label for="64">256</label>
+                    <label for="64">64</label>
                     <input type="radio" name="storage" id="64" value="64">
                     <label for="128">128</label>
                     <input type="radio" name="storage" id="128" value="128">

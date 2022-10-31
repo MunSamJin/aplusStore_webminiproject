@@ -69,7 +69,7 @@
             <div class="col-md-7">
                 <div class="hero-content">
                     <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta A+ Store </p>
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
 

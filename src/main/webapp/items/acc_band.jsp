@@ -64,7 +64,7 @@
                     <div class="col-sm-4">
                         <div class="table-right wow fadeInUp" data-wow-delay="0.6s">
                             <div>
-                                <a href="${path}/front?key=cart&methodName=ItemReadDetail&modelName=${list.modelName}">
+                                <a href="${path}/front?key=item&methodName=ItemReadDetail&modelName=${list.modelName}">
                                     <img src="${path}/images/${list.modelName}.jpeg" height="300px">
                                 </a></div>
                             <div class="pricing-details">

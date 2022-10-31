@@ -90,15 +90,15 @@
                 let c = $(this).val();
 
                 if(c =="midnight"){
-                    $("#mainImg").attr("src","../images/iphone-14-main_midnight.jpeg");
+                    $("#mainImg").attr("src","../images/14_midnight.jpeg");
                 }else if(c =="purple"){
-                    $("#mainImg").attr("src","../images/iphone-14-main_purple.jpeg");
+                    $("#mainImg").attr("src","../images/14_purple.jpeg");
                 }else if(c =="blue"){
-                    $("#mainImg").attr("src","../images/iphone-14-main_blue.jpeg");
+                    $("#mainImg").attr("src","../images/14_blue.jpeg");
                 }else if(c =="starlight"){
-                    $("#mainImg").attr("src","../images/iphone-14-main_starlight.jpeg");
+                    $("#mainImg").attr("src","../images/14_starlight.jpeg");
                 }else if(c =="red"){
-                $("#mainImg").attr("src","../images/iphone-14-main_red.jpeg");
+                $("#mainImg").attr("src","../images/14_red.jpeg");
             }
 
             });

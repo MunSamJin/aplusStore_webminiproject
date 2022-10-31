@@ -48,17 +48,17 @@
                 let c = $(this).val();
 
                 if(c =="spacegray"){
-                    $("#mainImg").attr("src","../images/airpods-max-main_spacegray.png");
+                    $("#mainImg").attr("src","../images/AirPods_Max_spacegray.jpeg");
                 }else if(c =="pink"){
-                    $("#mainImg").attr("src","../images/airpods-max-main_pink.png");
+                    $("#mainImg").attr("src","../images/AirPods_Max_pink.jpeg");
                 }else if(c =="blue"){
-                    $("#mainImg").attr("src","../images/airpods-max-main_blue.png");
+                    $("#mainImg").attr("src","../images/AirPods_Max_blue.jpeg");
                 }else if(c =="starlight"){
                     $("#mainImg").attr("src","../images/airpods-max-main_starlight.png");
                 }else if(c =="green"){
-                    $("#mainImg").attr("src","../images/airpods-max-main_green.png");
+                    $("#mainImg").attr("src","../images/AirPods_Max_green.jpeg");
                 }else if(c =="silver"){
-                    $("#mainImg").attr("src","../images/airpods-max-main_silver.png");
+                    $("#mainImg").attr("src","../images/AirPods_Max_silver.jpeg");
                 }
 
             });
@@ -109,7 +109,7 @@
     <div class="split-features">
         <div class="col-md-6 nopadding">
             <div class="split-image">
-                <img class="img-responsive wow fadeIn" src="../images/airpods-max-main_spacegray.png" alt="Image" id="mainImg"
+                <img class="img-responsive wow fadeIn" src="../images/AirPods_Max_spacegray.jpeg" alt="Image" id="mainImg"
                      style="height: 440px; border-radius: 20px;"/>
             </div>
         </div>

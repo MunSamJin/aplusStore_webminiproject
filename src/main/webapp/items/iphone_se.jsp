@@ -63,10 +63,10 @@
 
 
                 if(c =="midnight"){
-                    $("#mainImg").attr("src","../images/iphone-se-main_midnight.jpeg");
+                    $("#mainImg").attr("src","../images/se_midnight.jpeg");
 
                 }else if(c =="starlight"){
-                    $("#mainImg").attr("src","../images/iphone-se-main_starlight.jpeg");
+                    $("#mainImg").attr("src","../images/se_starlight.jpeg");
 
                 $("#cart").click(function () {
                     let modelName = "_"+
@@ -80,7 +80,7 @@
 
 
                 }else if(c =="red"){
-                    $("#mainImg").attr("src","../images/iphone-se-main_red.jpeg");
+                    $("#mainImg").attr("src","../images/se_red.jpeg");
                 }
 
             });

@@ -242,7 +242,7 @@
             <div class="col-md-7">
                 <div class="hero-content">
                     <h1 class="wow fadeInUp" data-wow-delay="0.1s">관리자 로그인 후 진행해주세요</h1>
-                    <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
+                    <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta A+ Store </p>
                     <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" i>
                         <input class="btn btn-primary btn-lg" type="button" value="관리자 로그인" name="send" id="button">
                         <!-- subscribe message -->
@@ -267,7 +267,7 @@
                 <div class="col-md-7">
                     <div class="hero-content">
                         <h1 class="wow fadeInUp" data-wow-delay="0.1s">제품 관리페이지</h1>
-                        <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta Aplus Store </p>
+                        <p class="wow fadeInUp" data-wow-delay="0.2s"> Kosta A+ Store </p>
                         <div class="sub-form wow fadeInUp" data-wow-delay="0.3s" id="add">
 
                             <input type="button" id="adminInfo" value="주문 관리 페이지" class="mail">

@@ -18,7 +18,7 @@ public class QuestionDAOImpl implements QuestionDAO{
         PreparedStatement ps = null;
         ResultSet rs = null;
         List<QuestionDTO> list = new ArrayList<QuestionDTO>();
-        String sql = "SELECT * FROM question WHERE q_cate='iphone'";
+        String sql = "SELECT * FROM question WHERE q_cate='iphone' order by q_date desc";
 
         try{
             con = DbUtil.getConnection();

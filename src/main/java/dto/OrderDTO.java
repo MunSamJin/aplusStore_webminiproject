@@ -22,15 +22,24 @@ public class OrderDTO {
 		this.totalPrice = totalPrice;
 	}
 	
+	public OrderDTO(String orderState) {
+		super();
+		this.orderState = orderState;
+	}
+	
+	public OrderDTO(int orderNum, String orderState) {
+		super();
+		this.orderNum = orderNum;
+		this.orderState = orderState;
+	}
+	
+	
 	public OrderDTO(int orderNum, String orderName, String realEmail) {
 		this.orderNum = orderNum;
 		this.orderName = orderName;
 		this.realEmail = realEmail;
 	}
-	public OrderDTO(String orderState) {
-		super();
-		this.orderState = orderState;
-	}
+	
 	public OrderDTO(String orderName, String realAddr, String orderDate, String orderState, String realEmail, String orderPhone) {
 		super();
 		this.orderName = orderName;
@@ -146,7 +155,7 @@ public class OrderDTO {
 		this.detailList = detailList;
 	}
 
-
+	
 
 
 }

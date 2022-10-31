@@ -25,19 +25,21 @@ public interface UserService {
    /**
     *  회원가입
     */
-   public void insert(UserDTO userDTO) throws SQLException;
+   public int insert(UserDTO userDTO) throws SQLException;
    
    
    /**
     *  회원정보변경
     */
-   public int update(UserDTO userdto) throws SQLException;
+   public int update(String emailId, UserDTO dto) throws SQLException;
    
    /**
     *  이메일 인증
     */
 
    
+   
+
 }
 
 

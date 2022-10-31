@@ -58,8 +58,8 @@
       <div class="col-md-7">
         <div class="hero-content">
           <h1 class="wow fadeInUp" data-wow-delay="0.1s">Welcome to</h1>
-          <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; font-size:70px">Aplus Store!</h1>
-          <p class="wow fadeInUp" data-wow-delay="0.1s"> Kosta Aplus Store 에 오신것을 환영합니다! </p>
+          <h1 class="wow fadeInUp" data-wow-delay="0.1s" style="visibility: visible; font-size:70px">A+ Store!</h1>
+          <p class="wow fadeInUp" data-wow-delay="0.1s"> Kosta A+ Store 에 오신것을 환영합니다! </p>
         </div>
       </div>
    	</div>

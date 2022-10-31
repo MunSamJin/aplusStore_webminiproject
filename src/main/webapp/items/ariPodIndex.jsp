@@ -103,7 +103,7 @@
           <strong>Your browser does not support the video tag.</strong>
         </video>
         <div class="jb-text">
-          <p>AirPods, Aplus Store 🎧</p>
+          <p>AirPods, A+ Store 🎧</p>
 
         </div>
         <div class="jb-text2">
