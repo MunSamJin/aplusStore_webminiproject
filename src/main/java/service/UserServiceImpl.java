@@ -77,16 +77,21 @@ public class UserServiceImpl implements UserService {
 	 * 정보 수정
 	 */
 	
-	public int update(UserDTO userdto) throws SQLException{
+	public int update(String emailId, UserDTO dto) throws SQLException{
 		
-		int result = userDAO.update(userdto);
+		int result = userDAO.update(emailId, dto);
 		
-		if(result > 0) {
-			return result;
-		}else {
+		System.out.println("result 서비스 업데이트 = " + result);
+		if(result == 0) {
 			throw new SQLException("정보 수정을 실패하였습니다.");
+		}else {
+			return result;
 		}
 		
 	
 	}
+	
+	
+	
+	
 }

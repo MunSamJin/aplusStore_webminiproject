@@ -31,13 +31,15 @@ public interface UserService {
    /**
     *  회원정보변경
     */
-   public int update(UserDTO userdto) throws SQLException;
+   public int update(String emailId, UserDTO dto) throws SQLException;
    
    /**
     *  이메일 인증
     */
 
    
+   
+
 }
 
 

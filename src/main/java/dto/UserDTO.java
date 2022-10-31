@@ -9,9 +9,17 @@ public class UserDTO {
 	private String addr;
 
 	public UserDTO() {}
+	
+	
 	public UserDTO(String emailId, String pwd) {
 		this.emailId = emailId;
 		this.pwd = pwd;
+	}
+
+	public UserDTO(String phone, String pwd, String addr) {
+		this.pwd = pwd;
+		this.phone = phone;
+		this.addr = addr;
 	}
 	public UserDTO(String emailId,String phone, String pwd, String addr) {
 		this(emailId, pwd);

@@ -38,14 +38,19 @@ $(function(){
 	    	 	return false;
 	    	 }
 	    	 
+	    	 int 
+	    	 
 	    	 $.ajax({
 				type : "POST",
 				url : "/ajax",
 				dataType:"text",
 				data : {key:"user", methodName:"checkEmail"},
-				success: function(mailNum){
-					if(mailNum != 0){ //여기 있는 mailNum을 어떻게 form에 넣어서 다시 front로 가져갈까?
+				success: function(num){
+					if(num != 0){ //여기 있는 mailNum을 어떻게 form에 넣어서 다시 front로 가져갈까?
 					alert("인증번호가 발송되었습니다.");
+					
+					
+					//location.href = "${path}/front?key=user&methodName=insert&modelName=" + modelName;
 					}else{
 	   					//text내용지우고
 	   					$("input[type=text]").val("");

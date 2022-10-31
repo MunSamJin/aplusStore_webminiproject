@@ -36,7 +36,7 @@ public class LookforAccount {
             //편지보낸시간
             msg.setSentDate(new Date());
             InternetAddress from = new InternetAddress() ;
-            from = new InternetAddress("sikkkkkk@naver.com"); //발신자 아이디
+            from = new InternetAddress("orchid59@naver.com"); //발신자 아이디
             // 이메일 발신자
             msg.setFrom(from);
             // 이메일 수신자

@@ -23,7 +23,7 @@ public class UserController implements Controller {
 	private UserDAO userDAO = new UserDAOImpl();
 	private	UserService userService = new UserServiceImpl();
 	// LoginMail mail = new LoginMail();
-	 //LookforAccount lookforAccount = new LookforAccount();
+	 LookforAccount lookforAccount = new LookforAccount();
 	
 	
 	  @Override
@@ -41,16 +41,24 @@ public class UserController implements Controller {
 	 
 	 public ModelAndView update(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException, SQLException {
-
-		 String emailId = request.getParameter("emailId");
-		 String pwd = request.getParameter("pwd");
-		 String addr = request.getParameter("addr");
-		 String phone = request.getParameter("phone");
-
-		 UserDTO dto = new UserDTO(emailId, phone, pwd, addr);
-
-		 userService.update(dto);
 		 
+		 HttpSession session = request.getSession();
+		 String emailId = (String)session.getAttribute("emailId");
+		 String phone = request.getParameter("phone");
+		 String addr = request.getParameter("addr");
+		 String pwd = request.getParameter("pwd");
+		 
+		 
+		 System.out.println("emailId = " + emailId);
+		 System.out.println("phone = " + phone);
+		 System.out.println("addr = " + addr);
+		 System.out.println("pwd = " + pwd);
+		 
+		 UserDTO dto = new UserDTO(phone, pwd, addr);
+		 
+		 int result = userService.update(emailId, dto);
+		 
+		 System.out.println("result =" + result);
 		 
 		 return new ModelAndView("index.jsp", true);
 	 }
@@ -96,32 +104,28 @@ public class UserController implements Controller {
 	  *  로그인
 	  */
 	 
-	  public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
-				throws Exception {
-		 
-		 //두 개의 전송 되는 값을 받는다.
+	 public ModelAndView login(HttpServletRequest request, HttpServletResponse response)
+	            throws Exception {
+	       
+	       //두 개의 전송 되는 값을 받는다.
 
-		 String emailId = request.getParameter("emailId");
-		 String pwd = request.getParameter("pwd");
-		 UserDTO dto = null;
-		 
-		 System.out.println("emailId = " + emailId);
-		 System.out.println("pwd = " + pwd);
-		 //서비스 호출
-		 dto = new UserDTO(emailId, pwd);
-			dto  =	userService.loginCheck(dto);
-		 System.out.println("로그인 컨트롤러 dto = " + dto);
-		 
-		 //로그인 성공하면 세션에 정보를 저장.
-		 HttpSession session = request.getSession();
-		 session.setAttribute("emailId", dto.getEmailId());
-		 session.setAttribute("emailPh", dto.getPhone());
-		 session.setAttribute("emailPwd", dto.getPwd());
-		 session.setAttribute("emailName", dto.getName());
-		 session.setAttribute("emailAddr", dto.getAddr() );
-		 
-		return new ModelAndView("index.jsp", true);
-		 
+	       String emailId = request.getParameter("emailId");
+	       String pwd = request.getParameter("pwd");
+	       
+	       System.out.println("emailId = " + emailId);
+	       System.out.println("pwd = " + pwd);
+	       //서비스 호출
+	       UserDTO dto = userService.loginCheck(new UserDTO(emailId, pwd));
+	       
+	       //로그인 성공하면 세션에 정보를 저장.
+	       HttpSession session = request.getSession();
+	       session.setAttribute("emailId", dto.getEmailId());
+	       session.setAttribute("emailPh", dto.getPhone());
+	       session.setAttribute("emailPwd", dto.getPwd());
+	       session.setAttribute("emailName", dto.getName());
+	       session.setAttribute("emailAddr", dto.getAddr() );
+	       
+	      return new ModelAndView("index.jsp", true);
 	 }
 	 
 	 /**
@@ -162,7 +166,7 @@ public class UserController implements Controller {
 		System.out.println("userdto = " + userdto);
 		if(userdto != null) {
 			out.println("<script>alert('가입하신 이메일로 아이디가 전송되었습니다.');</script>");
-			//lookforAccount.lookforAccount(emailId, name);
+			lookforAccount.lookforAccount(emailId, name);
 		 
 		 
 		}else {
@@ -184,14 +188,13 @@ public class UserController implements Controller {
 			String name = request.getParameter("name");
 			String emailId = request.getParameter("emailId");
 			
+			System.out.println("비밀번호 찾기 입력 ="+ name + "," + emailId);
 			UserDTO userdto = null;
 			userdto = userDAO.lookforPwd(emailId, name);
 			
 			if(userdto != null) {
 				out.println("<script>alert('가입하신 이메일로 임시 비밀번호 전송되었습니다.');</script>");
-				//int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
-				HttpSession session = request.getSession();
-				//session.setAttribute("num", num);//이렇게 저장이 될까?
+				int num = lookforAccount.lookforAccount(emailId, name); //num은임시비밀번호
 				
 			}else {
 				out.println("<script>alert('아이디가 존재하지 않습니다.')</script>");
@@ -202,10 +205,11 @@ public class UserController implements Controller {
 
 	 /**
 	  *  중복된 아이디가 있는지 체크
+	 * @throws SQLException, Exception 
 	  */
 
 	 public void idCheck(HttpServletRequest request, HttpServletResponse response)
-				throws ServletException, IOException {
+				throws ServletException, IOException, SQLException, Exception {
 		 response.setContentType("text/html;charset=UTF-8");
 		 
 

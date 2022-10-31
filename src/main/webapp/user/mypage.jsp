@@ -82,8 +82,8 @@
 			<!-- Subscribe Form -->
 	    <div>
 	      <div class="container">
-	        <div class="cta-inner">
-	          <h1 class="wow fadeInUp" data-wow-delay="0s">${emailName}님,안녕하세요!</h1>
+	        <div class="cta-inner" style="margin-top: 50px">
+	          <h1 class="wow fadeInUp" data-wow-delay="0s" style="font-size: 70px; font-weight: bold;">${emailName}님,안녕하세요!</h1>
 	      </div>
 	    </div>
     </div>
@@ -92,22 +92,13 @@
 	<div class="pitch text-center">
       <div class="container">
         <div class="col-md-14">
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <h1 class="wow fadeInUp" data-wow-delay="0s">계정 설정</h1>
+          <div class="col-md wow fadeInDown" data-wow-delay="0.2s">
             <div class="pitch-content">
-              <h1><a href="${path}/qna/QnaSub_iphone.jsp">편집</a></h1>
+          
+              <h1><a href="updateAccount.jsp">개인정보 변경을 원하시면 클릭해주세요.</a></h1>
             </div>
           </div>
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-mic-outline"></i> </div>
-            <div class="pitch-content">
-              <h1><a href="${path}/qna/QnaSub_watch.jsp">Watch</a></h1>
-              </div>
-          </div>
-          <div class="col-md-4 wow fadeInDown" data-wow-delay="0.2s">
-            <div class="pitch-icon"> <i class="ion-ios-folder-outline"></i> </div>
-            <div class="pitch-content">
-              <h1><a href="${path}/qna/QnaSub_airpods.jsp">AirPods</a></h1>
+          
               </div>
           </div>
         </div>
