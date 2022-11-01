@@ -100,7 +100,7 @@
 
 <div class="app-features text-center" id="features">
   <div class="container">
-    <h1 class="wow fadeInDown" data-wow-delay="0.1s">ApplePlue을 더욱 더 즐기는 방법</h1>
+    <h1 class="wow fadeInDown" data-wow-delay="0.1s">A+ Store 를 더욱 더 즐기는 방법</h1>
     <p class="wow fadeInDown" data-wow-delay="0.2s">How to enjoy appleplus more and more</p>
     <div class="col-md-4 features-left">
       <div class="col-md-12 wow fadeInDown" data-wow-delay="0.2s">
