@@ -119,9 +119,9 @@
 						if((item.category=="iphone") || (item.category=="watch")){
 							imgName = name[0]+"_"+name[1];
 						}
-						for(let i=0 ; i<name.length; i++){
+						/* for(let i=0 ; i<name.length; i++){
 							cartModelName +=  name[i].toUpperCase() + " ";
-						}
+						} */
 						
 						
 
@@ -129,7 +129,7 @@
 					    str+=`<td display='none'>${"${item.cartNum}"}</td>`; //jsp가 되면서 $를 jstl로 서버에서 인식돼버리면서 나오지 않는다
 					    str+=`<td display='none'>${"${item.modelNum}"}</td>`;
 					    str+="<td style='text-align: center;'><img src='${path}/images/" + imgName + ".jpeg' id="+ (item.modelName + "/" + item.category) +"></a></td>";
-					    str+="<td style='text-align: center;'>" + cartModelName + "</td>";
+					    str+="<td style='text-align: center;'>" + item.modelName + "</td>";
 					    str+="<td><select name='modelCount' id='selectModelCount'>"+
 					    		"<option value='"+ item.modelCount +"' selected disabled hidden>"+ item.modelCount +"</option><option value='1'>1</option>"
 					    		+"<option value='2'>2</option><option value='3'>3</option><option value='4'>4</option><option value='5'>5</option></select>"
